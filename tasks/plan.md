@@ -13,7 +13,11 @@ You'll deliver:
 3. A **Tableau Public** story that presents the scouting findings to a general audience.
 4. Business-analysis documents: a brief, a KPI dictionary, an assumptions log and a recommendation memo.
 
-**Starting scope:** 2025 VCT data from VCT Reference (the brief's suggested Kaggle 2025 dataset is kept as a cross-check), one region and one role. Roster-swap prediction is a stretch goal and must show uncertainty ranges.
+**Starting scope (decided 2026-09-17, see `docs/business_brief.md`):**
+- **Team:** Sentinels (VCT Americas), analysed from a hypothetical GM's point of view as an unofficial portfolio piece.
+- **Vacancy:** the slot stand-ins covered in 2026. Its role is confirmed in T2.
+- **Data window:** 2026 is the main scouting window and 2025 is used for consistency. The data comes from VCT Reference, with Kaggle as a cross-check.
+- **Candidates:** top-tier players only; Challengers are phase 2. Roster-swap prediction is a stretch goal and must show uncertainty ranges.
 
 ## Architecture Decisions
 
@@ -160,8 +164,8 @@ D:\football analysis\          (consider renaming it to valorant-recruitment)
 
 ## Open Questions
 
-1. **Region and role:** the defaults are *Americas + Duelist*, the richest stats for a first version. Controller or Initiator would be more distinctive. T2's sample-size check settles the final choice.
+1. ~~Region and role~~ **Decided:** Sentinels (Americas). The role of the vacant slot is inferred in T2.
 2. **Tool split:** should Tableau be a storytelling companion (the current plan), or a full duplicate of the Power BI report to compare the tools?
 3. **Environment:** do you have Power BI Desktop (Windows) and Tableau Public/Desktop installed, plus Python 3.11+? The main dataset needs no login. A Kaggle account is only needed for the cross-check, and an Esports Earnings API key only for T8.
 4. **Folder:** the connected folder is named "football analysis". Should the project live there, or in a new folder?
-5. **Audience:** is this for a portfolio/job applications or a course submission? The answer changes how much polish T13 needs.
+5. ~~Audience~~ **Decided:** a portfolio piece and personal learning.

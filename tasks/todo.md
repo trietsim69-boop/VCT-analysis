@@ -6,7 +6,7 @@ The plan is in `tasks/plan.md`. Work through the tasks in order and stop at each
 
 ## Phase 0 — Scope & Data Risk
 
-### Task 1: Business brief, stakeholder and KPI dictionary
+### Task 1: Business brief, stakeholder and KPI dictionary — *draft v0.1 done 2026-09-17, awaiting review*
 
 **Description:** Write the business-analysis foundation. This covers the problem statement, the stakeholder (a team GM or head coach), the decisions the dashboard supports, what's in and out of scope, and a KPI dictionary. For each KPI, the dictionary gives the name, formula, grain, weighting, minimum sample and what the KPI does *not* measure.
 
@@ -25,15 +25,18 @@ The plan is in `tasks/plan.md`. Work through the tasks in order and stop at each
 
 ---
 
-### Task 2: Acquire and audit the VCT 2025 dataset; choose the region and role
+### Task 2: Acquire and audit the VCT 2025 data; choose the region and role
 
-**Description:** Download the dataset into `data/raw/` without modifying it. Profile every file: grain, keys, row counts, null rates, event and region coverage, and the agent list. Confirm that the KPI dictionary's metrics exist at the player-map grain. Count eligible players per region × role and choose the scope.
+**Description:** Download `https://vct-reference.com/dataset/vct.duckdb` (source A1 in the plan) into `data/raw/vct_YYYY-MM-DD.duckdb` and don't modify it. Filter to 2025. Download the Kaggle 2025 all-events dataset (A2) as a cross-check. Download the VCT Global Contract Database sheet (B2) as a CSV. Profile every file: grain, keys, row counts, null rates, event and region coverage, and the agent list. Confirm that the KPI dictionary's metrics exist at the player-map grain. Count eligible players per region × role and choose the scope.
 
 **Acceptance criteria:**
 - [ ] `docs/data_audit.md` lists each file with its grain, primary key, row count and null % for each KPI column
 - [ ] Known gaps are documented (e.g. economy/loadout gaps) along with how each will be handled
-- [ ] A region × role eligibility table exists (players with ≥ 20 maps), and the chosen scope is recorded with its rationale
-- [ ] Go/no-go is decided: Kaggle 2025 is enough **or** switch to the VCT Reference DuckDB
+- [ ] 2026 coverage is confirmed (assumption S-05), and the role of SEN's vacant slot is inferred from its 2026 agent picks (S-03)
+- [ ] A role-pool eligibility count exists (≥ 15 maps in 2026, S-07), and SEN's import status is checked in the Global Contract Database (S-10)
+- [ ] Coverage flags are profiled (`performance_available`, `economy_available`) for the chosen region
+- [ ] Go/no-go is decided: VCT Reference 2025 is enough **or** switch to Kaggle A2
+- [ ] 10 player-map rows are reconciled between A1 and A2
 
 **Verification:**
 - [ ] `notebooks/01_audit.ipynb` runs top to bottom without errors
@@ -175,7 +178,8 @@ The plan is in `tasks/plan.md`. Work through the tasks in order and stop at each
 **Acceptance criteria:**
 - [ ] `docs/budget_model.md` lists the formulas, input definitions and default values, with a source or "illustrative" label for each
 - [ ] `src/budget.py` implements the formulas, and `tests/test_budget.py` covers ≥ 5 cases (including zero buyout, and revenue below cost)
-- [ ] The Esports Earnings prize history for the shortlisted players is included as a reference only, and is labelled "not salary"
+- [ ] The Esports Earnings prize history for the shortlisted players (B1, game ID 646) is included as a reference only, and is labelled "not salary"
+- [ ] Scenario ranges are anchored to sources: the minimum-salary floor (B3), the revenue-share total (B4), the partnership payment range (B5) and viewership (B6). The contract end year (B2) informs the buyout assumption.
 
 **Verification:**
 - [ ] `pytest tests/test_budget.py` passes
