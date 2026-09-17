@@ -13,14 +13,14 @@ You'll deliver:
 3. A **Tableau Public** story that presents the scouting findings to a general audience.
 4. Business-analysis documents: a brief, a KPI dictionary, an assumptions log and a recommendation memo.
 
-**Starting scope (from the brief):** the VCT 2025 Kaggle dataset, one region and one role. Roster-swap prediction is a stretch goal and must show uncertainty ranges.
+**Starting scope:** 2025 VCT data from VCT Reference (the brief's suggested Kaggle 2025 dataset is kept as a cross-check), one region and one role. Roster-swap prediction is a stretch goal and must show uncertainty ranges.
 
 ## Architecture Decisions
 
 | Decision | Choice | Rationale |
 |---|---|---|
-| Primary dataset | VCT 2025 (International + Regional), Kaggle | Covers a single season at a manageable size, with stats per match and per map. |
-| Fallback dataset | VCT Reference DuckDB (8 linked tables) | Use it if the Kaggle files lack the needed grain, such as opening duels per map. It also demonstrates SQL well. |
+| Primary dataset | **VCT Reference DuckDB** (`vct.duckdb`), filtered to 2025 | It's a single direct download with no login, rebuilt daily, and free to use including commercially. It already has the `player_map` grain (rating, ACS, ADR, KAST, duels, clutches) plus `kill_matrix`. See [Data Sources](#data-sources). |
+| Cross-check dataset | Kaggle "Valorant 2025 – All Events International + Regional" | A second vlr.gg-derived source for spot-checking totals in T2. Its file and column layout still needs confirming. |
 | Processing stack | Python (pandas) + DuckDB SQL | DuckDB reads CSV and Parquet directly, the SQL is portable, and it's free. |
 | Hand-off to BI tools | Star-schema CSV/Parquet files in `data/marts/` | Power BI and Tableau read the same files, so their numbers match. |
 | Data model | `fact_player_map` plus the dimensions `dim_player`, `dim_team`, `dim_agent` (with role), `dim_map`, `dim_event` and `dim_date` | This is a standard star schema. Power BI relationships and Tableau relationships both handle it well. |
@@ -30,6 +30,40 @@ You'll deliver:
 | Tool split | **Power BI** is the full analyst tool: 3 pages with what-if parameters. **Tableau** is a public storytelling version of the Scouting and Roster Fit findings. | Each tool plays to its strengths, and you avoid building the same dashboard twice. |
 | Financial inputs | All money inputs are editable parameters labelled "assumption". Esports Earnings prize money is shown only as a reference. | Prize earnings are not salaries or market values. |
 | Language guardrail | No metric is labelled "communication". KAST and trade stats keep their literal names. | This keeps the claims honest. |
+
+## Data Sources
+
+Researched on 2026-09-17. "Verified" means I read the source's own page. For Kaggle, only titles and descriptions were visible (the pages render client-side), so their files must be confirmed in T2.
+
+### A. Performance data (scouting and roster fit)
+
+| # | Source | What's in it | Access / licence | Use in project | Status |
+|---|---|---|---|---|---|
+| A1 | **[VCT Reference dataset](https://vct-reference.com/dataset)**, direct file: `https://vct-reference.com/dataset/vct.duckdb` | 8 tables: `matches`, `maps`, `rounds` (with economy snapshots), `player_map` (rating, ACS, ADR, KAST, HS%, K/D/A, duels, multikills, clutches), `kill_matrix` (player-vs-player kills, opening kills), `notables`, `players`, `teams`. Tier-1 VCT from 2021 onward, rebuilt daily (last build 2026-09-16). | Free, including commercial use, no warranty; attribution appreciated | **Primary source.** T2–T6. `kill_matrix` supports trade and opening-duel analysis. | Verified |
+| A2 | [Kaggle – Valorant 2025: All Events International + Regional](https://www.kaggle.com/datasets/piyush86kumar/valorant-vct-2025-all-events) (piyush86kumar) | All VCT 2025 international and regional events, scraped from vlr.gg | Kaggle login; check the licence on the page | Cross-check totals in T2. It's the fallback if A1 is unavailable. | Title verified; files TBC |
+| A3 | [Kaggle – VCT 2025 Stage 2, All Regions](https://www.kaggle.com/datasets/piyush86kumar/valorant-stage-2-2025-all-regions) | Stage 2 across all regions | Kaggle login | Optional: a smaller slice if you want a quick prototype | Title verified; files TBC |
+| A4 | [Kaggle – Valorant Champions 2025 Paris](https://www.kaggle.com/datasets/piyush86kumar/valorant-champions-tour-2025-paris) | Player and match data for Champions 2025, from vlr.gg | Kaggle login | Optional: the Tableau story's "big stage" view | Title verified; files TBC |
+| A5 | [Kaggle – Valorant Champion Tour 2021–2026](https://www.kaggle.com/datasets/ryanluong1/valorant-champion-tour-2021-2023-data) (Ryan Luong) | Multiple seasons of matches, agents and players, including picks/bans and round economy | Kaggle login | Stretch goal: multi-season trends. Known gap: round loadout values are missing from Masters Toronto 2025 onward. | Title verified; files TBC |
+| A6 | [vlr.gg event stats](https://www.vlr.gg/event/stats/2283/valorant-champions-2025) | Public stats pages per event | Website (no bulk export) | Manual spot-checks in T2 and T4 | Verified |
+| A7 | [vlrggapi](https://github.com/axsddlr/vlrggapi) | Unofficial REST API over vlr.gg (stats, matches, rankings) | MIT. The public instance is **down**, so you'd have to self-host. 600 requests/min. | Not needed (A1 covers it). Only use it if a field is missing. | Verified |
+| A8 | [GRID VALORANT Data Portal](https://grid.gg/get-valorant/) | Official granular in-game data | Application required. Free only for pro teams; research and media use is paid. | Out of scope for v1 | Verified |
+
+### B. Business and financial context (budget scenarios)
+
+| # | Source | What's in it | Access | Use in project | Status |
+|---|---|---|---|---|---|
+| B1 | [Esports Earnings – VALORANT](https://www.esportsearnings.com/games/646-valorant) and its [API](https://www.esportsearnings.com/apidocs) | Recorded prize earnings per player and tournament. The Valorant game ID is **646** (from the URL). | Free API key (register in the Development Area); at most 1 request per second | T8 `prize_reference.csv`. Label it **"prize money, not salary"**. | Verified |
+| B2 | [VCT Global Contract Database](https://docs.google.com/spreadsheets/d/e/2PACX-1vRmmWiBmMMD43m5VtZq54nKlmj0ZtythsA1qCpegwx-iRptx2HEsG0T3cQlG1r2AIiKxBWnaurJZQ9Q/pubhtml) (Riot, published Google Sheet; [explainer](https://www.hotspawn.com/valorant/news/valorant-vct-global-contract-database)) | League, team, handle, **contract end date (usually year only)**, resident/import status, active/inactive. **No salaries.** | Public | T4/T5: add a "contract ends this year" flag and a resident/import flag (import slots are limited). T8: a shorter remaining term suggests a lower buyout. | Verified via the explainer |
+| B3 | Riot minimum salaries, 2023 partnered leagues ([Dexerto](https://www.dexerto.com/esports/vct-2023-roster-regulations-explained-minimum-salaries-import-rules-roster-sizes-1944581/)) | Americas **$50,000**, EMEA **€50,000**, Pacific **₩67,000,000** base salary. Max 1 import; rosters of 6–10 players. | Public article (2023 rules; may have changed) | T8: the salary floor for the "low" scenario | Verified (2023) |
+| B4 | VCT 2025 revenue share ([Hotspawn](https://www.hotspawn.com/valorant/news/vct-2025-100m-rev-share), Riot announcement 2025-12-16) | **$105.2M** shared with partner teams in 2025, **$86M** of it from digital goods. No per-team split published. | Public article | T8: context for team-capsule revenue. Divide by the number of partner teams only as an explicitly labelled rough average. | Verified |
+| B5 | VCT 2027 partnership terms ([THESPIKE](https://www.thespike.gg/valorant/news/partnered-vct-2027-teams-to-receive-up-to-5-million-per-year-under-new-format/7963)) | Partner teams receive **$600K–$5M per year** (base payment + performance bonus + capsules), depending on results and skin sales. Covers North America, Brazil and the rest of Latin America. | Public article | T8: the range for team revenue in the low and high scenarios, and the link between "performance → bonus" | Verified |
+| B6 | [Esports Charts – VCT 2025](https://escharts.com/news/vct-2025-stage-1-global-viewership) (e.g. [Americas Stage 1](https://escharts.com/tournaments/valorant/vct-2025-americas-stage-1)) | Peak and average viewers and hours watched per event | Website (the API is paid) | T8: a proxy for sponsorship and exposure value in the scenario narrative. Record a few numbers by hand. | Search results only |
+| B7 | [Liquipedia API](https://liquipedia.net/api) | Transfers, rosters and results | Free for open-source educational projects (limited time); paid tiers from $49/month | Optional: transfer history for T11 context | Verified |
+
+### Handling rules
+- **Filter A1 to 2025 and to one region.** Gate every query on `maps.performance_available` and `maps.economy_available`. China has no economy data and sparse advanced stats, so avoid picking China as the scope region.
+- **Salaries and buyouts are never presented as data.** B3–B5 only set scenario ranges, and every value is listed in `docs/assumptions_log.md` with its source.
+- **Attribution:** credit VCT Reference, Esports Earnings and Riot in the README (T13).
 
 ## Dependency Graph
 
@@ -115,7 +149,7 @@ D:\football analysis\          (consider renaming it to valorant-recruitment)
 
 | Risk | Impact | Mitigation |
 |---|---|---|
-| The Kaggle files lack per-map opening kills and deaths, or player–team links | High | T2 audits this first. The fallback is the VCT Reference DuckDB. |
+| VCT Reference changes its schema or goes offline (it's a community project, rebuilt daily) | High | Save a dated copy of `vct.duckdb` in `data/raw/` and never re-download mid-project. Kaggle A2 is the fallback. |
 | Small samples for some players | High | Set a minimum-maps threshold, show a sample-size column on every visual, and use percentiles only inside the eligible pool. |
 | Missing values treated as zero | High | Data tests assert that NULLs are preserved. Measures use AVERAGE or DIVIDE, which ignore blanks. |
 | Role inference is wrong for flex players | Med | Use the 60% rule plus a "Flex" bucket. List flex players explicitly in the audit. |
@@ -128,6 +162,6 @@ D:\football analysis\          (consider renaming it to valorant-recruitment)
 
 1. **Region and role:** the defaults are *Americas + Duelist*, the richest stats for a first version. Controller or Initiator would be more distinctive. T2's sample-size check settles the final choice.
 2. **Tool split:** should Tableau be a storytelling companion (the current plan), or a full duplicate of the Power BI report to compare the tools?
-3. **Environment:** do you have Power BI Desktop (Windows) and Tableau Public/Desktop installed, plus Python 3.11+? Do you have a Kaggle account or API key for the download?
+3. **Environment:** do you have Power BI Desktop (Windows) and Tableau Public/Desktop installed, plus Python 3.11+? The main dataset needs no login. A Kaggle account is only needed for the cross-check, and an Esports Earnings API key only for T8.
 4. **Folder:** the connected folder is named "football analysis". Should the project live there, or in a new folder?
 5. **Audience:** is this for a portfolio/job applications or a course submission? The answer changes how much polish T13 needs.
