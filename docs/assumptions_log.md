@@ -11,9 +11,11 @@ Draft v0.1, 2026-09-17. Every number the dashboards use that isn't measured data
 |---|---|---|---|---|---|
 | S-01 | Case study team | Sentinels (VCT Americas), hypothetical GM view | decided | Scoping round 1 | All |
 | S-02 | Vacant slot | The slot covered by stand-ins in 2026 (Jerrwin → Victor → Marved) | decided / to verify (T2) | [vlr.gg news](https://www.vlr.gg/team/news/2/sentinels/) | T4–T9 |
-| S-03 | Role of the vacant slot | Inferred from 2026 agent picks for that slot | to verify (T2) | Sources don't give roles reliably | T4, T6 |
+| S-03 | Role of the vacant slot | **Duelist** | ✅ resolved (T2, 2026-09-18) | The slot ran N4RRATE → Victor → Jerrwin, all on duelist agents (neon, waylay, raze) | T4, T6 |
 | S-04 | Scouting window | 2026 season (main); 2025 used for consistency only | decided | Recruiting for 2027 | T3–T5 |
-| S-05 | 2026 data coverage in VCT Reference | Assumed to be present, because the source is rebuilt daily and covers 2021 to present | to verify (T2) | [VCT Reference dataset](https://vct-reference.com/dataset) | T2 go/no-go |
+| S-05 | 2026 data coverage in VCT Reference | **622 matches**, all four leagues plus Masters Santiago, Masters London and Champions 2026 | ✅ confirmed (T2) | Snapshot `vct-fe27a11e.duckdb`, 2026-09-18 | T2 go/no-go |
+| S-12 | Chinese league players | China has **0%** performance and economy data, so Chinese players are judged only on international maps and carry a warning flag | ✅ sourced (T2) | `maps.performance_available` by region | T4, T5 |
+| S-13 | Eligible duelist pool | **84 players** meet ≥ 15 maps in 2026 and ≥ 60% duelist maps | ✅ measured (T2) | Snapshot query | T4 |
 | S-06 | Candidate pool | Top-tier VCT only; Challengers in phase 2 | decided | Scoping round 1 | T4 |
 | S-07 | Minimum sample | ≥ 15 maps in 2026 | decided / to verify (T2 counts) | Protects players on teams eliminated early | T4 |
 | S-08 | Primary role rule | ≥ 60% of maps on one role, otherwise "Flex" | decided | Transparent and adjustable | T3 |

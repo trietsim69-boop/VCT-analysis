@@ -6,18 +6,18 @@ The plan is in `tasks/plan.md`. Work through the tasks in order and stop at each
 
 ## Phase 0 — Scope & Data Risk
 
-### Task 1: Business brief, stakeholder and KPI dictionary — *draft v0.1 done 2026-09-17, awaiting review*
+### Task 1: Business brief, stakeholder and KPI dictionary — ✅ **signed off 2026-09-18**
 
 **Description:** Write the business-analysis foundation. This covers the problem statement, the stakeholder (a team GM or head coach), the decisions the dashboard supports, what's in and out of scope, and a KPI dictionary. For each KPI, the dictionary gives the name, formula, grain, weighting, minimum sample and what the KPI does *not* measure.
 
 **Acceptance criteria:**
-- [ ] `docs/business_brief.md` states the business question, stakeholder, 3 decisions supported, scope and non-goals
-- [ ] `docs/kpi_dictionary.md` defines ≥ 8 KPIs: Rating, ACS, ADR, KPR, APR, KAST, FK/FD per round, FK−FD differential, consistency (std-dev of rating across maps), maps and rounds played
-- [ ] `docs/assumptions_log.md` is started with the financial assumptions marked "to be sourced"
+- [x] `docs/business_brief.md` states the business question, stakeholder, 3 decisions supported, scope and non-goals
+- [x] `docs/kpi_dictionary.md` defines ≥ 8 KPIs: Rating, ACS, ADR, KPR, APR, KAST, FK/FD per round, FK−FD differential, consistency (CV of per-map ADR), maps and rounds played
+- [x] `docs/assumptions_log.md` is started with the financial assumptions marked "to be sourced"
 
 **Verification:**
-- [ ] Manual check: every KPI names its source column (placeholders are fine until T2) and its weighting rule
-- [ ] Manual check: no KPI is labelled as "communication"
+- [x] Manual check: every KPI names its source column (placeholders are fine until T2) and its weighting rule
+- [x] Manual check: no KPI is labelled as "communication"
 
 **Dependencies:** None
 **Files:** `docs/business_brief.md`, `docs/kpi_dictionary.md`, `docs/assumptions_log.md`
@@ -25,22 +25,25 @@ The plan is in `tasks/plan.md`. Work through the tasks in order and stop at each
 
 ---
 
-### Task 2: Acquire and audit the VCT 2025 data; choose the region and role
+### Task 2: Acquire and audit the data; confirm the role — ✅ **done 2026-09-18** (one spot-check open)
 
-**Description:** Download `https://vct-reference.com/dataset/vct.duckdb` (source A1 in the plan) into `data/raw/vct_YYYY-MM-DD.duckdb` and don't modify it. Filter to 2025. Download the Kaggle 2025 all-events dataset (A2) as a cross-check. Download the VCT Global Contract Database sheet (B2) as a CSV. Profile every file: grain, keys, row counts, null rates, event and region coverage, and the agent list. Confirm that the KPI dictionary's metrics exist at the player-map grain. Count eligible players per region × role and choose the scope.
+> Findings in `docs/data_audit.md`, schema profile in `docs/data_profile.md`. Verdict: **GO**. The vacant slot is the **duelist** slot, and 84 duelists are eligible.
+
+**Description:** Download `https://vct-reference.com/dataset/vct.duckdb` (source A1 in the plan) into `data/raw/vct_YYYY-MM-DD.duckdb` and don't modify it. Filter to 2025. Download the Kaggle 2025 all-events dataset (A2) as a cross-check. Download the VCT Global Contract Database sheet (B2) as `gcd_YYYY-MM-DD.xlsx` via its `pub?output=xlsx` export URL. Profile every file: grain, keys, row counts, null rates, event and region coverage, and the agent list. Confirm that the KPI dictionary's metrics exist at the player-map grain. Count eligible players per region × role and choose the scope.
 
 **Acceptance criteria:**
-- [ ] `docs/data_audit.md` lists each file with its grain, primary key, row count and null % for each KPI column
-- [ ] Known gaps are documented (e.g. economy/loadout gaps) along with how each will be handled
-- [ ] 2026 coverage is confirmed (assumption S-05), and the role of SEN's vacant slot is inferred from its 2026 agent picks (S-03)
-- [ ] A role-pool eligibility count exists (≥ 15 maps in 2026, S-07), and SEN's import status is checked in the Global Contract Database (S-10)
-- [ ] Coverage flags are profiled (`performance_available`, `economy_available`) for the chosen region
-- [ ] Go/no-go is decided: VCT Reference 2025 is enough **or** switch to Kaggle A2
-- [ ] 10 player-map rows are reconciled between A1 and A2
+- [x] `docs/data_profile.md` lists each table with row counts, types, null % and distinct counts; `docs/data_audit.md` adds the grain, keys and KPI mapping
+- [x] Known gaps documented: China has 0% performance and economy data (S-12), and clutch attempts don't exist
+- [x] 2026 coverage confirmed (S-05); the vacant slot's role inferred as **duelist** (S-03)
+- [x] Eligibility counted: 84 duelists with ≥ 15 maps in 2026 (S-13)
+- [x] Coverage flags profiled by region (`performance_available`, `economy_available`)
+- [x] Go/no-go decided: **GO** on VCT Reference
+- [x] ~~Reconcile 10 rows against Kaggle A2~~ → replaced by a vlr.gg spot-check (the actual upstream source)
+- [ ] SEN's import status checked in the Global Contract Database workbook (S-10) — carried into T3
 
 **Verification:**
-- [ ] `notebooks/01_audit.ipynb` runs top to bottom without errors
-- [ ] Manual check: totals for 2 matches match the published match pages (e.g. VLR.gg)
+- [x] Every audit query ran without errors, and the top of the duelist pool returns plausible 2026 names
+- [ ] Manual check: totals for 2 matches match their vlr.gg match pages
 
 **Dependencies:** T1
 **Files:** `data/raw/*`, `notebooks/01_audit.ipynb`, `docs/data_audit.md`

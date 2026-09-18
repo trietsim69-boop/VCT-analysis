@@ -1,6 +1,8 @@
 # KPI Dictionary
 
-Draft v0.1, 2026-09-17. Source column names are marked **TBC**: Task 2 maps each KPI to the actual VCT Reference columns (`player_map`, `maps`, `kill_matrix`).
+v0.2, 2026-09-18. Columns confirmed against the 2026-09-18 snapshot; the full mapping and null rates are in `docs/data_audit.md` §4.
+
+**Base fact:** `player_map` joined to `matches` (date, event, region) and `maps` (availability flags), keyed by `player_id` + `game_id`. **Rounds come from the `rounds` table**, counted per `game_id`. Every query gates on `maps.performance_available`; Chinese league maps carry no stats at all, so Chinese players are flagged in the candidate table.
 
 ## Conventions
 
@@ -45,7 +47,7 @@ The ranking combines these KPIs as a **role-weighted composite of percentiles**.
 | **Rating** (third-party) | As provided by the source | A proprietary composite that we can't break down, so it's shown for recognition only |
 | **ACS**: average combat score | Round-weighted ACS | Overlaps with ADR and KPR, and Riot's scoring formula isn't under our control |
 | **HS %** | Headshot hits ÷ total hits | A mechanics indicator with a weak link to winning rounds |
-| **Clutch success %** | Clutches won ÷ clutch attempts (if attempts are available, TBC) | Samples are tiny, so it always shows the count next to the % |
+| **Clutches won per 100 rounds** | (`clutch_1v1` + … + `clutch_1v5`) ÷ rounds × 100 | The database stores clutches won but no attempts, so a success *rate* can't be computed. Always shown with the raw count. |
 
 ## D. Roster fit
 
@@ -77,9 +79,10 @@ Input values are in `assumptions_log.md`. Money is in USD; `Y` = contract years.
 
 **Does NOT measure:** actual salaries, actual buyouts or the real value of the organisation. Every output depends on the assumptions and is labelled that way.
 
-## Open items for Task 2
+## Closed in Task 2 (2026-09-18)
 
-- [ ] Map each "TBC" source to real column names.
-- [ ] Confirm whether clutch *attempts* exist; drop Clutch % if they don't.
-- [ ] Confirm how first kills and first deaths are stored (in `player_map` or derived from `kill_matrix`).
-- [ ] Record the agent → role seed list (the current agent roster at the time of the Task 2 snapshot).
+- [x] Columns mapped: `adr_all`, `kast_all`, `fk_all`, `fd_all`, `acs_all`, `rating_all`, `hs_pct_all`, `agents`.
+- [x] Clutch attempts don't exist → clutch success % replaced by clutches won per 100 rounds.
+- [x] First kills and deaths sit in `player_map` (`fk_all`, `fd_all`) and per-opponent in `kill_matrix`.
+- [x] Agent → role seed written to `data/seeds/agent_roles.csv` (29 agents, including the 2026 releases veto and miks).
+- [x] Attack/defence splits exist for ADR, ACS, KAST and first kills. Kept out of v1 ranking, available for Roster Fit.
