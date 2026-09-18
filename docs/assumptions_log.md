@@ -13,14 +13,16 @@ Draft v0.1, 2026-09-17. Every number the dashboards use that isn't measured data
 | S-02 | Vacant slot | The slot covered by stand-ins in 2026 (Jerrwin → Victor → Marved) | decided / to verify (T2) | [vlr.gg news](https://www.vlr.gg/team/news/2/sentinels/) | T4–T9 |
 | S-03 | Role of the vacant slot | **Duelist** | ✅ resolved (T2, 2026-09-18) | The slot ran N4RRATE → Victor → Jerrwin, all on duelist agents (neon, waylay, raze) | T4, T6 |
 | S-04 | Scouting window | 2026 season (main); 2025 used for consistency only | decided | Recruiting for 2027 | T3–T5 |
-| S-05 | 2026 data coverage in VCT Reference | **622 matches**, all four leagues plus Masters Santiago, Masters London and Champions 2026 | ✅ confirmed (T2) | Snapshot `vct-fe27a11e.duckdb`, 2026-09-18 | T2 go/no-go |
+| S-05 | 2026 data coverage in VCT Reference | **588 completed matches** — all four leagues (Kickoff, Stage 1, Stage 2) plus Masters Santiago and Masters London. **Champions 2026 is excluded**: its 34 fixtures run 2026-09-24 → 2026-10-18, after the snapshot. The window is *pre-Champions*. | ⚠️ revised (T2, 2026-09-18) | Snapshot `vct-fe27a11e.duckdb`; see `data_audit.md` §0–§1. Every query must filter `matches.status = 'final'` — `performance_available` is TRUE on unplayed fixtures. | T2 go/no-go, T3–T5 |
+| S-14 | Champions 2026 handling | **Open — blocks Checkpoint A.** Either accept the pre-Champions window and state it on every page, or re-snapshot after 2026-10-18. | to decide (user) | The biggest event of the window is absent, and it is the main source of international maps for Chinese players (S-12). `CLAUDE.md` says never re-download mid-project. | All |
 | S-12 | Chinese league players | China has **0%** performance and economy data, so Chinese players are judged only on international maps and carry a warning flag | ✅ sourced (T2) | `maps.performance_available` by region | T4, T5 |
 | S-13 | Eligible duelist pool | **84 players** meet ≥ 15 maps in 2026 and ≥ 60% duelist maps | ✅ measured (T2) | Snapshot query | T4 |
 | S-06 | Candidate pool | Top-tier VCT only; Challengers in phase 2 | decided | Scoping round 1 | T4 |
 | S-07 | Minimum sample | ≥ 15 maps in 2026 | decided / to verify (T2 counts) | Protects players on teams eliminated early | T4 |
 | S-08 | Primary role rule | ≥ 60% of maps on one role, otherwise "Flex" | decided | Transparent and adjustable | T3 |
 | S-09 | Rating usage | Shown for recognition, excluded from ranking | decided | Proprietary composite | T4, T5 |
-| S-10 | Import handling | Flag, don't filter; SEN's import slot may already be taken by johnqt (Moroccan) | decided / to verify (T2, Global Contract Database) | [Liquipedia](https://liquipedia.net/valorant/Sentinels), [Dexerto](https://www.dexerto.com/esports/vct-2023-roster-regulations-explained-minimum-salaries-import-rules-roster-sizes-1944581/) | T6, T7 |
+| S-10 | Import handling | **SEN's one import slot is already occupied by johnqt** (Non-Resident, contract to 2028). Import candidates are still flagged rather than filtered, but signing one requires moving johnqt — a two-slot decision, not one. | ✅ resolved (T2, 2026-09-18) | Global Contract Database, AMERICAS tab, updated 2026-09-14; see `data_audit.md` §5. Import rule per [Dexerto](https://www.dexerto.com/esports/vct-2023-roster-regulations-explained-minimum-salaries-import-rules-roster-sizes-1944581/) | T6, T7, T11 |
+| S-15 | Vacancy premise | The contract database lists **Jerrwin as Active with a contract to 2028**, so it does not corroborate the vacancy. The premise rests on vlr.gg reporting alone. | ⚠️ unverified | Global Contract Database vs [vlr.gg](https://www.vlr.gg/team/2/sentinels). The project is framed as a hypothetical GM exercise, so this is a framing caveat, not a blocker. | T11 |
 | S-11 | Roster facts snapshot | Facts frozen at the T2 snapshot date and shown on every page | decided | The roster may change | All |
 
 ## B. Financial inputs (USD)
@@ -61,3 +63,5 @@ The Low / Base / High columns feed the scenario selector in T9.
 | Date | Change |
 |---|---|
 | 2026-09-17 | v0.1 created from scoping rounds 1–2 |
+| 2026-09-18 | S-03, S-05, S-12, S-13 updated from T2. |
+| 2026-09-18 | v0.2 after the T2 audit correction: S-05 revised (Champions 2026 is unplayed; 588 completed matches, not 622). S-10 resolved — the import slot is taken. S-14 (Champions window decision) and S-15 (vacancy premise unverified) added. |

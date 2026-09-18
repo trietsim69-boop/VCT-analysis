@@ -1,8 +1,12 @@
 # KPI Dictionary
 
-v0.2, 2026-09-18. Columns confirmed against the 2026-09-18 snapshot; the full mapping and null rates are in `docs/data_audit.md` §4.
+v0.3, 2026-09-18. Columns confirmed against the 2026-09-18 snapshot. The full mapping and null rates are in `docs/data_audit.md` §4 — on the working slice every core ranking metric is **0% null**.
 
-**Base fact:** `player_map` joined to `matches` (date, event, region) and `maps` (availability flags), keyed by `player_id` + `game_id`. **Rounds come from the `rounds` table**, counted per `game_id`. Every query gates on `maps.performance_available`; Chinese league maps carry no stats at all, so Chinese players are flagged in the candidate table.
+**Base fact:** `player_map` joined to `matches` (date, event, region, status) and `maps` (availability flags), keyed by `player_id` + `game_id`. **Rounds come from the `rounds` table**, counted per `game_id`.
+
+**Two gates, both required:** `matches.status = 'final'` **and** `maps.performance_available`. The snapshot holds placeholder rows for unplayed fixtures, and `performance_available` is `TRUE` on them — the status filter is what excludes them (`data_audit.md` §0). Chinese league maps carry no stats at all, so Chinese players are flagged in the candidate table.
+
+**Integer storage:** `adr_all` is `SMALLINT` and `kast_all` is `TINYINT`, so raw damage and raw KAST rounds are not available. Round-weighted values are reconstructed as Σ(metric × rounds) ÷ Σ rounds and carry up to ±0.5 per map of rounding. This is accurate enough for ranking, but the formulas below are reconstructions, not exact sums.
 
 ## Conventions
 
@@ -25,9 +29,9 @@ v0.2, 2026-09-18. Columns confirmed against the 2026-09-18 snapshot; the full ma
 
 ## B. Scouting: ranking KPIs (transparent)
 
-| KPI | Formula | Direction | Source (TBC) | Does NOT measure |
+| KPI | Formula | Direction | Source column | Does NOT measure |
 |---|---|---|---|---|
-| **ADR**: average damage per round | Σ damage ÷ Σ rounds | ↑ | `player_map` damage (or ADR × rounds) | Whether the damage led to kills or round wins |
+| **ADR**: average damage per round | Σ(`adr_all` × rounds) ÷ Σ rounds | ↑ | `player_map.adr_all` (reconstructed — see above) | Whether the damage led to kills or round wins |
 | **KPR**: kills per round | Σ kills ÷ Σ rounds | ↑ | `player_map` kills | Kill value or timing |
 | **APR**: assists per round | Σ assists ÷ Σ rounds | ↑ | `player_map` assists | Quality of utility |
 | **DPR**: deaths per round | Σ deaths ÷ Σ rounds | ↓ | `player_map` deaths | Whether a death was a useful trade |

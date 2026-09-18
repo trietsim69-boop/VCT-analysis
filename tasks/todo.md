@@ -25,21 +25,25 @@ The plan is in `tasks/plan.md`. Work through the tasks in order and stop at each
 
 ---
 
-### Task 2: Acquire and audit the data; confirm the role — ✅ **done 2026-09-18** (one spot-check open)
+### Task 2: Acquire and audit the data; confirm the role — ⚠️ **audit revised 2026-09-18 (v0.2); two items open**
 
 > Findings in `docs/data_audit.md`, schema profile in `docs/data_profile.md`. Verdict: **GO**. The vacant slot is the **duelist** slot, and 84 duelists are eligible.
+>
+> **v0.2 correction:** the first pass counted scheduled Champions 2026 fixtures as data. 2026 has **588 completed matches**, not 622, and Champions 2026 (2026-09-24 → 2026-10-18) is outside the window. `maps.performance_available` is TRUE on unplayed fixtures, so `matches.status = 'final'` is a mandatory filter in T3 onward.
 
 **Description:** Download `https://vct-reference.com/dataset/vct.duckdb` (source A1 in the plan) into `data/raw/vct_YYYY-MM-DD.duckdb` and don't modify it. Filter to 2025. Download the Kaggle 2025 all-events dataset (A2) as a cross-check. Download the VCT Global Contract Database sheet (B2) as `gcd_YYYY-MM-DD.xlsx` via its `pub?output=xlsx` export URL. Profile every file: grain, keys, row counts, null rates, event and region coverage, and the agent list. Confirm that the KPI dictionary's metrics exist at the player-map grain. Count eligible players per region × role and choose the scope.
 
 **Acceptance criteria:**
 - [x] `docs/data_profile.md` lists each table with row counts, types, null % and distinct counts; `docs/data_audit.md` adds the grain, keys and KPI mapping
 - [x] Known gaps documented: China has 0% performance and economy data (S-12), and clutch attempts don't exist
-- [x] 2026 coverage confirmed (S-05); the vacant slot's role inferred as **duelist** (S-03)
+- [x] 2026 coverage confirmed (S-05) — **revised**: 588 *completed* matches; Champions 2026 is unplayed and excluded. Every query must filter `matches.status = 'final'`.
+- [x] The vacant slot's role inferred as **duelist** (S-03)
 - [x] Eligibility counted: 84 duelists with ≥ 15 maps in 2026 (S-13)
 - [x] Coverage flags profiled by region (`performance_available`, `economy_available`)
 - [x] Go/no-go decided: **GO** on VCT Reference
 - [x] ~~Reconcile 10 rows against Kaggle A2~~ → replaced by a vlr.gg spot-check (the actual upstream source)
-- [ ] SEN's import status checked in the Global Contract Database workbook (S-10) — carried into T3
+- [x] SEN's import status checked in the Global Contract Database workbook (S-10) — **the import slot is already taken by johnqt**; signing an import is a two-slot decision
+- [ ] **Champions 2026 window decision (S-14)** — accept the pre-Champions window, or re-snapshot after 2026-10-18. Blocks Checkpoint A.
 
 **Verification:**
 - [x] Every audit query ran without errors, and the top of the duelist pool returns plausible 2026 names
