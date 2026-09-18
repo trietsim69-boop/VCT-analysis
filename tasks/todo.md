@@ -25,7 +25,7 @@ The plan is in `tasks/plan.md`. Work through the tasks in order and stop at each
 
 ---
 
-### Task 2: Acquire and audit the data; confirm the role — ⚠️ **audit revised 2026-09-18 (v0.2); two items open**
+### Task 2: Acquire and audit the data; confirm the role — ⚠️ **audit revised 2026-09-18 (v0.3); one decision open (S-14)**
 
 > Findings in `docs/data_audit.md`, schema profile in `docs/data_profile.md`. Verdict: **GO**. The vacant slot is the **duelist** slot, and 84 duelists are eligible.
 >
@@ -47,10 +47,10 @@ The plan is in `tasks/plan.md`. Work through the tasks in order and stop at each
 
 **Verification:**
 - [x] Every audit query ran without errors, and the top of the duelist pool returns plausible 2026 names
-- [ ] Manual check: totals for 2 matches match their vlr.gg match pages
+- [x] Totals for 2 matches match their vlr.gg match pages — **600/600 cells** (SEN vs KRÜ, JDG vs TYLOO), `python -m src.spotcheck_vlr`
 
 **Dependencies:** T1
-**Files:** `data/raw/*`, `notebooks/01_audit.ipynb`, `docs/data_audit.md`
+**Files:** `data/raw/*`, `sql/audit.sql`, `src/export.py`, `src/spotcheck_vlr.py`, `data/audit/*.csv`, `docs/data_audit.md`
 **Scope:** M
 
 ## ✅ Checkpoint A — Data go/no-go

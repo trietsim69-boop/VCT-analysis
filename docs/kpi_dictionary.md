@@ -1,10 +1,12 @@
 # KPI Dictionary
 
-v0.3, 2026-09-18. Columns confirmed against the 2026-09-18 snapshot. The full mapping and null rates are in `docs/data_audit.md` §4 — on the working slice every core ranking metric is **0% null**.
+v0.3, 2026-09-18. Columns confirmed against the 2026-09-18 snapshot. The full mapping and null rates are in `docs/data_audit.md` §4 — ranking metrics are complete outside China; China has gaps of up to ~20%, handled by per-metric denominators below.
 
 **Base fact:** `player_map` joined to `matches` (date, event, region, status) and `maps` (availability flags), keyed by `player_id` + `game_id`. **Rounds come from the `rounds` table**, counted per `game_id`.
 
-**Two gates, both required:** `matches.status = 'final'` **and** `maps.performance_available`. The snapshot holds placeholder rows for unplayed fixtures, and `performance_available` is `TRUE` on them — the status filter is what excludes them (`data_audit.md` §0). Chinese league maps carry no stats at all, so Chinese players are flagged in the candidate table.
+**Gates:** every query filters `matches.status = 'final'` — the snapshot holds placeholder rows for unplayed fixtures (`data_audit.md` §0). **Ranking KPIs are not gated on `maps.performance_available`**: that flag covers vlr.gg's Performance tab only (multi-kills, clutches, `kill_matrix`), so it gates the display-only metrics in section C and the op-kill colour, nothing else.
+
+**Per-metric denominators:** each rate divides by the rounds of the maps where *that* metric is non-NULL. Chinese league maps are missing ADR on ~15% of rows; dividing by all rounds would understate them, which is the NULL-as-zero error in disguise. Every rate is shown with its own map count.
 
 **Integer storage:** `adr_all` is `SMALLINT` and `kast_all` is `TINYINT`, so raw damage and raw KAST rounds are not available. Round-weighted values are reconstructed as Σ(metric × rounds) ÷ Σ rounds and carry up to ±0.5 per map of rounding. This is accurate enough for ranking, but the formulas below are reconstructions, not exact sums.
 
