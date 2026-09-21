@@ -43,7 +43,7 @@ Start any session by reading `tasks/todo.md` and working the first unchecked tas
 
 ## Working method
 
-- Data pipeline: **Python + DuckDB** → Parquet in `data/processed/` → BI-ready files in `data/marts/`. Power BI and Tableau both read `data/marts/`, which keeps them consistent.
+- Data pipeline: **Python + DuckDB** → CSV in `data/processed/` → BI-ready CSV in `data/marts/`. Power BI and Tableau both read `data/marts/`, which keeps them consistent.
 - Every mart gets a `pytest` data test. Verify with tests and spot-checks against vlr.gg, not by eye.
 - `data/raw/` is git-ignored: keep the dated `vct.duckdb` snapshot there and never re-download it mid-project.
 - Power BI Desktop and Tableau run on the user's Windows machine. A session in the cloud workspace can build the data and the documents, but cannot open a `.pbix` or `.twbx`.

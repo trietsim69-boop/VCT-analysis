@@ -25,8 +25,8 @@ You'll deliver:
 |---|---|---|
 | Primary dataset | **VCT Reference DuckDB** (`vct.duckdb`), filtered to **2026 completed matches** (2025 for the consistency check) | It's a single direct download with no login, rebuilt daily, and free to use including commercially. It already has the `player_map` grain (rating, ACS, ADR, KAST, duels, clutches) plus `kill_matrix`. See [Data Sources](#data-sources). |
 | Cross-check dataset | Kaggle "Valorant 2025 – All Events International + Regional" | A second vlr.gg-derived source for spot-checking totals in T2. Its file and column layout still needs confirming. |
-| Processing stack | Python (pandas) + DuckDB SQL | DuckDB reads CSV and Parquet directly, the SQL is portable, and it's free. |
-| Hand-off to BI tools | Star-schema CSV/Parquet files in `data/marts/` | Power BI and Tableau read the same files, so their numbers match. |
+| Processing stack | Python (pandas) + DuckDB SQL | DuckDB reads and writes CSV directly, the SQL is portable, and it's free. |
+| Hand-off to BI tools | Star-schema **CSV** files in `data/marts/` | Power BI and Tableau read the same files, so their numbers match. CSV everywhere — openable in Excel, diffable, and no format the user has to learn. |
 | Data model | `fact_player_map` plus the dimensions `dim_player`, `dim_team`, `dim_agent` (with role), `dim_map`, `dim_event` and `dim_date` | This is a standard star schema. Power BI relationships and Tableau relationships both handle it well. |
 | Weighting | Rate metrics are **weighted by rounds**, not averaged across maps | A simple average of per-map ACS gives short maps too much weight. |
 | Missing data | Missing values stay NULL and are never replaced with 0. Every visual shows its sample size (maps and rounds). | Both dataset docs warn about gaps: China economy data, and loadouts from Masters Toronto 2025 onward. |
@@ -139,8 +139,8 @@ The detailed tasks are in `tasks/todo.md`.
 ```
 D:\football analysis\          (consider renaming it to valorant-recruitment)
 ├── data/raw/                  original downloads, read-only, git-ignored
-├── data/processed/            cleaned fact/dim Parquet files
-├── data/marts/                BI-ready CSV/Parquet files
+├── data/processed/            cleaned fact/dim CSV files
+├── data/marts/                BI-ready CSV files
 ├── src/                       Python pipeline (ingest.py, clean.py, marts.py, budget.py)
 ├── sql/                       DuckDB model and mart SQL
 ├── tests/                     pytest data tests

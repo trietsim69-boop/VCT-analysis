@@ -66,10 +66,10 @@ The plan is in `tasks/plan.md`. Work through the tasks in order and stop at each
 
 > `python -m src.clean` → `data/processed/`: `fact_player_map` (73,116 rows, all seasons, completed matches only) plus `dim_player` (with `primary_role`), `dim_team`, `dim_agent`, `dim_event`, `dim_map`. 9 tests pass.
 
-**Description:** Build a repeatable pipeline that turns the raw files into `fact_player_map` plus the dimensions (player, team, agent with role, map, event, date). Add the agent → role seed file and the primary-role rule (≥ 60% of maps, otherwise "Flex").
+**Description:** Build a repeatable pipeline that turns the raw files into `fact_player_map` plus the dimensions (player, team, agent with role, map, event, date), written as CSV. Add the agent → role seed file and the primary-role rule (≥ 60% of maps, otherwise "Flex").
 
 **Acceptance criteria:**
-- [x] `python -m src.clean` writes the Parquet files to `data/processed/` and can be re-run safely (every `COPY` overwrites)
+- [x] `python -m src.clean` writes the CSV files to `data/processed/` and can be re-run safely (every `COPY` overwrites)
 - [x] `fact_player_map` has one row per player × map × match, with no duplicates — 73,116 rows, 73,116 distinct keys
 - [x] Missing values stay NULL (they are never filled with 0) — 3,600 NULL ADR rows kept; zero rows have `adr_all = 0`
 

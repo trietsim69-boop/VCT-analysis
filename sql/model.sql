@@ -28,7 +28,7 @@ JOIN maps mp ON mp.game_id = pm.game_id
 LEFT JOIN (SELECT game_id, count(*) AS rounds FROM rounds GROUP BY 1) rc ON rc.game_id = pm.game_id
 WHERE m.status = 'final';
 
-COPY (FROM fact) TO 'data/processed/fact_player_map.parquet' (FORMAT parquet);
+COPY (FROM fact) TO 'data/processed/fact_player_map.csv' (HEADER);
 
 -- primary_role: the role played on >= 60% of a player's 2026 maps, else Flex (S-08).
 COPY (
@@ -48,17 +48,17 @@ COPY (
               GROUP BY 1, 2)
         GROUP BY 1
     ) s USING (player_id)
-) TO 'data/processed/dim_player.parquet' (FORMAT parquet);
+) TO 'data/processed/dim_player.csv' (HEADER);
 
-COPY (FROM teams) TO 'data/processed/dim_team.parquet' (FORMAT parquet);
-COPY (FROM roles) TO 'data/processed/dim_agent.parquet' (FORMAT parquet);
+COPY (FROM teams) TO 'data/processed/dim_team.csv' (HEADER);
+COPY (FROM roles) TO 'data/processed/dim_agent.csv' (HEADER);
 
 COPY (
     SELECT DISTINCT m.event_id, m.event, m.event_slug,
            coalesce(m.region, 'International') AS region,
            m.is_international, year(m.utc_timestamp) AS season
     FROM matches m WHERE m.status = 'final'
-) TO 'data/processed/dim_event.parquet' (FORMAT parquet);
+) TO 'data/processed/dim_event.csv' (HEADER);
 
 COPY (SELECT DISTINCT map_name FROM fact WHERE map_name IS NOT NULL ORDER BY 1)
-TO 'data/processed/dim_map.parquet' (FORMAT parquet);
+TO 'data/processed/dim_map.csv' (HEADER);

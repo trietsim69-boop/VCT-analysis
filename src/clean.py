@@ -3,7 +3,7 @@
 Usage:
     python -m src.clean [path/to/vct_YYYY-MM-DD.duckdb]   # defaults to the newest snapshot
 
-Safe to re-run: every COPY overwrites its parquet file.
+Safe to re-run: every COPY overwrites its CSV file.
 """
 
 import sys
@@ -18,5 +18,5 @@ Path("data/processed").mkdir(parents=True, exist_ok=True)
 con = duckdb.connect(db, read_only=True)
 con.execute(Path("sql/model.sql").read_text(encoding="utf-8"))
 
-rows = con.execute("SELECT count(*) FROM 'data/processed/fact_player_map.parquet'").fetchone()[0]
+rows = con.execute("SELECT count(*) FROM 'data/processed/fact_player_map.csv'").fetchone()[0]
 print(f"snapshot: {db}\nfact_player_map: {rows:,} rows -> data/processed/")

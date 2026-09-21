@@ -3,8 +3,8 @@
 import duckdb
 import pytest
 
-FACT = "'data/processed/fact_player_map.parquet'"
-PLAYER = "'data/processed/dim_player.parquet'"
+FACT = "'data/processed/fact_player_map.csv'"
+PLAYER = "'data/processed/dim_player.csv'"
 
 
 @pytest.fixture(scope="module")
@@ -39,7 +39,7 @@ def test_nulls_are_preserved_not_zeroed(con):
 
 def test_every_agent_maps_to_a_role(con):
     unmapped = q(con, f"""SELECT count(DISTINCT f.agent) FROM {FACT} f
-        LEFT JOIN 'data/processed/dim_agent.parquet' a ON a.agent = f.agent
+        LEFT JOIN 'data/processed/dim_agent.csv' a ON a.agent = f.agent
         WHERE f.agent IS NOT NULL AND a.role IS NULL""")
     assert unmapped == 0
 
