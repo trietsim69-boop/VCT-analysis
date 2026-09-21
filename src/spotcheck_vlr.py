@@ -12,15 +12,10 @@ import sys
 import urllib.request
 
 import duckdb
+
+from src import newest_snapshot
 import pandas as pd
 from bs4 import BeautifulSoup
-
-def newest_snapshot() -> str:
-    """The most recent data/raw/vct_YYYY-MM-DD.duckdb, so a new snapshot needs no code change."""
-    snaps = sorted(pathlib.Path("data/raw").glob("vct_*.duckdb"))
-    assert snaps, "no data/raw/vct_*.duckdb — see data/raw/README.md"
-    return str(snaps[-1])
-
 
 COLS = {"rating2": "rating_all", "acs": "acs_all", "kills": "kills_all", "deaths": "deaths_all",
         "assists": "assists_all", "kast": "kast_all", "adr": "adr_all", "hsp": "hs_pct_all",

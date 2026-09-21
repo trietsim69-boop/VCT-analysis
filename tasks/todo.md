@@ -53,30 +53,32 @@ The plan is in `tasks/plan.md`. Work through the tasks in order and stop at each
 **Files:** `data/raw/*`, `sql/audit.sql`, `src/export.py`, `src/spotcheck_vlr.py`, `data/audit/*.csv`, `docs/data_audit.md`
 **Scope:** M
 
-## ✅ Checkpoint A — Data go/no-go
-- [ ] The KPIs in T1 can be computed from the data in T2
-- [ ] The region and role are chosen and have enough candidates
-- [ ] **Human review before continuing**
+## ✅ Checkpoint A — Data go/no-go — **passed 2026-09-21**
+- [x] The KPIs in T1 can be computed from the data in T2 — every ranking column mapped and 0% null outside China (`data_audit.md` §4); clutch success % dropped for lack of an attempts column
+- [x] The role is confirmed (duelist, S-03) and the pool is large enough: **84 eligible duelists** (S-13)
+- [x] **Human review** — signed off 2026-09-21. S-14 (Champions re-snapshot after 2026-10-18) stays open and does not block.
 
 ---
 
 ## Phase 1 — Thin Slice: Scouting
 
-### Task 3: Clean the fact and dimension tables and add the role mapping
+### Task 3: Clean the fact and dimension tables and add the role mapping — ✅ **done 2026-09-21**
+
+> `python -m src.clean` → `data/processed/`: `fact_player_map` (73,116 rows, all seasons, completed matches only) plus `dim_player` (with `primary_role`), `dim_team`, `dim_agent`, `dim_event`, `dim_map`. 9 tests pass.
 
 **Description:** Build a repeatable pipeline that turns the raw files into `fact_player_map` plus the dimensions (player, team, agent with role, map, event, date). Add the agent → role seed file and the primary-role rule (≥ 60% of maps, otherwise "Flex").
 
 **Acceptance criteria:**
-- [ ] `python -m src.clean` writes the Parquet files to `data/processed/` and can be re-run safely
-- [ ] `fact_player_map` has one row per player × map × match, with no duplicates
-- [ ] Missing values stay NULL (they are never filled with 0)
+- [x] `python -m src.clean` writes the Parquet files to `data/processed/` and can be re-run safely (every `COPY` overwrites)
+- [x] `fact_player_map` has one row per player × map × match, with no duplicates — 73,116 rows, 73,116 distinct keys
+- [x] Missing values stay NULL (they are never filled with 0) — 3,600 NULL ADR rows kept; zero rows have `adr_all = 0`
 
 **Verification:**
-- [ ] `pytest tests/test_clean.py` passes. It checks key uniqueness, NULL preservation, that every agent maps to a role, and that row counts match the audit.
-- [ ] Manual check: 3 known players have the expected primary role
+- [x] `pytest tests/test_clean.py` passes — 9 tests: key uniqueness, no unplayed fixtures leaked, 2026 row count vs the audit, NULL preservation, every agent mapped, agent is scalar, and 3 primary roles
+- [x] 3 known players have the expected primary role: Jerrwin duelist (30/30), JonahP initiator (32/32), Reduxx **Flex** (57% duelist, below the 60% bar)
 
 **Dependencies:** T2
-**Files:** `src/clean.py`, `sql/model.sql`, `data/seeds/agent_roles.csv`, `tests/test_clean.py`
+**Files:** `src/clean.py`, `sql/model.sql`, `src/__init__.py`, `data/seeds/agent_roles.csv`, `tests/test_clean.py`
 **Scope:** M
 
 ---
