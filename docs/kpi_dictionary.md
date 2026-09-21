@@ -44,7 +44,46 @@ v0.3, 2026-09-18. Columns confirmed against the 2026-09-18 snapshot. The full ma
 | **FK–FD per round** | (FK − FD) ÷ Σ rounds | ↑ | derived | — |
 | **Consistency (ADR CV)** | Standard deviation of per-map ADR ÷ mean per-map ADR, across 2025–2026 maps | ↓ | derived | Consistency over time *within* a map |
 
-The ranking combines these KPIs as a **role-weighted composite of percentiles**. The weights live in the config and are set in T4, with defaults written down there. For example, a duelist weights FKPR and opening duel % more heavily, and a controller weights KAST and APR more heavily.
+### Composite weights (T4.1, set 2026-09-21)
+
+The ranking is a **role-weighted composite of percentiles**. Weights live in `data/seeds/metric_weights.csv` — data, not code — and each role's weights sum to 1.
+
+| Metric | duelist | initiator | controller | sentinel | Flex |
+|---|---|---|---|---|---|
+| `adr` | 0.25 | 0.20 | 0.15 | 0.20 | 0.20 |
+| `apr` | — | 0.20 | 0.25 | 0.15 | 0.15 |
+| `kast_pct` | 0.15 | 0.25 | 0.30 | 0.25 | 0.20 |
+| `fkpr` | 0.20 | — | — | — | 0.10 |
+| `opening_win_pct` | 0.20 | 0.10 | — | — | 0.10 |
+| `dpr` ↓ | 0.10 | 0.10 | 0.15 | 0.20 | 0.15 |
+| `cv_adr` ↓ | 0.10 | 0.15 | 0.15 | 0.20 | 0.10 |
+
+↓ = lower is better; the percentile is inverted in T4.4. Direction lives in the mart SQL, not the seed, so it is defined once.
+
+**Only 6–7 of the section B metrics are weighted, not all 10.** Measured over the 2026 pool (≥ 15 maps):
+
+- **KPR and ACS are dropped.** They correlate with ADR at **0.95** and **0.97** — weighting all three is one metric counted three times. ADR is the transparent one, so it carries the output signal alone. (ACS is display-only anyway, S-09.)
+- **FKPR and opening-duel win % are both kept**: they correlate at only **0.41**, so entry *volume* and entry *success* are genuinely different things. That distinction is the whole question for the vacant duelist slot — Jerrwin's baseline is high volume at a near-break-even win rate (`data_audit.md` §2).
+- **KAST and DPR are near-independent of ADR** (0.17 and 0.20), so they add real information about staying alive and being useful in rounds without fragging.
+- **FK−FD per round is dropped** as a third view of the same duel data.
+- APR is weighted for the support roles only; for a duelist it mostly measures the team's utility, not the player's.
+
+**The weight values themselves are a judgement call, not a measurement.** The correlations above justify *which* metrics are weighted; they say nothing about why duelist ADR is 0.25 rather than 0.20. The stated rationale is only this: for the vacant duelist slot, entry play (FKPR + opening-win, 0.40 combined) is the thing SEN needs and is weighted above raw output (ADR, 0.25); support roles shift that weight onto KAST and APR.
+
+**Sensitivity check (2026 duelist pool, n = 84).** The composite was recomputed under three weightings — the table above, flat equal weights, and a deliberately lopsided one putting 0.50 on ADR:
+
+| | Correlation of composite scores |
+|---|---|
+| Table above vs equal weights | **0.978** |
+| Table above vs ADR-heavy | **0.969** |
+| Equal weights vs ADR-heavy | 0.932 |
+
+Top-10 overlap: 8/10 and 7/10 respectively, with the same player first under all three.
+
+**What this means, and the limit on how the ranking may be read:**
+
+- **Shortlist membership is robust.** Who reaches the top of the pool is driven by the percentiles, not by the weighting. A reader who disagrees with every weight in the table still gets substantially the same candidates.
+- **Rank order within the shortlist is not.** Jemkin ranks 8th under these weights and 22nd under the ADR-heavy set; splash moves between 6th and 15th. So the composite must be presented as a **band, not a position** — "top 10 of 84", never "the 8th best duelist". T4.4 and T11 both depend on this.
 
 ## C. Scouting: display-only KPIs
 

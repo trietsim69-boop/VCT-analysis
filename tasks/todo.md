@@ -89,10 +89,12 @@ The plan is in `tasks/plan.md`. Work through the tasks in order and stop at each
 
 **Scope decided 2026-09-21: all five roles, not duelist only.** The SQL costs the same, percentiles are computed within `primary_role` either way, and it makes the Scouting page's role slicer real. The duelist pool (S-03, 84 players) stays the focus of the recommendation.
 
-#### T4.1 — Metric weights seed · S
-`data/seeds/metric_weights.csv` with `role, metric, weight`. Follows the `agent_roles.csv` pattern, so no YAML dependency is added. Duelist leans FKPR and opening-duel win %; controller leans KAST and APR. Defaults and their reasoning go in `docs/kpi_dictionary.md`.
-- [ ] Weights are data, not code — changing one does not touch SQL
-- [ ] Verify: weights per role sum to 1
+#### T4.1 — Metric weights seed · S — ✅ **done 2026-09-21**
+`data/seeds/metric_weights.csv` with `role, metric, weight`, 29 rows across 5 roles. No YAML dependency. Table and reasoning in `docs/kpi_dictionary.md` § Composite weights.
+- [x] Weights are data, not code — changing one does not touch SQL
+- [x] Verify: weights per role sum to 1 — `pytest tests/test_marts.py`, 4 tests
+- [x] **7 metrics weighted, not 10.** KPR and ACS dropped: they correlate with ADR at 0.95 and 0.97 over the 2026 pool, so weighting all three counts one signal three times. FK−FD per round dropped as a third view of the duel data. FKPR and opening-duel win % both kept — they correlate at only 0.41, so entry volume and entry success are separate questions, which is exactly the question for this slot.
+- [x] A test asserts no display-only metric (rating, ACS, HS%) can reach the composite (S-09)
 
 #### T4.2 — `mart_scouting.csv` · M — the core ticket
 One row per player, 2026 window. Rates are `SUM(stat × rounds) / SUM(rounds) FILTER (WHERE stat IS NOT NULL)` — the per-metric denominator rule (`data_audit.md` §4).
@@ -111,6 +113,8 @@ CV of per-map ADR. **Only 50 of the 84 eligible duelists have ≥ 5 maps in 2025
 Percentiles within `primary_role`, over eligible players only, 0–100, inverted for DPR, FDPR and CV. Composite = weighted sum of percentiles using T4.1.
 - [ ] Rating and ACS are **excluded** from the composite (S-09) — display only
 - [ ] Verify: all percentiles fall in 0–100; ineligible players have NULL percentiles, never 0; the composite is unchanged when `rating_all` is scrambled
+- [ ] Verify: a weight-sensitivity test — the composite under the seed weights correlates > 0.9 with flat equal weights. Guards against a silly edit, and is the evidence that shortlist membership does not hinge on the weighting (measured 0.978 at T4.1)
+- [ ] Present the composite as a **band, not a position** (`kpi_dictionary.md` § Composite weights): rank order inside the shortlist moves by up to 14 places under different weights, so the page shows "top 10 of 84", never "8th best"
 
 #### T4.5 — `mart_scouting_by_map.csv` · S
 Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool comparison.
