@@ -85,19 +85,45 @@ The plan is in `tasks/plan.md`. Work through the tasks in order and stop at each
 
 ### Task 4: Scouting metrics mart
 
-**Description:** Aggregate to player × role (with optional map and event breakdowns). Calculate round-weighted rates, percentiles within the eligible role pool, a consistency score and an eligibility flag.
+**Description:** Aggregate `fact_player_map` to one row per player for the 2026 window. Round-weighted rates with per-metric denominators, percentiles within the role pool, a consistency score, an eligibility flag and a role-weighted composite.
 
-**Acceptance criteria:**
-- [ ] `data/marts/mart_scouting.csv` holds one row per player (for the chosen role), with every KPI from the dictionary plus `maps_played`, `rounds_played` and `is_eligible`
-- [ ] Rates are round-weighted, and percentiles are computed only over eligible players
-- [ ] `data/marts/mart_scouting_by_map.csv` exists for map-level breakdowns
+**Scope decided 2026-09-21: all five roles, not duelist only.** The SQL costs the same, percentiles are computed within `primary_role` either way, and it makes the Scouting page's role slicer real. The duelist pool (S-03, 84 players) stays the focus of the recommendation.
 
-**Verification:**
-- [ ] `pytest tests/test_marts.py` passes. It includes a hand-calculated weighted ADR for 1 player and checks that percentiles fall within 0–100.
-- [ ] Manual check: the top 5 by rating look plausible against public rankings
+#### T4.1 — Metric weights seed · S
+`data/seeds/metric_weights.csv` with `role, metric, weight`. Follows the `agent_roles.csv` pattern, so no YAML dependency is added. Duelist leans FKPR and opening-duel win %; controller leans KAST and APR. Defaults and their reasoning go in `docs/kpi_dictionary.md`.
+- [ ] Weights are data, not code — changing one does not touch SQL
+- [ ] Verify: weights per role sum to 1
+
+#### T4.2 — `mart_scouting.csv` · M — the core ticket
+One row per player, 2026 window. Rates are `SUM(stat × rounds) / SUM(rounds) FILTER (WHERE stat IS NOT NULL)` — the per-metric denominator rule (`data_audit.md` §4).
+- [ ] Every KPI from dictionary section B, plus the display-only ones from section C
+- [ ] Carries `maps_played`, `rounds_played`, a per-metric map count (`adr_maps`, `kast_maps`, …), `primary_role`, `is_eligible` (≥ 15 maps, counting all maps — S-07) and a `china_league` flag (S-12)
+- [ ] No metric is an average of per-map rates
+- [ ] Verify: hand-calculated weighted ADR for 1 player matches; a China player's ADR divides by fewer maps than `maps_played`
+
+#### T4.3 — Consistency score · S
+CV of per-map ADR. **Only 50 of the 84 eligible duelists have ≥ 5 maps in 2025**, so a 2025–26 score alone would be blank or noisy for the rest and would penalise newer players.
+- [ ] `cv_adr_2026` is the primary; `cv_adr_2025_26` is a second column; `cv_maps` is reported alongside
+- [ ] NULL when `cv_maps < 10` rather than publishing a CV from 4 maps
+- [ ] Verify: the 34 duelists without 2025 history have a NULL combined CV and a non-NULL 2026 CV
+
+#### T4.4 — Percentiles and composite · M
+Percentiles within `primary_role`, over eligible players only, 0–100, inverted for DPR, FDPR and CV. Composite = weighted sum of percentiles using T4.1.
+- [ ] Rating and ACS are **excluded** from the composite (S-09) — display only
+- [ ] Verify: all percentiles fall in 0–100; ineligible players have NULL percentiles, never 0; the composite is unchanged when `rating_all` is scrambled
+
+#### T4.5 — `mart_scouting_by_map.csv` · S
+Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool comparison.
+- [ ] Verify: Σ rounds by map equals `rounds_played` in the main mart
+
+#### T4.6 — `tests/test_marts.py` · S
+- [ ] The checks above, plus: row count equals the eligible pool, no rate is computed on zero rounds, and NULL never becomes 0
+- [ ] Manual check: the top 5 by composite look plausible against public rankings
+
+**Not in T4:** the import and contract flag. `dim_player` has no link to the Global Contract Database, which is keyed by tournament handle and needs a fuzzy name match. It belongs to T6, where S-10 bites.
 
 **Dependencies:** T3
-**Files:** `sql/mart_scouting.sql`, `src/marts.py`, `tests/test_marts.py`
+**Files:** `sql/mart_scouting.sql`, `src/marts.py`, `data/seeds/metric_weights.csv`, `tests/test_marts.py`
 **Scope:** M
 
 ---
