@@ -8,7 +8,6 @@ Writes:
     data/audit/      the audit results as small CSVs (committed)
 """
 
-import pathlib
 import sys
 from pathlib import Path
 
@@ -17,7 +16,7 @@ import duckdb
 
 def newest_snapshot() -> str:
     """The most recent data/raw/vct_YYYY-MM-DD.duckdb, so a new snapshot needs no code change."""
-    snaps = sorted(pathlib.Path("data/raw").glob("vct_*.duckdb"))
+    snaps = sorted(Path("data/raw").glob("vct_*.duckdb"))
     assert snaps, "no data/raw/vct_*.duckdb — see data/raw/README.md"
     return str(snaps[-1])
 
@@ -29,8 +28,8 @@ con.execute("EXPORT DATABASE 'data/raw/csv' (FORMAT csv, HEADER)")
 Path("data/audit").mkdir(parents=True, exist_ok=True)
 con.execute(Path("sql/audit.sql").read_text(encoding="utf-8"))
 
-# Snapshot check: 15,020 is the 2026-09-18 pre-Champions figure (data_audit.md §4).
-# The planned post-Champions snapshot (S-14) will exceed it; a DROP means a broken filter.
-rows = con.execute("SELECT count(*) FROM pm26").fetchone()[0]
-assert rows >= 15_020, f"pm26 has {rows:,} rows, fewer than the 15,020 in data_audit.md §4"
+# The one check: unplayed fixtures are all-NULL rows, so a leak shows up as a NULL kill count
+# (data_audit.md §0). Fails if the status filter in sql/audit.sql is dropped. Snapshot-independent.
+rows, leaked = con.execute("SELECT count(*), count(*) FILTER (WHERE kills_all IS NULL) FROM pm26").fetchone()
+assert leaked == 0, f"{leaked} placeholder rows leaked into pm26 — check the status filter"
 print(f"ok: {rows:,} player-map rows; see data/audit/ and data/raw/csv/")
