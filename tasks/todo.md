@@ -96,33 +96,37 @@ The plan is in `tasks/plan.md`. Work through the tasks in order and stop at each
 - [x] **7 metrics weighted, not 10.** KPR and ACS dropped: they correlate with ADR at 0.95 and 0.97 over the 2026 pool, so weighting all three counts one signal three times. FK−FD per round dropped as a third view of the duel data. FKPR and opening-duel win % both kept — they correlate at only 0.41, so entry volume and entry success are separate questions, which is exactly the question for this slot.
 - [x] A test asserts no display-only metric (rating, ACS, HS%) can reach the composite (S-09)
 
-#### T4.2 — `mart_scouting.csv` · M — the core ticket
+#### T4.2 — `mart_scouting.csv` · M — ✅ **done 2026-09-21**
 One row per player, 2026 window. Rates are `SUM(stat × rounds) / SUM(rounds) FILTER (WHERE stat IS NOT NULL)` — the per-metric denominator rule (`data_audit.md` §4).
-- [ ] Every KPI from dictionary section B, plus the display-only ones from section C
-- [ ] Carries `maps_played`, `rounds_played`, a per-metric map count (`adr_maps`, `kast_maps`, …), `primary_role`, `is_eligible` (≥ 15 maps, counting all maps — S-07) and a `china_league` flag (S-12)
-- [ ] No metric is an average of per-map rates
-- [ ] Verify: hand-calculated weighted ADR for 1 player matches; a China player's ADR divides by fewer maps than `maps_played`
+- [x] Every KPI from dictionary section B, plus the display-only ones from section C
+- [x] Carries `maps_played`, `rounds_played`, per-metric map counts (`adr_maps`, `kast_maps`, `fk_maps`), `primary_role`, `regions`, `is_eligible` and `china_league`
+- [x] No metric is an average of per-map rates
+- [x] Verify: Jerrwin's weighted ADR recomputed with pandas matches the SQL; ZmjjKK's ADR divides by 77 maps, not his 85 `maps_played`
+- [x] **384 rows, 289 eligible**
 
-#### T4.3 — Consistency score · S
+#### T4.3 — Consistency score · S — ✅ **done 2026-09-21**
 CV of per-map ADR. **Only 50 of the 84 eligible duelists have ≥ 5 maps in 2025**, so a 2025–26 score alone would be blank or noisy for the rest and would penalise newer players.
-- [ ] `cv_adr_2026` is the primary; `cv_adr_2025_26` is a second column; `cv_maps` is reported alongside
-- [ ] NULL when `cv_maps < 10` rather than publishing a CV from 4 maps
-- [ ] Verify: the 34 duelists without 2025 history have a NULL combined CV and a non-NULL 2026 CV
+- [x] `cv_adr_2026` is the primary; `cv_adr_2025_26` is a second column; `cv_maps_2025_26` and `adr_maps_2025` are reported alongside
+- [x] NULL unless the player has **≥ 5 maps in 2025** and ≥ 10 across both. The first cut (≥ 10 maps across both seasons) was wrong — a 2026-only player clears it and gets the 2026 CV wearing a two-season label. Caught on the first build.
+- [x] Verify: 35 of the 84 eligible duelists have a NULL two-season CV and a valid 2026 one; a test asserts no row has a two-season CV without 2025 history
 
-#### T4.4 — Percentiles and composite · M
+#### T4.4 — Percentiles and composite · M — ✅ **done 2026-09-21**
 Percentiles within `primary_role`, over eligible players only, 0–100, inverted for DPR, FDPR and CV. Composite = weighted sum of percentiles using T4.1.
-- [ ] Rating and ACS are **excluded** from the composite (S-09) — display only
-- [ ] Verify: all percentiles fall in 0–100; ineligible players have NULL percentiles, never 0; the composite is unchanged when `rating_all` is scrambled
-- [ ] Verify: a weight-sensitivity test — the composite under the seed weights correlates > 0.9 with flat equal weights. Guards against a silly edit, and is the evidence that shortlist membership does not hinge on the weighting (measured 0.978 at T4.1)
-- [ ] Present the composite as a **band, not a position** (`kpi_dictionary.md` § Composite weights): rank order inside the shortlist moves by up to 14 places under different weights, so the page shows "top 10 of 84", never "8th best"
+- [x] Rating and ACS are **excluded** from the composite (S-09) — a test blocks any display-only metric from reaching the weights
+- [x] Verify: all percentiles fall in 0–100; ineligible players have NULL composite, never 0; all 289 eligible have one
+- [x] Verify: weight sensitivity — the composite correlates **0.978** with flat equal weights, asserted > 0.9 in `tests/test_marts.py`
+- [x] The composite renormalises over the weights actually used, so a missing metric does not silently score 0
+- [ ] **Carried to T5:** present the composite as a **band, not a position** (`kpi_dictionary.md` § Composite weights) — the page shows "top 10 of 84", never "8th best"
 
-#### T4.5 — `mart_scouting_by_map.csv` · S
+#### T4.5 — `mart_scouting_by_map.csv` · S — ✅ **done 2026-09-21**
 Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool comparison.
-- [ ] Verify: Σ rounds by map equals `rounds_played` in the main mart
+- [x] Verify: Σ rounds by map equals `rounds_played` in the main mart, for every player (3,390 rows)
+- [x] Also carries `map_win_pct` per player × map, which T6 needs
 
-#### T4.6 — `tests/test_marts.py` · S
-- [ ] The checks above, plus: row count equals the eligible pool, no rate is computed on zero rounds, and NULL never becomes 0
-- [ ] Manual check: the top 5 by composite look plausible against public rankings
+#### T4.6 — `tests/test_marts.py` · S — ✅ **done 2026-09-21**
+- [x] 11 tests covering the weights seed and both marts; 19 tests pass across the suite
+- [x] Manual check: the top of the duelist board is primmie, Kachoww, t3xture, marteen, Meiy — plausible 2026 names, and the same set the T2 audit spot-check surfaced
+- [ ] **Open:** Kachoww ranks 2nd on 16 maps, the minimum. The composite does not shrink small samples towards the mean; T5 must show `maps_played` beside every rate (CLAUDE.md) so this is visible rather than hidden
 
 **Not in T4:** the import and contract flag. `dim_player` has no link to the Global Contract Database, which is keyed by tournament handle and needs a fuzzy name match. It belongs to T6, where S-10 bites.
 
