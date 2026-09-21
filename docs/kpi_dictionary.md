@@ -61,17 +61,16 @@ The ranking is a **role-weighted composite of percentiles**. Weights live in `da
 ↓ = lower is better; the percentile is inverted in T4.4. Direction lives in the mart SQL, not the seed, so it is defined once.
 
 **Only 6–7 of the section B metrics are weighted, not all 10.** Measured over the 2026 pool (≥ 15 maps, n = 289):
-**Only 6–7 of the section B metrics are weighted, not all 10.** Measured over the 2026 pool (≥ 15 maps):
 
 - **KPR and ACS are dropped.** They correlate with ADR at **0.95** and **0.97** — weighting all three is one metric counted three times. ADR is the transparent one, so it carries the output signal alone. (ACS is display-only anyway, S-09.)
-
-  ![ADR against KPR and ACS, 2026 pool](metric_correlations.png)
-
-  *Each dot is one player with ≥ 15 maps in 2026, n = 289.*
 - **FKPR and opening-duel win % are both kept**: they correlate at only **0.41**, so entry *volume* and entry *success* are genuinely different things. That distinction is the whole question for the vacant duelist slot — Jerrwin's baseline is high volume at a near-break-even win rate (`data_audit.md` §2).
 - **KAST and DPR are near-independent of ADR** (0.17 and 0.20), so they add real information about staying alive and being useful in rounds without fragging.
 - **FK−FD per round is dropped** as a third view of the same duel data.
 - APR is weighted for the support roles only; for a duelist it mostly measures the team's utility, not the player's.
+
+![ADR against KPR, ACS, KAST and DPR for the 2026 pool](metric_correlations.png)
+
+*Each dot is one player with ≥ 15 maps in 2026 (n = 289). KPR and ACS sit on a line with ADR — the same signal three times, so only ADR is weighted. KAST and DPR are shapeless clouds against it, so they earn their own weights.*
 
 **The weight values themselves are a judgement call, not a measurement.** The correlations above justify *which* metrics are weighted; they say nothing about why duelist ADR is 0.25 rather than 0.20. The stated rationale is only this: for the vacant duelist slot, entry play (FKPR + opening-win, 0.40 combined) is the thing SEN needs and is weighted above raw output (ADR, 0.25); support roles shift that weight onto KAST and APR.
 
