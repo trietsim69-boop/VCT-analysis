@@ -1,7 +1,7 @@
 """Profile a DuckDB file: tables, row counts, column types, null rates, distinct counts.
 
 Usage:
-    python src/audit.py data/raw/vct_YYYY-MM-DD.duckdb [out.md]   # default: docs/data_profile.md
+    python src/audit.py data/raw/vct_2026-09-18.duckdb [out.md]   # default: docs/data_profile.md
     python src/audit.py --selftest
 """
 

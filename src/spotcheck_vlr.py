@@ -1,17 +1,26 @@
 """Cross-check the snapshot against the live vlr.gg match pages (the upstream source).
 
 Usage:
-    python -m src.spotcheck_vlr data/raw/vct-fe27a11e.duckdb 729757 724645
+    python -m src.spotcheck_vlr 729757 724645                 # newest snapshot
+    python -m src.spotcheck_vlr --db data/raw/vct_2026-09-18.duckdb 729757
 
 Compares every player x map overview stat (both-sides value) and writes data/audit/08_vlr_spotcheck.csv.
 """
 
+import pathlib
 import sys
 import urllib.request
 
 import duckdb
 import pandas as pd
 from bs4 import BeautifulSoup
+
+def newest_snapshot() -> str:
+    """The most recent data/raw/vct_YYYY-MM-DD.duckdb, so a new snapshot needs no code change."""
+    snaps = sorted(pathlib.Path("data/raw").glob("vct_*.duckdb"))
+    assert snaps, "no data/raw/vct_*.duckdb — see data/raw/README.md"
+    return str(snaps[-1])
+
 
 COLS = {"rating2": "rating_all", "acs": "acs_all", "kills": "kills_all", "deaths": "deaths_all",
         "assists": "assists_all", "kast": "kast_all", "adr": "adr_all", "hsp": "hs_pct_all",
@@ -36,7 +45,12 @@ def scrape(vlr_id: str) -> list[dict]:
     return rows
 
 
-db, ids = sys.argv[1], sys.argv[2:]
+args = sys.argv[1:]
+if args[:1] == ["--db"]:
+    db, ids = args[1], args[2:]
+else:
+    db, ids = newest_snapshot(), args
+assert ids, "give at least one vlr.gg match id"
 web = pd.DataFrame([r for i in ids for r in scrape(i)]).melt(["game_id", "player_name"], var_name="stat", value_name="vlr")
 con = duckdb.connect(db, read_only=True)
 snap = con.execute(f"""SELECT pm.game_id, p.player_name, {', '.join(COLS.values())}

@@ -1,5 +1,5 @@
 -- Re-derives every figure in docs/data_audit.md and writes each result to data/audit/*.csv.
--- Run from the repo root:  python -m src.export data/raw/vct-fe27a11e.duckdb
+-- Run from the repo root:  python -m src.export
 -- Open the CSVs in Excel, or paste any query below into DuckDB/DBeaver to explore.
 
 CREATE OR REPLACE TEMP TABLE roles AS FROM read_csv('data/seeds/agent_roles.csv');

@@ -31,7 +31,7 @@ The plan is in `tasks/plan.md`. Work through the tasks in order and stop at each
 >
 > **v0.2 correction:** the first pass counted scheduled Champions 2026 fixtures as data. 2026 has **588 completed matches**, not 622, and Champions 2026 (2026-09-24 → 2026-10-18) is outside the window. `maps.performance_available` is TRUE on unplayed fixtures, so `matches.status = 'final'` is a mandatory filter in T3 onward.
 
-**Description:** Download `https://vct-reference.com/dataset/vct.duckdb` (source A1 in the plan) into `data/raw/vct_YYYY-MM-DD.duckdb` and don't modify it. Filter to 2025. Download the Kaggle 2025 all-events dataset (A2) as a cross-check. Download the VCT Global Contract Database sheet (B2) as `gcd_YYYY-MM-DD.xlsx` via its `pub?output=xlsx` export URL. Profile every file: grain, keys, row counts, null rates, event and region coverage, and the agent list. Confirm that the KPI dictionary's metrics exist at the player-map grain. Count eligible players per region × role and choose the scope.
+**Description:** Download `https://vct-reference.com/dataset/vct.duckdb` (source A1 in the plan) into `data/raw/vct_YYYY-MM-DD.duckdb` (now `vct_2026-09-18.duckdb`) and don't modify it. Filter to 2026 completed matches (`matches.status = 'final'`). Download the Kaggle 2025 all-events dataset (A2) as a cross-check. Download the VCT Global Contract Database sheet (B2) as `gcd_YYYY-MM-DD.xlsx` via its `pub?output=xlsx` export URL. Profile every file: grain, keys, row counts, null rates, event and region coverage, and the agent list. Confirm that the KPI dictionary's metrics exist at the player-map grain. Count eligible players per region × role and choose the scope.
 
 **Acceptance criteria:**
 - [x] `docs/data_profile.md` lists each table with row counts, types, null % and distinct counts; `docs/data_audit.md` adds the grain, keys and KPI mapping
@@ -43,7 +43,7 @@ The plan is in `tasks/plan.md`. Work through the tasks in order and stop at each
 - [x] Go/no-go decided: **GO** on VCT Reference
 - [x] ~~Reconcile 10 rows against Kaggle A2~~ → replaced by a vlr.gg spot-check (the actual upstream source)
 - [x] SEN's import status checked in the Global Contract Database workbook (S-10) — **the import slot is already taken by johnqt**; signing an import is a two-slot decision
-- [ ] **Champions 2026 window decision (S-14)** — accept the pre-Champions window, or re-snapshot after 2026-10-18. Blocks Checkpoint A.
+- [ ] **Champions 2026 re-snapshot (S-14)** — open until 2026-10-18. Decided approach: build everything on the pre-Champions snapshot now, then take a second dated snapshot after Champions ends and rerun the pipeline. Does **not** block Checkpoint A.
 
 **Verification:**
 - [x] Every audit query ran without errors, and the top of the duelist pool returns plausible 2026 names

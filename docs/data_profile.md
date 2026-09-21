@@ -1,6 +1,6 @@
 # Data Audit (auto-generated)
 
-Source: `data/raw/vct-fe27a11e.duckdb` (VCT Reference build downloaded 2026-09-18)
+Source: `data/raw/vct_2026-09-18.duckdb` (VCT Reference build downloaded 2026-09-18)
 Generated: 2026-09-18
 
 Task 2 adds the interpretation: coverage decisions, the region/role scope and the go/no-go.

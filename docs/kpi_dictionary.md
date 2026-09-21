@@ -15,7 +15,7 @@ v0.3, 2026-09-18. Columns confirmed against the 2026-09-18 snapshot. The full ma
 - **Grain:** the base fact is one row per **player × map × match** (`fact_player_map`).
 - **Window:** the ranking uses **2026 only**, and consistency uses **2025–2026**. Every KPI is filtered to top-tier VCT.
 - **Weighting:** per-round rates are always **Σ numerator ÷ Σ rounds** across maps. Never average per-map rates.
-- **Eligibility:** a player is ranked only with **≥ 15 maps in 2026** (`is_eligible`).
+- **Eligibility:** a player is ranked only with **≥ 15 maps in 2026** (`is_eligible`). This counts **all maps played**, including maps whose stats are partly missing — a missing stat is a NULL to skip, not a reason to drop the map from the sample count. Each rate then reports its own map count (see per-metric denominators above).
 - **Percentiles:** computed within the role pool of eligible players only (0–100, higher = better; for "lower is better" KPIs the percentile is inverted).
 - **Missing values:** NULL stays NULL. In DAX, use `DIVIDE()` and averages that ignore blanks.
 - **Role:** a player's `primary_role` is the role of the agents they played on ≥ 60% of their maps; otherwise it's "Flex".
@@ -27,7 +27,7 @@ v0.3, 2026-09-18. Columns confirmed against the 2026-09-18 snapshot. The full ma
 |---|---|---|---|---|
 | `maps_played` | Count of distinct maps played | Player × window | Eligibility and trust label on every visual | Quality of opposition |
 | `rounds_played` | Σ rounds on those maps | Player × window | Denominator for all per-round rates | — |
-| `is_eligible` | `maps_played_2026 ≥ 15` | Player | Filter for ranking and percentiles | Whether the player *could* be signed |
+| `is_eligible` | `maps_played_2026 ≥ 15`, counting all maps played | Player | Filter for ranking and percentiles | Whether the player *could* be signed, or whether every one of those maps has a full stat line |
 
 ## B. Scouting: ranking KPIs (transparent)
 

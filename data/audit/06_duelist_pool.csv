@@ -23,7 +23,7 @@ Jinggg,Paper Rex,Pacific,101,2155,99,0.7,true,145.0,74.1,0.765,12.25,10.39
 LewN,Karmine Corp,EMEA,45,959,45,1.0,true,144.6,70.7,0.808,16.48,14.39
 BuZz,T1,Pacific,69,1476,69,0.94,true,144.6,72.0,0.806,15.11,13.01
 Timotino,100 Thieves,Americas,62,1329,62,1.0,true,144.0,68.8,0.763,19.56,18.21
-Favian,ULF Esports / Eternal Fire,EMEA,49,1043,49,0.67,true,143.2,68.3,0.777,11.7,11.98
+Favian,Eternal Fire / ULF Esports,EMEA,49,1043,49,0.67,true,143.2,68.3,0.777,11.7,11.98
 aspas,MIBR,Americas,56,1173,56,1.0,true,142.4,72.4,0.778,14.49,12.11
 SpiritZ1,Dragon Ranger Gaming,China,73,1530,64,1.0,true,141.8,68.1,0.762,15.77,14.4
 MiniBoo,Team Liquid,EMEA,45,969,45,1.0,true,141.3,70.8,0.773,17.96,16.51
@@ -50,7 +50,7 @@ xeus,FUT Esports,EMEA,73,1581,73,0.95,true,135.2,67.9,0.738,12.21,12.08
 ExiT,Natus Vincere,EMEA,18,400,18,1.0,true,135.0,67.8,0.728,14.25,20.0
 koshmaras,Team Heretics,EMEA,52,1085,52,0.9,true,135.0,71.6,0.712,15.48,15.48
 jawgemo,G2 Esports,Americas,92,1941,92,0.99,true,134.9,69.5,0.717,14.79,16.69
-ComeBack,Natus Vincere / Team Heretics,EMEA,24,503,24,0.79,true,133.9,66.8,0.728,17.69,13.52
+ComeBack,Team Heretics / Natus Vincere,EMEA,24,503,24,0.79,true,133.9,66.8,0.728,17.69,13.52
 keznit,ENVY,Americas,46,964,46,0.96,true,133.8,69.1,0.714,16.08,15.15
 stew,JD Gaming,China,39,795,33,0.62,true,133.4,72.9,0.747,10.91,9.73
 seven,PCIFIC Esports,EMEA,38,797,38,0.68,true,133.4,68.8,0.657,12.17,17.82
@@ -60,7 +60,7 @@ Xlele,Trace Esports / FunPlus Phoenix,China,40,844,35,0.85,true,131.5,71.1,0.713
 Setrod,FunPlus Phoenix,China,41,841,35,0.68,true,131.3,70.5,0.718,15.38,13.99
 Filu,Natus Vincere,EMEA,25,542,25,0.68,true,130.5,67.9,0.673,12.18,13.47
 JitBoyS,FULL SENSE,Pacific,62,1273,62,0.69,true,130.1,69.5,0.694,13.9,14.61
-Life,FunPlus Phoenix / Dragon Ranger Gaming,China,66,1380,55,0.97,true,130.0,67.9,0.701,16.07,17.16
+Life,Dragon Ranger Gaming / FunPlus Phoenix,China,66,1380,55,0.97,true,130.0,67.9,0.701,16.07,17.16
 Xan,Rex Regum Qeon,Pacific,17,352,17,1.0,true,129.2,67.7,0.71,13.64,14.49
 cb,EDward Gaming / Nova Esports,China,47,975,38,0.83,true,128.9,69.1,0.693,10.37,12.3
 ZynX,Gen.G,Pacific,18,405,18,0.83,true,128.7,65.9,0.699,11.11,12.84
@@ -70,7 +70,7 @@ Zexy,VARREL,Pacific,40,908,40,1.0,true,128.0,65.8,0.695,16.08,16.52
 alym,FURIA,Americas,37,747,37,0.97,true,127.2,67.9,0.705,16.87,18.47
 Jerrwin,Sentinels,Americas,30,658,30,1.0,true,127.0,65.8,0.675,19.15,17.93
 penny,Cloud9,Americas,23,503,23,0.61,true,126.9,69.3,0.684,10.54,13.92
-Akeman,KeepBest Gaming / Dragon Ranger Gaming,China,19,403,19,1.0,true,125.1,66.2,0.658,17.12,19.35
+Akeman,Dragon Ranger Gaming / KeepBest Gaming,China,19,403,19,1.0,true,125.1,66.2,0.658,17.12,19.35
 Izzy,Eternal Fire,EMEA,27,584,27,1.0,true,124.8,69.4,0.707,16.1,17.47
 Ash,Gen.G,Pacific,41,931,41,0.61,true,124.7,70.6,0.682,11.82,13.21
 Lime,Enterprise Esports,EMEA,15,322,15,1.0,true,123.4,71.1,0.655,13.98,12.11

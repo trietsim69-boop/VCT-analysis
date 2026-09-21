@@ -1,8 +1,6 @@
 data/raw/*
 !data/raw/README.md
 data/processed/
-*.duckdb
-*.parquet
 __pycache__/
 .venv/
 .ipynb_checkpoints/

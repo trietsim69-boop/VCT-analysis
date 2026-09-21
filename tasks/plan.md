@@ -23,7 +23,7 @@ You'll deliver:
 
 | Decision | Choice | Rationale |
 |---|---|---|
-| Primary dataset | **VCT Reference DuckDB** (`vct.duckdb`), filtered to 2025 | It's a single direct download with no login, rebuilt daily, and free to use including commercially. It already has the `player_map` grain (rating, ACS, ADR, KAST, duels, clutches) plus `kill_matrix`. See [Data Sources](#data-sources). |
+| Primary dataset | **VCT Reference DuckDB** (`vct.duckdb`), filtered to **2026 completed matches** (2025 for the consistency check) | It's a single direct download with no login, rebuilt daily, and free to use including commercially. It already has the `player_map` grain (rating, ACS, ADR, KAST, duels, clutches) plus `kill_matrix`. See [Data Sources](#data-sources). |
 | Cross-check dataset | Kaggle "Valorant 2025 – All Events International + Regional" | A second vlr.gg-derived source for spot-checking totals in T2. Its file and column layout still needs confirming. |
 | Processing stack | Python (pandas) + DuckDB SQL | DuckDB reads CSV and Parquet directly, the SQL is portable, and it's free. |
 | Hand-off to BI tools | Star-schema CSV/Parquet files in `data/marts/` | Power BI and Tableau read the same files, so their numbers match. |
@@ -65,7 +65,9 @@ Researched on 2026-09-17. "Verified" means I read the source's own page. For Kag
 | B7 | [Liquipedia API](https://liquipedia.net/api) | Transfers, rosters and results | Free for open-source educational projects (limited time); paid tiers from $49/month | Optional: transfer history for T11 context | Verified |
 
 ### Handling rules
-- **Filter A1 to 2025 and to one region.** Gate every query on `maps.performance_available` and `maps.economy_available`. China has no economy data and sparse advanced stats, so avoid picking China as the scope region.
+- **Filter A1 to the 2026 season and `matches.status = 'final'`.** The snapshot carries placeholder rows for unplayed fixtures; the status filter is the only thing that removes them (`docs/data_audit.md` §0). All regions are in scope — the team is fixed (Sentinels), not the region.
+- **`performance_available` / `economy_available` gate vlr.gg's Performance and Economy tabs only** (multi-kills, clutches, `kill_matrix`, loadouts) — *not* the ranking stats. Use them for the display-only metrics; never for the ranking, or all 372 Chinese league maps are silently dropped (§1).
+- **Divide each rate by the rounds of the maps where that metric is non-NULL.** China is missing ADR on ~15% of rows; a shared denominator understates those players (§4).
 - **Salaries and buyouts are never presented as data.** B3–B5 only set scenario ranges, and every value is listed in `docs/assumptions_log.md` with its source.
 - **Attribution:** credit VCT Reference, Esports Earnings and Riot in the README (T13).
 
@@ -95,11 +97,11 @@ The detailed tasks are in `tasks/todo.md`.
 
 ### Phase 0 — Scope & Data Risk (fail fast)
 - [ ] T1: Business brief, stakeholder and KPI dictionary
-- [ ] T2: Acquire and audit the VCT 2025 dataset, then choose the region and role
+- [ ] T2: Acquire and audit the VCT Reference dataset, then confirm the vacant slot's role
 
 ### Checkpoint A — Data go/no-go
 - [ ] The data supports the per-map player metrics that the KPI dictionary needs
-- [ ] The region and role are chosen, with ≥ 15 candidates who each have ≥ 20 maps (thresholds can be tuned)
+- [ ] The role is confirmed and the candidate pool is big enough: **≥ 15 maps in 2026** (S-07), giving 84 eligible duelists
 - [ ] Human review before any modelling starts
 
 ### Phase 1 — Thin end-to-end slice: Scouting
@@ -153,7 +155,9 @@ D:\football analysis\          (consider renaming it to valorant-recruitment)
 
 | Risk | Impact | Mitigation |
 |---|---|---|
-| VCT Reference changes its schema or goes offline (it's a community project, rebuilt daily) | High | Save a dated copy of `vct.duckdb` in `data/raw/` and never re-download mid-project. Kaggle A2 is the fallback. |
+| VCT Reference changes its schema or goes offline (it's a community project, rebuilt daily) | High | Save a dated copy of `vct.duckdb` in `data/raw/` and never re-download mid-project, except for the one planned Champions re-snapshot below. Kaggle A2 is the fallback. |
+| The 2026-09-18 snapshot predates Champions 2026 (2026-09-24 → 2026-10-18), the biggest event of the window | High | **Planned:** take a second dated snapshot after 2026-10-18 and rerun the pipeline (S-14). Everything is built on the pre-Champions snapshot until then; `python -m src.export` and `sql/audit.sql` regenerate every audit figure, so the refresh is a rerun, not a rewrite. Numbers in `docs/` are restated once, and the snapshot date is shown on every page (S-11). |
+| The Champions re-snapshot changes the shortlist after the dashboards are built | Med | Treat the pre-Champions run as the draft. Freeze headline numbers only after the refresh, and keep both snapshots in `data/raw/` so the two runs can be compared. |
 | Small samples for some players | High | Set a minimum-maps threshold, show a sample-size column on every visual, and use percentiles only inside the eligible pool. |
 | Missing values treated as zero | High | Data tests assert that NULLs are preserved. Measures use AVERAGE or DIVIDE, which ignore blanks. |
 | Role inference is wrong for flex players | Med | Use the 60% rule plus a "Flex" bucket. List flex players explicitly in the audit. |
