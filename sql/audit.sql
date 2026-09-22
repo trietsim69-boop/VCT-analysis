@@ -2,6 +2,8 @@
 -- Run from the repo root:  python -m src.export
 -- Open the CSVs in Excel, or paste any query below into DuckDB/DBeaver to explore.
 
+-- roles: the agent -> role lookup seed. The source data has no role field, so this is what
+-- lets the duelist pool be counted at all.
 CREATE OR REPLACE TEMP TABLE roles AS FROM read_csv('data/seeds/agent_roles.csv');
 
 -- The working fact: one row per player x map, 2026, completed matches only (data_audit.md §0).
@@ -24,6 +26,8 @@ LEFT JOIN roles r ON r.agent = lower(pm.agents[1])
 LEFT JOIN (SELECT game_id, count(*) AS rounds FROM rounds GROUP BY 1) rc ON rc.game_id = pm.game_id
 WHERE m.status = 'final' AND year(m.utc_timestamp) = 2026;
 
+-- player_map_2026.csv: the whole 2026 slice, flattened with names joined in — the file to
+-- open when you want to eyeball the raw rows behind any figure below.
 COPY (FROM pm26 ORDER BY match_date, match_id, game_id, team, player_name)
 TO 'data/audit/player_map_2026.csv' (HEADER);
 

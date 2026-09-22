@@ -6,9 +6,13 @@
 --   §4  NULL stays NULL; nothing is filled with 0
 --   §4  agents[1] is read directly; never unnest (it would double-count maps in role share)
 
+-- roles: the agent -> role lookup, hand-maintained. The source data has no role field, so
+-- this seed is what makes any role analysis possible. A new agent must be added here.
 CREATE OR REPLACE TEMP TABLE roles AS FROM read_csv('data/seeds/agent_roles.csv');
 
--- One row per player x map x match, all seasons. The window filter lives in the marts, not here.
+-- fact: one row per player x map, all seasons, completed matches only. Flattens the agent
+-- array to a scalar, attaches the round count that every rate divides by, and works out which
+-- side the player was on. Deliberately unfiltered by season — the marts pick their own window.
 CREATE OR REPLACE TEMP VIEW fact AS
 SELECT pm.* EXCLUDE (agents, team_idx),
        lower(pm.agents[1]) AS agent,
@@ -28,9 +32,11 @@ JOIN maps mp ON mp.game_id = pm.game_id
 LEFT JOIN (SELECT game_id, count(*) AS rounds FROM rounds GROUP BY 1) rc ON rc.game_id = pm.game_id
 WHERE m.status = 'final';
 
+-- fact_player_map.csv: the main analysis table everything else is built from.
 COPY (FROM fact) TO 'data/processed/fact_player_map.csv' (HEADER);
 
--- primary_role: the role played on >= 60% of a player's 2026 maps, else Flex (S-08).
+-- dim_player.csv: one row per player, carrying primary_role — the role played on >= 60% of
+-- their 2026 maps, else Flex (S-08). top_role and top_share are kept so the call is auditable.
 COPY (
     SELECT p.player_id, p.player_name, p.country,
            s.maps_2026, s.top_role, s.top_share,
@@ -50,9 +56,14 @@ COPY (
     ) s USING (player_id)
 ) TO 'data/processed/dim_player.csv' (HEADER);
 
+-- dim_team.csv: every team, straight from the source. Joins on both team_id and opponent_id.
 COPY (FROM teams) TO 'data/processed/dim_team.csv' (HEADER);
+
+-- dim_agent.csv: the agent -> role seed above, published so the BI tools can slice by role.
 COPY (FROM roles) TO 'data/processed/dim_agent.csv' (HEADER);
 
+-- dim_event.csv: one row per event. Region is where 'International' comes from — the source
+-- leaves it NULL on international events rather than recording a region.
 COPY (
     SELECT DISTINCT m.event_id, m.event, m.event_slug,
            coalesce(m.region, 'International') AS region,
@@ -60,5 +71,6 @@ COPY (
     FROM matches m WHERE m.status = 'final'
 ) TO 'data/processed/dim_event.csv' (HEADER);
 
+-- dim_map.csv: the 13 map names, for slicers.
 COPY (SELECT DISTINCT map_name FROM fact WHERE map_name IS NOT NULL ORDER BY 1)
 TO 'data/processed/dim_map.csv' (HEADER);

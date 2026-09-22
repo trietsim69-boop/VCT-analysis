@@ -6,15 +6,22 @@
 --   percentiles are computed within primary_role, over eligible players only
 --   eligibility counts all maps played (S-07); a partly missing stat line still counts
 
+-- f: the working fact. Every player-map from the star schema, with the player's name and
+-- primary role and the event's region attached, so nothing downstream has to re-join.
 CREATE OR REPLACE TEMP VIEW f AS
 SELECT f.*, p.player_name, p.primary_role, e.region
 FROM 'data/processed/fact_player_map.csv' f
 JOIN 'data/processed/dim_player.csv' p USING (player_id)
 JOIN 'data/processed/dim_event.csv' e USING (event_id);
 
--- Per-map ADR spread, used for the consistency score.
+-- cv: coefficient of variation — standard deviation divided by the mean. Measures how much
+-- a player swings map to map, relative to their own average, so a high scorer is not punished
+-- for bigger absolute swings. Lower = steadier. Defined once here, used for both CV columns.
 CREATE OR REPLACE TEMP MACRO cv(col) AS stddev_samp(col) / nullif(avg(col), 0);
 
+-- agg: one row per player for the 2026 season. Turns the per-map rows into round-weighted
+-- career rates, counts the sample behind each one, and flags eligibility. This is where every
+-- headline number in the mart is actually computed.
 CREATE OR REPLACE TEMP VIEW agg AS
 SELECT player_id, any_value(player_name) AS player_name, any_value(primary_role) AS primary_role,
        string_agg(DISTINCT region ORDER BY region) AS regions,
@@ -45,8 +52,9 @@ SELECT player_id, any_value(player_name) AS player_name, any_value(primary_role)
        cv(adr_all) AS cv_adr_2026
 FROM f WHERE season = 2026 GROUP BY player_id;
 
--- Consistency over 2025–26. Only 50 of 84 eligible duelists have 2025 history, so this is
--- NULL below 10 maps rather than a CV computed from a handful (T4.3).
+-- cv2: the same consistency measure widened to 2025–26, kept separate because only 50 of the
+-- 84 eligible duelists have any 2025 history. Returns NULL rather than a number built on too
+-- few maps, so a newer player is left blank instead of being scored badly (T4.3).
 CREATE OR REPLACE TEMP VIEW cv2 AS
 SELECT player_id,
        count(adr_all) FILTER (WHERE season = 2025) AS adr_maps_2025,
@@ -57,8 +65,10 @@ SELECT player_id,
             THEN cv(adr_all) END AS cv_adr_2025_26
 FROM f WHERE season IN (2025, 2026) GROUP BY player_id;
 
--- Percentiles within primary_role, eligible players only. 100 = best, so the
--- lower-is-better metrics are ordered DESC. Direction is defined here, once.
+-- pct: rescales each rate to a 0–100 rank against the player's own role, eligible players
+-- only. This is what makes metrics in different units addable — you cannot average 161 ADR
+-- with 0.69 deaths per round, but you can average their percentiles. 100 is always best, so
+-- the lower-is-better metrics (DPR, CV) are ordered DESC. Direction is defined here, once.
 -- ponytail: a NULL rate still occupies a row in its partition, so percentiles are
 -- fractionally deflated when one is missing. Affects a handful of players; switch to a
 -- filtered rank if it ever matters.
@@ -73,8 +83,10 @@ SELECT player_id, primary_role,
        100 * percent_rank() OVER (PARTITION BY primary_role ORDER BY cv_adr_2026 DESC) AS cv_adr
 FROM agg WHERE is_eligible;
 
--- Composite: weighted mean of the percentiles. Dividing by the weights actually used
--- renormalises when a metric is missing, instead of quietly scoring it zero.
+-- composite: the single ranking number. Unpivots the percentiles to long form, joins the
+-- per-role weights from the seed file, and takes the weighted mean. Dividing by the weights
+-- actually used renormalises when a metric is missing, instead of quietly scoring it zero.
+-- Only metrics named in the seed contribute, which is what keeps Rating and ACS out (S-09).
 CREATE OR REPLACE TEMP VIEW composite AS
 SELECT l.player_id, sum(w.weight * l.pct) / sum(w.weight) AS composite
 FROM (UNPIVOT pct ON COLUMNS(* EXCLUDE (player_id, primary_role)) INTO NAME metric VALUE pct) l
@@ -83,6 +95,9 @@ JOIN 'data/seeds/metric_weights.csv' w ON w.role = pct.primary_role AND w.metric
 WHERE l.pct IS NOT NULL
 GROUP BY l.player_id;
 
+-- mart_scouting.csv: the deliverable. One row per player, joining the rates, both CVs, the
+-- percentiles and the composite. Every rate ships with its own map count so a reader can see
+-- the sample behind it. Ineligible players are kept, but with NULL percentiles and composite.
 COPY (
     SELECT a.player_id, a.player_name, a.primary_role, a.regions, a.china_league,
            a.maps_played, a.rounds_played, a.is_eligible,
@@ -108,6 +123,8 @@ COPY (
     ORDER BY a.primary_role, c.composite DESC NULLS LAST
 ) TO 'data/marts/mart_scouting.csv' (HEADER);
 
+-- mart_scouting_by_map.csv: the same rates split by map, plus that player's win rate on it.
+-- Feeds the map-pool comparison in T6.
 COPY (
     SELECT player_id, any_value(player_name) AS player_name,
            any_value(primary_role) AS primary_role, map_name,
