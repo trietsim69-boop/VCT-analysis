@@ -164,30 +164,37 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 ## Phase 2 — Roster Fit and Budget
 
-### Task 6: Roster-fit mart
+### Task 6: Roster-fit mart — ✅ **done 2026-09-26**
+
+> `python -m src.marts` → `mart_team_profile.csv` (SEN × map, 12 rows) and `mart_fit.csv` (84 eligible duelists). `python -m src.clean` now also writes `dim_contract_americas.csv` from the contract workbook. Definitions in `kpi_dictionary.md` § D; decisions S-16 to S-19.
 
 **Description:** For a selected target team, build its profile: map pool win rates, agent coverage and the metrics of the outgoing player in the vacant role. Then compare each eligible candidate's agent pool and map performance against the team's needs.
 
+**Scope decided 2026-09-26:** SEN only, not every team — "the vacant slot" is only defined for SEN. Baseline is Jerrwin (S-16); a replacement-level line is a BI-side reference, not a mart column. Map fit uses the player's own per-map ADR, never his team's win rate.
+
 **Acceptance criteria:**
-- [ ] `mart_team_profile.csv` holds team × map win rate and rounds, and `mart_fit.csv` holds candidate × team with agent-overlap %, map-pool overlap and KPI deltas against the outgoing player
-- [ ] The fit-score formula is documented, and its weights can be changed in one config file
+- [x] `mart_team_profile.csv` holds SEN × map games, wins, rounds and win %; `mart_fit.csv` holds candidate × SEN with agent overlap %, map fit, map coverage %, KPI deltas against Jerrwin and the import flag
+- [x] The fit-score formula is documented (`kpi_dictionary.md` § D), and its weights live in one seed file, `data/seeds/fit_weights.csv` (CSV, not YAML, as in T4.1)
+- [x] **Map fit rebuilt once:** the first cut correlated 0.96 with overall ADR (double counting); now measured against the player's own average, r = −0.03, test-guarded
+- [x] Import flag uses Riot's contract database first, nationality second — Jerrwin is Indian and an Americas Resident, so nationality alone is wrong (S-19)
 
 **Verification:**
-- [ ] `pytest tests/test_fit.py` passes, including a toy example with a known overlap %
-- [ ] Manual check: one team's map win rates match its published record
+- [x] `pytest tests/test_fit.py` passes — 8 tests; 27 across the suite. The known-overlap case: Jerrwin against himself scores 100% overlap and every delta 0; primmie's 30% recomputed by hand
+- [x] Manual check: SEN's map records match vlr.gg — **19/19 event × map cells** (Kickoff, Stage 1, Stage 2). vlr.gg's unfiltered page shows 61 maps because it includes non-VCT events
+- [ ] **Open:** the shortlist's import status that rests on nationality (`import_source` = proxy) is confirmed by hand in T11
 
 **Dependencies:** T3, T4
-**Files:** `sql/mart_fit.sql`, `src/marts.py`, `config/fit_weights.yaml`, `tests/test_fit.py`
+**Files:** `sql/mart_fit.sql`, `sql/model.sql`, `src/marts.py`, `src/clean.py`, `data/seeds/fit_weights.csv`, `tests/test_fit.py`
 **Scope:** M
 
 ---
 
 ### Task 7: Power BI Roster Fit page
 
-**Description:** Build a page with a team selector and a candidate selector, a map-pool heatmap, an agent coverage matrix, opening-duel and consistency comparisons against the outgoing player, and a fit-score ranking.
+**Description:** Build a page with a candidate selector (SEN is the only team — T6 scope), a map-pool heatmap, an agent coverage matrix, opening-duel and consistency comparisons against the outgoing player, and a fit-score ranking.
 
 **Acceptance criteria:**
-- [ ] Choosing a team updates the fit ranking, and drill-through from the Scouting page opens a candidate's fit view
+- [ ] Selecting a candidate updates every fit visual, and drill-through from the Scouting page opens a candidate's fit view
 - [ ] Sample sizes appear alongside every map-level cell
 
 **Verification:**

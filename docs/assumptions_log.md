@@ -24,6 +24,10 @@ Draft v0.1, 2026-09-17. Every number the dashboards use that isn't measured data
 | S-13 | Eligible duelist pool | **84 players** meet ≥ 15 maps in 2026 and ≥ 60% duelist maps | ✅ measured (T2) | Snapshot query | T4 |
 | S-14 | Champions 2026 handling | **Open until 2026-10-18.** Approach decided: continue on the pre-Champions snapshot, then take a second dated snapshot after Champions ends and rerun the pipeline with the added data. Does not block Checkpoint A. | approach decided (2026-09-21), execution pending | Champions runs 2026-09-24 → 2026-10-18. `sql/audit.sql` + `python -m src.export` regenerate every figure, so the refresh is a rerun. Recorded in `tasks/plan.md` as the one planned exception to "never re-download mid-project". | All |
 | S-15 | Vacancy premise | The contract database lists **Jerrwin as Active with a contract to 2028**, so it does not corroborate the vacancy. The premise rests on vlr.gg reporting alone. | ⚠️ unverified | Global Contract Database vs [vlr.gg](https://www.vlr.gg/team/2/sentinels). The project is framed as a hypothetical GM exercise, so this is a framing caveat, not a blocker. | T11 |
+| S-16 | Performance baseline for the slot | **Jerrwin** (30 maps, 2026). Every T6 KPI delta is candidate − Jerrwin. A replacement-level line (duelist pool 25th percentile) is a display reference only, computed in the BI tools. | decided (2026-09-26) | Victor (2 maps) and johnqt (3) are too thin to count; pooling the slot mostly dilutes Jerrwin. | T6, T7, T8 |
+| S-17 | The slot's agents | Jerrwin's 2026 agents on SEN, map-weighted: neon 18, waylay 9, raze 3 | decided (2026-09-26) | Follows S-16. N4RRATE and Victor used the same three agents. | T6 |
+| S-18 | Fit-score weights | performance 0.50 · agent overlap 0.25 · map fit 0.25 (`data/seeds/fit_weights.csv`) | decided — a judgement call | Top 10 is 9/10 the same under equal weights, but only 5/10 under a performance-heavy 0.70 / 0.15 / 0.15. Meiy is first under all three. The fit score is shown as a band, like the composite. | T6, T7 |
+| S-19 | Import status for SEN | Riot's contract database (Americas tab) where the player is listed — 13 of 84; otherwise **nationality as a proxy** (Americas countries = resident) | to verify for the shortlist (T11) | Nationality is not residency: Jerrwin (Indian) and jawgemo (Cambodian) are Americas Residents per Riot. A long-term Americas resident playing abroad would be misflagged. `import_source` in `mart_fit.csv` says which rule applied. | T6, T7, T11 |
 
 ## B. Financial inputs (USD)
 
@@ -66,4 +70,5 @@ The Low / Base / High columns feed the scenario selector in T9.
 | 2026-09-18 | S-03, S-05, S-12, S-13 updated from T2. |
 | 2026-09-21 | S-07 settled (eligibility counts all maps played); S-14 approach decided (re-snapshot after 2026-10-18 and rerun). |
 | 2026-09-18 | v0.3: S-12 revised — China is not stat-less; `performance_available` only flags vlr.gg's Performance tab. |
+| 2026-09-26 | S-16 to S-19 added from T6 (baseline, slot agents, fit weights, import rule). |
 | 2026-09-18 | v0.2 after the T2 audit correction: S-05 revised (Champions 2026 is unplayed; 588 completed matches, not 622). S-10 resolved — the import slot is taken. S-14 (Champions window decision) and S-15 (vacancy premise unverified) added. |

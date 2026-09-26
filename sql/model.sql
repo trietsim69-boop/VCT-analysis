@@ -71,6 +71,17 @@ COPY (
     FROM matches m WHERE m.status = 'final'
 ) TO 'data/processed/dim_event.csv' (HEADER);
 
+-- dim_contract_americas.csv: Riot's Global Contract Database, Americas tab (B2), one row per
+-- listed handle. Residency here is Riot's own call — it is NOT nationality (Jerrwin is Indian
+-- and Resident). Header is on row 2; blank spacer rows are dropped. Newest gcd_*.xlsx is used.
+COPY (
+    SELECT "Team" AS team, "Official Tournament Handle" AS handle, "Role" AS gcd_role,
+           try_cast(try_cast("End Date (Month Day, Year)" AS DOUBLE) AS INT) AS contract_end_year,
+           "Resident Status" AS resident_status, "Roster Status" AS roster_status
+    FROM read_xlsx(getvariable('gcd'), sheet = 'AMERICAS', range = 'A2:I500', all_varchar = true)
+    WHERE "Official Tournament Handle" IS NOT NULL
+) TO 'data/processed/dim_contract_americas.csv' (HEADER);
+
 -- dim_map.csv: the 13 map names, for slicers.
 COPY (SELECT DISTINCT map_name FROM fact WHERE map_name IS NOT NULL ORDER BY 1)
 TO 'data/processed/dim_map.csv' (HEADER);

@@ -104,12 +104,19 @@ Top-10 overlap: 8/10 and 7/10 respectively, with the same player first under all
 |---|---|---|---|
 | **Role share %** | Maps on agents of role R ÷ maps played | Player | Proficiency on each agent |
 | **Agent pool size** | Distinct agents with ≥ 3 maps in the window | Player | Whether the player could learn a new agent |
-| **Agent overlap %** | The share of SEN's needed agents for the vacant slot (the agents that slot played in 2026) that the candidate has played ≥ 3 maps on | Candidate × SEN | Performance on those agents (see the next row) |
-| **Map-pool ADR delta** | Candidate's ADR on map M − role-pool average ADR on map M | Candidate × map | Team context on that map |
+| **Agent overlap %** | The share of the slot's 2026 maps (Jerrwin on SEN, by agent: neon 18, waylay 9, raze 3 — S-17) that were on agents the candidate has played ≥ 3 times in 2026. Map-weighted. | Candidate × SEN | Performance on those agents |
+| **Map fit (ADR vs own average)** | Per map: candidate ADR − duelist-pool ADR on that map. That gap averaged with weight SEN games × candidate rounds, **minus** the same gap averaged by candidate rounds alone. Positive = he out-damages the pool by more on SEN's maps than he does in general. | Candidate × SEN | His team's results on those maps, or whether he would win them for SEN |
+| **Map coverage %** | SEN's 2026 games on maps the candidate has played ÷ all SEN 2026 games. Display only. | Candidate × SEN | How well he plays them |
 | **SEN map win %** | SEN maps won ÷ maps played, per map (2026) | Team × map | Why SEN won or lost those maps |
-| **KPI delta vs slot baseline** | Candidate KPI − the 2026 KPI of the players who filled the vacant slot (Jerrwin + stand-ins, round-weighted) | Candidate | The expected change in results. That needs the stretch model and its ranges. |
-| **Fit score** | Weighted mix of agent overlap %, map-pool ADR delta and the KPI delta. Weights live in `config/fit_weights.yaml`. | Candidate × SEN | Chemistry, language or communication |
-| **Import flag** | `is_import` from the Global Contract Database | Candidate | Eligibility beyond the one-import rule |
+| **KPI delta vs slot baseline** | Candidate KPI − Jerrwin's 2026 KPI (S-16), for ADR, KAST, FKPR, opening win %, DPR and CV. For DPR and CV a negative delta is better. | Candidate | The expected change in results. That needs the stretch model and its ranges. |
+| **Fit score** | Weighted mean, 0–100, of: **performance** (percentile of the scouting composite), **agent overlap %** (used as-is: 30 of 84 tie at 100%, and a percentile would score them 65) and **map fit** (percentile). Weights in `data/seeds/fit_weights.csv` (S-18). | Candidate × SEN | Chemistry, language or communication |
+| **Import flag** | `is_import_for_sen`: Non-Resident in Riot's contract database (Americas tab) when listed; otherwise nationality outside the Americas. `import_source` names the rule used (S-19). | Candidate | Eligibility beyond the one-import rule |
+
+**Why map fit is measured against the player's own average.** The first build used the SEN-weighted gap alone (candidate ADR − pool ADR on SEN's maps). It correlated **0.96** with overall ADR — the same signal already inside `performance`, counted twice. Subtracting the player's own average leaves only the map-specific part (r = −0.03 with ADR). A test guards this.
+
+**Why no team win rate feeds the score.** A candidate's map win rate was earned with four other players. It is shown on the Roster Fit page, never scored.
+
+**What the fit score does not do.** It says who has played well, on the right agents and on SEN's maps. It does not predict SEN's results with that player; that would need T12's model, stated as a range.
 
 ## E. Budget scenarios (all inputs are assumptions)
 

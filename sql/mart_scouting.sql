@@ -120,7 +120,7 @@ COPY (
     LEFT JOIN cv2 v USING (player_id)
     LEFT JOIN pct p USING (player_id)
     LEFT JOIN composite c USING (player_id)
-    ORDER BY a.primary_role, c.composite DESC NULLS LAST
+    ORDER BY a.primary_role, c.composite DESC NULLS LAST, a.player_id
 ) TO 'data/marts/mart_scouting.csv' (HEADER);
 
 -- mart_scouting_by_map.csv: the same rates split by map, plus that player's win rate on it.
