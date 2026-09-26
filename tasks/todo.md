@@ -116,7 +116,7 @@ Percentiles within `primary_role`, over eligible players only, 0–100, inverted
 - [x] Verify: all percentiles fall in 0–100; ineligible players have NULL composite, never 0; all 289 eligible have one
 - [x] Verify: weight sensitivity — the composite correlates **0.978** with flat equal weights, asserted > 0.9 in `tests/test_marts.py`
 - [x] The composite renormalises over the weights actually used, so a missing metric does not silently score 0
-- [ ] **Carried to T5:** present the composite as a **band, not a position** (`kpi_dictionary.md` § Composite weights) — the page shows "top 10 of 84", never "8th best"
+- [x] **Carried to T5:** present the composite as a **band, not a position** (`kpi_dictionary.md` § Composite weights) — the page shows "top 10 of 84", never "8th best"
 
 #### T4.5 — `mart_scouting_by_map.csv` · S — ✅ **done 2026-09-21**
 Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool comparison.
@@ -136,27 +136,29 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 ---
 
-### Task 5: Power BI Scouting page
+### Task 5: Power BI Scouting page — ✅ **done 2026-09-24, reviewed 2026-09-26**
+
+> `valorant_recruitment.pbix` (repo root). Model, measures and verification in `docs/dax_measures.md`. QA page reconciles Jerrwin, ZmjjKK and Kachoww against `mart_scouting.csv`, 39/39 cells.
 
 **Description:** Import the marts and dimensions into Power BI, set up the star-schema relationships and a DAX measures table, and build the Scouting page. It needs a candidate table with sample sizes, a percentile radar or bar chart, a scatter plot (for example ADR vs FK−FD) and slicers for event, map and minimum maps.
 
 **Acceptance criteria:**
-- [ ] The model uses single-direction relationships from the dimensions to the fact table, and measures live in a dedicated table
-- [ ] Every visual shows or tooltips the maps and rounds played, and ineligible players are visually flagged or filtered
-- [ ] Blank values show as blank, not 0
+- [x] The model uses single-direction relationships from the dimensions to the fact table, and measures live in a dedicated table
+- [x] Every visual shows or tooltips the maps and rounds played, and ineligible players are visually flagged or filtered
+- [x] Blank values show as blank, not 0
 
 **Verification:**
-- [ ] Manual check: KPIs for 3 players in Power BI match `mart_scouting.csv` exactly
-- [ ] Manual check: each slicer changes every visual as expected
+- [x] Manual check: KPIs for 3 players in Power BI match `mart_scouting.csv` exactly
+- [x] Manual check: each slicer changes every visual as expected
 
 **Dependencies:** T4
-**Files:** `powerbi/valorant_recruitment.pbix`, `docs/dax_measures.md`
+**Files:** `valorant_recruitment.pbix`, `docs/dax_measures.md`
 **Scope:** M
 
-## ✅ Checkpoint B — First slice end to end
-- [ ] Raw → processed → mart → Power BI runs cleanly
-- [ ] All pytest data tests pass
-- [ ] **Human review of the scouting page before continuing**
+## ✅ Checkpoint B — First slice end to end — **passed 2026-09-26**
+- [x] Raw → processed → mart → Power BI runs cleanly
+- [x] All pytest data tests pass — 19 pass
+- [x] **Human review of the scouting page before continuing**
 
 ---
 
@@ -193,7 +195,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 - [ ] Manual check: drill-through works in both directions
 
 **Dependencies:** T5, T6
-**Files:** `powerbi/valorant_recruitment.pbix`
+**Files:** `valorant_recruitment.pbix`
 **Scope:** S
 
 ---
@@ -247,7 +249,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 - [ ] Manual check: the sensitivity table changes direction correctly (a higher salary means a higher break-even)
 
 **Dependencies:** T5, T8
-**Files:** `powerbi/valorant_recruitment.pbix`, `docs/dax_measures.md`
+**Files:** `valorant_recruitment.pbix`, `docs/dax_measures.md`
 **Scope:** M
 
 ## ✅ Checkpoint C — Analyst tool complete

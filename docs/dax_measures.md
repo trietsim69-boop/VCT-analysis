@@ -2,7 +2,7 @@
 
 Task 5 deliverable. Companion to `sql/mart_scouting.sql`, which this model must agree with.
 
-File: `powerbi/recruitment.pbix`. Pages: **Scouting**, **QA**.
+File: `valorant_recruitment.pbix` (repo root). Pages: **Scouting**, **QA**.
 
 ---
 
