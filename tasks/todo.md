@@ -189,20 +189,23 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 ---
 
-### Task 7: Power BI Roster Fit page
+### Task 7: Power BI Roster Fit page — ✅ **done 2026-09-28**
+
+> Two pages in `valorant_recruitment.pbix`: **Roster Fit** (ranking of the 84 + SEN map pool) and **Candidate Fit** (drill-through on `dim_player[player_id]`). Model, measures and checks in `docs/dax_measures.md` § 7. Meiy and Jemkin reconcile against `mart_fit.csv`; Jerrwin self-check passes.
 
 **Description:** Build a page with a candidate selector (SEN is the only team — T6 scope), a map-pool heatmap, an agent coverage matrix, opening-duel and consistency comparisons against the outgoing player, and a fit-score ranking.
 
 **Acceptance criteria:**
-- [ ] Selecting a candidate updates every fit visual, and drill-through from the Scouting page opens a candidate's fit view
-- [ ] Sample sizes appear alongside every map-level cell
+- [x] Selecting a candidate updates every fit visual, and drill-through from the Scouting page opens a candidate's fit view — the candidate is selected by drilling through (from the Roster Fit ranking or the Scouting table); a separate slicer was dropped because it conflicts with the drill-through filter on the same column
+- [x] Sample sizes appear alongside every map-level cell — heatmap carries ADR Maps and ADR Rounds, SEN games in every row, SEN rounds in the map-chart tooltip; ADR greys out under 3 maps
 
 **Verification:**
-- [ ] Manual check: the fit scores for 2 candidates match `mart_fit.csv`
-- [ ] Manual check: drill-through works in both directions
+- [x] Manual check: the fit scores for 2 candidates match `mart_fit.csv` — Meiy (94.9) and Jemkin (73.5), every card and Δ; Jerrwin self-check (61.7, all Δ = 0, ADR = baseline on every map)
+- [x] Manual check: drill-through works in both directions — read as Scouting → Candidate Fit → Back and Roster Fit → Candidate Fit → Back. A drill-through *into* Scouting was not added: it would leave Scouting stuck on one player. Keep all filters is Off, so Scouting's map/event slicers do not carry over (tested with Breeze)
+- [x] Non-duelist drilled from Scouting shows blank fit cards and the Fit Pool Note
 
 **Dependencies:** T5, T6
-**Files:** `valorant_recruitment.pbix`
+**Files:** `valorant_recruitment.pbix`, `docs/dax_measures.md`
 **Scope:** S
 
 ---

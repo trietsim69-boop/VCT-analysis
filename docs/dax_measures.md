@@ -2,7 +2,7 @@
 
 Task 5 deliverable. Companion to `sql/mart_scouting.sql`, which this model must agree with.
 
-File: `valorant_recruitment.pbix` (repo root). Pages: **Scouting**, **QA**.
+File: `valorant_recruitment.pbix` (repo root). Pages: **Scouting**, **Roster Fit**, **Candidate Fit**, **QA**. Sections 1–6 cover the Scouting model (T5); section 7 covers Roster Fit (T7).
 
 ---
 
@@ -295,3 +295,181 @@ silently disagree with the mart.
 - **S-14**: everything here is built on the pre-Champions snapshot. Re-run after 2026-10-18
   and re-verify the QA page — it is the fastest end-to-end check that a re-snapshot
   reproduced cleanly.
+
+---
+
+## 7. Roster Fit and Candidate Fit (T7)
+
+Added 2026-09-28. Companion to `sql/mart_fit.sql`. Pages are now **Scouting**, **Roster Fit**,
+**Candidate Fit** and **QA**.
+
+### Model additions
+
+| Table | Source | Grain | Rows |
+|---|---|---|---|
+| `mart_fit` | `data/marts/mart_fit.csv` | candidate × SEN | 84 |
+| `mart_team_profile` | `data/marts/mart_team_profile.csv` | SEN × map (2026) | 12 |
+| `fit_weights` | `data/seeds/fit_weights.csv` | component | 3 — QA only, no relationship |
+
+```
+dim_player[player_id] → mart_fit[player_id]          1:*  single   (set by hand; Power BI offers 1:1 both)
+dim_map[map_name]     → mart_team_profile[map_name]  1:*  single
+```
+
+`mart_fit[player_id]` and `mart_fit[player_name]` are hidden, so visuals can only use the
+`dim_player` versions — drill-through needs those.
+
+**Types.** `agent_overlap_pct` must be Decimal, not Whole Number. It is whole today only because
+the slot has exactly 30 maps (18 + 9 + 3); after the S-14 re-snapshot it will not be, and Int64
+would round it silently. `is_import_for_sen` is True/False; `contract_end_year` is Whole Number
+with 71 nulls.
+
+### Measures
+
+Read from the mart, never recalculated:
+
+```dax
+Baseline Player ID = 34057          -- Jerrwin (S-16). The only place the baseline is set.
+
+Fit Score        = SELECTEDVALUE( mart_fit[fit_score] )
+Fit Perf Pct     = SELECTEDVALUE( mart_fit[pct_performance] )
+Agent Overlap %  = SELECTEDVALUE( mart_fit[agent_overlap_pct] )
+Map Fit Pct      = SELECTEDVALUE( mart_fit[pct_map_fit] )
+Map Coverage %   = SELECTEDVALUE( mart_fit[map_coverage_pct] )
+Map ADR Delta    = SELECTEDVALUE( mart_fit[map_adr_delta] )
+Δ FKPR           = SELECTEDVALUE( mart_fit[delta_fkpr] )
+Δ Opening Win %  = SELECTEDVALUE( mart_fit[delta_opening_win_pct] )
+Δ DPR            = SELECTEDVALUE( mart_fit[delta_dpr] )          -- negative = better
+Δ CV ADR         = SELECTEDVALUE( mart_fit[delta_cv_adr_2026] )  -- negative = better
+
+Fit Band =                                   -- S-18: a band, not a position
+VAR Pool = ALL( mart_fit )
+VAR N = COUNTROWS( Pool )
+VAR S = [Fit Score]
+VAR R = IF( NOT ISBLANK( S ), COUNTROWS( FILTER( Pool, mart_fit[fit_score] > S ) ) + 1 )
+RETURN SWITCH( TRUE(), ISBLANK( R ), BLANK(),
+    R <= 10, "Top 10 of " & N, R <= 25, "Top 25 of " & N,
+    R <= N / 2, "Top half of " & N, "Bottom half of " & N )
+
+Import Status =
+VAR src = SELECTEDVALUE( mart_fit[import_source] )
+VAR imp = SELECTEDVALUE( mart_fit[is_import_for_sen] )
+RETURN SWITCH( TRUE(),
+    ISBLANK( src ), "Import status unknown",
+    imp, "Import · " & src & " · SEN's import slot is taken (S-10)",
+    "Resident · " & src )
+
+Fit Pool Note =
+IF( ISBLANK( [Fit Score] ), "Roster fit is scored only for the 84 eligible duelists.", "" )
+```
+
+Map heatmap. `[ADR]`, `[Maps Played]` and `[Rounds Played]` are the T5 measures, so the
+per-metric denominator rule carries over unchanged:
+
+```dax
+ADR Rounds = CALCULATE( [Rounds Played], NOT ISBLANK( fact_player_map[adr_all] ) )
+
+Pool ADR =                 -- round-weighted ADR of the 84-player pool on the map in context
+CALCULATE( [ADR], REMOVEFILTERS( dim_player ), TREATAS( ALL( mart_fit[player_id] ), fact_player_map[player_id] ) )
+
+ADR vs Pool = [ADR] - [Pool ADR]
+
+Baseline ADR =
+VAR b = [Baseline Player ID]
+RETURN CALCULATE( [ADR], REMOVEFILTERS( dim_player ), dim_player[player_id] = b )
+
+SEN Games  = SUM( mart_team_profile[games] )
+SEN Rounds = SUM( mart_team_profile[rounds] )
+SEN Win %  = DIVIDE( SUM( mart_team_profile[wins] ), [SEN Games] )
+```
+
+`REMOVEFILTERS( dim_player )` is required in every baseline measure. Without it the drill-through
+filter on `dim_player[player_id]` stays in place and the result is blank for everyone but Jerrwin.
+
+Agent matrix and duel chart:
+
+```dax
+Slot Maps =                -- Jerrwin's maps on SEN, per agent (S-17)
+VAR b = [Baseline Player ID]
+RETURN CALCULATE( [Maps Played], REMOVEFILTERS( dim_player ), dim_player[player_id] = b, fact_player_map[team_id] = 2 )
+
+Agent Overlap % (check) =  -- recomputes mart_fit.agent_overlap_pct; the matrix total must equal the card
+DIVIDE( SUMX( VALUES( dim_agent[agent] ), IF( [Maps Played] >= 3, [Slot Maps] ) ),
+        CALCULATE( [Slot Maps], REMOVEFILTERS( dim_agent ) ) ) * 100
+
+Candidate Percentile = AVERAGE( mart_percentiles[percentile] )
+Baseline Percentile =
+VAR b = [Baseline Player ID]
+RETURN CALCULATE( AVERAGE( mart_percentiles[percentile] ), REMOVEFILTERS( dim_player ), dim_player[player_id] = b )
+
+Fit Score (check) =        -- QA only; ±0.1 from the mart because the components are rounded
+VAR wP = LOOKUPVALUE( fit_weights[weight], fit_weights[component], "performance" )
+VAR wA = LOOKUPVALUE( fit_weights[weight], fit_weights[component], "agent_overlap" )
+VAR wM = LOOKUPVALUE( fit_weights[weight], fit_weights[component], "map_fit" )
+RETURN DIVIDE( wP * [Fit Perf Pct] + wA * [Agent Overlap %] + wM * [Map Fit Pct], wP + wA + wM )
+
+Rounds Played (card) = FORMAT( [Rounds Played], "0" )   -- the card auto-scales 1182 to "1K"
+```
+
+Formats: 1 decimal for fit components, ADR and percentiles; **3 decimals for the four Δ
+measures** (at 2, a +0.055 opening-win edge reads 0.06 and small deltas round to 0); SEN Win %
+as a percentage.
+
+### Why two pages
+
+The candidate is chosen by drilling through, not by a slicer. A slicer on `dim_player` on the
+same page as a drill-through filter on the same table ANDs with it and blanks the page when the
+two disagree. And if the ranking sat on the drill-through page, drilling in would filter it to
+one row. So the ranking lives on **Roster Fit** and the candidate view on **Candidate Fit**.
+
+### Roster Fit page
+
+| Visual | Fields | Notes |
+|---|---|---|
+| Fit ranking | `dim_player[player_id]`, `dim_player[player_name]`, Fit Band, Fit Score, Fit Perf Pct, Agent Overlap %, Map Fit Pct, Map Coverage %, Maps Played, Rounds Played, Import Status | Sorted by Fit Score desc, totals off. Right-click → Drill through → Candidate Fit |
+| SEN map pool | Column chart, `dim_map[map_name]` × SEN Games; tooltips SEN Win %, SEN Rounds | Edit interactions: ⊘ on the ranking, or clicking a map re-scopes Maps Played in the table |
+| Note | Fit formula (S-18), "ranked by band", not chemistry/communication, unofficial fan analysis | — |
+
+### Candidate Fit page
+
+Drill-through field `dim_player[player_id]`. **Keep all filters Off** — otherwise Scouting's
+map and event slicers follow the player in and cut the heatmap to one map. Cross-report Off.
+`player_id` was added to the Scouting candidate table so it can drill: `dim_player` has 4
+duplicate names (Klaus, Laz, Zeus, adi), and Zeus is a fit candidate, so names are not a safe key.
+
+| Visual | Fields | Notes |
+|---|---|---|
+| Header cards | Candidate, Fit Band, Fit Score, Maps Played, Rounds Played (card); Fit Perf Pct, Agent Overlap %, Map Fit Pct, Map ADR Delta, Map Coverage % | — |
+| Import / pool | Import Status; Fit Pool Note | Pool note fires only for non-duelists drilled from Scouting |
+| Map heatmap | Matrix, rows `dim_map[map_name]`: SEN Games, SEN Win %, ADR, ADR Maps, ADR Rounds, Pool ADR, Baseline ADR, ADR vs Pool | Sorted by SEN Games. ADR vs Pool diverging background centred on 0. ADR font grey when **ADR Maps** < 3 (rule on ADR, based on ADR Maps) |
+| Agent matrix | Rows `dim_agent[agent]`: Maps Played ("Candidate maps"), Slot Maps ("Jerrwin maps (SEN)"), Agent Overlap % (check) | Subtotal on — it is the overlap % and must equal the card |
+| Duel & consistency | Clustered bar, `mart_percentiles[metric]` filtered to fkpr, opening_win, dpr, consistency; Candidate vs Baseline Percentile | X constant line at 25 = replacement level (duelist P25, S-16). DPR and CV are pre-inverted, so higher is better on every bar |
+| Δ vs Jerrwin | Matrix, values on rows: the four Δ measures | Column headers off |
+
+A candidate's own team map win % is deliberately not shown as a fit input; it was earned with
+four other players (`kpi_dictionary.md` § D).
+
+### Verification (2026-09-28)
+
+| Player | Fit | Band | Perf / Overlap / Map fit | Map ADR Δ | Δ FKPR / Open / DPR / CV |
+|---|---|---|---|---|---|
+| Meiy (6672) | 94.9 | Top 10 of 84 | 95.2 / 100 / 89.2 | +3.0 | −0.017 / 0.055 / −0.028 / 0.036 |
+| Jemkin (24895) | 73.5 | Top 25 of 84 | 91.6 / 100 / 10.8 | −3.9 | −0.025 / 0.041 / −0.102 / −0.004 |
+| Jerrwin (34057) | 61.7 | Top half of 84 | — / 100 / — | — | all 0.000; ADR = Baseline ADR on every map |
+
+All match `mart_fit.csv`. Also checked:
+
+- Slot agents: neon 18, waylay 9, raze 3 (30).
+- Meiy heatmap: Breeze 147.9 on 102 rounds (pool 138.9, Jerrwin 136.7, SEN 8 games 50%); Split 178.6 on 160 (pool 138.8, Jerrwin 137.4, SEN 6 games 33.3%); Summit 20 rounds, greyed.
+- Meiy agents: jett 19, neon 14, raze 10, waylay 8, yoru 4 → overlap 100.
+- Band boundary: Wo0t and Timotino (78.3) read Top 10; aspas (78.0) reads Top 25.
+- Drill-through: Scouting → Candidate Fit, Roster Fit → Candidate Fit, Back from both; a non-duelist shows blank fit and the pool note; a Breeze selection on Scouting does not carry over.
+
+### Open items (T7)
+
+- **Import status by nationality** (`import_source` = proxy) is still unconfirmed for the
+  shortlist — T11 (S-19).
+- **Meiy leads on fit, not on every duel metric.** His opening win % is far above Jerrwin's
+  (96th vs 55th percentile) but he takes slightly fewer opening duels (FKPR 81st vs 93rd) and
+  his ADR swings more map to map (consistency 33rd vs 75th). Worth a line in the T11 memo.
+- **S-14:** re-verify this table after the post-Champions re-snapshot, alongside the QA page.
