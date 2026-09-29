@@ -69,6 +69,21 @@ COPY (
     WHERE "Official Tournament Handle" IS NOT NULL  -- drops blank spacer rows
 ) TO 'data/processed/dim_contract_americas.csv' (HEADER);
 
+-- dim_contract_all.csv: all four league tabs, for years left on contract (budget model). No legal names or contacts.
+CREATE OR REPLACE TEMP MACRO gcd_tab(tab) AS TABLE
+SELECT tab AS league,  -- tab name: the League column has stray variants
+       "Team" AS team, trim("Official Tournament Handle") AS handle, "Role" AS gcd_role,  -- CN says 'ACTIVE PLAYER'
+       try_cast(regexp_extract("End Date (Month Day, Year)", '(\d{4})', 1) AS INT) AS contract_end_year,  -- '2026.0' and CN '2027 Season End'
+       "Resident Status" AS resident_status, "Roster Status" AS roster_status,
+       (SELECT DATE '1899-12-30' + floor(B::DOUBLE)::INT  -- B1 'Last Update' is an Excel serial date
+        FROM read_xlsx(getvariable('gcd'), sheet = tab, range = 'B1:B1', header = false, all_varchar = true)) AS tab_last_update
+FROM read_xlsx(getvariable('gcd'), sheet = tab, range = 'A2:I500', all_varchar = true)
+WHERE "Official Tournament Handle" IS NOT NULL;
+
+COPY (
+    FROM gcd_tab('AMERICAS') UNION ALL FROM gcd_tab('CN') UNION ALL FROM gcd_tab('EMEA') UNION ALL FROM gcd_tab('PACIFIC')
+) TO 'data/processed/dim_contract_all.csv' (HEADER);
+
 -- dim_map.csv: the map names, for slicers.
 COPY (SELECT DISTINCT map_name FROM fact WHERE map_name IS NOT NULL ORDER BY 1)
 TO 'data/processed/dim_map.csv' (HEADER);

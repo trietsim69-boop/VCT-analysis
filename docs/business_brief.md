@@ -30,7 +30,7 @@ Heading into 2027, the team needs a **permanent player for the slot the stand-in
 | # | Decision | Answered by | Output |
 |---|---|---|---|
 | D1 | **Who is on the shortlist?** (3–5 players) | Scouting page + Roster Fit page | A ranked candidate table with sample sizes and fit notes |
-| D2 | **What is the maximum total spend** (salary + buyout + fees) for the top candidate? | Budget Scenarios page | The highest justifiable spend in the low, base and high scenarios |
+| D2 | **What is the maximum upfront spend** (buyout + import-slot cost) SEN can justify for a candidate? | Budget Scenarios page | The highest upfront spend with NPV ≥ 0 in the Downside, Base and Upside scenarios, shown next to the total acquisition cost (salary + buyout + fees). Redefined from "maximum total spend" in T8 (2026-09-29): salary is the same for every candidate, so the upfront amount is what the GM negotiates. See `budget_model.md` §6.4. |
 | D3 | **Sign or stay?** Is a proven signing worth more than keeping a minimum-salary stand-in? | Budget Scenarios page + memo | A recommendation with its break-even condition stated |
 
 Map and agent coverage is **not** a separate decision. It feeds D1 through the Roster Fit page.
@@ -113,7 +113,7 @@ The full source list is in `tasks/plan.md` → Data Sources.
 |---|---|
 | The roster situation changes before the project ends | Freeze the facts as of the Task 2 snapshot date and note that date on every page |
 | The role of the vacant slot is ambiguous (flex player) | Task 2 infers it from agent share. If it's still unclear, the brief is updated to the role the stand-ins actually played |
-| The budget page is mistaken for real financials | An "Assumption" label on every input, a disclaimer on the page, and low/base/high scenarios |
+| The budget page is mistaken for real financials | An "Assumption" label on every input, a disclaimer on the page, and Downside / Base / Upside scenarios |
 | The 2026 data is incomplete in the source | Task 2 go/no-go. The fallback is Kaggle, or widening the window to include 2025 |
 
 ## Sources

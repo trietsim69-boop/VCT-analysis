@@ -137,7 +137,7 @@ The detailed tasks are in `tasks/todo.md`.
 ## Proposed Folder Layout
 
 ```
-D:\football analysis\          (consider renaming it to valorant-recruitment)
+D:\VCT\
 ├── data/raw/                  original downloads, read-only, git-ignored
 ├── data/processed/            cleaned fact/dim CSV files
 ├── data/marts/                BI-ready CSV files
@@ -161,7 +161,7 @@ D:\football analysis\          (consider renaming it to valorant-recruitment)
 | Small samples for some players | High | Set a minimum-maps threshold, show a sample-size column on every visual, and use percentiles only inside the eligible pool. |
 | Missing values treated as zero | High | Data tests assert that NULLs are preserved. Measures use AVERAGE or DIVIDE, which ignore blanks. |
 | Role inference is wrong for flex players | Med | Use the 60% rule plus a "Flex" bucket. List flex players explicitly in the audit. |
-| Budget outputs look authoritative but rest on invented numbers | Med | Label every input as an assumption, show defaults with sources, and add a scenario toggle (low/base/high). |
+| Budget outputs look authoritative but rest on invented numbers | Med | Label every input as an assumption, show defaults with sources, and add a scenario toggle (Downside / Base / Upside). |
 | Readers take a roster-swap prediction as fact | Med | The model is a stretch goal only, with confidence intervals and a written caveat that the data can't show teammate effects. |
 | Power BI and Tableau disagree | Low | Both read the same mart files. T10 includes a parity check. |
 | Scope creep (more regions, roles or seasons) | Med | Stay with one region and one role until Checkpoint D. Everything else is a follow-up. |
@@ -171,5 +171,5 @@ D:\football analysis\          (consider renaming it to valorant-recruitment)
 1. ~~Region and role~~ **Decided:** Sentinels (Americas). The role of the vacant slot is inferred in T2.
 2. **Tool split:** should Tableau be a storytelling companion (the current plan), or a full duplicate of the Power BI report to compare the tools?
 3. **Environment:** do you have Power BI Desktop (Windows) and Tableau Public/Desktop installed, plus Python 3.11+? The main dataset needs no login. A Kaggle account is only needed for the cross-check, and an Esports Earnings API key only for T8.
-4. **Folder:** the connected folder is named "football analysis". Should the project live there, or in a new folder?
+4. ~~Folder~~ **Decided:** the repo moved from `D:\football analysis` to `D:\VCT`.
 5. ~~Audience~~ **Decided:** a portfolio piece and personal learning.
