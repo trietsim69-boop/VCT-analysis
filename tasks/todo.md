@@ -232,12 +232,12 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 **Acceptance criteria:**
 - [x] `docs/budget_model.md` lists the formulas, input definitions and default values, with a source or "illustrative" label for each (v1.0, 2026-09-29)
-- [ ] `src/budget.py` implements the formulas, and `tests/test_budget.py` covers ≥ 5 cases (including zero buyout, and revenue below cost)
-- [ ] The Esports Earnings prize history for the shortlisted players (B1, game ID 646) is included as a reference only, and is labelled "not salary"
-- [ ] Scenario ranges are anchored to sources: the minimum-salary floor (B3), the revenue-share total (B4), the partnership payment range (B5) and viewership (B6). The contract end year (B2) informs the buyout assumption.
+- [x] `src/budget.py` implements the formulas, and `tests/test_budget.py` covers ≥ 5 cases (including zero buyout, and revenue below cost): the 8 worked cases in `budget_model.md` §8, plus property, seed and mart checks
+- [x] The Esports Earnings prize history for the shortlisted players (B1, game ID 646) is included as a reference only, and is labelled "not salary" (`data/seeds/prize_reference.csv`; swagzor blank, no page)
+- [x] Scenario ranges are anchored to sources: the minimum-salary floor (B3), the revenue-share total (B4), the partnership payment range (B5) and viewership (B6). The contract end year (B2) informs the buyout assumption (`mart_budget_inputs.csv` years_left, from all four contract-database tabs).
 
 **Verification:**
-- [ ] `pytest tests/test_budget.py` passes
+- [x] `pytest tests/test_budget.py` passes (22 tests; full suite 49, 2026-09-29)
 - [ ] Manual check: one case is also worked by hand in a spreadsheet and matches
 
 **Dependencies:** T4 (shortlist)

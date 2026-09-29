@@ -1,0 +1,85 @@
+player_id,player_name,fit_score,is_import_for_sen,import_source,contract_league,contract_team,contract_end_year,years_left,contract_match
+6672,Meiy,94.9,true,nationality (proxy),PACIFIC,DETONATION FOCUSME,2027,1,matched
+45492,swagzor,88.6,true,nationality (proxy),CN,NOVA ESPORTS,2027,1,matched
+5022,Derke,85.8,true,nationality (proxy),EMEA,TEAM VITALITY,2026,0,matched
+3520,ZmjjKK,83.7,true,nationality (proxy),CN,EDWARD GAMING,2026,0,matched
+25255,primmie,80.4,true,nationality (proxy),PACIFIC,FULL SENSE,2026,0,matched
+804,BuZz,79.5,true,nationality (proxy),PACIFIC,T1,2026,0,matched
+8873,dgzin,79.4,false,nationality (proxy),,,,2,not found
+18796,OXY,78.9,false,contract database,AMERICAS,CLOUD9,2028,2,matched
+21328,Wo0t,78.3,true,nationality (proxy),EMEA,TEAM HERETICS,2026,0,matched
+29893,Timotino,78.3,false,contract database,AMERICAS,100 THIEVES,2027,1,matched
+8480,aspas,78.0,false,contract database,AMERICAS,MIBR,2027,1,matched
+4885,whzy,77.1,true,nationality (proxy),CN,BILIBILI GAMING,2026,0,matched
+4428,UdoTan,76.8,true,nationality (proxy),PACIFIC,GLOBAL ESPORTS,2027,1,matched
+21216,f4ngeer,76.7,true,nationality (proxy),CN,ALL GAMERS,2027,1,matched
+18350,MiniBoo,75.9,true,nationality (proxy),EMEA,TEAM LIQUID,2027,1,matched
+9196,t3xture,74.7,true,nationality (proxy),PACIFIC,GEN.G,2027,1,matched
+36685,splash,74.1,true,nationality (proxy),CN,TYLOO GAMING,2028,2,matched
+24895,Jemkin,73.5,true,nationality (proxy),PACIFIC,REX REGUM QEON,2027,1,matched
+21661,spike,73.1,false,nationality (proxy),,,,2,not found
+37494,Kai,71.7,true,nationality (proxy),CN,TRACE ESPORTS,2027,1,matched
+5132,mada,70.8,false,contract database,AMERICAS,NRG,2027,1,matched
+20144,LewN,69.2,true,nationality (proxy),EMEA,KARMINE CORP,2027,1,matched
+54487,Xlele,68.7,true,nationality (proxy),CN,FUNPLUS PHOENIX,2028,2,matched
+17086,something,68.0,true,nationality (proxy),PACIFIC,PAPER REX,2026,0,matched
+10307,marteen,67.3,true,nationality (proxy),EMEA,Gentle Mates,2026,0,matched
+4004,zekken,67.1,false,contract database,AMERICAS,MIBR,2027,1,matched
+40591,ComeBack,66.5,true,nationality (proxy),,,,2,not found
+7378,Jinggg,66.3,true,nationality (proxy),PACIFIC,PAPER REX,2026,0,matched
+28400,HYUNMIN,66.3,true,nationality (proxy),PACIFIC,DRX,2028,2,matched
+39357,s0pp,66.2,true,nationality (proxy),EMEA,FUT ESPORTS,2026,0,matched
+49476,zhe,66.2,true,nationality (proxy),CN,JDG ESPORTS,2028,2,matched
+31305,Lar0k,65.7,true,nationality (proxy),EMEA,BBL ESPORTS,2027,1,matched
+14681,kamo,64.5,true,nationality (proxy),EMEA,TEAM LIQUID,2027,1,matched
+58496,Kachoww,64.4,true,nationality (proxy),,,,2,not found
+2462,keznit,62.3,false,contract database,AMERICAS,ENVY,2027,1,matched
+34057,Jerrwin,61.7,false,contract database,AMERICAS,SENTINELS,2028,2,matched
+3993,jawgemo,60.2,false,contract database,AMERICAS,G2,2026,0,matched
+46135,Zeus,60.2,true,nationality (proxy),,,,2,ambiguous
+23365,koshmaras,59.6,true,nationality (proxy),EMEA,TEAM HERETICS,2028,2,matched
+9554,kaajak,59.3,true,nationality (proxy),EMEA,FNATIC,2028,2,matched
+40935,lovers rock,57.8,true,nationality (proxy),EMEA,BBL ESPORTS,2027,1,matched
+55681,kozzy,57.6,true,nationality (proxy),,,,2,not found
+16924,stew,57.5,true,nationality (proxy),CN,EDWARD GAMING,2027,1,matched
+49973,glacier,56.9,true,nationality (proxy),CN,WOLVES ESPORTS,2026,0,matched
+22047,Rarga,56.2,true,nationality (proxy),CN,XI LAI GAMING,2027,1,matched
+41720,Favian,56.0,true,nationality (proxy),EMEA,Eternal Fire,2026,0,matched
+31827,Dambi,55.6,true,nationality (proxy),PACIFIC,NongShim RedForce,2026,0,matched
+4544,Filu,53.6,true,nationality (proxy),,,,2,not found
+31753,SpiritZ1,53.0,true,nationality (proxy),CN,DRAGON RANGER GAMING,2027,1,matched
+3028,Life,52.9,true,nationality (proxy),CN,DRAGON RANGER GAMING,2027,1,matched
+31828,Francis,52.3,true,nationality (proxy),PACIFIC,NongShim RedForce,2026,0,matched
+11332,ara,52.1,true,nationality (proxy),EMEA,GiantX,2026,0,matched
+21659,Sato,49.5,false,contract database,AMERICAS,LEVIATAN,2026,0,matched
+13788,JitBoyS,49.4,true,nationality (proxy),PACIFIC,FULL SENSE,2026,0,matched
+52904,Akeman,48.4,true,nationality (proxy),,,,2,not found
+4881,Spitfires,48.1,true,nationality (proxy),CN,TITAN ESPORTS CLUB,2027,1,matched
+5564,DeadInk,47.7,true,nationality (proxy),,,,2,not found
+42235,Dynamite,45.8,true,nationality (proxy),CN,TITAN ESPORTS CLUB,2027,1,matched
+48025,alym,44.2,true,nationality (proxy),,,,2,not found
+10338,Lime,43.9,true,nationality (proxy),,,,2,not found
+11917,ExiT,43.9,true,nationality (proxy),,,,2,not found
+41224,tkzin,43.9,false,contract database,AMERICAS,LOUD,2026,0,matched
+11737,Xan,43.3,true,nationality (proxy),PACIFIC,REX REGUM QEON,2027,1,matched
+7716,penny,43.1,false,nationality (proxy),,,,2,not found
+3722,koalanoob,42.2,false,contract database,AMERICAS,FURIA,2027,1,matched
+63107,ra1ny,42.2,true,nationality (proxy),,,,2,ambiguous
+8376,seven,40.4,false,nationality (proxy),EMEA,PCIFIC,2026,0,matched
+12793,xeus,39.5,true,nationality (proxy),EMEA,FUT ESPORTS,2026,0,matched
+50025,Setrod,39.1,true,nationality (proxy),CN,FUNPLUS PHOENIX,2028,2,matched
+573,cNed,38.5,true,nationality (proxy),,,,2,not found
+18400,bipo,38.0,true,nationality (proxy),EMEA,Gentle Mates,2026,0,matched
+37532,Zexy,38.0,true,nationality (proxy),PACIFIC,VARREL,2027,1,matched
+11527,NoMan,37.3,true,nationality (proxy),CN,XI LAI GAMING,2027,1,matched
+10160,Izzy,35.8,true,nationality (proxy),EMEA,Eternal Fire,2026,0,matched
+41135,Dantedeu5,33.7,false,nationality (proxy),,,,2,not found
+51099,ZynX,33.7,true,nationality (proxy),,,,2,not found
+25017,Ash,33.4,true,nationality (proxy),PACIFIC,GEN.G,2026,0,matched
+3983,Virtyy,33.1,false,nationality (proxy),,,,2,not found
+39697,cb,28.0,true,nationality (proxy),CN,NOVA ESPORTS,2026,0,matched
+34776,Absol,26.4,true,nationality (proxy),PACIFIC,ZETA DIVISION,2027,1,matched
+64029,FT,25.3,true,nationality (proxy),CN,BILIBILI GAMING,2029,3,matched
+41798,nightz,24.4,false,contract database,AMERICAS,ENVY,2027,1,matched
+46040,Youze,21.0,true,nationality (proxy),,,,2,not found
+35302,Eggsterr,3.0,false,contract database,AMERICAS,ENVY,2027,1,matched

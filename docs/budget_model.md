@@ -199,7 +199,13 @@ These are players' career VALORANT prize earnings from Esports Earnings (game ID
 | Wo0t | 255,633 | #20 |
 | BuZz | 185,715 | #37 |
 | Timotino | 120,000 | #68 |
-| Meiy, swagzor, primmie, dgzin, OXY | < 78,796 (outside the top 100); exact figures **to fetch** from player pages | — |
+| dgzin | 17,079 (VALORANT only; his page total of 143,079 includes CrossFire) | — |
+| primmie | 9,118 | — |
+| OXY | 8,230 | — |
+| Meiy | 3,989 | — |
+| swagzor | blank: no Esports Earnings page found (< 78,796, outside the top 100) | — |
+
+The last five come from each player's page, accessed 2026-09-29. All ten are in `data/seeds/prize_reference.csv`.
 
 For context: SEN's lifetime VALORANT prize money is $1,058,000, and SEN won nothing listed in 2026 [52][53].
 

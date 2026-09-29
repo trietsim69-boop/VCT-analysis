@@ -63,7 +63,7 @@ Scenarios are **one axis from worst to best case for signing** (S-21), so costs 
 | C-02 | SEN 2026 results | 9th–10th at Kickoff and Stage 1; out in the Stage 2 play-ins; ~10th in North America | [vlr.gg](https://www.vlr.gg/team/2/sentinels) |
 | C-03 | SEN total career winnings | $1,197,000 (vlr.gg figure). Esports Earnings gives **$1,058,000** for VALORANT (`budget_cost_research.md` [52]); the sites count events differently, so always name the source and never mix the two on one page. | [vlr.gg](https://www.vlr.gg/team/2/sentinels) |
 | C-04 | SEN finances (SEC Form C-AR, filed 2026-04-29) | Revenue $5.79M (2024), $6.44M (2025); 2025 net loss $4.28M; cash $209k at end-2025; $12.0M owed to JAG Future Ventures | [SEC](https://www.sec.gov/Archives/edgar/data/1982921/000198292126000003/form_car.pdf) |
-| C-05 | Shortlist career prize money (**prize money, not salary**) | ZmjjKK $305k, Derke $295k, Wo0t $256k, BuZz $186k, Timotino $120k; Meiy, swagzor, primmie, dgzin and OXY under $79k (to fetch) | [Esports Earnings](https://www.esportsearnings.com/games/646-valorant/top-players), data to 2026-07-12 |
+| C-05 | Shortlist career prize money (**prize money, not salary**) | ZmjjKK $305k, Derke $295k, Wo0t $256k, BuZz $186k, Timotino $120k; dgzin $17k (VALORANT only), primmie $9k, OXY $8k, Meiy $4k; swagzor has no page (blank) | [Esports Earnings](https://www.esportsearnings.com/games/646-valorant/top-players), top five data to 2026-07-12, rest from player pages 2026-09-29; `data/seeds/prize_reference.csv` |
 | C-06 | Riot money shared with VCT teams | $78.4M (2024, $44.3M from digital goods); VCT 2027 cuts partners to 8 per region | `budget_cost_research.md` [37][Sheep Esports] |
 
 ## D. Explicitly *not* assumed

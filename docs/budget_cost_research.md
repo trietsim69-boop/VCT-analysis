@@ -223,7 +223,7 @@ FX: EUR→USD at 1.1355, KRW→USD at 1/1353.4, CAD→USD at 1/1.418 (ECB refere
 - **Any credible salary figure** for TenZ (annual), aspas, Derke, Demon1, zekken or the shortlisted duelists.
 - **Any disclosed fee** for aspas → MIBR, zekken → MIBR, Derke, Less, Sayf, cNed, Jingg, or SEN's buys of johnqt, N4RRATE, Jerrwin and Reduxx.
 - **Riot Global Contract Database** (Google Sheet; docs.google.com blocked) could not be read *online* during this session, so contract ends here are taken from VLR's citation of it. *Project note:* the repo holds an exported copy (`data/raw/gcd_2026-09-14.xlsx`, all four league tabs), which the model uses for years left on contract (`budget_model.md` §5).
-- **Esports Earnings individual pages** for Meiy, swagzor, primmie, dgzin and OXY (only known to be below the top-100 cutoff of $78,796). No Liquipedia fallback, because of the 429s.
+- **Esports Earnings individual pages** for Meiy, swagzor, primmie, dgzin and OXY (only known to be below the top-100 cutoff of $78,796). No Liquipedia fallback, because of the 429s. *Project note (2026-09-29):* fetched afterwards for all but swagzor, who has no page; see `budget_model.md` §9.
 - **2026 Americas Kickoff / Stage 1 cash prizes** and the **Masters London 2026** placement distribution.
 - **Esports-specific agent commission practice** in VALORANT (no agency publishes rates); **LCS minimum salary** (not fetched).
 - **Sentinels revenue by line** (sponsorship, merch, digital goods, Riot stipend): the Form C-AR does not disaggregate it.
