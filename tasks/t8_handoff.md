@@ -157,6 +157,8 @@ Columns: `player_id, player_name, career_prize_usd, source, as_of, label`, where
 
 ### 4.7 Documentation updates
 
+> **Done 2026-09-29**, except ticking the remaining `todo.md` T8 boxes as the code lands. D2 in `business_brief.md` was also redefined to the maximum *upfront* spend, with total acquisition cost shown alongside.
+
 - **`docs/assumptions_log.md` § B:**
   - Replace the F-01 to F-11 rows with the values and statuses in `budget_model.md` §4.
   - Relabel the columns Downside / Base / Upside.

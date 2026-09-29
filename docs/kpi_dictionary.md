@@ -120,18 +120,15 @@ Top-10 overlap: 8/10 and 7/10 respectively, with the same player first under all
 
 ## E. Budget scenarios (all inputs are assumptions)
 
-Input values are in `assumptions_log.md`. Money is in USD; `Y` = contract years.
+**The formulas live in `budget_model.md` §6** (the spec, settled in T8 on 2026-09-29). Input values are in `assumptions_log.md` § B. This section used to hold the v0.1 formulas; they were replaced because:
 
-| KPI | Formula |
-|---|---|
-| **Total acquisition cost (TAC)** | Buyout + (Salary × Y) + AgentFee% × (Salary × Y) |
-| **Baseline cost** | StandInSalary × Y |
-| **Incremental cost** | TAC − Baseline cost |
-| **Expected annual revenue uplift** | PartnerStatus × ΔPartnershipPerformancePayment + ΔPrizeMoney + SponsorshipContentUplift |
-| **Break-even annual uplift** | Incremental cost ÷ Y |
-| **Payback (years)** | Incremental cost ÷ Expected annual revenue uplift (blank if the uplift is ≤ 0) |
-| **Max justifiable spend (D2)** | Baseline cost + (Expected annual revenue uplift × Y), discounted at rate *r* when *r* > 0 |
-| **Sign-or-stay signal (D3)** | "Sign" if Expected annual uplift ≥ Break-even annual uplift in the **base** scenario; the result is also shown for low and high |
+- **Payback** divided the incremental cost by the yearly uplift, which treated salary paid every year as if it were paid upfront. It is now upfront cost ÷ net gain per year.
+- **Break-even** ignored discounting. It is now ΔS + C₀ ÷ AF, which equals the old formula when *r* = 0.
+- **Max justifiable spend (D2)** was a *total*. It is now the maximum *upfront* spend (buyout + import-slot cost) with NPV ≥ 0.
+- **Scenarios** are one axis, Downside / Base / Upside (worst to best case for signing), with 2027 partner status as a separate toggle.
+- **Added:** import-slot cost (F-13), credit share (F-14), non-partner payments (F-15), the break-even credit share and a "not within contract" payback flag.
+
+Outputs, in short: total acquisition cost, baseline cost, incremental cost, NPV of signing vs staying, break-even uplift per year, break-even credit share, payback, maximum justifiable upfront spend (D2) and the sign-or-stay decision (D3).
 
 **Does NOT measure:** actual salaries, actual buyouts or the real value of the organisation. Every output depends on the assumptions and is labelled that way.
 

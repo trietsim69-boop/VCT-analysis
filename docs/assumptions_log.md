@@ -1,6 +1,6 @@
 # Assumptions Log
 
-Draft v0.1, 2026-09-17. Every number the dashboards use that isn't measured data lives here.
+v0.4, 2026-09-29 (created 2026-09-17). Every number the dashboards use that isn't measured data lives here.
 
 - **Status:** `decided` (agreed in scoping) · `sourced` (backed by a public source) · `illustrative` (a placeholder with no public source) · `to verify` (checked in the named task).
 - **Rule:** any value marked `illustrative` must appear on the dashboard with an **"Assumption"** label.
@@ -27,26 +27,33 @@ Draft v0.1, 2026-09-17. Every number the dashboards use that isn't measured data
 | S-16 | Performance baseline for the slot | **Jerrwin** (30 maps, 2026). Every T6 KPI delta is candidate − Jerrwin. A replacement-level line (duelist pool 25th percentile) is a display reference only, computed in the BI tools. | decided (2026-09-26) | Victor (2 maps) and johnqt (3) are too thin to count; pooling the slot mostly dilutes Jerrwin. | T6, T7, T8 |
 | S-17 | The slot's agents | Jerrwin's 2026 agents on SEN, map-weighted: neon 18, waylay 9, raze 3 | decided (2026-09-26) | Follows S-16. N4RRATE and Victor used the same three agents. | T6 |
 | S-18 | Fit-score weights | performance 0.50 · agent overlap 0.25 · map fit 0.25 (`data/seeds/fit_weights.csv`) | decided — a judgement call | Top 10 is 9/10 the same under equal weights, but only 5/10 under a performance-heavy 0.70 / 0.15 / 0.15. Meiy is first under all three. The fit score is shown as a band, like the composite. | T6, T7 |
-| S-19 | Import status for SEN | Riot's contract database (Americas tab) where the player is listed — 13 of 84; otherwise **nationality as a proxy** (Americas countries = resident) | to verify for the shortlist (T11) | Nationality is not residency: Jerrwin (Indian) and jawgemo (Cambodian) are Americas Residents per Riot. A long-term Americas resident playing abroad would be misflagged. `import_source` in `mart_fit.csv` says which rule applied. | T6, T7, T11 |
+| S-19 | Import status for SEN | Riot's contract database (Americas tab) where the player is listed — 13 of 84; otherwise **nationality as a proxy** (Americas countries = resident) | to verify for the shortlist (T11) | Nationality is not residency: Jerrwin (Indian) and jawgemo (Cambodian) are Americas Residents per Riot. A long-term Americas resident playing abroad would be misflagged. `import_source` in `mart_fit.csv` says which rule applied. In the budget model a missing flag is treated as *not* an import (no F-13 cost), with "Import status unknown" shown as in T7. | T6, T7, T8, T11 |
+| S-20 | Shortlist | The T7 fit-score "Top 10 of 84" band: Meiy, swagzor, Derke, ZmjjKK, primmie, BuZz, dgzin, OXY, Wo0t, Timotino. 7 of 10 are imports for SEN (all but dgzin, OXY and Timotino). | decided (2026-09-29) | `mart_fit.csv` fit score; band rule from S-18. Moves with the S-14 re-snapshot. | T8, T9, T11 |
+| S-21 | Budget scenario design | **One axis, Downside / Base / Upside, worst to best case for signing.** The same salary, fee, rate and revenue for every candidate; only the buyout (years left on contract) and import-slot cost vary. The "stay" option is a minimum-salary stand-in; Jerrwin is the performance baseline only. 2026 league rules (minimum salary, one import, partner range) are assumed to carry into 2027. | decided (2026-09-29); 2027 rules **to verify** | `budget_model.md` §2–§5 | T8, T9, T11 |
 
 ## B. Financial inputs (USD)
 
-The Low / Base / High columns feed the scenario selector in T9.
+Spec, formulas and worked cases: `budget_model.md`. Sources `[n]`: `budget_cost_research.md`. Decided in the T8 session, 2026-09-29.
 
-| ID | Input | Low | Base | High | Status | Source / note |
+Scenarios are **one axis from worst to best case for signing** (S-21), so costs fall and uplift rises from Downside to Upside. The columns feed the T9 scenario selector.
+
+| ID | Input | Downside | Base | Upside | Status | Source / note |
 |---|---|---|---|---|---|---|
-| F-01 | Stand-in (baseline) salary per year | 50,000 | 50,000 | 50,000 | sourced (2023) / to verify | Riot's 2023 Americas minimum ([Dexerto](https://www.dexerto.com/esports/vct-2023-roster-regulations-explained-minimum-salaries-import-rules-roster-sizes-1944581/)). It may be outdated for 2027. |
-| F-02 | Candidate salary per year | 150,000 | 300,000 | 500,000 | **illustrative** | No public salary data. To be refined in T8. |
-| F-03 | Buyout fee (one-off) | 0 | 250,000 | 750,000 | **illustrative** | "Low = 0" represents a free agent or an expiring contract. The Global Contract Database end year informs which case applies. |
-| F-04 | Contract length (years) | 1 | 2 | 3 | decided (base) | Base 2 matches the 2027–28 partnership cycle ([THESPIKE](https://www.thespike.gg/valorant/news/partnered-vct-2027-teams-to-receive-up-to-5-million-per-year-under-new-format/7963)) |
-| F-05 | Agent fee (% of total salary) | 0% | 5% | 10% | **illustrative** | Industry-typical range, not sourced |
-| F-06 | 2027 partner status | Not partner | Partner | Partner | decided (toggle) | Partners are selected after Champions 2026 |
-| F-07 | Annual partnership payment range | 600,000 | — | 5,000,000 | sourced | [THESPIKE](https://www.thespike.gg/valorant/news/partnered-vct-2027-teams-to-receive-up-to-5-million-per-year-under-new-format/7963): made up of base + performance bonus + capsules |
-| F-08 | Δ partnership payment from better results | 0 | 250,000 | 750,000 | **illustrative** | The split between the base and performance components isn't published, so this is a placeholder within the F-07 range |
-| F-09 | Δ prize money per year | 0 | TBD | TBD | to source (T8) | From Esports Earnings (game 646): the typical prize gap between SEN's 2026 placement and a target placement |
-| F-10 | Sponsorship and content uplift per year | 0 | 100,000 | 300,000 | **illustrative** | Viewership context from [Esports Charts](https://escharts.com/news/vct-2025-stage-1-global-viewership). No public sponsorship figures exist. |
-| F-11 | Discount rate | 0% | 0% | 8% | **illustrative** | 0% keeps the base case simple; the high case shows sensitivity |
-| F-12 | Currency | USD | USD | USD | decided | EUR and KRW minimums are not used |
+| F-01 | Stand-in (baseline) salary per year | 50,000 | 50,000 | 50,000 | sourced (2023 rule); **to verify (2027 rules)** | Riot's 2023 Americas minimum [1][3]; no change found for 2024–26; Riot declined to say whether 2027 has one [9]. A rule, so it doesn't vary by scenario. |
+| F-02 | Candidate salary per year (same for every candidate) | 400,000 | 200,000 | 100,000 | **illustrative** | Bracketed by NA $240–360k before the 2024 cuts [7], cuts since [15], LEC median ≈ $187k and average ≈ $273k [12]. No credible salary exists for any shortlisted player. |
+| F-03 | Buyout, full value (2 contract years left) | 750,000 | 300,000 | 100,000 | **illustrative** | Scaled per candidate: F-03 × years_left ÷ 2, where years_left = contract end year − 2026 (minimum 0; unknown → 2; no cap). Contract rows come from all four tabs of the contract database, matched on lower-cased handle; a handle matching more than one row or player is flagged `ambiguous` and also falls back to 2. EG turned down $100k (2023) [15]; TenZ $1.25M (2021) noted as an outlier [19]. |
+| F-04 | Contract length (years) | 2 | 2 | 2 | decided (GM choice, editable 1–3) | Not a scenario variable. 2 matches the 2027–28 partnership cycle [9]. |
+| F-05 | Agent fee, % of candidate salary, paid by the team | 15% | 10% | 5% | **illustrative** | 10–15% commission is typical in Europe [27]; FIFA caps agents at 5% of pay ≤ $200k/yr (analogy only) [30]. Players usually pay their own agent, so this assumes SEN covers it. |
+| F-06 | 2027 partner status | toggle | toggle | toggle | decided (toggle, default Partner) | Not a scenario variable. 8 partners per region in 2027, down from 11 in Americas; not yet announced. |
+| F-07 | Partner payment range per year | — | — | — | sourced (reported) — **reference only, not an input** | $600K–$5M/yr: base payment + performance bonus + capsules [9]; structure confirmed by Riot [42]. **To verify (2027 rules).** |
+| F-08 | *Partner:* extra bonus + capsule money per year, top-3 vs 10th | 200,000 | 700,000 | 2,000,000 | range reported; split **illustrative** | Within F-07; capsules share 50% after costs [34]; SEN capsule sales #1 in Americas in 2024 → #3 in 2025 [35] |
+| F-09 | Extra prize money per year, top-3 vs 10th (both partner states) | 40,000 | 150,000 | 600,000 | sourced (2026 pools); **to verify (2027 pools)** | 10th in Americas earns $0; Stage 2 2026 top 3: $100k/65k/40k [47]; Masters $1M [48]; Champions $2.25M [50] |
+| F-10 | Extra sponsorship + content revenue per year (both partner states) | 0 | 250,000 | 750,000 | **illustrative** | SEN revenue $2.92M (2023) [55] → $5.79M (2024) → $6.44M (2025) [16]; can't be separated from results or Riot's share |
+| F-11 | Discount rate | 25% | 15% | 10% | **illustrative** (anchored) | Listed entertainment cost of capital 7.1% as the floor [60]; SEN loss-making, $209k cash at end-2025 [16]; startup returns 25–35% [61] |
+| F-12 | Currency | USD | USD | USD | decided | EUR and KRW figures converted at ECB rates, 29 Sep 2026 [36] |
+| F-13 | Import-slot cost (one-off, imports only) | 400,000 | 150,000 | 0 | **illustrative**; the one-import limit is **to verify (2027 rules)** | Frees johnqt's slot (S-10). Downside = pay out 2 years at ≈ $200k; Base = settle about half; Upside = sell or loan him. johnqt's lost performance isn't modelled. |
+| F-14 | Share of the top-3 improvement credited to the signing | 10% | 20% | 35% | **illustrative — the weakest assumption in the model** | Base = one of five players. Uplift = F-14 × (F-08 or F-15, + F-09 + F-10). Break-even is also reported as the share needed. |
+| F-15 | *Non-partner:* extra Riot qualification payments per year | 0 | 100,000 | 300,000 | sourced (Riot) | Non-partners get $100k for Kickoff or a Cup, $200k for Masters, $400k for Champions [10]. Downside = nothing extra; Base = Kickoff; Upside = Kickoff + Masters. |
 
 ## C. Context figures (not model inputs)
 
@@ -54,13 +61,17 @@ The Low / Base / High columns feed the scenario selector in T9.
 |---|---|---|---|
 | C-01 | VCT 2025 total revenue share to partner teams | $105.2M, of which $86M came from digital goods; no per-team split | [Hotspawn](https://www.hotspawn.com/valorant/news/vct-2025-100m-rev-share) (Riot, 2025-12-16) |
 | C-02 | SEN 2026 results | 9th–10th at Kickoff and Stage 1; out in the Stage 2 play-ins; ~10th in North America | [vlr.gg](https://www.vlr.gg/team/2/sentinels) |
-| C-03 | SEN total career winnings | $1,197,000 (vlr.gg figure) | [vlr.gg](https://www.vlr.gg/team/2/sentinels) |
+| C-03 | SEN total career winnings | $1,197,000 (vlr.gg figure). Esports Earnings gives **$1,058,000** for VALORANT (`budget_cost_research.md` [52]); the sites count events differently, so always name the source and never mix the two on one page. | [vlr.gg](https://www.vlr.gg/team/2/sentinels) |
+| C-04 | SEN finances (SEC Form C-AR, filed 2026-04-29) | Revenue $5.79M (2024), $6.44M (2025); 2025 net loss $4.28M; cash $209k at end-2025; $12.0M owed to JAG Future Ventures | [SEC](https://www.sec.gov/Archives/edgar/data/1982921/000198292126000003/form_car.pdf) |
+| C-05 | Shortlist career prize money (**prize money, not salary**) | ZmjjKK $305k, Derke $295k, Wo0t $256k, BuZz $186k, Timotino $120k; Meiy, swagzor, primmie, dgzin and OXY under $79k (to fetch) | [Esports Earnings](https://www.esportsearnings.com/games/646-valorant/top-players), data to 2026-07-12 |
+| C-06 | Riot money shared with VCT teams | $78.4M (2024, $44.3M from digital goods); VCT 2027 cuts partners to 8 per region | `budget_cost_research.md` [37][Sheep Esports] |
 
 ## D. Explicitly *not* assumed
 
 - **Performance → placement link:** no causal link is modelled in v1. The revenue uplift is a scenario input, not a prediction. The optional T12 model reports ranges only.
 - **Fit → results link:** chemistry or communication effects from roster fit aren't assumed.
 - **Accuracy of vlr.gg's "Rating":** not assumed to be accurate.
+- **Prize money as a salary proxy:** career prize money is never used to scale salary or any other input. Salary (F-02) is the same for every candidate; prize money is reference only (C-05).
 
 ## Change log
 
@@ -68,7 +79,8 @@ The Low / Base / High columns feed the scenario selector in T9.
 |---|---|
 | 2026-09-17 | v0.1 created from scoping rounds 1–2 |
 | 2026-09-18 | S-03, S-05, S-12, S-13 updated from T2. |
-| 2026-09-21 | S-07 settled (eligibility counts all maps played); S-14 approach decided (re-snapshot after 2026-10-18 and rerun). |
-| 2026-09-18 | v0.3: S-12 revised — China is not stat-less; `performance_available` only flags vlr.gg's Performance tab. |
-| 2026-09-26 | S-16 to S-19 added from T6 (baseline, slot agents, fit weights, import rule). |
 | 2026-09-18 | v0.2 after the T2 audit correction: S-05 revised (Champions 2026 is unplayed; 588 completed matches, not 622). S-10 resolved — the import slot is taken. S-14 (Champions window decision) and S-15 (vacancy premise unverified) added. |
+| 2026-09-18 | v0.3: S-12 revised — China is not stat-less; `performance_available` only flags vlr.gg's Performance tab. |
+| 2026-09-21 | S-07 settled (eligibility counts all maps played); S-14 approach decided (re-snapshot after 2026-10-18 and rerun). |
+| 2026-09-26 | S-16 to S-19 added from T6 (baseline, slot agents, fit weights, import rule). |
+| 2026-09-29 | v0.4, T8: § B rewritten as Downside / Base / Upside (worst to best case for signing) with values anchored in `budget_cost_research.md`; F-13 (import-slot cost), F-14 (credit share) and F-15 (non-partner payments) added; F-07 is now reference only. S-20 (shortlist), S-21 (scenario design) and C-04 to C-06 added. |

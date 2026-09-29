@@ -8,7 +8,7 @@ A portfolio project in data analysis and business analysis: **which player shoul
 
 It is an **unofficial fan analysis**. It is not affiliated with Sentinels or Riot Games, and every page says so.
 
-The folder is named "football analysis" for historical reasons. The project is VALORANT.
+The repo lives at `D:\VCT` (it used to be `D:\football analysis`). The project is VALORANT.
 
 ## Read first
 
@@ -19,6 +19,8 @@ The folder is named "football analysis" for historical reasons. The project is V
 | `docs/business_brief.md` | The problem, the stakeholder, the three decisions (D1–D3), scope and success criteria |
 | `docs/kpi_dictionary.md` | Every metric: formula, weighting, and what it does **not** measure |
 | `docs/assumptions_log.md` | Every non-measured number, with IDs (S-xx scope, F-xx financial, C-xx context) |
+| `docs/budget_model.md` | The budget model spec (T8): inputs, formulas, rounding and the worked test cases |
+| `docs/budget_cost_research.md` | Public sources `[n]` behind every budget input |
 
 Start any session by reading `tasks/todo.md` and working the first unchecked task. Stop at each checkpoint for the user's review.
 

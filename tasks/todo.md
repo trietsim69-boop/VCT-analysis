@@ -231,7 +231,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 - low, base and high scenarios
 
 **Acceptance criteria:**
-- [ ] `docs/budget_model.md` lists the formulas, input definitions and default values, with a source or "illustrative" label for each
+- [x] `docs/budget_model.md` lists the formulas, input definitions and default values, with a source or "illustrative" label for each (v1.0, 2026-09-29)
 - [ ] `src/budget.py` implements the formulas, and `tests/test_budget.py` covers ≥ 5 cases (including zero buyout, and revenue below cost)
 - [ ] The Esports Earnings prize history for the shortlisted players (B1, game ID 646) is included as a reference only, and is labelled "not salary"
 - [ ] Scenario ranges are anchored to sources: the minimum-salary floor (B3), the revenue-share total (B4), the partnership payment range (B5) and viewership (B6). The contract end year (B2) informs the buyout assumption.
@@ -248,7 +248,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 ### Task 9: Power BI Budget Scenarios page
 
-**Description:** Use what-if parameters for every T8 input, plus a scenario selector (low/base/high). Show KPI cards (total cost, incremental cost, break-even revenue, payback), a cost-vs-revenue waterfall and a sensitivity table comparing salary with revenue uplift.
+**Description:** Use what-if parameters for every T8 input, plus a scenario selector (Downside / Base / Upside) and a 2027 partner-status toggle (F-06). Show KPI cards (total cost, incremental cost, NPV, break-even uplift, break-even credit share, payback, max justifiable upfront spend), a cost-vs-revenue waterfall and a sensitivity table comparing salary with revenue uplift. Formulas and rounding: `docs/budget_model.md` §6–§7.
 
 **Acceptance criteria:**
 - [ ] Every input can be edited and is labelled "Assumption"

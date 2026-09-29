@@ -131,6 +131,8 @@ Riot's own pages cover the **structure** of team revenue well: the 2027 partner 
 
 ## Suggested anchors for the budget model (USD)
 
+> **Superseded by `budget_model.md` §4.** This table is the research agent's first suggestion, in cheap-to-expensive order. The model reorders the values into Downside / Base / Upside (worst to best case for signing), keeps the stand-in at $50k in all three, and adds F-13 to F-15. Use `budget_model.md` or `assumptions_log.md` § B for the values actually used.
+
 | Input | Low | Base | High | Basis / label |
 |---|---|---|---|---|
 | Candidate annual salary (tier-1 duelist) | 100,000 | 200,000 | 400,000 | **Illustrative**, bracketed by: 2021–22 NA $60k–240k [13]; 2023 NA $240k–360k pre-cut, outlier $720k [7]; 2024 cuts [15][7]; LEC median €165k ≈ $187k and average €240k ≈ $273k [12]; LCS top >$500k [18] |
@@ -220,7 +222,7 @@ FX: EUR→USD at 1.1355, KRW→USD at 1/1353.4, CAD→USD at 1/1.418 (ECB refere
 - **Leo Faria's 2025 letter** ($105.2M / $86M): X is robots-blocked. Numbers taken from three consistent secondary reports.
 - **Any credible salary figure** for TenZ (annual), aspas, Derke, Demon1, zekken or the shortlisted duelists.
 - **Any disclosed fee** for aspas → MIBR, zekken → MIBR, Derke, Less, Sayf, cNed, Jingg, or SEN's buys of johnqt, N4RRATE, Jerrwin and Reduxx.
-- **Riot Global Contract Database** (Google Sheet; docs.google.com blocked). Contract ends are taken from VLR's citation of it.
+- **Riot Global Contract Database** (Google Sheet; docs.google.com blocked) could not be read *online* during this session, so contract ends here are taken from VLR's citation of it. *Project note:* the repo holds an exported copy (`data/raw/gcd_2026-09-14.xlsx`, all four league tabs), which the model uses for years left on contract (`budget_model.md` §5).
 - **Esports Earnings individual pages** for Meiy, swagzor, primmie, dgzin and OXY (only known to be below the top-100 cutoff of $78,796). No Liquipedia fallback, because of the 429s.
 - **2026 Americas Kickoff / Stage 1 cash prizes** and the **Masters London 2026** placement distribution.
 - **Esports-specific agent commission practice** in VALORANT (no agency publishes rates); **LCS minimum salary** (not fetched).
