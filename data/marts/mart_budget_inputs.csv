@@ -5,7 +5,7 @@ player_id,player_name,fit_score,is_import_for_sen,import_source,contract_league,
 3520,ZmjjKK,83.7,true,nationality (proxy),CN,EDWARD GAMING,2026,0,matched
 25255,primmie,80.4,true,nationality (proxy),PACIFIC,FULL SENSE,2026,0,matched
 804,BuZz,79.5,true,nationality (proxy),PACIFIC,T1,2026,0,matched
-8873,dgzin,79.4,false,nationality (proxy),,,,2,not found
+8873,dgzin,79.4,false,contract database,AMERICAS,EVIL GENIUSES,2027,1,matched
 18796,OXY,78.9,false,contract database,AMERICAS,CLOUD9,2028,2,matched
 21328,Wo0t,78.3,true,nationality (proxy),EMEA,TEAM HERETICS,2026,0,matched
 29893,Timotino,78.3,false,contract database,AMERICAS,100 THIEVES,2027,1,matched
@@ -17,7 +17,7 @@ player_id,player_name,fit_score,is_import_for_sen,import_source,contract_league,
 9196,t3xture,74.7,true,nationality (proxy),PACIFIC,GEN.G,2027,1,matched
 36685,splash,74.1,true,nationality (proxy),CN,TYLOO GAMING,2028,2,matched
 24895,Jemkin,73.5,true,nationality (proxy),PACIFIC,REX REGUM QEON,2027,1,matched
-21661,spike,73.1,false,nationality (proxy),,,,2,not found
+21661,spike,73.1,false,contract database,AMERICAS,LEVIATAN,2027,1,matched
 37494,Kai,71.7,true,nationality (proxy),CN,TRACE ESPORTS,2027,1,matched
 5132,mada,70.8,false,contract database,AMERICAS,NRG,2027,1,matched
 20144,LewN,69.2,true,nationality (proxy),EMEA,KARMINE CORP,2027,1,matched
@@ -73,7 +73,7 @@ player_id,player_name,fit_score,is_import_for_sen,import_source,contract_league,
 37532,Zexy,38.0,true,nationality (proxy),PACIFIC,VARREL,2027,1,matched
 11527,NoMan,37.3,true,nationality (proxy),CN,XI LAI GAMING,2027,1,matched
 10160,Izzy,35.8,true,nationality (proxy),EMEA,Eternal Fire,2026,0,matched
-41135,Dantedeu5,33.7,false,nationality (proxy),,,,2,not found
+41135,Dantedeu5,33.7,false,contract database,AMERICAS,KRÜ VISA,2028,2,matched
 51099,ZynX,33.7,true,nationality (proxy),,,,2,not found
 25017,Ash,33.4,true,nationality (proxy),PACIFIC,GEN.G,2026,0,matched
 3983,Virtyy,33.1,false,nationality (proxy),,,,2,not found

@@ -12,13 +12,15 @@ GROUP BY 1;
 CREATE OR REPLACE TEMP VIEW names AS
 SELECT lower(trim(player_name)) AS h, count(*) AS n FROM 'data/processed/dim_player.csv' GROUP BY 1;
 
+-- Handles that differ from the vlr name (dgzin = dgz) are mapped by player_id, so a shared name can't make them ambiguous.
 CREATE OR REPLACE TEMP VIEW matched AS
-SELECT f.*,
+SELECT f.*, lower(coalesce(al.gcd_handle, trim(f.player_name))) AS h_key,
        CASE WHEN g.h IS NULL THEN 'not found'
-            WHEN g.n = 1 AND p.n = 1 THEN 'matched'
+            WHEN g.n = 1 AND (p.n = 1 OR al.player_id IS NOT NULL) THEN 'matched'
             ELSE 'ambiguous' END AS contract_match
 FROM 'data/marts/mart_fit.csv' f
-LEFT JOIN gcd g ON g.h = lower(trim(f.player_name))  -- case differs: Zmjjkk, Buzz, Primmie
+LEFT JOIN 'data/seeds/gcd_handle_aliases.csv' al ON al.player_id = f.player_id
+LEFT JOIN gcd g ON g.h = lower(coalesce(al.gcd_handle, trim(f.player_name)))  -- case differs: Zmjjkk, Buzz, Primmie
 JOIN names p ON p.h = lower(trim(f.player_name));
 
 COPY (
@@ -27,6 +29,6 @@ COPY (
            greatest(0, coalesce(g.end_year - 2026, 2)) AS years_left,  -- 2026 ends = free agent; unknown = 2 (full buyout). greatest() skips NULLs, so coalesce inside
            m.contract_match
     FROM matched m
-    LEFT JOIN gcd g ON g.h = lower(trim(m.player_name)) AND m.contract_match = 'matched'
+    LEFT JOIN gcd g ON g.h = m.h_key AND m.contract_match = 'matched'
     ORDER BY m.fit_score DESC, m.player_id
 ) TO 'data/marts/mart_budget_inputs.csv' (HEADER);
