@@ -237,7 +237,8 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 - [x] Scenario ranges are anchored to sources: the minimum-salary floor (B3), the revenue-share total (B4), the partnership payment range (B5) and viewership (B6). The contract end year (B2) informs the buyout assumption (`mart_budget_inputs.csv` years_left, from all four contract-database tabs).
 
 **Verification:**
-- [x] `pytest tests/test_budget.py` passes (22 tests; full suite 49, 2026-09-29)
+- [x] `pytest tests/test_budget.py` passes (22 tests; full suite 49, 2026-09-29; after the review 23 and 50, 2026-10-01)
+- [x] **Review applied 2026-10-01** (`docs/t8_review.md`): contract aliases for dgzin, spike and Dantedeu5; F-13 defined as a net cost; F-14 reworded as the added top-3 chance; new limits in `budget_model.md` §10. **Open:** F-14 Base level (20 or 15 points)
 - [ ] Manual check: one case is also worked by hand in a spreadsheet and matches
 
 **Dependencies:** T4 (shortlist)
@@ -248,7 +249,9 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 ### Task 9: Power BI Budget Scenarios page
 
-**Description:** Use what-if parameters for every T8 input, plus a scenario selector (Downside / Base / Upside) and a 2027 partner-status toggle (F-06). Show KPI cards (total cost, incremental cost, NPV, break-even uplift, break-even credit share, payback, max justifiable upfront spend), a cost-vs-revenue waterfall and a sensitivity table comparing salary with revenue uplift. Formulas and rounding: `docs/budget_model.md` §6–§7.
+**Description:** Use what-if parameters for every T8 input, plus a scenario selector (Downside / Base / Upside) and a 2027 partner-status toggle (F-06). Show KPI cards (total cost, incremental cost, NPV, break-even uplift, break-even top-3 chance, payback, max justifiable upfront spend), a cost-vs-revenue waterfall and a sensitivity table comparing salary with revenue uplift. Formulas and rounding: `docs/budget_model.md` §6–§7.
+
+**Headline (T8 review):** the break-even top-3 chance, shown next to F-14. It is the player's bar; F-14 is where the GM's per-player judgement goes in. NPV and Sign/Stay are secondary, because the scenario choice alone decides them for most players. Show the upfront cost split into buyout and import slot.
 
 **Acceptance criteria:**
 - [ ] Every input can be edited and is labelled "Assumption"

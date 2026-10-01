@@ -21,6 +21,7 @@ The repo lives at `D:\VCT` (it used to be `D:\football analysis`). The project i
 | `docs/assumptions_log.md` | Every non-measured number, with IDs (S-xx scope, F-xx financial, C-xx context) |
 | `docs/budget_model.md` | The budget model spec (T8): inputs, formulas, rounding and the worked test cases |
 | `docs/budget_cost_research.md` | Public sources `[n]` behind every budget input |
+| `docs/t8_review.md` | The T8 review (2026-10-01): what was checked, what was fixed, what is still open |
 
 Start any session by reading `tasks/todo.md` and working the first unchecked task. Stop at each checkpoint for the user's review.
 

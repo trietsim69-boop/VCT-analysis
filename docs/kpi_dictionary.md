@@ -126,9 +126,10 @@ Top-10 overlap: 8/10 and 7/10 respectively, with the same player first under all
 - **Break-even** ignored discounting. It is now ΔS + C₀ ÷ AF, which equals the old formula when *r* = 0.
 - **Max justifiable spend (D2)** was a *total*. It is now the maximum *upfront* spend (buyout + import-slot cost) with NPV ≥ 0.
 - **Scenarios** are one axis, Downside / Base / Upside (worst to best case for signing), with 2027 partner status as a separate toggle.
-- **Added:** import-slot cost (F-13), credit share (F-14), non-partner payments (F-15), the break-even credit share and a "not within contract" payback flag.
+- **Added:** import-slot net cost (F-13), added top-3 chance (F-14), non-partner payments (F-15), the break-even top-3 chance and a "not within contract" payback flag. F-13 and F-14 were reworded in the T8 review (`t8_review.md`).
+- **Headline:** the break-even top-3 chance, not the NPV sign. It is each player's bar; the GM's judgement (F-14) is compared against it.
 
-Outputs, in short: total acquisition cost, baseline cost, incremental cost, NPV of signing vs staying, break-even uplift per year, break-even credit share, payback, maximum justifiable upfront spend (D2) and the sign-or-stay decision (D3).
+Outputs, in short: total acquisition cost, baseline cost, incremental cost, NPV of signing vs staying, break-even uplift per year, break-even top-3 chance, payback, maximum justifiable upfront spend (D2) and the sign-or-stay decision (D3).
 
 **Does NOT measure:** actual salaries, actual buyouts or the real value of the organisation. Every output depends on the assumptions and is labelled that way.
 

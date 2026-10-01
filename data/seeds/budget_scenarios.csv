@@ -6,8 +6,8 @@ F-04,Contract length,years,2,2,2,decided (GM choice; editable 1-3)
 F-05,Agent fee as a share of candidate salary (paid by the team),fraction,0.15,0.10,0.05,illustrative
 F-08,Partner: extra bonus + capsule money per year (top-3 vs 10th),usd,200000,700000,2000000,range reported; split illustrative
 F-09,Extra prize money per year (top-3 vs 10th),usd,40000,150000,600000,sourced (2026 pools); to verify (2027 pools)
-F-10,Extra sponsorship + content revenue per year,usd,0,250000,750000,illustrative
+F-10,Extra sponsorship + content revenue per year (excludes capsules and prize money),usd,0,250000,750000,illustrative
 F-11,Discount rate,fraction,0.25,0.15,0.10,illustrative (anchored)
-F-13,Import-slot cost (one-off; imports only),usd,400000,150000,0,illustrative; one-import limit to verify (2027 rules)
-F-14,Share of the top-3 improvement credited to the signing,fraction,0.10,0.20,0.35,illustrative (weakest assumption)
+F-13,Import-slot net cost (one-off; imports only): payout to johnqt - his salary saved + like-for-like replacement salary,usd,400000,150000,0,illustrative; one-import limit to verify (2027 rules)
+F-14,Added chance of a top-3 season from the signing (percentage points as a fraction),fraction,0.10,0.20,0.35,illustrative (weakest assumption)
 F-15,Non-partner: extra Riot qualification payments per year,usd,0,100000,300000,sourced (Riot)

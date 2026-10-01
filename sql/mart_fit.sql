@@ -99,7 +99,8 @@ COPY (
     JOIN fit_pct x ON x.player_id = p.player_id
     JOIN fit ON fit.player_id = p.player_id
     JOIN 'data/processed/dim_player.csv' d ON d.player_id = p.player_id
+    LEFT JOIN 'data/seeds/gcd_handle_aliases.csv' al ON al.player_id = p.player_id  -- Riot's handle differs (dgzin = dgz)
     LEFT JOIN 'data/processed/dim_contract_americas.csv' g  -- LEFT: most candidates aren't in the Americas tab
-           ON lower(g.handle) = lower(p.player_name) AND g.gcd_role = 'PLAYER'  -- case-insensitive handle match
+           ON lower(g.handle) = lower(coalesce(al.gcd_handle, p.player_name)) AND g.gcd_role = 'PLAYER'  -- case-insensitive handle match
     ORDER BY fit_score DESC, p.player_id  -- player_id: stable order across rebuilds
 ) TO 'data/marts/mart_fit.csv' (HEADER);

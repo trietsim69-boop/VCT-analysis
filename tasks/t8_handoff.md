@@ -2,6 +2,8 @@
 
 Written 2026-09-29 at the end of the planning session for Task 8. It carries all the context from that session so someone else can write the code. **The spec is `docs/budget_model.md`**. This file explains how it got there and exactly what is left to build.
 
+> **Status 2026-10-01: built, then reviewed.** The code landed on `budget_model` on 2026-09-29. The review in `docs/t8_review.md` corrected this handoff in two places: dgzin *is* in the contract database (as "dgz"), and F-14 now reads as the added top-3 chance rather than a credit share. Where this file and `t8_review.md` disagree, the review wins.
+
 ---
 
 ## 1. Project in one paragraph
@@ -88,7 +90,7 @@ Also decided:
 | Wo0t | EMEA | TEAM HERETICS | 2026 |
 | OXY | AMERICAS | CLOUD9 | 2028 |
 | Timotino | AMERICAS | 100 THIEVES | 2027 |
-| dgzin | — | not in any tab | → years_left 2 |
+| dgzin | AMERICAS | EVIL GENIUSES (as "dgz") | 2027 — *corrected in the review; originally listed here as not found* |
 
 ### 4.2 Budget inputs mart (for T9): `data/marts/mart_budget_inputs.csv`
 
@@ -130,7 +132,7 @@ At least 5 cases are required; the spec has 8 with exact expected values in `bud
   - Every F-id in the seed appears in `assumptions_log.md`.
 - **Mart checks:**
   - `mart_budget_inputs` has 84 rows with unique `player_id`.
-  - The 9 shortlist contract years match the table in 4.1, and dgzin has years_left = 2.
+  - The shortlist contract years match the table in 4.1 (all 10, after the alias fix).
 - **Prize seed:** no salary column, and every row labelled not salary.
 
 Expected values from the spec, for quick copy:
@@ -159,15 +161,7 @@ Columns: `player_id, player_name, career_prize_usd, source, as_of, label`, where
 
 > **Done 2026-09-29**, except ticking the remaining `todo.md` T8 boxes as the code lands. D2 in `business_brief.md` was also redefined to the maximum *upfront* spend, with total acquisition cost shown alongside.
 
-- **`docs/assumptions_log.md` § B:**
-  - Replace the F-01 to F-11 rows with the values and statuses in `budget_model.md` §4.
-  - Relabel the columns Downside / Base / Upside.
-  - Add F-13, F-14 and F-15.
-  - Mark F-01, F-07/F-08, F-09 and the import rule "to verify (2027 rules)".
-  - Add a change-log line dated 2026-09-29.
-- **`docs/kpi_dictionary.md` § E:** replace the formula table with a pointer to `budget_model.md` and a short note on what changed (§6.4 of the spec).
-- **`tasks/todo.md` T8:** tick items as they're done. The Esports Earnings item is covered by 4.6; the scenario-anchoring item by `budget_model.md` §4 and `budget_cost_research.md`.
-- **`CLAUDE.md`:** folder name `D:\VCT`; status "T1–T7 done, T8 in progress"; add `budget_model.md` and `budget_cost_research.md` to the read-first table.
+Covered: the assumptions log § B, `kpi_dictionary.md` § E, the T8 boxes in `todo.md` and `CLAUDE.md`.
 
 ## 5. Rules that apply (from CLAUDE.md, restated for this task)
 
@@ -197,7 +191,7 @@ Columns: `player_id, player_name, career_prize_usd, source, as_of, label`, where
   - Confirm import status for the players flagged by nationality (S-19).
   - Discuss johnqt's lost performance, which F-13 doesn't model.
   - State which 2027 rule changes would flip the Base "stay, narrowly" result.
-  - Note that the result flips to sign at a credit share of ≈ 24–32%.
+  - Note that the result flips to sign once the signing adds ≈ 24–32 points to SEN's top-3 chance (break-even bars; `t8_review.md`).
 - **S-14:** after Champions 2026 ends (2026-10-18), re-snapshot and rerun. The fit shortlist may change, and the budget mart follows automatically.
 - **Unverified facts** (see `budget_cost_research.md` "Could not verify"):
   - the 2027 minimum salary and import limit
