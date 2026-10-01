@@ -148,3 +148,16 @@ def test_prize_seed_is_labelled_not_salary():
     assert not any("salary" in c for c in rows[0] if c != "label")
     assert {r["label"] for r in rows} == {"prize money, not salary"}
     assert all(r["career_prize_usd"] != "0" for r in rows)  # unknown = blank, never 0
+
+
+def test_reference_components_rebuild_the_outcome():
+    """T9's DAX recomputes NPV from these columns and the F-14 slider; at the scenario's own F-14
+    the result must equal the mart's rounded npv on every row (budget_model.md §6)."""
+    with open("data/marts/mart_budget_reference.csv", newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+    assert len(rows) == 504
+    for r in rows:
+        upfront, af, ds, v = (float(r[c]) for c in ("upfront", "af", "extra_salary", "swing_value"))
+        assert upfront == float(r["buyout"]) + float(r["import_cost"])
+        npv = (S[r["scenario"]]["F-14"] * v - ds) * af - upfront
+        assert half_up(npv) == int(r["npv"]), (r["player_name"], r["scenario"], r["partner"])

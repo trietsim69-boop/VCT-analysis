@@ -10,6 +10,9 @@ import csv
 from decimal import ROUND_HALF_UP, Decimal
 
 SCENARIOS = ("downside", "base", "upside")
+COMPONENTS = {"B": "buyout", "I": "import_cost", "C0": "upfront", "AF": "af", "dS": "extra_salary",
+              "V": "swing_value"}  # written unrounded; U and G depend on F-14, so DAX computes them
+INTERNAL = (*COMPONENTS, "U", "G")  # evaluate() keys that are not rounded outputs
 
 
 def load_scenarios(path="data/seeds/budget_scenarios.csv"):
@@ -34,7 +37,9 @@ def evaluate(inp, years_left, is_import, partner=True):
     Y = int(inp["F-04"])
 
     AF = sum(1 / (1 + r) ** t for t in range(1, Y + 1))  # annuity factor, = Y at r = 0
-    C0 = B_full * years_left / 2 + (inp["F-13"] if is_import else 0)  # upfront: buyout + import slot
+    B = B_full * years_left / 2  # buyout, scaled by contract years left
+    I = inp["F-13"] if is_import else 0  # import-slot net cost
+    C0 = B + I  # upfront
     dS = S * (1 + a) - S0  # agent fee on the candidate's salary only
     V = (inp["F-08"] if partner else inp["F-15"]) + inp["F-09"] + inp["F-10"]  # value of 10th -> top-3
     U = k * V
@@ -46,7 +51,7 @@ def evaluate(inp, years_left, is_import, partner=True):
     payback = C0 / G if G > 0 else None  # never pays back = blank
     npv = G * AF - C0
     return {
-        "AF": AF, "C0": C0, "dS": dS, "V": V, "U": U, "G": G,
+        "AF": AF, "C0": C0, "dS": dS, "V": V, "U": U, "G": G, "B": B, "I": I,
         "tac": half_up(tac),
         "baseline_cost": half_up(S0 * Y),
         "incremental_cost": half_up(tac - S0 * Y),
@@ -74,7 +79,9 @@ def write_reference(path="data/marts/mart_budget_reference.csv"):
                 res = evaluate(scen[s], int(c["years_left"]), imp, partner)
                 out.append({"player_id": c["player_id"], "player_name": c["player_name"], "scenario": s,
                             "partner": partner,
-                            **{k: v for k, v in res.items() if k not in ("AF", "C0", "dS", "V", "U", "G")}})
+                            **{k: v for k, v in res.items() if k not in INTERNAL},
+                            # unrounded components, so T9's DAX can recompute the outcome live from F-14
+                            **{col: res[k] for k, col in COMPONENTS.items()}})
     with open(path, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=out[0])
         w.writeheader()

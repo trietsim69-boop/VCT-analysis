@@ -34,7 +34,7 @@ Net effect on the conclusion: items 6 and 7 make Base slightly generous; item 8 
 
 ## 3. Open
 
-- **F-14 Base level: 20 or 15 points?** Under the new wording, 20 points from one duelist joining a 10th-place team is generous. **This matters more than it looks:** at 15, the expected uplift is 15% × $1.1M = $165k/yr, just below the extra salary cost of $170k/yr, so the yearly gain turns negative for *every* candidate. Base would then sign nobody (today: 4), and payback and max upfront spend go blank for all. The break-even bars do not change. Left at 20 until decided.
+- ✅ **Decided 2026-10-01: F-14 Base stays at 20 points.** The question was 20 or 15. Under the new wording, 20 points from one duelist joining a 10th-place team is generous. **This matters more than it looks:** at 15, the expected uplift is 15% × $1.1M = $165k/yr, just below the extra salary cost of $170k/yr, so the yearly gain turns negative for *every* candidate. Base would then sign nobody (today: 4), and payback and max upfront spend go blank for all. The break-even bars do not change. T9 exposes F-14 as a slider (default 20), so a lower judgement can be tested live.
 - **Spreadsheet check by hand** of case 1 (Derke, Base): the last T8 verification box.
 - **14 pool players are still unmatched** in the contract database and get the full buyout (none on the shortlist). Some may be on non-partner teams and effectively free agents.
 - **Import status by nationality** for non-Americas players is still a proxy (S-19), confirmed by hand in T11.

@@ -238,7 +238,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 **Verification:**
 - [x] `pytest tests/test_budget.py` passes (22 tests; full suite 49, 2026-09-29; after the review 23 and 50, 2026-10-01)
-- [x] **Review applied 2026-10-01** (`docs/t8_review.md`): contract aliases for dgzin, spike and Dantedeu5; F-13 defined as a net cost; F-14 reworded as the added top-3 chance; new limits in `budget_model.md` §10. **Open:** F-14 Base level (20 or 15 points)
+- [x] **Review applied 2026-10-01** (`docs/t8_review.md`): contract aliases for dgzin, spike and Dantedeu5; F-13 defined as a net cost; F-14 reworded as the added top-3 chance; new limits in `budget_model.md` §10. F-14 Base kept at 20 points (decided 2026-10-01)
 - [ ] Manual check: one case is also worked by hand in a spreadsheet and matches
 
 **Dependencies:** T4 (shortlist)
@@ -247,22 +247,50 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 ---
 
-### Task 9: Power BI Budget Scenarios page
+### Task 9: Power BI Budget Scenarios page — **slim scope (decided 2026-10-01)**
 
-**Description:** Use what-if parameters for every T8 input, plus a scenario selector (Downside / Base / Upside) and a 2027 partner-status toggle (F-06). Show KPI cards (total cost, incremental cost, NPV, break-even uplift, break-even top-3 chance, payback, max justifiable upfront spend), a cost-vs-revenue waterfall and a sensitivity table comparing salary with revenue uplift. Formulas and rounding: `docs/budget_model.md` §6–§7.
+**Description:** One Budget page, reached by drill-through on `dim_player[player_id]`. For the selected candidate it shows the **bar** (break-even top-3 chance) next to the GM's **belief** (F-14, the page's one slider, default 20), and the outcome that follows: NPV, Sign/Stay, payback with the "not within contract" flag, max upfront spend, and the upfront cost split into buyout and import slot. A shortlist table (top-10 fit band) and a read-only assumptions panel sit underneath. Scenario (Downside / Base / Upside) and 2027 partner status (F-06) are single-select slicers. Formulas and rounding: `docs/budget_model.md` §6–§7.
 
-**Headline (T8 review):** the break-even top-3 chance, shown next to F-14. It is the player's bar; F-14 is where the GM's per-player judgement goes in. NPV and Sign/Stay are secondary, because the scenario choice alone decides them for most players. Show the upfront cost split into buyout and import slot.
+**Slim scope:** only F-14 is live in DAX; everything else comes from `mart_budget_reference.csv` for the selected scenario and partner state. Dropped from the original T9: what-if parameters for every input, the cost-vs-revenue waterfall and the salary × uplift sensitivity table. **F-14 slider:** one value used in every scenario; a card shows what the scenario suggests (10 / 20 / 35).
 
 **Acceptance criteria:**
-- [ ] Every input can be edited and is labelled "Assumption"
-- [ ] The selected candidate carries through from the other pages
+- [ ] F-14 is editable; every other input is shown read-only for the selected scenario, labelled "Assumption" with its F-id
+- [ ] The selected candidate carries through from the other pages (drill-through)
+- [ ] The break-even top-3 chance is the headline, next to F-14
 
 **Verification:**
-- [ ] Manual check: all T8 test cases, entered in Power BI, reproduce the pytest outputs exactly
-- [ ] Manual check: the sensitivity table changes direction correctly (a higher salary means a higher break-even)
+- [ ] Parity: with the slider at the scenario's F-14, worked cases 1–5 (`budget_model.md` §8) reproduce the pytest outputs exactly. Cases 6–8 change r or Y, which the slim page doesn't expose; pytest covers them
+- [ ] Meiy, Base, partner: Stay at F-14 = 32, Sign at 33 (his bar is 32.2)
 
-**Dependencies:** T5, T8
-**Files:** `valorant_recruitment.pbix`, `docs/dax_measures.md`
+#### T9.1 — Cost and value components in the reference mart · XS — ✅ **done 2026-10-01**
+- [x] `mart_budget_reference.csv` gains unrounded `buyout`, `import_cost`, `upfront`, `af`, `extra_salary`, `swing_value`; the 15 existing columns are unchanged (504 rows)
+- [x] Verify: a test rebuilds NPV from those columns at the scenario's F-14 and matches `npv` on all 504 rows; 51 tests pass
+
+#### T9.2 — Model and page skeleton · S
+- [ ] Import `mart_budget_reference`, `mart_budget_inputs` and `budget_scenarios` (unpivoted to input × scenario in Power Query); types set (`partner` True/False; `k_star_pct`, `payback_years` Decimal so blanks stay blank)
+- [ ] `dim_player[player_id]` → both marts, 1:* single; Budget page with drill-through on `dim_player[player_id]`, Keep all filters **Off**; scenario and partner slicers, single-select, default base / True
+- [ ] Verify: drill from Roster Fit on Derke shows Derke; one reference row in context per scenario × partner; Back works
+
+#### T9.3 — Headline: the bar vs the belief · S
+- [ ] Measures for break-even top-3 chance, break-even uplift, buyout, import-slot cost, upfront; what-if parameter **F-14** (0–50 points, step 1, default 20); "Scenario suggests" card
+- [ ] Verify: Derke, Base, partner reads 23.8 points and $150,000 upfront = $0 buyout + $150,000 import slot
+
+#### T9.4 — Live outcome · S
+- [ ] NPV, Sign/Stay, payback (+ flag), max upfront from the T9.1 columns and the slider, rounded as `budget_model.md` §7; blanks stay blank
+- [ ] Verify: Meiy flips Stay → Sign between 32 and 33; parity checkpoint below
+
+#### T9.5 — Shortlist table, assumptions panel, labels · S
+- [ ] Top-10 fit band table (fit band, years left, import, upfront, break-even, live NPV, decision; totals off); assumptions panel; disclaimer text box
+- [ ] Verify: 10 rows; changing scenario moves the break-even; dgzin shows 1 year left and 23.8
+
+#### Checkpoint — parity
+- [ ] Cases 1–5 match pytest exactly with the slider at the scenario's F-14
+
+#### T9.6 — Docs · XS
+- [ ] `docs/dax_measures.md` §8 (model, measures, page, verification); tick T9 here
+
+**Dependencies:** T5, T7, T8
+**Files:** `valorant_recruitment.pbix`, `docs/dax_measures.md`, `src/budget.py`, `tests/test_budget.py`, `data/marts/mart_budget_reference.csv`
 **Scope:** M
 
 ## ✅ Checkpoint C — Analyst tool complete
