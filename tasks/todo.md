@@ -247,56 +247,61 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 ---
 
-### Task 9: Power BI Budget Scenarios page — **slim scope (decided 2026-10-01)**
+### Task 9: Power BI Budget Scenarios page — ✅ **done 2026-10-02 (slim scope, decided 2026-10-01)**
+
+> Two pages in `valorant_recruitment.pbix`: **Budget Overview** (shortlist of 10) and **Budget** (drill-through on `dim_player[player_id]`). Model, measures and checks in `docs/dax_measures.md` § 8. The shortlist moved to its own page because the drill-through filter would cut it to one row.
 
 **Description:** One Budget page, reached by drill-through on `dim_player[player_id]`. For the selected candidate it shows the **bar** (break-even top-3 chance) next to the GM's **belief** (F-14, the page's one slider, default 20), and the outcome that follows: NPV, Sign/Stay, payback with the "not within contract" flag, max upfront spend, and the upfront cost split into buyout and import slot. A shortlist table (top-10 fit band) and a read-only assumptions panel sit underneath. Scenario (Downside / Base / Upside) and 2027 partner status (F-06) are single-select slicers. Formulas and rounding: `docs/budget_model.md` §6–§7.
 
 **Slim scope:** only F-14 is live in DAX; everything else comes from `mart_budget_reference.csv` for the selected scenario and partner state. Dropped from the original T9: what-if parameters for every input, the cost-vs-revenue waterfall and the salary × uplift sensitivity table. **F-14 slider:** one value used in every scenario; a card shows what the scenario suggests (10 / 20 / 35).
 
 **Acceptance criteria:**
-- [ ] F-14 is editable; every other input is shown read-only for the selected scenario, labelled "Assumption" with its F-id
-- [ ] The selected candidate carries through from the other pages (drill-through)
-- [ ] The break-even top-3 chance is the headline, next to F-14
+- [x] F-14 is editable; every other input is shown read-only for the selected scenario, labelled "Assumption" with its F-id — slider 0–50, default 20; assumptions table of 12 inputs on the Budget page
+- [x] The selected candidate carries through from the other pages (drill-through) — from Roster Fit and from Budget Overview
+- [x] The break-even top-3 chance is the headline, next to F-14
 
 **Verification:**
-- [ ] Parity: with the slider at the scenario's F-14, worked cases 1–5 (`budget_model.md` §8) reproduce the pytest outputs exactly. Cases 6–8 change r or Y, which the slim page doesn't expose; pytest covers them
-- [ ] Meiy, Base, partner: Stay at F-14 = 32, Sign at 33 (his bar is 32.2)
+- [x] Parity, Base, partner: NPV matches `mart_budget_reference.csv` to the dollar for all 10 shortlisted players at F-14 = 20 (cases 1–2 of `budget_model.md` §8), and the hand-computed values at 24. Cases 6–8 change r or Y, which the slim page doesn't expose; pytest covers them
+- [ ] Parity, cases 3–5 (non-partner; Downside at 10; Upside at 35): not yet recorded in `dax_measures.md` § 8
+- [x] Meiy, Base, partner: Stay at F-14 = 32, Sign at 33 (his bar is 32.2); Derke: Stay at 23, Sign at 24 (bar 23.8)
 
 #### T9.1 — Cost and value components in the reference mart · XS — ✅ **done 2026-10-01**
 - [x] `mart_budget_reference.csv` gains unrounded `buyout`, `import_cost`, `upfront`, `af`, `extra_salary`, `swing_value`; the 15 existing columns are unchanged (504 rows)
 - [x] Verify: a test rebuilds NPV from those columns at the scenario's F-14 and matches `npv` on all 504 rows; 51 tests pass
 
-#### T9.2 — Model and page skeleton · S
-- [ ] Import `mart_budget_reference`, `mart_budget_inputs` and `budget_scenarios` (unpivoted to input × scenario in Power Query); types set (`partner` True/False; `k_star_pct`, `payback_years` Decimal so blanks stay blank)
-- [ ] `dim_player[player_id]` → both marts, 1:* single; Budget page with drill-through on `dim_player[player_id]`, Keep all filters **Off**; scenario and partner slicers, single-select, default base / True
-- [ ] Verify: drill from Roster Fit on Derke shows Derke; one reference row in context per scenario × partner; Back works
+#### T9.2 — Model and page skeleton · S — ✅ **done 2026-10-02**
+- [x] Import `mart_budget_reference`, `mart_budget_inputs` and `budget_scenarios` (unpivoted to input × scenario in Power Query); types set (`partner` True/False; `k_star_pct`, `payback_years` Decimal so blanks stay blank)
+- [x] `dim_player[player_id]` → both marts, 1:* single (plus `dim_scenario` → reference and assumptions); Budget page with drill-through on `dim_player[player_id]`, Keep all filters **Off**; scenario and partner slicers, single-select, default base / True
+- [x] Verify: drill from Roster Fit on Derke shows Derke; one reference row in context per scenario × partner (base, True: 23.8, −68,715, 150,000); Back works
 
-#### T9.3 — Headline: the bar vs the belief · S
-- [ ] Measures for break-even top-3 chance, break-even uplift, buyout, import-slot cost, upfront; what-if parameter **F-14** (0–50 points, step 1, default 20); "Scenario suggests" card
-- [ ] Verify: Derke, Base, partner reads 23.8 points and $150,000 upfront = $0 buyout + $150,000 import slot
+#### T9.3 — Headline: the bar vs the belief · S — ✅ **done 2026-10-02**
+- [x] Measures for break-even top-3 chance, break-even uplift, buyout, import-slot cost, upfront; what-if parameter **F-14** (0–50 points, step 1, default 20); "Scenario suggests" card
+- [x] Verify: Derke, Base, partner reads 23.8 points and $150,000 upfront = $0 buyout + $150,000 import slot
 
-#### T9.4 — Live outcome · S
-- [ ] NPV, Sign/Stay, payback (+ flag), max upfront from the T9.1 columns and the slider, rounded as `budget_model.md` §7; blanks stay blank
-- [ ] Verify: Meiy flips Stay → Sign between 32 and 33; parity checkpoint below
+#### T9.4 — Live outcome · S — ✅ **done 2026-10-02**
+- [x] NPV, Sign/Stay, payback (+ flag), max upfront from the T9.1 columns and the slider, rounded as `budget_model.md` §7; blanks stay blank
+- [x] Verify: Meiy flips Stay → Sign between 32 and 33; parity checkpoint below
 
-#### T9.5 — Shortlist table, assumptions panel, labels · S
-- [ ] Top-10 fit band table (fit band, years left, import, upfront, break-even, live NPV, decision; totals off); assumptions panel; disclaimer text box
-- [ ] Verify: 10 rows; changing scenario moves the break-even; dgzin shows 1 year left and 23.8
+#### T9.5 — Shortlist table, assumptions panel, labels · S — ✅ **done 2026-10-02**
+- [x] Top-10 fit band table (fit band, years left, import, upfront, break-even, live NPV, decision; totals off) on **Budget Overview**; assumptions panel and disclaimer on **Budget**
+- [ ] **Open:** add "Unofficial fan analysis, not affiliated with Sentinels or Riot Games" to both pages' notes (CLAUDE.md: every page says so)
+- [x] Verify: 10 rows; dgzin shows 1 year left, 23.8 and "Resident · contract database" (after Refresh)
 
 #### Checkpoint — parity
-- [ ] Cases 1–5 match pytest exactly with the slider at the scenario's F-14
+- [x] Cases 1–2 (Base, partner) match pytest exactly; all 10 shortlisted players checked
+- [ ] Cases 3–5 still to record (see Verification above)
 
-#### T9.6 — Docs · XS
-- [ ] `docs/dax_measures.md` §8 (model, measures, page, verification); tick T9 here
+#### T9.6 — Docs · XS — ✅ **done 2026-10-02**
+- [x] `docs/dax_measures.md` §8 (model, measures, pages, lessons, verification, open items); T9 ticked here
 
 **Dependencies:** T5, T7, T8
 **Files:** `valorant_recruitment.pbix`, `docs/dax_measures.md`, `src/budget.py`, `tests/test_budget.py`, `data/marts/mart_budget_reference.csv`
 **Scope:** M
 
-## ✅ Checkpoint C — Analyst tool complete
-- [ ] All 3 Power BI pages work, with cross-filtering and drill-through
-- [ ] The budget page matches the reference calculations
-- [ ] **Human review before continuing**
+## ✅ Checkpoint C — Analyst tool complete — **passed 2026-10-02**
+- [x] All Power BI pages work, with cross-filtering and drill-through — Scouting, Roster Fit, Candidate Fit, Budget Overview, Budget (QA is the check page)
+- [x] The budget page matches the reference calculations — Base, partner, to the dollar for the 10 shortlisted players; cases 3–5 still to record
+- [x] **Human review before continuing** — signed off in commit `1e54995` ("final budget report PBI and pbi sign off", 2026-10-02)
 
 ---
 

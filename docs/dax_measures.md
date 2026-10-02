@@ -2,7 +2,7 @@
 
 Task 5 deliverable. Companion to `sql/mart_scouting.sql`, which this model must agree with.
 
-File: `valorant_recruitment.pbix` (repo root). Pages: **Scouting**, **Roster Fit**, **Candidate Fit**, **QA**. Sections 1–6 cover the Scouting model (T5); section 7 covers Roster Fit (T7).
+File: `valorant_recruitment.pbix` (repo root). Pages: **Scouting**, **Roster Fit**, **Candidate Fit**, **Budget Overview**, **Budget**, **QA**. Sections 1–6 cover the Scouting model (T5); section 7 covers Roster Fit (T7); section 8 covers the Budget pages (T9).
 
 ---
 
@@ -473,3 +473,225 @@ All match `mart_fit.csv`. Also checked:
   (96th vs 55th percentile) but he takes slightly fewer opening duels (FKPR 81st vs 93rd) and
   his ADR swings more map to map (consistency 33rd vs 75th). Worth a line in the T11 memo.
 - **S-14:** re-verify this table after the post-Champions re-snapshot, alongside the QA page.
+
+---
+
+## 8. Budget Overview and Budget (T9)
+
+Added 2026-10-02. Companion to `src/budget.py` and `docs/budget_model.md` (formulas §6, rounding §7).
+**Slim scope:** only F-14 is live in DAX. Every other number is read from
+`mart_budget_reference.csv` for the selected scenario and partner state.
+
+### What the pages say
+
+The **break-even** is the bar: the points of top-3 chance a signing must add to pay for itself.
+**F-14** is the belief: the GM's judgement of how many points he does add, set with the page's one
+slider. Sign if the belief clears the bar. The model does not rank players (`budget_model.md` §1).
+
+### Model additions
+
+| Table | Source | Grain | Rows |
+|---|---|---|---|
+| `mart_budget_reference` | `data/marts/mart_budget_reference.csv` | candidate × scenario × partner | 504 |
+| `mart_budget_inputs` | `data/marts/mart_budget_inputs.csv` | candidate | 84 |
+| `budget_assumptions` | `data/seeds/budget_scenarios.csv`, **unpivoted** | input × scenario | 36 |
+| `dim_scenario` | Enter data: `scenario`, `sort`, `label` | scenario | 3 |
+| `F14` | What-if parameter, `GENERATESERIES( 0, 50, 1 )`, default 20 | points | 51 |
+
+`budget_assumptions`: in Power Query select `downside`, `base`, `upside` → **Unpivot Columns**,
+rename `Attribute` → `scenario` and `Value` → `value` (Decimal). `dim_scenario[label]` is sorted by
+`sort`, so slicers read Downside, Base, Upside.
+
+```
+dim_player[player_id]   → mart_budget_reference[player_id]   1:*  single
+dim_player[player_id]   → mart_budget_inputs[player_id]      1:*  single   (set by hand; Power BI offers 1:1 both)
+dim_scenario[scenario]  → mart_budget_reference[scenario]    1:*  single
+dim_scenario[scenario]  → budget_assumptions[scenario]       1:*  single
+```
+
+**Types.** `partner`, `payback_within_contract`, `cannot_break_even` True/False. `k_star_pct`,
+`payback_years` and the six component columns (`buyout`, `import_cost`, `upfront`, `af`,
+`extra_salary`, `swing_value`) Decimal: `payback_years` is blank when the yearly gain is negative
+and must load as null, not 0; `af` must keep full precision. Money columns Whole Number.
+
+### Controls
+
+| Control | Field | Setting |
+|---|---|---|
+| Scenario | `dim_scenario[label]` | Single select, Tile; default Base |
+| SEN is a 2027 partner (Assumption F-06) | `mart_budget_reference[partner]` | Single select, Tile; default True |
+| Your judgement (Assumption F-14) | `F14[F14]` slider | 0–50 points, default 20 |
+
+All three are **synced** between Budget Overview and Budget (View → Sync slicers).
+
+**The F-14 slider is one value for every scenario.** The scenarios vary costs and the swing value;
+F-14 is the GM's judgement, not a scenario setting. A card shows what the scenario would suggest
+(10 / 20 / 35). So the Downside and Upside NPVs equal the mart's `npv` only when the slider is set
+to 10 or 35.
+
+### Measures
+
+Read from the mart (one row is in context once a candidate, a scenario and a partner state are set):
+
+```dax
+Budget Candidate        = SELECTEDVALUE( dim_player[player_name] )
+
+Break-even Top-3 Chance = SELECTEDVALUE( mart_budget_reference[k_star_pct] )   -- points, not %
+Break-even Uplift       = SELECTEDVALUE( mart_budget_reference[u_star] )
+Buyout                  = SELECTEDVALUE( mart_budget_reference[buyout] )       -- F-03 × years left ÷ 2
+Import Slot Cost        = SELECTEDVALUE( mart_budget_reference[import_cost] )  -- F-13, imports only
+Upfront Cost            = SELECTEDVALUE( mart_budget_reference[upfront] )      -- = Buyout + Import Slot Cost
+
+Break-even Note =
+IF( SELECTEDVALUE( mart_budget_reference[cannot_break_even] ), "Cannot break even at this swing value" )
+
+Contract Years Left     = SELECTEDVALUE( mart_budget_inputs[years_left] )
+```
+
+From the seed, for the selected scenario:
+
+```dax
+Scenario F14 =
+CALCULATE( SELECTEDVALUE( budget_assumptions[value] ), budget_assumptions[input_id] = "F-14" ) * 100
+
+Contract Years =
+CALCULATE( SELECTEDVALUE( budget_assumptions[value] ), budget_assumptions[input_id] = "F-04" )
+
+Assumption Value =            -- one display column for usd, fraction and years
+VAR v = SELECTEDVALUE( budget_assumptions[value] )
+VAR u = SELECTEDVALUE( budget_assumptions[unit] )
+RETURN SWITCH( u,
+    "usd", FORMAT( v, "$#,##0" ),
+    "fraction", FORMAT( v, "0%" ),
+    "years", FORMAT( v, "0" ) & " years" )
+```
+
+Live, from the slider (`F14 Value` is created by the what-if parameter). These follow
+`budget_model.md` §6: U = k × V, G = U − ΔS, NPV = G × AF − C₀.
+
+```dax
+Net Gain per Year =
+VAR v  = SELECTEDVALUE( mart_budget_reference[swing_value] )
+VAR ds = SELECTEDVALUE( mart_budget_reference[extra_salary] )
+RETURN IF( NOT ISBLANK( v ), [F14 Value] / 100 * v - ds )
+
+NPV Live =
+VAR g  = [Net Gain per Year]
+VAR af = SELECTEDVALUE( mart_budget_reference[af] )
+VAR c0 = SELECTEDVALUE( mart_budget_reference[upfront] )
+RETURN IF( NOT ISBLANK( g ), ROUND( g * af - c0, 0 ) )
+
+Decision Live =               -- on the unrounded NPV, as in budget.py
+VAR g  = [Net Gain per Year]
+VAR af = SELECTEDVALUE( mart_budget_reference[af] )
+VAR c0 = SELECTEDVALUE( mart_budget_reference[upfront] )
+RETURN IF( NOT ISBLANK( g ), IF( g * af - c0 >= 0, "Sign", "Stay" ) )
+
+Payback Years =               -- simple (undiscounted); blank when the yearly gain is not positive
+VAR g  = [Net Gain per Year]
+VAR c0 = SELECTEDVALUE( mart_budget_reference[upfront] )
+RETURN IF( g > 0, ROUND( DIVIDE( c0, g ), 1 ) )
+
+Payback Note =
+VAR g = [Net Gain per Year]
+VAR p = [Payback Years]
+RETURN SWITCH( TRUE(),
+    ISBLANK( g ), BLANK(),
+    g <= 0, "Never pays back: the yearly gain is negative",
+    p > [Contract Years], "Not within contract",
+    "Within contract" )
+
+Max Upfront Spend =
+VAR g  = [Net Gain per Year]
+VAR af = SELECTEDVALUE( mart_budget_reference[af] )
+RETURN IF( NOT ISBLANK( g ), ROUND( MAX( 0, g * af ), 0 ) )
+```
+
+DAX `ROUND` rounds halves away from zero, the same as `half_up` in `src/budget.py`, so the two
+agree to the dollar.
+
+**Payback is undiscounted and NPV is not**, so they can disagree near the bar: Meiy at F-14 = 32
+pays back in 1.6 years ("Within contract") and is still Stay, because at 15% the two discounted
+years fall $4,121 short of the upfront cost.
+
+Formats: break-even 1 decimal (points); money Currency, 0 decimals; Payback Years 1 decimal.
+
+### Budget Overview page
+
+Not a drill-through page. It lists the shortlist; it sits before Budget.
+
+| Visual | Fields | Notes |
+|---|---|---|
+| Shortlist table | `dim_player[player_id]`, `dim_player[player_name]`, Fit Band, Contract Years Left, Fit Score, Import Status, Upfront Cost, Break-even Top-3 Chance, NPV Live, Decision Live | Visual filter **Fit Band is "Top 10 of 84"**; sorted by Fit Score desc; totals off. Right-click → Drill through → Budget |
+| Controls | F-14 slider, Scenario, Partner | Synced with Budget |
+| Note | Every number is an assumption; candidates differ on cost only by contract years left and the import slot | — |
+
+### Budget page
+
+Drill-through field `dim_player[player_id]`, **Keep all filters Off**, Cross-report Off — the same
+setup as Candidate Fit.
+
+| Row | Cards |
+|---|---|
+| Header | Candidate; Scenario; Partner |
+| Bar vs belief | Break-even Top-3 Chance; F14 Value ("Your judgement (F-14)"); F-14 slider; Scenario F14 ("This scenario suggests") |
+| Outcome | Decision Live; NPV Live; Payback Years + Payback Note; Max Upfront Spend |
+| Costs | Upfront Cost; Buyout (Assumption F-03); Import Slot Cost (Assumption F-13); Break-even Uplift; Break-even Note |
+| Assumptions | Table: `budget_assumptions[input_id]`, `[input]`, Assumption Value, `[status]` — 12 rows for the selected scenario |
+| Disclaimer | Text box |
+
+### Why two pages
+
+The same reason as §7. A shortlist table on the drill-through page would be cut to one row by the
+drill filter, so the list lives on Budget Overview and the candidate view on Budget.
+
+### Lessons from the build
+
+- **Use a measure, not the column, for years left.** With `mart_budget_inputs[years_left]` as a
+  table column, every player appeared four times (0, 1, 2, 3): the other measures do not depend on
+  that column, so Power BI paired each player with every value. `Contract Years Left` fixes it.
+- **The assumptions table needs the Scenario slicer on its page.** Without a scenario in context,
+  `SELECTEDVALUE` is blank for every input whose three values differ; only F-01 and F-04 showed.
+- **Cards abbreviate money** ($150K, ($69K)). This version of the card visual has no Display units
+  setting. Exact dollars are read from a table visual; the shortlist table shows them in full.
+- **Refresh after a mart rebuild.** `mart_fit` in the file predated the handle-alias fix until
+  Home → Refresh; dgzin's import status then changed from "nationality (proxy)" to "contract
+  database". The folder was renamed to `D:\VCT`, so old source paths may need Data source settings →
+  Change Source.
+
+### Verification (2026-10-02)
+
+Budget Overview, Base, partner True — exact, read from the table:
+
+| F-14 | Meiy, swagzor, OXY ($300,000 upfront, bar 32.2) | Derke, ZmjjKK, primmie, BuZz, dgzin, Wo0t, Timotino ($150,000 upfront, bar 23.8) |
+|---|---|---|
+| 20 | −$218,715 · Stay | −$68,715 · Stay |
+| 24 | −$147,183 · Stay | $2,817 · **Sign** |
+
+The F-14 = 20 row equals `npv` in `mart_budget_reference.csv` for all ten players, which are worked
+cases 1 and 2 of `budget_model.md` §8. Contract years left: Meiy 1, swagzor 1, Derke 0, ZmjjKK 0,
+primmie 0, BuZz 0, dgzin 1, OXY 2, Wo0t 0, Timotino 1.
+
+Also checked:
+
+- **Flip at the bar.** Derke: Stay at 23, Sign at 24 (bar 23.8). Meiy: Stay at 32, Sign at 33 (bar 32.2).
+- **Budget page, Derke, Base, partner:** break-even 23.8; upfront $150K = $0 buyout + $150K import
+  slot; at F-14 = 20 Stay, payback 3.0 "Not within contract", max upfront $81K; at 38 Sign,
+  NPV $253K (253,176 by hand), payback 0.6, max upfront $403K.
+- **Budget page, Meiy, Base, partner:** break-even 32.2; upfront $300K = $150K + $150K; at 24 Stay,
+  NPV ($147K), payback 3.2, max upfront $153K, uplift needed $355K.
+- **Assumptions table, Base:** 12 rows, values equal `budget_scenarios.csv`.
+- **Drill-through:** Roster Fit → Budget carries the candidate (Derke, Meiy); Back works. The slider and scenario stay in sync between Budget Overview and Budget (both read 24 / Base).
+
+### Open items (T9)
+
+- **Cases 3–5 of `budget_model.md` §8 are not yet recorded here:** Timotino, Base, partner False,
+  F-14 = 20 (−$263,800, payback blank); Meiy, Downside, F-14 = 10 (−$1,330,840, "cannot break
+  even"); primmie, Upside, F-14 = 35 ($1,939,463, Sign, payback 0.0). Pytest covers all three; the
+  page check is a formality but belongs in this table.
+- **The two Budget pages do not carry the "unofficial fan analysis, not affiliated with Sentinels
+  or Riot Games" line** that CLAUDE.md asks for on every page. Their notes say "every number is an
+  assumption" only.
+- **Payback Note overlaps the Payback card.**
+- **S-14:** after the post-Champions re-snapshot, rerun the pipeline, Refresh, and re-check the
+  verification table above; the shortlist may change.
