@@ -138,7 +138,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 ### Task 5: Power BI Scouting page — ✅ **done 2026-09-24, reviewed 2026-09-26**
 
-> `valorant_recruitment.pbix` (repo root). Model, measures and verification in `docs/dax_measures.md`. QA page reconciles Jerrwin, ZmjjKK and Kachoww against `mart_scouting.csv`, 39/39 cells.
+> `valorant_recruitment.pbix` (repo root). Model, measures and verification in `powerbi/dax_measures.md`. QA page reconciles Jerrwin, ZmjjKK and Kachoww against `mart_scouting.csv`, 39/39 cells.
 
 **Description:** Import the marts and dimensions into Power BI, set up the star-schema relationships and a DAX measures table, and build the Scouting page. It needs a candidate table with sample sizes, a percentile radar or bar chart, a scatter plot (for example ADR vs FK−FD) and slicers for event, map and minimum maps.
 
@@ -152,7 +152,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 - [x] Manual check: each slicer changes every visual as expected
 
 **Dependencies:** T4
-**Files:** `valorant_recruitment.pbix`, `docs/dax_measures.md`
+**Files:** `valorant_recruitment.pbix`, `powerbi/dax_measures.md`
 **Scope:** M
 
 ## ✅ Checkpoint B — First slice end to end — **passed 2026-09-26**
@@ -191,7 +191,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 ### Task 7: Power BI Roster Fit page — ✅ **done 2026-09-28**
 
-> Two pages in `valorant_recruitment.pbix`: **Roster Fit** (ranking of the 84 + SEN map pool) and **Candidate Fit** (drill-through on `dim_player[player_id]`). Model, measures and checks in `docs/dax_measures.md` § 7. Meiy and Jemkin reconcile against `mart_fit.csv`; Jerrwin self-check passes.
+> Two pages in `valorant_recruitment.pbix`: **Roster Fit** (ranking of the 84 + SEN map pool) and **Candidate Fit** (drill-through on `dim_player[player_id]`). Model, measures and checks in `powerbi/dax_measures.md` § 7. Meiy and Jemkin reconcile against `mart_fit.csv`; Jerrwin self-check passes.
 
 **Description:** Build a page with a candidate selector (SEN is the only team — T6 scope), a map-pool heatmap, an agent coverage matrix, opening-duel and consistency comparisons against the outgoing player, and a fit-score ranking.
 
@@ -205,7 +205,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 - [x] Non-duelist drilled from Scouting shows blank fit cards and the Fit Pool Note
 
 **Dependencies:** T5, T6
-**Files:** `valorant_recruitment.pbix`, `docs/dax_measures.md`
+**Files:** `valorant_recruitment.pbix`, `powerbi/dax_measures.md`
 **Scope:** S
 
 ---
@@ -249,7 +249,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 ### Task 9: Power BI Budget Scenarios page — ✅ **done 2026-10-02 (slim scope, decided 2026-10-01)**
 
-> Two pages in `valorant_recruitment.pbix`: **Budget Overview** (shortlist of 10) and **Budget** (drill-through on `dim_player[player_id]`). Model, measures and checks in `docs/dax_measures.md` § 8. The shortlist moved to its own page because the drill-through filter would cut it to one row.
+> Two pages in `valorant_recruitment.pbix`: **Budget Overview** (shortlist of 10) and **Budget** (drill-through on `dim_player[player_id]`). Model, measures and checks in `powerbi/dax_measures.md` § 8. The shortlist moved to its own page because the drill-through filter would cut it to one row.
 
 **Description:** One Budget page, reached by drill-through on `dim_player[player_id]`. For the selected candidate it shows the **bar** (break-even top-3 chance) next to the GM's **belief** (F-14, the page's one slider, default 20), and the outcome that follows: NPV, Sign/Stay, payback with the "not within contract" flag, max upfront spend, and the upfront cost split into buyout and import slot. A shortlist table (top-10 fit band) and a read-only assumptions panel sit underneath. Scenario (Downside / Base / Upside) and 2027 partner status (F-06) are single-select slicers. Formulas and rounding: `docs/budget_model.md` §6–§7.
 
@@ -292,10 +292,10 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 - [ ] Cases 3–5 still to record (see Verification above)
 
 #### T9.6 — Docs · XS — ✅ **done 2026-10-02**
-- [x] `docs/dax_measures.md` §8 (model, measures, pages, lessons, verification, open items); T9 ticked here
+- [x] `powerbi/dax_measures.md` §8 (model, measures, pages, lessons, verification, open items); T9 ticked here
 
 **Dependencies:** T5, T7, T8
-**Files:** `valorant_recruitment.pbix`, `docs/dax_measures.md`, `src/budget.py`, `tests/test_budget.py`, `data/marts/mart_budget_reference.csv`
+**Files:** `valorant_recruitment.pbix`, `powerbi/dax_measures.md`, `src/budget.py`, `tests/test_budget.py`, `data/marts/mart_budget_reference.csv`
 **Scope:** M
 
 ## ✅ Checkpoint C — Analyst tool complete — **passed 2026-10-02**
@@ -372,7 +372,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 - [ ] Manual check: a fresh run in a new environment rebuilds the marts and the tests pass
 
 **Dependencies:** T11
-**Files:** `README.md`, `requirements.txt`, `docs/images/*`
+**Files:** `README.md`, `requirements.txt`, `powerbi/images/*` (Power BI screenshots, already in `powerbi/README.md`), `docs/images/*`
 **Scope:** S
 
 ## ✅ Checkpoint D — Complete
