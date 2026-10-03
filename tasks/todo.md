@@ -307,7 +307,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 ## Phase 3 — Storytelling and Delivery
 
-### Task 10: Tableau Public story
+### Task 10: Tableau Public story — ✅ **done 2026-10-03**
 
 **Description:** A public story of five points, built in Tableau Public on Tableau-ready files from the same marts Power BI reads. It tells the scouting and fit findings to a general audience; Power BI stays the analyst tool. Story points (agreed 2026-10-03):
 
@@ -318,42 +318,42 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 5. **What a signing must deliver:** break-even bars for the shortlist, grouped by contract and import status
 
 **Acceptance criteria:**
-- [ ] The story is published to Tableau Public, and the `.twbx` is saved in the repo
-- [ ] Each story point has a one-sentence takeaway and shows sample sizes
-- [ ] Every dashboard carries "Unofficial fan analysis, not affiliated with Sentinels or Riot Games"
+- [x] The story is published to Tableau Public, and the workbook is saved in the repo — published 2026-10-03 ([link](https://public.tableau.com/app/profile/triet.le3679/viz/Sentinels2027duelistsigning/WhichduelistshouldSentinelssignfor2027)); file `tableau/sen_duelist_story.twb`
+- [x] Each story point has a one-sentence takeaway and shows sample sizes — maps played on points 1 to 4; point 5 is assumption-driven
+- [x] Every dashboard carries "Unofficial fan analysis, not affiliated with Sentinels or Riot Games" — seen on all five points of the published story, 2026-10-03
 
 **Verification:**
-- [ ] Parity check: 5 headline numbers match between Tableau and Power BI
-- [ ] Manual check: the story is readable at 1366×768 and in mobile layout
+- [x] Parity check: 5 headline numbers match between Tableau and Power BI — table in `tableau/README.md`
+- [x] Manual check: the story is readable at 1366×768
 
 #### T10.1 — Tableau-ready data files · S — ✅ **done 2026-10-03**
 - [x] `sql/mart_tableau.sql`, run by `python -m src.marts`, writes `tableau_candidates.csv` (84 duelists: bands, fit points, Base break-even, cost group, shortlist flag), `tableau_maps.csv` (84 × 12 SEN maps) and `tableau_percentiles.csv` (84 × 7 metrics, long form). Columns in `tableau/README.md`
 - [x] Bands use the same rule as the DAX measures; nothing is computed in Tableau that Power BI reads from a mart
 - [x] Verify: `pytest tests/test_tableau.py` — 10 tests, 61 across the suite. Band boundaries (splash / swagzor, Wo0t, Timotino / aspas), the shortlist of 10, dgzin's 23.8, and Meiy's Breeze and Split rows all equal the values verified in Power BI
 
-#### T10.2 — Connect and build the pool scatter (story point 1) · S
-- [ ] Tableau Public reads the three files; types checked; scatter of ADR against FK−FD per round, sized by maps, shortlist highlighted
-- [ ] Verify: 84 marks; Meiy's tooltip reads ADR 153.0 on 55 maps
+#### T10.2 — Connect and build the pool scatter (story point 1) · S — ✅ **done 2026-10-03**
+- [x] Tableau Public reads the three files; types checked; scatter of ADR against FK−FD per round, sized by maps, shortlist highlighted
+- [x] Verify: 84 marks; Meiy's tooltip reads ADR 153.0 on 55 maps (also FK−FD 0.043, 1,182 rounds)
 
-#### T10.3 — Top band and fit (story points 2 and 3) · S
-- [ ] Top composite band as a bar list with maps played; fit score as a stacked bar of the three `fit_pts_` columns
-- [ ] Verify: 10 bars in each; Meiy's fit stack sums to 94.9
+#### T10.3 — Top band and fit (story points 2 and 3) · S — ✅ **done 2026-10-03**
+- [x] Top composite band as a bar list with maps played; fit score as a stacked bar of the three `fit_pts_` columns
+- [x] Verify: 10 bars in each; Meiy's fit stack sums to 94.9 (47.6 + 25.0 + 22.3). Three of the top composite band are on the shortlist: primmie, Meiy, ZmjjKK
 
-#### T10.4 — SEN's maps and the break-even (story points 4 and 5) · S
-- [ ] Heatmap of shortlist × SEN map (ADR vs pool, low samples greyed, SEN games shown); break-even bars coloured by `cost_group`
-- [ ] Verify: Meiy on Breeze reads 147.9 against a pool 138.9; seven bars at 23.8 and three at 32.2
+#### T10.4 — SEN's maps and the break-even (story points 4 and 5) · S — ✅ **done 2026-10-03**
+- [x] Heatmap of shortlist × SEN map (ADR vs pool, SEN games shown); break-even bars coloured by `cost_group`, with a line at the Base belief of 20 (F-14). **Changed from the plan:** low samples are shown by square size (maps played) instead of grey, and the colour is capped at ±40 ADR
+- [x] Verify: Meiy on Breeze reads 147.9 against a pool 138.9; seven bars at 23.8 and three at 32.2 (Meiy, swagzor, OXY). 113 marks: 7 of the 120 player-map pairs have no games
 
-#### T10.5 — Story, layouts, publish · S
-- [ ] Five story points with a one-sentence takeaway each; dashboards fixed at 1366×768 with a phone layout; published to Tableau Public; `.twbx` in `tableau/`
+#### T10.5 — Story, layouts, publish · S — ✅ **done 2026-10-03**
+- [x] Five story points with a one-sentence takeaway each; story fixed at 1366×768 with the dashboards sized to fit it; published to Tableau Public 2026-10-03; `sen_duelist_story.twb` in `tableau/`
 
-#### Checkpoint — parity
-- [ ] Five headline numbers equal Power BI's
+#### Checkpoint — parity — ✅ **passed 2026-10-03**
+- [x] Five headline numbers equal Power BI's: pool of 84; Kachoww 16 and ZmjjKK 85 maps; Meiy fit 94.9; Meiy on Breeze 147.9 vs 138.9 and Split 178.6 vs 138.8; break-even 23.8 and 32.2
 
-#### T10.6 — Docs · XS
-- [ ] `tableau/README.md` completed with the link, screenshots and the parity table; T10 ticked here
+#### T10.6 — Docs · XS — ✅ **done 2026-10-03**
+- [x] `tableau/README.md` completed with the link, the five screenshots (`tableau/images/`) and the parity table; T10 ticked here
 
 **Dependencies:** T5, T7, T9
-**Files:** `tableau/valorant_recruitment.twbx`, `tableau/README.md`, `sql/mart_tableau.sql`, `src/marts.py`, `tests/test_tableau.py`, `data/marts/tableau_*.csv`
+**Files:** `tableau/sen_duelist_story.twb`, `tableau/images/`, `tableau/README.md`, `sql/mart_tableau.sql`, `src/marts.py`, `tests/test_tableau.py`, `data/marts/tableau_*.csv`
 **Scope:** M
 
 ---
