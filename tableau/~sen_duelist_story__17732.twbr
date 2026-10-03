@@ -1,0 +1,3232 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20262.26.0708.1337                               -->
+<workbook _.fcp.WorkbookFingerprinting.true...author-id='bf1460b1ebc43b86ac457d5daf7d2b0afa2c7312065a1d5f874520a348a2412d' _.fcp.WorkbookFingerprinting.true...creator-author-id='bf1460b1ebc43b86ac457d5daf7d2b0afa2c7312065a1d5f874520a348a2412d' _.fcp.WorkbookFingerprinting.true...creator-license-type='public' _.fcp.WorkbookFingerprinting.true...creator-machine-id='844dcae44588229ca6ac354b7cd6389d0fabff07fa57d26cd6826604b63700ed' _.fcp.WorkbookFingerprinting.true...license-type='public' _.fcp.WorkbookFingerprinting.true...machine-id='844dcae44588229ca6ac354b7cd6389d0fabff07fa57d26cd6826604b63700ed' original-version='18.1' source-build='2026.2.1 (20262.26.0708.1337)' source-platform='win' version='18.1' xml:base='https://public.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AccessibleZoneTabOrder />
+    <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+    <_.fcp.WorkbookFingerprinting.true...WorkbookFingerprinting />
+  </document-format-change-manifest>
+  <repository-location id='Book1_17910349777190' path='/workbooks' revision='1.2' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='tableau_candidates' inline='true' name='federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='tableau_candidates' name='textscan.0bhunr20iienyj13fs81g157osb6'>
+            <connection class='textscan' directory='D:/VCT/data/marts' filename='tableau_candidates.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.0bhunr20iienyj13fs81g157osb6' name='tableau_candidates.csv' table='[tableau_candidates#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='player_id' ordinal='0' />
+            <column datatype='string' name='player_name' ordinal='1' />
+            <column datatype='string' name='regions' ordinal='2' />
+            <column datatype='string' name='country' ordinal='3' />
+            <column datatype='integer' name='maps_played' ordinal='4' />
+            <column datatype='integer' name='rounds_played' ordinal='5' />
+            <column datatype='real' name='adr' ordinal='6' />
+            <column datatype='integer' name='adr_maps' ordinal='7' />
+            <column datatype='real' name='kast_pct' ordinal='8' />
+            <column datatype='real' name='fkpr' ordinal='9' />
+            <column datatype='real' name='fdpr' ordinal='10' />
+            <column datatype='real' name='fk_fd_per_round' ordinal='11' />
+            <column datatype='real' name='opening_win_pct' ordinal='12' />
+            <column datatype='real' name='dpr' ordinal='13' />
+            <column datatype='real' name='cv_adr_2026' ordinal='14' />
+            <column datatype='real' name='composite' ordinal='15' />
+            <column datatype='string' name='composite_band' ordinal='16' />
+            <column datatype='real' name='fit_score' ordinal='17' />
+            <column datatype='string' name='fit_band' ordinal='18' />
+            <column datatype='real' name='pct_performance' ordinal='19' />
+            <column datatype='real' name='agent_overlap_pct' ordinal='20' />
+            <column datatype='real' name='pct_map_fit' ordinal='21' />
+            <column datatype='real' name='map_adr_delta' ordinal='22' />
+            <column datatype='real' name='map_coverage_pct' ordinal='23' />
+            <column datatype='real' name='fit_pts_performance' ordinal='24' />
+            <column datatype='real' name='fit_pts_agent_overlap' ordinal='25' />
+            <column datatype='real' name='fit_pts_map_fit' ordinal='26' />
+            <column datatype='boolean' name='is_import_for_sen' ordinal='27' />
+            <column datatype='string' name='import_source' ordinal='28' />
+            <column datatype='string' name='contract_team' ordinal='29' />
+            <column datatype='integer' name='contract_end_year' ordinal='30' />
+            <column datatype='integer' name='years_left' ordinal='31' />
+            <column datatype='string' name='contract_match' ordinal='32' />
+            <column datatype='integer' name='upfront_base' ordinal='33' />
+            <column datatype='real' name='break_even_base' ordinal='34' />
+            <column datatype='string' name='cost_group' ordinal='35' />
+            <column datatype='boolean' name='is_baseline' ordinal='36' />
+            <column datatype='boolean' name='is_shortlist' ordinal='37' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>player_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[player_id]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>player_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>player_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[player_name]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>player_name</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>regions</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[regions]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>regions</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>country</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[country]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>country</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>maps_played</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[maps_played]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>maps_played</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rounds_played</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[rounds_played]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>rounds_played</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>adr</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[adr]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>adr</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>adr_maps</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[adr_maps]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>adr_maps</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>kast_pct</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[kast_pct]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>kast_pct</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fkpr</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[fkpr]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>fkpr</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fdpr</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[fdpr]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>fdpr</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fk_fd_per_round</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[fk_fd_per_round]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>fk_fd_per_round</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>opening_win_pct</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[opening_win_pct]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>opening_win_pct</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dpr</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[dpr]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>dpr</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cv_adr_2026</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[cv_adr_2026]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>cv_adr_2026</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>composite</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[composite]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>composite</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>composite_band</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[composite_band]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>composite_band</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fit_score</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[fit_score]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>fit_score</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fit_band</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[fit_band]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>fit_band</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pct_performance</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[pct_performance]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>pct_performance</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>agent_overlap_pct</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[agent_overlap_pct]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>agent_overlap_pct</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pct_map_fit</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[pct_map_fit]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>pct_map_fit</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>map_adr_delta</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[map_adr_delta]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>map_adr_delta</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>map_coverage_pct</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[map_coverage_pct]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>map_coverage_pct</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fit_pts_performance</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[fit_pts_performance]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>fit_pts_performance</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fit_pts_agent_overlap</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[fit_pts_agent_overlap]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>fit_pts_agent_overlap</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fit_pts_map_fit</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[fit_pts_map_fit]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>fit_pts_map_fit</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_import_for_sen</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_import_for_sen]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>is_import_for_sen</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>import_source</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[import_source]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>import_source</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>contract_team</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[contract_team]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>contract_team</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>contract_end_year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[contract_end_year]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>contract_end_year</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>years_left</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[years_left]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>years_left</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>contract_match</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[contract_match]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>contract_match</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>upfront_base</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[upfront_base]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>upfront_base</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>break_even_base</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[break_even_base]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>break_even_base</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cost_group</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[cost_group]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>cost_group</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_baseline</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_baseline]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>is_baseline</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_shortlist</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_shortlist]</local-name>
+            <parent-name>[tableau_candidates.csv]</parent-name>
+            <remote-alias>is_shortlist</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='tableau_candidates.csv' datatype='table' name='[__tableau_internal_object_id__].[tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A]' role='measure' type='quantitative' />
+      <column caption='Adr' datatype='real' name='[adr]' role='measure' type='quantitative' />
+      <column caption='Adr Maps' datatype='integer' name='[adr_maps]' role='measure' type='quantitative' />
+      <column caption='Agent Overlap Pct' datatype='real' name='[agent_overlap_pct]' role='measure' type='quantitative' />
+      <column caption='Break Even Base' datatype='real' name='[break_even_base]' role='measure' type='quantitative' />
+      <column caption='Composite' datatype='real' name='[composite]' role='measure' type='quantitative' />
+      <column caption='Composite Band' datatype='string' name='[composite_band]' role='dimension' type='nominal' />
+      <column caption='Contract End Year' datatype='integer' name='[contract_end_year]' role='dimension' type='quantitative' />
+      <column caption='Contract Match' datatype='string' name='[contract_match]' role='dimension' type='nominal' />
+      <column caption='Contract Team' datatype='string' name='[contract_team]' role='dimension' type='nominal' />
+      <column caption='Cost Group' datatype='string' name='[cost_group]' role='dimension' type='nominal' />
+      <column caption='Country' datatype='string' name='[country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='Cv Adr 2026' datatype='real' name='[cv_adr_2026]' role='measure' type='quantitative' />
+      <column caption='Dpr' datatype='real' name='[dpr]' role='measure' type='quantitative' />
+      <column caption='Fdpr' datatype='real' name='[fdpr]' role='measure' type='quantitative' />
+      <column caption='Fit Band' datatype='string' name='[fit_band]' role='dimension' type='nominal' />
+      <column caption='Fit Pts Agent Overlap' datatype='real' name='[fit_pts_agent_overlap]' role='measure' type='quantitative' />
+      <column caption='Fit Pts Map Fit' datatype='real' name='[fit_pts_map_fit]' role='measure' type='quantitative' />
+      <column caption='Fit Pts Performance' datatype='real' name='[fit_pts_performance]' role='measure' type='quantitative' />
+      <column caption='Fit Score' datatype='real' name='[fit_score]' role='measure' type='quantitative' />
+      <column caption='Fk Fd Per Round' datatype='real' name='[fk_fd_per_round]' role='measure' type='quantitative' />
+      <column caption='Fkpr' datatype='real' name='[fkpr]' role='measure' type='quantitative' />
+      <column caption='Import Source' datatype='string' name='[import_source]' role='dimension' type='nominal' />
+      <column caption='Is Baseline' datatype='boolean' name='[is_baseline]' role='dimension' type='nominal' />
+      <column caption='Is Import For Sen' datatype='boolean' name='[is_import_for_sen]' role='dimension' type='nominal' />
+      <column caption='Is Shortlist' datatype='boolean' name='[is_shortlist]' role='dimension' type='nominal' />
+      <column caption='Kast Pct' datatype='real' name='[kast_pct]' role='measure' type='quantitative' />
+      <column caption='Map Adr Delta' datatype='real' name='[map_adr_delta]' role='measure' type='quantitative' />
+      <column caption='Map Coverage Pct' datatype='real' name='[map_coverage_pct]' role='measure' type='quantitative' />
+      <column caption='Maps Played' datatype='integer' name='[maps_played]' role='measure' type='quantitative' />
+      <column caption='Opening Win Pct' datatype='real' name='[opening_win_pct]' role='measure' type='quantitative' />
+      <column caption='Pct Map Fit' datatype='real' name='[pct_map_fit]' role='measure' type='quantitative' />
+      <column caption='Pct Performance' datatype='real' name='[pct_performance]' role='measure' type='quantitative' />
+      <column caption='Player Id' datatype='string' name='[player_id]' role='dimension' type='nominal' />
+      <column caption='Player Name' datatype='string' name='[player_name]' role='dimension' type='nominal' />
+      <column caption='Regions' datatype='string' name='[regions]' role='dimension' type='nominal' />
+      <column caption='Rounds Played' datatype='integer' name='[rounds_played]' role='measure' type='quantitative' />
+      <column caption='Upfront Base' datatype='integer' name='[upfront_base]' role='measure' type='quantitative' />
+      <column caption='Years Left' datatype='integer' name='[years_left]' role='measure' type='quantitative' />
+      <column-instance column='[is_shortlist]' derivation='None' name='[none:is_shortlist:nk]' pivot='key' type='nominal' />
+      <column-instance column='[agent_overlap_pct]' derivation='Sum' name='[sum:agent_overlap_pct:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[fit_pts_agent_overlap]' derivation='Sum' name='[sum:fit_pts_agent_overlap:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[fit_pts_map_fit]' derivation='Sum' name='[sum:fit_pts_map_fit:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[fit_pts_performance]' derivation='Sum' name='[sum:fit_pts_performance:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[pct_map_fit]' derivation='Sum' name='[sum:pct_map_fit:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[pct_performance]' derivation='Sum' name='[sum:pct_performance:qk]' pivot='key' type='quantitative' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='D:/DevTools/tmp/TableauTemp/#TableauTemp_09lt1wv0s4w0xq1b8eu6u11qw8lx.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>player_id</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[player_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>player_id</remote-alias>
+              <ordinal>0</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>84</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>player_name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[player_name]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>player_name</remote-alias>
+              <ordinal>1</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>84</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>regions</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[regions]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>regions</remote-alias>
+              <ordinal>2</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>8</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>country</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[country]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>country</remote-alias>
+              <ordinal>3</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>30</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>maps_played</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[maps_played]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>maps_played</remote-alias>
+              <ordinal>4</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>50</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>rounds_played</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[rounds_played]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>rounds_played</remote-alias>
+              <ordinal>5</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>73</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>adr</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[adr]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>adr</remote-alias>
+              <ordinal>6</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>79</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>adr_maps</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[adr_maps]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>adr_maps</remote-alias>
+              <ordinal>7</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>46</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>kast_pct</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[kast_pct]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>kast_pct</remote-alias>
+              <ordinal>8</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>56</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>fkpr</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[fkpr]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>fkpr</remote-alias>
+              <ordinal>9</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>56</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>fdpr</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[fdpr]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>fdpr</remote-alias>
+              <ordinal>10</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>59</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>fk_fd_per_round</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[fk_fd_per_round]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>fk_fd_per_round</remote-alias>
+              <ordinal>11</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>54</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>opening_win_pct</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[opening_win_pct]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>opening_win_pct</remote-alias>
+              <ordinal>12</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>68</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>dpr</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[dpr]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>dpr</remote-alias>
+              <ordinal>13</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>67</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>cv_adr_2026</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[cv_adr_2026]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>cv_adr_2026</remote-alias>
+              <ordinal>14</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>64</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>composite</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[composite]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>composite</remote-alias>
+              <ordinal>15</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>81</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>composite_band</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[composite_band]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>composite_band</remote-alias>
+              <ordinal>16</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>fit_score</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[fit_score]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>fit_score</remote-alias>
+              <ordinal>17</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>75</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>fit_band</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[fit_band]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>fit_band</remote-alias>
+              <ordinal>18</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>pct_performance</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[pct_performance]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>pct_performance</remote-alias>
+              <ordinal>19</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>81</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>agent_overlap_pct</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[agent_overlap_pct]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>agent_overlap_pct</remote-alias>
+              <ordinal>20</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>8</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>pct_map_fit</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[pct_map_fit]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>pct_map_fit</remote-alias>
+              <ordinal>21</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>84</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>map_adr_delta</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[map_adr_delta]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>map_adr_delta</remote-alias>
+              <ordinal>22</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>58</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>map_coverage_pct</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[map_coverage_pct]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>map_coverage_pct</remote-alias>
+              <ordinal>23</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>16</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>fit_pts_performance</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[fit_pts_performance]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>fit_pts_performance</remote-alias>
+              <ordinal>24</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>81</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>fit_pts_agent_overlap</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[fit_pts_agent_overlap]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>fit_pts_agent_overlap</remote-alias>
+              <ordinal>25</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>8</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>fit_pts_map_fit</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[fit_pts_map_fit]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>fit_pts_map_fit</remote-alias>
+              <ordinal>26</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>84</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>is_import_for_sen</remote-name>
+              <remote-type>11</remote-type>
+              <local-name>[is_import_for_sen]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>is_import_for_sen</remote-alias>
+              <ordinal>27</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>boolean</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>import_source</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[import_source]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>import_source</remote-alias>
+              <ordinal>28</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>contract_team</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[contract_team]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>contract_team</remote-alias>
+              <ordinal>29</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>47</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>contract_end_year</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[contract_end_year]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>contract_end_year</remote-alias>
+              <ordinal>30</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>5</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>years_left</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[years_left]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>years_left</remote-alias>
+              <ordinal>31</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>contract_match</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[contract_match]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>contract_match</remote-alias>
+              <ordinal>32</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>upfront_base</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[upfront_base]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>upfront_base</remote-alias>
+              <ordinal>33</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>5</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>break_even_base</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[break_even_base]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>break_even_base</remote-alias>
+              <ordinal>34</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>5</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>cost_group</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[cost_group]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>cost_group</remote-alias>
+              <ordinal>35</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>9</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>is_baseline</remote-name>
+              <remote-type>11</remote-type>
+              <local-name>[is_baseline]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>is_baseline</remote-alias>
+              <ordinal>36</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>boolean</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>is_shortlist</remote-name>
+              <remote-type>11</remote-type>
+              <local-name>[is_shortlist]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>is_shortlist</remote-alias>
+              <ordinal>37</ordinal>
+              <family>tableau_candidates.csv</family>
+              <local-type>boolean</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:is_shortlist:nk]' type='palette'>
+            <map to='#a7ada1'>
+              <bucket>false</bucket>
+            </map>
+            <map to='#ff3463'>
+              <bucket>true</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:fit_pts_agent_overlap:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:agent_overlap_pct:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:pct_performance:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:fit_pts_performance:qk]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:pct_map_fit:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:fit_pts_map_fit:qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Viet Nam&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='tableau_candidates.csv' id='tableau_candidates.csv_7C44205D4BCD4659956439DF035F1B8A'>
+            <properties context=''>
+              <relation connection='textscan.0bhunr20iienyj13fs81g157osb6' name='tableau_candidates.csv' table='[tableau_candidates#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='string' name='player_id' ordinal='0' />
+                  <column datatype='string' name='player_name' ordinal='1' />
+                  <column datatype='string' name='regions' ordinal='2' />
+                  <column datatype='string' name='country' ordinal='3' />
+                  <column datatype='integer' name='maps_played' ordinal='4' />
+                  <column datatype='integer' name='rounds_played' ordinal='5' />
+                  <column datatype='real' name='adr' ordinal='6' />
+                  <column datatype='integer' name='adr_maps' ordinal='7' />
+                  <column datatype='real' name='kast_pct' ordinal='8' />
+                  <column datatype='real' name='fkpr' ordinal='9' />
+                  <column datatype='real' name='fdpr' ordinal='10' />
+                  <column datatype='real' name='fk_fd_per_round' ordinal='11' />
+                  <column datatype='real' name='opening_win_pct' ordinal='12' />
+                  <column datatype='real' name='dpr' ordinal='13' />
+                  <column datatype='real' name='cv_adr_2026' ordinal='14' />
+                  <column datatype='real' name='composite' ordinal='15' />
+                  <column datatype='string' name='composite_band' ordinal='16' />
+                  <column datatype='real' name='fit_score' ordinal='17' />
+                  <column datatype='string' name='fit_band' ordinal='18' />
+                  <column datatype='real' name='pct_performance' ordinal='19' />
+                  <column datatype='real' name='agent_overlap_pct' ordinal='20' />
+                  <column datatype='real' name='pct_map_fit' ordinal='21' />
+                  <column datatype='real' name='map_adr_delta' ordinal='22' />
+                  <column datatype='real' name='map_coverage_pct' ordinal='23' />
+                  <column datatype='real' name='fit_pts_performance' ordinal='24' />
+                  <column datatype='real' name='fit_pts_agent_overlap' ordinal='25' />
+                  <column datatype='real' name='fit_pts_map_fit' ordinal='26' />
+                  <column datatype='boolean' name='is_import_for_sen' ordinal='27' />
+                  <column datatype='string' name='import_source' ordinal='28' />
+                  <column datatype='string' name='contract_team' ordinal='29' />
+                  <column datatype='integer' name='contract_end_year' ordinal='30' />
+                  <column datatype='integer' name='years_left' ordinal='31' />
+                  <column datatype='string' name='contract_match' ordinal='32' />
+                  <column datatype='integer' name='upfront_base' ordinal='33' />
+                  <column datatype='real' name='break_even_base' ordinal='34' />
+                  <column datatype='string' name='cost_group' ordinal='35' />
+                  <column datatype='boolean' name='is_baseline' ordinal='36' />
+                  <column datatype='boolean' name='is_shortlist' ordinal='37' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption='tableau_maps' inline='true' name='federated.13xedvc1byrtdv15gb0ux02qa1yn' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='tableau_maps' name='textscan.1l7sjl31lk4g671fzpvla1g2n9r9'>
+            <connection class='textscan' directory='D:/VCT/data/marts' filename='tableau_maps.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.1l7sjl31lk4g671fzpvla1g2n9r9' name='tableau_maps.csv' table='[tableau_maps#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='player_id' ordinal='0' />
+            <column datatype='string' name='player_name' ordinal='1' />
+            <column datatype='string' name='fit_band' ordinal='2' />
+            <column datatype='boolean' name='is_shortlist' ordinal='3' />
+            <column datatype='boolean' name='is_baseline' ordinal='4' />
+            <column datatype='string' name='map_name' ordinal='5' />
+            <column datatype='integer' name='sen_games' ordinal='6' />
+            <column datatype='real' name='sen_win_pct' ordinal='7' />
+            <column datatype='integer' name='sen_rounds' ordinal='8' />
+            <column datatype='real' name='adr' ordinal='9' />
+            <column datatype='integer' name='adr_maps' ordinal='10' />
+            <column datatype='integer' name='adr_rounds' ordinal='11' />
+            <column datatype='real' name='pool_adr' ordinal='12' />
+            <column datatype='real' name='adr_vs_pool' ordinal='13' />
+            <column datatype='boolean' name='low_sample' ordinal='14' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[tableau_maps.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>player_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[player_id]</local-name>
+            <parent-name>[tableau_maps.csv]</parent-name>
+            <remote-alias>player_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_maps.csv_6CD8FCF534674BF286AE8F33DCD0435C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>player_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[player_name]</local-name>
+            <parent-name>[tableau_maps.csv]</parent-name>
+            <remote-alias>player_name</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[tableau_maps.csv_6CD8FCF534674BF286AE8F33DCD0435C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fit_band</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[fit_band]</local-name>
+            <parent-name>[tableau_maps.csv]</parent-name>
+            <remote-alias>fit_band</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[tableau_maps.csv_6CD8FCF534674BF286AE8F33DCD0435C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_shortlist</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_shortlist]</local-name>
+            <parent-name>[tableau_maps.csv]</parent-name>
+            <remote-alias>is_shortlist</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_maps.csv_6CD8FCF534674BF286AE8F33DCD0435C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_baseline</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_baseline]</local-name>
+            <parent-name>[tableau_maps.csv]</parent-name>
+            <remote-alias>is_baseline</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_maps.csv_6CD8FCF534674BF286AE8F33DCD0435C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>map_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[map_name]</local-name>
+            <parent-name>[tableau_maps.csv]</parent-name>
+            <remote-alias>map_name</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[tableau_maps.csv_6CD8FCF534674BF286AE8F33DCD0435C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sen_games</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[sen_games]</local-name>
+            <parent-name>[tableau_maps.csv]</parent-name>
+            <remote-alias>sen_games</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_maps.csv_6CD8FCF534674BF286AE8F33DCD0435C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sen_win_pct</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[sen_win_pct]</local-name>
+            <parent-name>[tableau_maps.csv]</parent-name>
+            <remote-alias>sen_win_pct</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_maps.csv_6CD8FCF534674BF286AE8F33DCD0435C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sen_rounds</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[sen_rounds]</local-name>
+            <parent-name>[tableau_maps.csv]</parent-name>
+            <remote-alias>sen_rounds</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_maps.csv_6CD8FCF534674BF286AE8F33DCD0435C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>adr</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[adr]</local-name>
+            <parent-name>[tableau_maps.csv]</parent-name>
+            <remote-alias>adr</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_maps.csv_6CD8FCF534674BF286AE8F33DCD0435C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>adr_maps</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[adr_maps]</local-name>
+            <parent-name>[tableau_maps.csv]</parent-name>
+            <remote-alias>adr_maps</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_maps.csv_6CD8FCF534674BF286AE8F33DCD0435C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>adr_rounds</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[adr_rounds]</local-name>
+            <parent-name>[tableau_maps.csv]</parent-name>
+            <remote-alias>adr_rounds</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_maps.csv_6CD8FCF534674BF286AE8F33DCD0435C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pool_adr</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[pool_adr]</local-name>
+            <parent-name>[tableau_maps.csv]</parent-name>
+            <remote-alias>pool_adr</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_maps.csv_6CD8FCF534674BF286AE8F33DCD0435C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>adr_vs_pool</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[adr_vs_pool]</local-name>
+            <parent-name>[tableau_maps.csv]</parent-name>
+            <remote-alias>adr_vs_pool</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_maps.csv_6CD8FCF534674BF286AE8F33DCD0435C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>low_sample</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[low_sample]</local-name>
+            <parent-name>[tableau_maps.csv]</parent-name>
+            <remote-alias>low_sample</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_maps.csv_6CD8FCF534674BF286AE8F33DCD0435C]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='tableau_maps.csv' datatype='table' name='[__tableau_internal_object_id__].[tableau_maps.csv_6CD8FCF534674BF286AE8F33DCD0435C]' role='measure' type='quantitative' />
+      <column caption='Adr' datatype='real' name='[adr]' role='measure' type='quantitative' />
+      <column caption='Adr Maps' datatype='integer' name='[adr_maps]' role='measure' type='quantitative' />
+      <column caption='Adr Rounds' datatype='integer' name='[adr_rounds]' role='measure' type='quantitative' />
+      <column caption='Adr Vs Pool' datatype='real' name='[adr_vs_pool]' role='measure' type='quantitative' />
+      <column caption='Fit Band' datatype='string' name='[fit_band]' role='dimension' type='nominal' />
+      <column caption='Is Baseline' datatype='boolean' name='[is_baseline]' role='dimension' type='nominal' />
+      <column caption='Is Shortlist' datatype='boolean' name='[is_shortlist]' role='dimension' type='nominal' />
+      <column caption='Low Sample' datatype='boolean' name='[low_sample]' role='dimension' type='nominal' />
+      <column caption='Map Name' datatype='string' name='[map_name]' role='dimension' type='nominal' />
+      <column caption='Player Id' datatype='integer' name='[player_id]' role='dimension' type='ordinal' />
+      <column caption='Player Name' datatype='string' name='[player_name]' role='dimension' type='nominal' />
+      <column caption='Pool Adr' datatype='real' name='[pool_adr]' role='measure' type='quantitative' />
+      <column caption='Sen Games' datatype='integer' name='[sen_games]' role='measure' type='quantitative' />
+      <column caption='Sen Rounds' datatype='integer' name='[sen_rounds]' role='measure' type='quantitative' />
+      <column caption='Sen Win Pct' datatype='real' name='[sen_win_pct]' role='measure' type='quantitative' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='D:/DevTools/tmp/TableauTemp/#TableauTemp_1vcgbpj05u4jti105swhh0k7m17l.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>player_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[player_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>player_id</remote-alias>
+              <ordinal>0</ordinal>
+              <family>tableau_maps.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>84</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>player_name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[player_name]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>player_name</remote-alias>
+              <ordinal>1</ordinal>
+              <family>tableau_maps.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>84</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>fit_band</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[fit_band]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>fit_band</remote-alias>
+              <ordinal>2</ordinal>
+              <family>tableau_maps.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>is_shortlist</remote-name>
+              <remote-type>11</remote-type>
+              <local-name>[is_shortlist]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>is_shortlist</remote-alias>
+              <ordinal>3</ordinal>
+              <family>tableau_maps.csv</family>
+              <local-type>boolean</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>is_baseline</remote-name>
+              <remote-type>11</remote-type>
+              <local-name>[is_baseline]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>is_baseline</remote-alias>
+              <ordinal>4</ordinal>
+              <family>tableau_maps.csv</family>
+              <local-type>boolean</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>map_name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[map_name]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>map_name</remote-alias>
+              <ordinal>5</ordinal>
+              <family>tableau_maps.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>12</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>sen_games</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[sen_games]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>sen_games</remote-alias>
+              <ordinal>6</ordinal>
+              <family>tableau_maps.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>sen_win_pct</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[sen_win_pct]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>sen_win_pct</remote-alias>
+              <ordinal>7</ordinal>
+              <family>tableau_maps.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>sen_rounds</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[sen_rounds]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>sen_rounds</remote-alias>
+              <ordinal>8</ordinal>
+              <family>tableau_maps.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>adr</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[adr]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>adr</remote-alias>
+              <ordinal>9</ordinal>
+              <family>tableau_maps.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>511</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>adr_maps</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[adr_maps]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>adr_maps</remote-alias>
+              <ordinal>10</ordinal>
+              <family>tableau_maps.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>20</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>adr_rounds</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[adr_rounds]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>adr_rounds</remote-alias>
+              <ordinal>11</ordinal>
+              <family>tableau_maps.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>223</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>pool_adr</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[pool_adr]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>pool_adr</remote-alias>
+              <ordinal>12</ordinal>
+              <family>tableau_maps.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>12</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>adr_vs_pool</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[adr_vs_pool]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>adr_vs_pool</remote-alias>
+              <ordinal>13</ordinal>
+              <family>tableau_maps.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>521</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>low_sample</remote-name>
+              <remote-type>11</remote-type>
+              <local-name>[low_sample]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>low_sample</remote-alias>
+              <ordinal>14</ordinal>
+              <family>tableau_maps.csv</family>
+              <local-type>boolean</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Viet Nam&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='tableau_maps.csv' id='tableau_maps.csv_6CD8FCF534674BF286AE8F33DCD0435C'>
+            <properties context=''>
+              <relation connection='textscan.1l7sjl31lk4g671fzpvla1g2n9r9' name='tableau_maps.csv' table='[tableau_maps#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='integer' name='player_id' ordinal='0' />
+                  <column datatype='string' name='player_name' ordinal='1' />
+                  <column datatype='string' name='fit_band' ordinal='2' />
+                  <column datatype='boolean' name='is_shortlist' ordinal='3' />
+                  <column datatype='boolean' name='is_baseline' ordinal='4' />
+                  <column datatype='string' name='map_name' ordinal='5' />
+                  <column datatype='integer' name='sen_games' ordinal='6' />
+                  <column datatype='real' name='sen_win_pct' ordinal='7' />
+                  <column datatype='integer' name='sen_rounds' ordinal='8' />
+                  <column datatype='real' name='adr' ordinal='9' />
+                  <column datatype='integer' name='adr_maps' ordinal='10' />
+                  <column datatype='integer' name='adr_rounds' ordinal='11' />
+                  <column datatype='real' name='pool_adr' ordinal='12' />
+                  <column datatype='real' name='adr_vs_pool' ordinal='13' />
+                  <column datatype='boolean' name='low_sample' ordinal='14' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+    <datasource caption='tableau_percentiles' inline='true' name='federated.19ji1h70dng46v1fgj12f0snbudn' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='tableau_percentiles' name='textscan.12o7rbs09th8oa10x6rez0hd8be3'>
+            <connection class='textscan' directory='D:/VCT/data/marts' filename='tableau_percentiles.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.12o7rbs09th8oa10x6rez0hd8be3' name='tableau_percentiles.csv' table='[tableau_percentiles#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='player_id' ordinal='0' />
+            <column datatype='string' name='player_name' ordinal='1' />
+            <column datatype='string' name='fit_band' ordinal='2' />
+            <column datatype='boolean' name='is_shortlist' ordinal='3' />
+            <column datatype='boolean' name='is_baseline' ordinal='4' />
+            <column datatype='string' name='metric' ordinal='5' />
+            <column datatype='string' name='metric_label' ordinal='6' />
+            <column datatype='real' name='percentile' ordinal='7' />
+            <column datatype='real' name='composite_weight' ordinal='8' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[tableau_percentiles.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>player_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[player_id]</local-name>
+            <parent-name>[tableau_percentiles.csv]</parent-name>
+            <remote-alias>player_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_percentiles.csv_EB507CE9C7F14892A14C29FFB4250A9E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>player_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[player_name]</local-name>
+            <parent-name>[tableau_percentiles.csv]</parent-name>
+            <remote-alias>player_name</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[tableau_percentiles.csv_EB507CE9C7F14892A14C29FFB4250A9E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fit_band</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[fit_band]</local-name>
+            <parent-name>[tableau_percentiles.csv]</parent-name>
+            <remote-alias>fit_band</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[tableau_percentiles.csv_EB507CE9C7F14892A14C29FFB4250A9E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_shortlist</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_shortlist]</local-name>
+            <parent-name>[tableau_percentiles.csv]</parent-name>
+            <remote-alias>is_shortlist</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_percentiles.csv_EB507CE9C7F14892A14C29FFB4250A9E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_baseline</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_baseline]</local-name>
+            <parent-name>[tableau_percentiles.csv]</parent-name>
+            <remote-alias>is_baseline</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_percentiles.csv_EB507CE9C7F14892A14C29FFB4250A9E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>metric</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[metric]</local-name>
+            <parent-name>[tableau_percentiles.csv]</parent-name>
+            <remote-alias>metric</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[tableau_percentiles.csv_EB507CE9C7F14892A14C29FFB4250A9E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>metric_label</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[metric_label]</local-name>
+            <parent-name>[tableau_percentiles.csv]</parent-name>
+            <remote-alias>metric_label</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <object-id>[tableau_percentiles.csv_EB507CE9C7F14892A14C29FFB4250A9E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>percentile</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[percentile]</local-name>
+            <parent-name>[tableau_percentiles.csv]</parent-name>
+            <remote-alias>percentile</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_percentiles.csv_EB507CE9C7F14892A14C29FFB4250A9E]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>composite_weight</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[composite_weight]</local-name>
+            <parent-name>[tableau_percentiles.csv]</parent-name>
+            <remote-alias>composite_weight</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[tableau_percentiles.csv_EB507CE9C7F14892A14C29FFB4250A9E]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='tableau_percentiles.csv' datatype='table' name='[__tableau_internal_object_id__].[tableau_percentiles.csv_EB507CE9C7F14892A14C29FFB4250A9E]' role='measure' type='quantitative' />
+      <column caption='Composite Weight' datatype='real' name='[composite_weight]' role='measure' type='quantitative' />
+      <column caption='Fit Band' datatype='string' name='[fit_band]' role='dimension' type='nominal' />
+      <column caption='Is Baseline' datatype='boolean' name='[is_baseline]' role='dimension' type='nominal' />
+      <column caption='Is Shortlist' datatype='boolean' name='[is_shortlist]' role='dimension' type='nominal' />
+      <column caption='Metric' datatype='string' name='[metric]' role='dimension' type='nominal' />
+      <column caption='Metric Label' datatype='string' name='[metric_label]' role='dimension' type='nominal' />
+      <column caption='Percentile' datatype='real' name='[percentile]' role='measure' type='quantitative' />
+      <column caption='Player Id' datatype='integer' name='[player_id]' role='dimension' type='ordinal' />
+      <column caption='Player Name' datatype='string' name='[player_name]' role='dimension' type='nominal' />
+      <extract count='-1' enabled='true' object-id='' units='records' user-specific='false'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='D:/DevTools/tmp/TableauTemp/#TableauTemp_0foboyx0t48qap15vjani0e9225k.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>player_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[player_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>player_id</remote-alias>
+              <ordinal>0</ordinal>
+              <family>tableau_percentiles.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>84</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>player_name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[player_name]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>player_name</remote-alias>
+              <ordinal>1</ordinal>
+              <family>tableau_percentiles.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>84</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>fit_band</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[fit_band]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>fit_band</remote-alias>
+              <ordinal>2</ordinal>
+              <family>tableau_percentiles.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>is_shortlist</remote-name>
+              <remote-type>11</remote-type>
+              <local-name>[is_shortlist]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>is_shortlist</remote-alias>
+              <ordinal>3</ordinal>
+              <family>tableau_percentiles.csv</family>
+              <local-type>boolean</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>is_baseline</remote-name>
+              <remote-type>11</remote-type>
+              <local-name>[is_baseline]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>is_baseline</remote-alias>
+              <ordinal>4</ordinal>
+              <family>tableau_percentiles.csv</family>
+              <local-type>boolean</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>metric</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[metric]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>metric</remote-alias>
+              <ordinal>5</ordinal>
+              <family>tableau_percentiles.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>7</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>metric_label</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[metric_label]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>metric_label</remote-alias>
+              <ordinal>6</ordinal>
+              <family>tableau_percentiles.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>7</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>percentile</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[percentile]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>percentile</remote-alias>
+              <ordinal>7</ordinal>
+              <family>tableau_percentiles.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>84</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>composite_weight</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[composite_weight]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>composite_weight</remote-alias>
+              <ordinal>8</ordinal>
+              <family>tableau_percentiles.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>5</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Viet Nam&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='tableau_percentiles.csv' id='tableau_percentiles.csv_EB507CE9C7F14892A14C29FFB4250A9E'>
+            <properties context=''>
+              <relation connection='textscan.12o7rbs09th8oa10x6rez0hd8be3' name='tableau_percentiles.csv' table='[tableau_percentiles#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='integer' name='player_id' ordinal='0' />
+                  <column datatype='string' name='player_name' ordinal='1' />
+                  <column datatype='string' name='fit_band' ordinal='2' />
+                  <column datatype='boolean' name='is_shortlist' ordinal='3' />
+                  <column datatype='boolean' name='is_baseline' ordinal='4' />
+                  <column datatype='string' name='metric' ordinal='5' />
+                  <column datatype='string' name='metric_label' ordinal='6' />
+                  <column datatype='real' name='percentile' ordinal='7' />
+                  <column datatype='real' name='composite_weight' ordinal='8' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Break-even'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontcolor='#000000' fontname='Benton Sans Book'>Break-even: points a signing must add to SEN&apos;s top-3 chance (Base scenario, Assumption)</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='tableau_candidates' name='federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb'>
+            <column caption='Break Even Base' datatype='real' name='[break_even_base]' role='measure' type='quantitative' />
+            <column caption='Cost Group' datatype='string' name='[cost_group]' role='dimension' type='nominal' />
+            <column caption='Is Shortlist' datatype='boolean' name='[is_shortlist]' role='dimension' type='nominal' />
+            <column-instance column='[cost_group]' derivation='None' name='[none:cost_group:nk]' pivot='key' type='nominal' />
+            <column-instance column='[is_shortlist]' derivation='None' name='[none:is_shortlist:nk]' pivot='key' type='nominal' />
+            <column-instance column='[player_name]' derivation='None' name='[none:player_name:nk]' pivot='key' type='nominal' />
+            <column caption='Player Name' datatype='string' name='[player_name]' role='dimension' type='nominal' />
+            <column-instance column='[break_even_base]' derivation='Sum' name='[sum:break_even_base:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[upfront_base]' derivation='Sum' name='[sum:upfront_base:qk]' pivot='key' type='quantitative' />
+            <column caption='Upfront Base' datatype='integer' name='[upfront_base]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:is_shortlist:nk]'>
+            <groupfilter function='member' level='[none:is_shortlist:nk]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <computed-sort column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:player_name:nk]' direction='ASC' using='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:break_even_base:qk]' />
+          <slices>
+            <column>[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:is_shortlist:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='height' field='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:player_name:nk]' value='61' />
+            <format attr='cell-w' value='40' />
+            <format attr='cell-h' value='20' />
+            <format attr='cell' value='20' />
+            <format attr='cell-q' value='100' />
+            <format attr='text-format' field='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:break_even_base:qk]' value='n#,##0.0;-#,##0.0' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='fill-above' id='refline0' value='#00000000' />
+            <format attr='fill-below' id='refline0' value='#00000000' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:cost_group:nk]' />
+              <tooltip column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:upfront_base:qk]' />
+              <text column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:break_even_base:qk]' />
+            </encodings>
+            <reference-line axis-column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:break_even_base:qk]' enable-instant-analytics='true' formula='constant' id='refline0' label='Base belief: 20 points (Assumption F-14)' label-type='custom' scope='per-table' value='20.0' value-column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:break_even_base:qk]' z-order='1' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='1065' />
+                <format attr='maxwidth' value='1065' />
+                <format attr='aspect' value='0' />
+                <format attr='minheight' value='200' />
+                <format attr='maxheight' value='200' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:player_name:nk]</rows>
+        <cols>[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:break_even_base:qk]</cols>
+      </table>
+      <simple-id uuid='{3A3CFBFC-A283-403A-8BA9-C5CF7D9BB8B1}' />
+    </worksheet>
+    <worksheet name='Fit split'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontcolor='#000000' fontname='Benton Sans Book'>Fit score for the shortlist, split into its three parts</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='tableau_candidates' name='federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb'>
+            <column caption='Fit Pts Agent Overlap' datatype='real' name='[fit_pts_agent_overlap]' role='measure' type='quantitative' />
+            <column caption='Fit Pts Map Fit' datatype='real' name='[fit_pts_map_fit]' role='measure' type='quantitative' />
+            <column caption='Fit Pts Performance' datatype='real' name='[fit_pts_performance]' role='measure' type='quantitative' />
+            <column caption='Fit Score' datatype='real' name='[fit_score]' role='measure' type='quantitative' />
+            <column caption='Is Shortlist' datatype='boolean' name='[is_shortlist]' role='dimension' type='nominal' />
+            <column-instance column='[is_shortlist]' derivation='None' name='[none:is_shortlist:nk]' pivot='key' type='nominal' />
+            <column-instance column='[player_name]' derivation='None' name='[none:player_name:nk]' pivot='key' type='nominal' />
+            <column caption='Player Name' datatype='string' name='[player_name]' role='dimension' type='nominal' />
+            <column-instance column='[fit_pts_agent_overlap]' derivation='Sum' name='[sum:fit_pts_agent_overlap:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[fit_pts_map_fit]' derivation='Sum' name='[sum:fit_pts_map_fit:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[fit_pts_performance]' derivation='Sum' name='[sum:fit_pts_performance:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[fit_score]' derivation='Sum' name='[sum:fit_score:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[fit_score]' derivation='Sum' name='[sum:fit_score:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:fit_pts_map_fit:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:fit_pts_agent_overlap:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:fit_pts_performance:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:fit_pts_map_fit:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:fit_pts_agent_overlap:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:fit_pts_performance:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <filter class='categorical' column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:is_shortlist:nk]'>
+            <groupfilter function='member' level='[none:is_shortlist:nk]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <computed-sort column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:player_name:nk]' direction='DESC' using='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:fit_score:qk]' />
+          <slices>
+            <column>[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:is_shortlist:nk]</column>
+            <column>[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[Multiple Values]' scope='cols' value='Fit points' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='cell-w' value='40' />
+            <format attr='cell-h' value='60' />
+            <format attr='cell' value='20' />
+            <format attr='cell-q' value='100' />
+            <format attr='text-format' field='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[Multiple Values]' value='n#,##0.0;-#,##0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[:Measure Names]' />
+              <text column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[Multiple Values]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='aspect' value='0' />
+                <format attr='minwidth' value='986' />
+                <format attr='maxwidth' value='986' />
+                <format attr='minheight' value='600' />
+                <format attr='maxheight' value='600' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:player_name:nk] / [federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:fit_score:ok])</rows>
+        <cols>[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[Multiple Values]</cols>
+      </table>
+      <simple-id uuid='{4E2A33B1-DE37-4BEC-9826-B154563AFADA}' />
+    </worksheet>
+    <worksheet name='Pool'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontcolor='#000000' fontname='Benton Sans Book'>Duelist pool, VCT 2026: damage vs opening duels (84 players, bubble = maps played)</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='tableau_candidates' name='federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb'>
+            <column caption='Adr' datatype='real' name='[adr]' role='measure' type='quantitative' />
+            <column-instance column='[composite_band]' derivation='Attribute' name='[attr:composite_band:nk]' pivot='key' type='nominal' />
+            <column caption='Composite Band' datatype='string' name='[composite_band]' role='dimension' type='nominal' />
+            <column caption='Fk Fd Per Round' datatype='real' name='[fk_fd_per_round]' role='measure' type='quantitative' />
+            <column caption='Is Shortlist' datatype='boolean' name='[is_shortlist]' role='dimension' type='nominal' />
+            <column caption='Maps Played' datatype='integer' name='[maps_played]' role='measure' type='quantitative' />
+            <column-instance column='[is_shortlist]' derivation='None' name='[none:is_shortlist:nk]' pivot='key' type='nominal' />
+            <column-instance column='[player_name]' derivation='None' name='[none:player_name:nk]' pivot='key' type='nominal' />
+            <column caption='Player Name' datatype='string' name='[player_name]' role='dimension' type='nominal' />
+            <column caption='Rounds Played' datatype='integer' name='[rounds_played]' role='measure' type='quantitative' />
+            <column-instance column='[adr]' derivation='Sum' name='[sum:adr:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[fk_fd_per_round]' derivation='Sum' name='[sum:fk_fd_per_round:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[maps_played]' derivation='Sum' name='[sum:maps_played:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[rounds_played]' derivation='Sum' name='[sum:rounds_played:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:is_shortlist:nk]'>
+            <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:is_shortlist:nk]' member='false' />
+              <groupfilter function='member' level='[none:is_shortlist:nk]' member='true' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:is_shortlist:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' domain-expand='false' field='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:adr:qk]' field-type='quantitative' scope='cols' type='space' />
+            <encoding attr='space' class='0' domain-expand='false' field='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:fk_fd_per_round:qk]' field-type='quantitative' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='cell-w' value='100' />
+            <format attr='cell-h' value='20' />
+            <format attr='cell' value='20' />
+            <format attr='cell-q' value='100' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:is_shortlist:nk]' />
+              <size column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:maps_played:qk]' />
+              <lod column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:player_name:nk]' />
+              <tooltip column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[attr:composite_band:nk]' />
+              <tooltip column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:maps_played:qk]' />
+              <tooltip column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:rounds_played:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='1065' />
+                <format attr='maxwidth' value='1065' />
+                <format attr='aspect' value='0' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:fk_fd_per_round:qk]</rows>
+        <cols>[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:adr:qk]</cols>
+      </table>
+      <simple-id uuid='{63602473-BD6E-42E2-ABAC-A6B1A12A952B}' />
+    </worksheet>
+    <worksheet name='SEN maps'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontcolor='#000000' fontname='Benton Sans Book'>ADR on Sentinels&apos; 2026 maps vs the duelist pool (square size = maps played)</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='tableau_maps' name='federated.13xedvc1byrtdv15gb0ux02qa1yn' />
+          </datasources>
+          <datasource-dependencies datasource='federated.13xedvc1byrtdv15gb0ux02qa1yn'>
+            <column caption='Adr' datatype='real' name='[adr]' role='measure' type='quantitative' />
+            <column caption='Adr Maps' datatype='integer' name='[adr_maps]' role='measure' type='quantitative' />
+            <column caption='Adr Vs Pool' datatype='real' name='[adr_vs_pool]' role='measure' type='quantitative' />
+            <column caption='Is Shortlist' datatype='boolean' name='[is_shortlist]' role='dimension' type='nominal' />
+            <column caption='Map Name' datatype='string' name='[map_name]' role='dimension' type='nominal' />
+            <column-instance column='[sen_games]' derivation='Max' name='[max:sen_games:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[adr]' derivation='None' name='[none:adr:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[is_shortlist]' derivation='None' name='[none:is_shortlist:nk]' pivot='key' type='nominal' />
+            <column-instance column='[map_name]' derivation='None' name='[none:map_name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[player_name]' derivation='None' name='[none:player_name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[sen_games]' derivation='None' name='[none:sen_games:ok]' pivot='key' type='ordinal' />
+            <column caption='Player Name' datatype='string' name='[player_name]' role='dimension' type='nominal' />
+            <column caption='Pool Adr' datatype='real' name='[pool_adr]' role='measure' type='quantitative' />
+            <column caption='Sen Games' datatype='integer' name='[sen_games]' role='measure' type='quantitative' />
+            <column-instance column='[adr]' derivation='Sum' name='[sum:adr:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[adr_maps]' derivation='Sum' name='[sum:adr_maps:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[adr_vs_pool]' derivation='Sum' name='[sum:adr_vs_pool:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[pool_adr]' derivation='Sum' name='[sum:pool_adr:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.13xedvc1byrtdv15gb0ux02qa1yn].[none:adr:qk]' included-values='non-null' />
+          <filter class='categorical' column='[federated.13xedvc1byrtdv15gb0ux02qa1yn].[none:is_shortlist:nk]'>
+            <groupfilter function='member' level='[none:is_shortlist:nk]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <computed-sort column='[federated.13xedvc1byrtdv15gb0ux02qa1yn].[none:sen_games:ok]' direction='DESC' using='[federated.13xedvc1byrtdv15gb0ux02qa1yn].[max:sen_games:qk]' />
+          <slices>
+            <column>[federated.13xedvc1byrtdv15gb0ux02qa1yn].[none:is_shortlist:nk]</column>
+            <column>[federated.13xedvc1byrtdv15gb0ux02qa1yn].[none:adr:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.13xedvc1byrtdv15gb0ux02qa1yn].[none:map_name:nk]' value='89' />
+            <format attr='height' field='[federated.13xedvc1byrtdv15gb0ux02qa1yn].[none:player_name:nk]' value='64' />
+            <format attr='cell-w' value='80' />
+            <format attr='cell-h' value='20' />
+            <format attr='cell' value='20' />
+            <format attr='cell-q' value='100' />
+            <format attr='text-format' field='[federated.13xedvc1byrtdv15gb0ux02qa1yn].[sum:pool_adr:qk]' value='n#,##0.0;-#,##0.0' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.13xedvc1byrtdv15gb0ux02qa1yn].[sum:adr_vs_pool:qk]' max='40.0' min='-40.0' type='interpolated' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Square' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.13xedvc1byrtdv15gb0ux02qa1yn].[sum:adr_vs_pool:qk]' />
+              <size column='[federated.13xedvc1byrtdv15gb0ux02qa1yn].[sum:adr_maps:qk]' />
+              <tooltip column='[federated.13xedvc1byrtdv15gb0ux02qa1yn].[sum:pool_adr:qk]' />
+              <text column='[federated.13xedvc1byrtdv15gb0ux02qa1yn].[sum:adr:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='size' value='1.9010497331619263' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='aspect' value='0' />
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+                <format attr='minheight' value='-1' />
+                <format attr='maxheight' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.13xedvc1byrtdv15gb0ux02qa1yn].[none:player_name:nk]</rows>
+        <cols>([federated.13xedvc1byrtdv15gb0ux02qa1yn].[none:sen_games:ok] / [federated.13xedvc1byrtdv15gb0ux02qa1yn].[none:map_name:nk])</cols>
+      </table>
+      <simple-id uuid='{4E5758A7-47D8-418A-AEFD-7240732F12C5}' />
+    </worksheet>
+    <worksheet name='Top band'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontcolor='#000000' fontname='Benton Sans Book'>Top composite band (Top 10 of 84), with maps played</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='tableau_candidates' name='federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb'>
+            <column caption='Composite' datatype='real' name='[composite]' role='measure' type='quantitative' />
+            <column caption='Composite Band' datatype='string' name='[composite_band]' role='dimension' type='nominal' />
+            <column caption='Is Shortlist' datatype='boolean' name='[is_shortlist]' role='dimension' type='nominal' />
+            <column caption='Maps Played' datatype='integer' name='[maps_played]' role='measure' type='quantitative' />
+            <column-instance column='[composite_band]' derivation='None' name='[none:composite_band:nk]' pivot='key' type='nominal' />
+            <column-instance column='[is_shortlist]' derivation='None' name='[none:is_shortlist:nk]' pivot='key' type='nominal' />
+            <column-instance column='[player_name]' derivation='None' name='[none:player_name:nk]' pivot='key' type='nominal' />
+            <column caption='Player Name' datatype='string' name='[player_name]' role='dimension' type='nominal' />
+            <column-instance column='[composite]' derivation='Sum' name='[sum:composite:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[maps_played]' derivation='Sum' name='[sum:maps_played:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:composite_band:nk]'>
+            <groupfilter function='member' level='[none:composite_band:nk]' member='&quot;Top 10 of 84&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:player_name:nk]' direction='DESC' measure-to-sort-by='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:composite:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:composite_band:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='cell-w' value='40' />
+            <format attr='cell-h' value='60' />
+            <format attr='cell' value='20' />
+            <format attr='cell-q' value='100' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:maps_played:ok]' value='108' />
+            <format attr='width' field='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:player_name:nk]' value='108' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:is_shortlist:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='aspect' value='0' />
+                <format attr='minwidth' value='960' />
+                <format attr='maxwidth' value='960' />
+                <format attr='minheight' value='600' />
+                <format attr='maxheight' value='600' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:player_name:nk] / [federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:maps_played:ok])</rows>
+        <cols>[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:composite:qk]</cols>
+      </table>
+      <simple-id uuid='{D3F252D7-4370-49C6-B65D-75C2E8D4B46D}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='D1 Pool'>
+      <style />
+      <size maxheight='609' maxwidth='1350' minheight='609' minwidth='1350' preset-index='17' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='89917' id='7' param='horz' type-v2='layout-flow' w='98814' x='593' y='1314'>
+            <zone h='89917' id='5' type-v2='layout-basic' w='86962' x='593' y='1314'>
+              <zone h='89917' id='3' name='Pool' w='86962' x='593' y='1314'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='89917' id='6' is-fixed='true' param='vert' type-v2='layout-flow' w='11852' x='87555' y='1314'>
+              <zone h='22168' id='8' name='Pool' pane-specification-id='0' param='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:maps_played:qk]' type-v2='size' w='11852' x='87555' y='1314'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='11823' id='9' name='Pool' pane-specification-id='0' param='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:is_shortlist:nk]' type-v2='color' w='11852' x='87555' y='23482'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone h='7455' id='10' type-v2='text' w='98814' x='593' y='91231'>
+            <formatted-text>
+              <run fontcolor='#000000' fontname='Benton Sans Book'>Unofficial fan analysis, not affiliated with Sentinels or Riot Games. Data: VCT 2026 before Champions (snapshot 2026-09-18). Financial figures are assumptions.</run>
+            </formatted-text>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='12' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97372' id='11' param='vert' type-v2='layout-flow' w='98814' x='593' y='1314'>
+                <zone fixed-size='280' h='89917' id='3' is-fixed='true' name='Pool' w='86962' x='593' y='1314'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='22168' id='8' name='Pool' pane-specification-id='0' param='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:maps_played:qk]' type-v2='size' w='11852' x='87555' y='1314'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='11823' id='9' name='Pool' pane-specification-id='0' param='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:is_shortlist:nk]' type-v2='color' w='11852' x='87555' y='23482'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='7455' id='10' type-v2='text' w='98814' x='593' y='91231'>
+                  <formatted-text>
+                    <run fontcolor='#000000' fontname='Benton Sans Book'>Unofficial fan analysis, not affiliated with Sentinels or Riot Games. Data: VCT 2026 before Champions (snapshot 2026-09-18). Financial figures are assumptions.</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{416BA4A6-18FD-4166-8D0B-F6DFFEEC7EB3}' />
+    </dashboard>
+    <dashboard enable-sort-zone-taborder='true' name='D2 Top band'>
+      <style />
+      <size maxheight='587' maxwidth='1350' minheight='587' minwidth='1350' preset-index='17' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='97274' id='16' param='horz' type-v2='layout-flow' w='98814' x='593' y='1363'>
+            <zone h='97274' id='14' type-v2='layout-basic' w='86962' x='593' y='1363'>
+              <zone h='89826' id='7' param='horz' type-v2='layout-flow' w='86962' x='593' y='1363'>
+                <zone h='89826' id='5' type-v2='layout-basic' w='86962' x='593' y='1363'>
+                  <zone h='89826' id='13' name='Top band' w='86962' x='593' y='1363'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                </zone>
+              </zone>
+              <zone h='7448' id='10' type-v2='text' w='86962' x='593' y='91189'>
+                <formatted-text>
+                  <run fontcolor='#000000' fontname='Benton Sans Book'>Unofficial fan analysis, not affiliated with Sentinels or Riot Games. Data: VCT 2026 before Champions (snapshot 2026-09-18). Financial figures are assumptions.</run>
+                </formatted-text>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='97274' id='15' is-fixed='true' param='vert' type-v2='layout-flow' w='11852' x='87555' y='1363'>
+              <zone h='12266' id='17' name='Top band' pane-specification-id='0' param='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:is_shortlist:nk]' type-v2='color' w='11852' x='87555' y='1363'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='19' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97274' id='18' param='vert' type-v2='layout-flow' w='98814' x='593' y='1363'>
+                <zone fixed-size='280' h='89826' id='13' is-fixed='true' name='Top band' w='86962' x='593' y='1363'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='12266' id='17' name='Top band' pane-specification-id='0' param='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:is_shortlist:nk]' type-v2='color' w='11852' x='87555' y='1363'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='7448' id='10' type-v2='text' w='86962' x='593' y='91189'>
+                  <formatted-text>
+                    <run fontcolor='#000000' fontname='Benton Sans Book'>Unofficial fan analysis, not affiliated with Sentinels or Riot Games. Data: VCT 2026 before Champions (snapshot 2026-09-18). Financial figures are assumptions.</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{CED01723-7E9E-4F1B-955B-CC527E1C3C29}' />
+    </dashboard>
+    <dashboard enable-sort-zone-taborder='true' name='D3 Fit split'>
+      <style />
+      <size maxheight='587' maxwidth='1350' minheight='587' minwidth='1350' preset-index='17' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='97274' id='17' param='horz' type-v2='layout-flow' w='98814' x='593' y='1363'>
+            <zone h='97274' id='15' type-v2='layout-basic' w='86962' x='593' y='1363'>
+              <zone h='89826' id='7' param='horz' type-v2='layout-flow' w='86962' x='593' y='1363'>
+                <zone h='89826' id='5' type-v2='layout-basic' w='86962' x='593' y='1363'>
+                  <zone h='89826' id='14' name='Fit split' w='86962' x='593' y='1363'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                </zone>
+              </zone>
+              <zone h='7448' id='10' type-v2='text' w='86962' x='593' y='91189'>
+                <formatted-text>
+                  <run fontcolor='#000000' fontname='Benton Sans Book'>Unofficial fan analysis, not affiliated with Sentinels or Riot Games. Data: VCT 2026 before Champions (snapshot 2026-09-18). Financial figures are assumptions.</run>
+                </formatted-text>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='97274' id='16' is-fixed='true' param='vert' type-v2='layout-flow' w='11852' x='87555' y='1363'>
+              <zone h='15843' id='18' name='Fit split' pane-specification-id='0' param='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[:Measure Names]' type-v2='color' w='11852' x='87555' y='1363'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='20' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97274' id='19' param='vert' type-v2='layout-flow' w='98814' x='593' y='1363'>
+                <zone fixed-size='280' h='89826' id='14' is-fixed='true' name='Fit split' w='86962' x='593' y='1363'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='15843' id='18' name='Fit split' pane-specification-id='0' param='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[:Measure Names]' type-v2='color' w='11852' x='87555' y='1363'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='7448' id='10' type-v2='text' w='86962' x='593' y='91189'>
+                  <formatted-text>
+                    <run fontcolor='#000000' fontname='Benton Sans Book'>Unofficial fan analysis, not affiliated with Sentinels or Riot Games. Data: VCT 2026 before Champions (snapshot 2026-09-18). Financial figures are assumptions.</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{19B9571E-E670-48A3-984C-9C7FB1D751A4}' />
+    </dashboard>
+    <dashboard enable-sort-zone-taborder='true' name='D4 SEN maps'>
+      <style />
+      <size maxheight='587' maxwidth='1350' minheight='587' minwidth='1350' preset-index='17' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='97274' id='18' param='horz' type-v2='layout-flow' w='98814' x='593' y='1363'>
+            <zone h='97274' id='16' type-v2='layout-basic' w='86962' x='593' y='1363'>
+              <zone h='89826' id='7' param='horz' type-v2='layout-flow' w='86962' x='593' y='1363'>
+                <zone h='89826' id='5' type-v2='layout-basic' w='86962' x='593' y='1363'>
+                  <zone h='89826' id='15' name='SEN maps' w='86962' x='593' y='1363'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                </zone>
+              </zone>
+              <zone h='7448' id='10' type-v2='text' w='86962' x='593' y='91189'>
+                <formatted-text>
+                  <run fontcolor='#000000' fontname='Benton Sans Book'>Unofficial fan analysis, not affiliated with Sentinels or Riot Games. Data: VCT 2026 before Champions (snapshot 2026-09-18). Financial figures are assumptions.</run>
+                </formatted-text>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='97274' id='17' is-fixed='true' param='vert' type-v2='layout-flow' w='11852' x='87555' y='1363'>
+              <zone h='12436' id='19' name='SEN maps' pane-specification-id='0' param='[federated.13xedvc1byrtdv15gb0ux02qa1yn].[sum:adr_vs_pool:qk]' type-v2='color' w='11852' x='87555' y='1363'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='21' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97274' id='20' param='vert' type-v2='layout-flow' w='98814' x='593' y='1363'>
+                <zone fixed-size='280' h='89826' id='15' is-fixed='true' name='SEN maps' w='86962' x='593' y='1363'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='12436' id='19' name='SEN maps' pane-specification-id='0' param='[federated.13xedvc1byrtdv15gb0ux02qa1yn].[sum:adr_vs_pool:qk]' type-v2='color' w='11852' x='87555' y='1363'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='7448' id='10' type-v2='text' w='86962' x='593' y='91189'>
+                  <formatted-text>
+                    <run fontcolor='#000000' fontname='Benton Sans Book'>Unofficial fan analysis, not affiliated with Sentinels or Riot Games. Data: VCT 2026 before Champions (snapshot 2026-09-18). Financial figures are assumptions.</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{1E5A70A8-248C-4A59-9000-120B4A9FF63D}' />
+    </dashboard>
+    <dashboard enable-sort-zone-taborder='true' name='D5 Break-even'>
+      <style />
+      <size maxheight='587' maxwidth='1350' minheight='587' minwidth='1350' preset-index='17' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='97274' id='19' param='horz' type-v2='layout-flow' w='98814' x='593' y='1363'>
+            <zone h='97274' id='17' type-v2='layout-basic' w='86962' x='593' y='1363'>
+              <zone h='89826' id='7' param='horz' type-v2='layout-flow' w='86962' x='593' y='1363'>
+                <zone h='89826' id='5' type-v2='layout-basic' w='86962' x='593' y='1363'>
+                  <zone h='89826' id='16' name='Break-even' w='86962' x='593' y='1363'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                </zone>
+              </zone>
+              <zone h='7448' id='10' type-v2='text' w='86962' x='593' y='91189'>
+                <formatted-text>
+                  <run fontcolor='#000000' fontname='Benton Sans Book'>Unofficial fan analysis, not affiliated with Sentinels or Riot Games. Data: VCT 2026 before Champions (snapshot 2026-09-18). Financial figures are assumptions.</run>
+                </formatted-text>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone fixed-size='160' h='97274' id='18' is-fixed='true' param='vert' type-v2='layout-flow' w='11852' x='87555' y='1363'>
+              <zone h='19421' id='20' name='Break-even' pane-specification-id='0' param='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:cost_group:nk]' type-v2='color' w='11852' x='87555' y='1363'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='22' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97274' id='21' param='vert' type-v2='layout-flow' w='98814' x='593' y='1363'>
+                <zone fixed-size='280' h='89826' id='16' is-fixed='true' name='Break-even' w='86962' x='593' y='1363'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='19421' id='20' name='Break-even' pane-specification-id='0' param='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:cost_group:nk]' type-v2='color' w='11852' x='87555' y='1363'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='7448' id='10' type-v2='text' w='86962' x='593' y='91189'>
+                  <formatted-text>
+                    <run fontcolor='#000000' fontname='Benton Sans Book'>Unofficial fan analysis, not affiliated with Sentinels or Riot Games. Data: VCT 2026 before Champions (snapshot 2026-09-18). Financial figures are assumptions.</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{2F940BF7-6047-4488-9A18-4A22053D1EA5}' />
+    </dashboard>
+    <dashboard name='Which duelist should Sentinels sign for 2027?' type='storyboard'>
+      <style>
+        <style-rule element='story-point-caption'>
+          <format attr='width' value='226' />
+        </style-rule>
+      </style>
+      <size maxheight='768' maxwidth='1366' minheight='768' minwidth='1366' preset-index='0' sizing-mode='fixed' />
+      <zones>
+        <zone h='100000' id='2' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='97916' id='1' param='vert' removable='false' type-v2='layout-flow' w='98828' x='586' y='1042'>
+            <zone h='5469' id='3' type-v2='title' w='98828' x='586' y='1042' />
+            <zone fixed-size='123' h='16016' id='4' is-fixed='true' paired-zone-id='5' removable='false' type-v2='flipboard-nav' w='98828' x='586' y='6511' />
+            <zone h='76431' id='5' paired-zone-id='4' removable='false' type-v2='flipboard' w='98828' x='586' y='22527'>
+              <flipboard active-id='1' nav-type='caption' show-nav-arrows='true'>
+                <story-points>
+                  <story-point caption='84 eligible duelists: the ten shortlisted cluster on damage and opening duels.' captured-sheet='D1 Pool' id='1' />
+                  <story-point caption='Best performers are not the best fits: only 3 of the top 10 make the shortlist.' captured-sheet='D2 Top band' id='2' />
+                  <story-point caption='Meiy leads the fit score by scoring high on all three parts.' captured-sheet='D3 Fit split' id='3'>
+                    <capturedDeltas>
+                      <worksheet name='Fit split'>
+                        <selection-collection>
+                          <node-selection select-tuples='false'>
+                            <oriented-node-reference orientation='horizontal'>
+                              <node-reference>
+                                <axis>[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[Multiple Values]</axis>
+                              </node-reference>
+                              <page-reference />
+                            </oriented-node-reference>
+                          </node-selection>
+                        </selection-collection>
+                      </worksheet>
+                    </capturedDeltas>
+                  </story-point>
+                  <story-point caption='Meiy beats the pool on all four of SEN&apos;s most-played maps.' captured-sheet='D4 SEN maps' id='4' />
+                  <story-point caption='At a 20-point belief (assumption), no signing clears its break-even bar.' captured-sheet='D5 Break-even' id='5' />
+                </story-points>
+              </flipboard>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <simple-id uuid='{E6FD3E20-37BC-4B60-AA46-48B275C90C27}' />
+    </dashboard>
+  </dashboards>
+  <windows saved-dpi-scale-factor='1.25' source-height='89'>
+    <window class='worksheet' name='Pool'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[sum:maps_played:qk]' type='size' />
+            <card pane-specification-id='0' param='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:is_shortlist:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{57599712-6AD9-4C5B-89DF-1FD73E7A3CAE}' />
+    </window>
+    <window class='worksheet' name='Top band'>
+      <cards>
+        <edge name='left'>
+          <strip size='143'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:is_shortlist:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{A37E7548-4265-484D-BCDE-1D91E5105ED7}' />
+    </window>
+    <window class='worksheet' name='Fit split'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{09F6D774-015D-4789-B3E8-7B66007F441F}' />
+    </window>
+    <window class='worksheet' name='SEN maps'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.13xedvc1byrtdv15gb0ux02qa1yn].[sum:adr_vs_pool:qk]' type='color' />
+            <card pane-specification-id='0' param='[federated.13xedvc1byrtdv15gb0ux02qa1yn].[sum:adr_maps:qk]' type='size' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{D223FF8F-F0F3-4393-A157-60E707419CCB}' />
+    </window>
+    <window class='worksheet' name='Break-even'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0s8p9pm1qzdg7o11w6fmk1ba3ptb].[none:cost_group:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{139D7AEC-52ED-4473-A84E-25EE113CACA5}' />
+    </window>
+    <window class='dashboard' name='D1 Pool'>
+      <viewpoints>
+        <viewpoint name='Pool'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{EEC2BF3A-D90D-4BD8-90E1-B4ED1A1AE2DB}' />
+    </window>
+    <window class='dashboard' name='D2 Top band'>
+      <viewpoints>
+        <viewpoint name='Top band'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{6BD0635C-8E3B-4448-BB7A-987735B663D2}' />
+    </window>
+    <window class='dashboard' name='D3 Fit split'>
+      <viewpoints>
+        <viewpoint name='Fit split'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{BE91714D-0A14-44C8-8C0D-E34998F74EF2}' />
+    </window>
+    <window class='dashboard' name='D4 SEN maps'>
+      <viewpoints>
+        <viewpoint name='SEN maps'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{30322720-2BED-4124-A470-9B56874F71C5}' />
+    </window>
+    <window class='dashboard' name='D5 Break-even'>
+      <viewpoints>
+        <viewpoint name='Break-even'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{8E07FB83-1353-49FE-9DC5-E0D280FFA7AF}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Which duelist should Sentinels sign for 2027?'>
+      <viewpoints />
+      <active id='-1' />
+      <simple-id uuid='{93F1C771-3210-4AC4-9C3C-A231EBCCAA8F}' />
+    </window>
+  </windows>
+</workbook>
