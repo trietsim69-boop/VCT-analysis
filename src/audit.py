@@ -1,10 +1,3 @@
-"""Profile a DuckDB file: tables, row counts, column types, null rates, distinct counts.
-
-Usage:
-    python src/audit.py data/raw/vct_2026-09-18.duckdb [out.md]   # default: data/audit/data_profile.md
-    python src/audit.py --selftest
-"""
-
 import sys
 from datetime import date
 from pathlib import Path
@@ -20,7 +13,7 @@ def profile(db_path: str) -> str:
         f"Source: `{db_path}`",
         f"Generated: {date.today()}",
         "",
-        "Machine-generated schema profile.",
+        "Machine-generated schema profile. The interpretation lives in `docs/data_audit.md`.",
     ]
     for (table,) in con.execute("SHOW TABLES").fetchall():
         rows = con.execute(f'SELECT count(*) FROM "{table}"').fetchone()[0]
