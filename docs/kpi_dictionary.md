@@ -1,10 +1,10 @@
 # KPI Dictionary
 
-v0.3, 2026-09-18. Columns confirmed against the 2026-09-18 snapshot. The full mapping and null rates are in `docs/data_audit.md` §4 — ranking metrics are complete outside China; China has gaps of up to ~20%, handled by per-metric denominators below.
+v0.3, 2026-09-18. Columns confirmed against the 2026-09-18 snapshot. Null rates by region are in `data/audit/07_null_rates.csv` — ranking metrics are complete outside China; China has gaps of up to ~20%, handled by per-metric denominators below.
 
 **Base fact:** `player_map` joined to `matches` (date, event, region, status) and `maps` (availability flags), keyed by `player_id` + `game_id`. **Rounds come from the `rounds` table**, counted per `game_id`.
 
-**Gates:** every query filters `matches.status = 'final'` — the snapshot holds placeholder rows for unplayed fixtures (`data_audit.md` §0). **Ranking KPIs are not gated on `maps.performance_available`**: that flag covers vlr.gg's Performance tab only (multi-kills, clutches, `kill_matrix`), so it gates the display-only metrics in section C and the op-kill colour, nothing else.
+**Gates:** every query filters `matches.status = 'final'` — the snapshot holds placeholder rows for unplayed fixtures (`data/audit/02_unplayed_2026.csv`). **Ranking KPIs are not gated on `maps.performance_available`**: that flag covers vlr.gg's Performance tab only (multi-kills, clutches, `kill_matrix`), so it gates the display-only metrics in section C and the op-kill colour, nothing else.
 
 **Per-metric denominators:** each rate divides by the rounds of the maps where *that* metric is non-NULL. Chinese league maps are missing ADR on ~15% of rows; dividing by all rounds would understate them, which is the NULL-as-zero error in disguise. Every rate is shown with its own map count.
 
@@ -63,14 +63,12 @@ The ranking is a **role-weighted composite of percentiles**. Weights live in `da
 **Only 6–7 of the section B metrics are weighted, not all 10.** Measured over the 2026 pool (≥ 15 maps, n = 289):
 
 - **KPR and ACS are dropped.** They correlate with ADR at **0.95** and **0.97** — weighting all three is one metric counted three times. ADR is the transparent one, so it carries the output signal alone. (ACS is display-only anyway, S-09.)
-- **FKPR and opening-duel win % are both kept**: they correlate at only **0.41**, so entry *volume* and entry *success* are genuinely different things. That distinction is the whole question for the vacant duelist slot — Jerrwin's baseline is high volume at a near-break-even win rate (`data_audit.md` §2).
+- **FKPR and opening-duel win % are both kept**: they correlate at only **0.41**, so entry *volume* and entry *success* are genuinely different things. That distinction is the whole question for the vacant duelist slot — Jerrwin's baseline is high volume at a near-break-even win rate (`data/audit/05_sen_slot_baseline.csv`).
 - **KAST and DPR are near-independent of ADR** (0.17 and 0.20), so they add real information about staying alive and being useful in rounds without fragging.
 - **FK−FD per round is dropped** as a third view of the same duel data.
 - APR is weighted for the support roles only; for a duelist it mostly measures the team's utility, not the player's.
 
-![ADR against KPR, ACS, KAST and DPR for the 2026 pool](metric_correlations.png)
-
-*Each dot is one player with ≥ 15 maps in 2026 (n = 289). KPR and ACS sit on a line with ADR — the same signal three times, so only ADR is weighted. KAST and DPR are shapeless clouds against it, so they earn their own weights.*
+*Correlations are across the 289 players with ≥ 15 maps in 2026. KPR and ACS move with ADR, the same signal three times, so only ADR is weighted. KAST and DPR do not, so they earn their own weights.*
 
 **The weight values themselves are a judgement call, not a measurement.** The correlations above justify *which* metrics are weighted; they say nothing about why duelist ADR is 0.25 rather than 0.20. The stated rationale is only this: for the vacant duelist slot, entry play (FKPR + opening-win, 0.40 combined) is the thing SEN needs and is weighted above raw output (ADR, 0.25); support roles shift that weight onto KAST and APR.
 

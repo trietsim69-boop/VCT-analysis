@@ -1,12 +1,3 @@
-"""Cross-check the snapshot against the live vlr.gg match pages (the upstream source).
-
-Usage:
-    python -m src.spotcheck_vlr 729757 724645                 # newest snapshot
-    python -m src.spotcheck_vlr --db data/raw/vct_2026-09-18.duckdb 729757
-
-Compares every player x map overview stat (both-sides value) and writes data/audit/08_vlr_spotcheck.csv.
-"""
-
 import pathlib
 import sys
 import urllib.request

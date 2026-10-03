@@ -1,14 +1,3 @@
-"""Build the BI-ready marts in data/marts/ from data/processed/
-(sql/mart_scouting.sql, then sql/mart_fit.sql, which reads the scouting mart,
-then sql/mart_budget.sql and the budget reference, which read the fit mart,
-then sql/mart_tableau.sql, the Tableau-ready files).
-
-Usage:
-    python -m src.marts        # run python -m src.clean first
-
-Safe to re-run: every COPY overwrites its CSV file.
-"""
-
 from pathlib import Path
 
 import duckdb

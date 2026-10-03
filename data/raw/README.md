@@ -36,4 +36,4 @@ python -m src.export                                   # CSV dump + data/audit/*
 python -m src.spotcheck_vlr 729757 724645              # cross-check two matches against vlr.gg
 ```
 
-The findings from these steps are in [`docs/data_audit.md`](../../docs/data_audit.md).
+The audit results are the CSV files in [`data/audit/`](../audit/).

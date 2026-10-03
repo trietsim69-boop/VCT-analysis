@@ -1,4 +1,4 @@
--- Re-derives every figure in docs/data_audit.md into data/audit/*.csv. Run: python -m src.export
+-- Writes the data-audit figures to data/audit/*.csv. Run: python -m src.export
 
 -- Agent -> role seed; the source has no role field.
 CREATE OR REPLACE TEMP TABLE roles AS FROM read_csv('data/seeds/agent_roles.csv');

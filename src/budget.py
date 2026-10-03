@@ -1,11 +1,3 @@
-"""Budget model reference calculation (docs/budget_model.md §6–§7). T9's DAX must match it.
-
-Usage:
-    python -m src.budget       # rewrites data/marts/mart_budget_reference.csv (src.marts also does this)
-
-Every input is an assumption from data/seeds/budget_scenarios.csv (assumptions_log.md § B).
-"""
-
 import csv
 from decimal import ROUND_HALF_UP, Decimal
 

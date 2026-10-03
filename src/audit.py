@@ -20,7 +20,7 @@ def profile(db_path: str) -> str:
         f"Source: `{db_path}`",
         f"Generated: {date.today()}",
         "",
-        "Machine-generated schema profile. The interpretation lives in `docs/data_audit.md`.",
+        "Machine-generated schema profile.",
     ]
     for (table,) in con.execute("SHOW TABLES").fetchall():
         rows = con.execute(f'SELECT count(*) FROM "{table}"').fetchone()[0]

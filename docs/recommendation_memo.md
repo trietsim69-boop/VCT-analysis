@@ -2,13 +2,6 @@
 
 > **Unofficial fan analysis.** Not affiliated with Sentinels or Riot Games. Team facts come from public data. **Every financial number is an assumption**, not a known contract term.
 
-| | |
-|---|---|
-| **To** | General Manager, Sentinels VALORANT (hypothetical) |
-| **From** | Triet Le |
-| **Date** | 2026-10-03 |
-| **Data** | VCT 2026 before Champions (snapshot 2026-09-18). 84 duelists with at least 15 maps |
-
 ## Recommendation
 
 1. **Shortlist Meiy, swagzor and Derke.** They have the three highest fit scores for this slot, all in the top fit band.

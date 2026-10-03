@@ -22,12 +22,12 @@ def test_grain_is_unique(con):
 
 
 def test_no_unplayed_fixtures_leaked(con):
-    """Placeholder rows for scheduled matches are all-NULL (data_audit.md §0)."""
+    """Placeholder rows for scheduled matches are all-NULL."""
     assert q(con, f"SELECT count(*) FROM {FACT} WHERE kills_all IS NULL") == 0
 
 
 def test_row_count_matches_audit(con):
-    """15,020 player-maps in 2026, per data_audit.md §4. Later snapshots add Champions rows."""
+    """15,020 player-maps in 2026 (data/audit). Later snapshots add Champions rows."""
     assert q(con, f"SELECT count(*) FROM {FACT} WHERE season = 2026") >= 15_020
 
 
@@ -45,7 +45,7 @@ def test_every_agent_maps_to_a_role(con):
 
 
 def test_agent_is_scalar(con):
-    """agents[1] is read directly; a map with two agents would break role share (data_audit.md §4)."""
+    """agents[1] is read directly; a map with two agents would break role share."""
     assert q(con, f"SELECT count(*) FROM {FACT} WHERE season = 2026 AND agent IS NULL") == 0
 
 

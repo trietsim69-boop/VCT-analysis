@@ -24,7 +24,7 @@ Path("data/audit").mkdir(parents=True, exist_ok=True)
 con.execute(Path("sql/audit.sql").read_text(encoding="utf-8"))
 
 # The one check: unplayed fixtures are all-NULL rows, so a leak shows up as a NULL kill count
-# (data_audit.md §0). Fails if the status filter in sql/audit.sql is dropped. Snapshot-independent.
+# Fails if the status filter in sql/audit.sql is dropped. Snapshot-independent.
 rows, leaked = con.execute("SELECT count(*), count(*) FILTER (WHERE kills_all IS NULL) FROM pm26").fetchone()
 assert leaked == 0, f"{leaked} placeholder rows leaked into pm26 — check the status filter"
 print(f"ok: {rows:,} player-map rows; see data/audit/ and data/raw/csv/")

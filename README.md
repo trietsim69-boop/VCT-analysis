@@ -101,7 +101,7 @@ To open the dashboards, point their data sources at your copy of the repo: see [
 |---|---|---|
 | [VCT Reference](https://vct-reference.com/dataset) (`vct.duckdb`) | All performance data: player × map stats for tier-1 VCT | Free to use, including commercially, with no warranty. Credit requested |
 | [VCT Global Contract Database](https://docs.google.com/spreadsheets/d/e/2PACX-1vRmmWiBmMMD43m5VtZq54nKlmj0ZtythsA1qCpegwx-iRptx2HEsG0T3cQlG1r2AIiKxBWnaurJZQ9Q/pubhtml) (Riot Games) | Contract end year and resident or import status. No salaries | Published by Riot as a public sheet |
-| [vlr.gg](https://www.vlr.gg) match pages | Spot-check of the snapshot: 600 of 600 cells matched on two matches | Public pages, read by hand and by `src/spotcheck_vlr.py` |
+| [vlr.gg](https://www.vlr.gg) match pages | Spot-check of the snapshot: 600 of 600 stat cells matched across two matches | Public pages, read by hand and by `src/spotcheck_vlr.py` |
 | [Esports Earnings](https://www.esportsearnings.com/games/646-valorant) | Career prize money of the shortlist, as a reference only. **Prize money is never used as salary** | Public site, free API key |
 | Public reporting on VCT finances and rules | Ranges for the budget assumptions | About 60 sources, listed in [`docs/budget_cost_research.md`](docs/budget_cost_research.md) |
 
@@ -113,7 +113,6 @@ Data credit: [vct-reference.com](https://vct-reference.com), Esports Earnings an
 |---|---|
 | [`docs/business_brief.md`](docs/business_brief.md) | The problem, the stakeholder, the three decisions and the outcome |
 | [`docs/kpi_dictionary.md`](docs/kpi_dictionary.md) | Every metric: definition, source column, weighting |
-| [`docs/data_audit.md`](docs/data_audit.md) | What the data can and cannot support, and the go/no-go |
 | [`docs/assumptions_log.md`](docs/assumptions_log.md) | Every number that is not measured data, with its source and status |
 | [`docs/budget_model.md`](docs/budget_model.md) | The budget model's inputs, formulas and worked cases |
 | [`docs/budget_cost_research.md`](docs/budget_cost_research.md) | The research behind the budget inputs |
@@ -128,7 +127,7 @@ Data credit: [vct-reference.com](https://vct-reference.com), Esports Earnings an
 ├── data/processed/    star schema, git-ignored (rebuilt by src.clean)
 ├── data/marts/        BI-ready CSV files (committed)
 ├── data/seeds/        hand-kept inputs: roles, weights, budget scenarios
-├── data/audit/        audit query results
+├── data/audit/        data-audit results: coverage, null rates, vlr.gg spot-check
 ├── sql/               DuckDB model and mart SQL
 ├── src/               Python entry points and the budget reference calculation
 ├── tests/             pytest data tests

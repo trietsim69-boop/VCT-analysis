@@ -1,11 +1,3 @@
-"""Build the star schema in data/processed/ from the raw snapshot (sql/model.sql).
-
-Usage:
-    python -m src.clean [path/to/vct_YYYY-MM-DD.duckdb]   # defaults to the newest snapshot
-
-Safe to re-run: every COPY overwrites its CSV file.
-"""
-
 import sys
 from pathlib import Path
 
