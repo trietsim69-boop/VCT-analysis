@@ -33,7 +33,8 @@ GROUP BY p.player_id;
 CREATE OR REPLACE TEMP VIEW cand_map AS
 SELECT player_id, map_name,
        sum(adr_all * rounds) / sum(rounds) FILTER (WHERE adr_all IS NOT NULL) AS adr,  -- round-weighted
-       sum(rounds) FILTER (WHERE adr_all IS NOT NULL) AS adr_rounds
+       sum(rounds) FILTER (WHERE adr_all IS NOT NULL) AS adr_rounds,
+       count(adr_all) AS adr_maps  -- sample size, used by mart_tableau.sql
 FROM f26 JOIN pool USING (player_id) GROUP BY ALL;
 
 CREATE OR REPLACE TEMP VIEW pool_map AS

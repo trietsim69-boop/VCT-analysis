@@ -42,7 +42,7 @@ To drill through, right-click a player's row and choose **Drill through**. The B
 
 **What it answers:** who has performed best in the role this season, on metrics anyone can check.
 
-- **The table** lists players in the selected role, sorted by a composite score. The composite is a weighted mean of seven percentiles (ADR, KAST and the opening-duel metrics among them), computed within the role. vlr.gg's Rating and ACS exist as display measures but are never used for ranking.
+- **The table** lists players in the selected role, sorted by a composite score. The composite is a weighted mean of percentiles, computed within the role. For duelists there are six: ADR, KAST, opening kills, opening duel win rate, deaths and consistency. vlr.gg's Rating and ACS exist as display measures but are never used for ranking.
 - **Composite Band** is the result to read. It says "Top 10 of 84", never "8th best": the gap between neighbouring ranks is not evidence of anything.
 - **The scatter** plots damage (ADR) against opening duels won minus lost per round. Bubble size is maps played, so a strong line built on few maps is visible at a glance.
 - **The percentile bars** describe one player. Click a row in the table first; with nobody selected they show the pool average, which is 50 by construction.

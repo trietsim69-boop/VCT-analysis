@@ -1,0 +1,589 @@
+player_id,player_name,fit_band,is_shortlist,is_baseline,metric,metric_label,percentile,composite_weight
+6672,Meiy,Top 10 of 84,true,false,pct_adr,Damage per round (ADR),91.6,0.25
+6672,Meiy,Top 10 of 84,true,false,pct_fkpr,Opening kills per round,80.7,0.2
+6672,Meiy,Top 10 of 84,true,false,pct_opening_win,Opening duel win %,96.4,0.2
+6672,Meiy,Top 10 of 84,true,false,pct_kast,KAST %,91.6,0.15
+6672,Meiy,Top 10 of 84,true,false,pct_consistency,Consistency of ADR (steadier = higher),32.5,0.1
+6672,Meiy,Top 10 of 84,true,false,pct_dpr,Deaths per round (fewer = higher),48.2,0.1
+6672,Meiy,Top 10 of 84,true,false,pct_apr,Assists per round,7.2,
+45492,swagzor,Top 10 of 84,true,false,pct_adr,Damage per round (ADR),94.0,0.25
+45492,swagzor,Top 10 of 84,true,false,pct_fkpr,Opening kills per round,100.0,0.2
+45492,swagzor,Top 10 of 84,true,false,pct_opening_win,Opening duel win %,69.9,0.2
+45492,swagzor,Top 10 of 84,true,false,pct_kast,KAST %,67.5,0.15
+45492,swagzor,Top 10 of 84,true,false,pct_consistency,Consistency of ADR (steadier = higher),50.6,0.1
+45492,swagzor,Top 10 of 84,true,false,pct_dpr,Deaths per round (fewer = higher),9.6,0.1
+45492,swagzor,Top 10 of 84,true,false,pct_apr,Assists per round,37.3,
+5022,Derke,Top 10 of 84,true,false,pct_adr,Damage per round (ADR),81.9,0.25
+5022,Derke,Top 10 of 84,true,false,pct_fkpr,Opening kills per round,77.1,0.2
+5022,Derke,Top 10 of 84,true,false,pct_opening_win,Opening duel win %,80.7,0.2
+5022,Derke,Top 10 of 84,true,false,pct_kast,KAST %,78.3,0.15
+5022,Derke,Top 10 of 84,true,false,pct_consistency,Consistency of ADR (steadier = higher),4.8,0.1
+5022,Derke,Top 10 of 84,true,false,pct_dpr,Deaths per round (fewer = higher),78.3,0.1
+5022,Derke,Top 10 of 84,true,false,pct_apr,Assists per round,68.7,
+3520,ZmjjKK,Top 10 of 84,true,false,pct_adr,Damage per round (ADR),90.4,0.25
+3520,ZmjjKK,Top 10 of 84,true,false,pct_fkpr,Opening kills per round,95.2,0.2
+3520,ZmjjKK,Top 10 of 84,true,false,pct_opening_win,Opening duel win %,78.3,0.2
+3520,ZmjjKK,Top 10 of 84,true,false,pct_kast,KAST %,55.4,0.15
+3520,ZmjjKK,Top 10 of 84,true,false,pct_consistency,Consistency of ADR (steadier = higher),59.0,0.1
+3520,ZmjjKK,Top 10 of 84,true,false,pct_dpr,Deaths per round (fewer = higher),47.0,0.1
+3520,ZmjjKK,Top 10 of 84,true,false,pct_apr,Assists per round,22.9,
+25255,primmie,Top 10 of 84,true,false,pct_adr,Damage per round (ADR),97.6,0.25
+25255,primmie,Top 10 of 84,true,false,pct_fkpr,Opening kills per round,69.9,0.2
+25255,primmie,Top 10 of 84,true,false,pct_opening_win,Opening duel win %,94.0,0.2
+25255,primmie,Top 10 of 84,true,false,pct_kast,KAST %,95.2,0.15
+25255,primmie,Top 10 of 84,true,false,pct_consistency,Consistency of ADR (steadier = higher),55.4,0.1
+25255,primmie,Top 10 of 84,true,false,pct_dpr,Deaths per round (fewer = higher),91.6,0.1
+25255,primmie,Top 10 of 84,true,false,pct_apr,Assists per round,39.8,
+804,BuZz,Top 10 of 84,true,false,pct_adr,Damage per round (ADR),74.7,0.25
+804,BuZz,Top 10 of 84,true,false,pct_fkpr,Opening kills per round,51.8,0.2
+804,BuZz,Top 10 of 84,true,false,pct_opening_win,Opening duel win %,77.1,0.2
+804,BuZz,Top 10 of 84,true,false,pct_kast,KAST %,81.9,0.15
+804,BuZz,Top 10 of 84,true,false,pct_consistency,Consistency of ADR (steadier = higher),62.7,0.1
+804,BuZz,Top 10 of 84,true,false,pct_dpr,Deaths per round (fewer = higher),73.5,0.1
+804,BuZz,Top 10 of 84,true,false,pct_apr,Assists per round,79.5,
+8873,dgzin,Top 10 of 84,true,false,pct_adr,Damage per round (ADR),84.3,0.25
+8873,dgzin,Top 10 of 84,true,false,pct_fkpr,Opening kills per round,94.0,0.2
+8873,dgzin,Top 10 of 84,true,false,pct_opening_win,Opening duel win %,86.7,0.2
+8873,dgzin,Top 10 of 84,true,false,pct_kast,KAST %,33.7,0.15
+8873,dgzin,Top 10 of 84,true,false,pct_consistency,Consistency of ADR (steadier = higher),30.1,0.1
+8873,dgzin,Top 10 of 84,true,false,pct_dpr,Deaths per round (fewer = higher),42.2,0.1
+8873,dgzin,Top 10 of 84,true,false,pct_apr,Assists per round,2.4,
+18796,OXY,Top 10 of 84,true,false,pct_adr,Damage per round (ADR),92.8,0.25
+18796,OXY,Top 10 of 84,true,false,pct_fkpr,Opening kills per round,98.8,0.2
+18796,OXY,Top 10 of 84,true,false,pct_opening_win,Opening duel win %,59.0,0.2
+18796,OXY,Top 10 of 84,true,false,pct_kast,KAST %,50.6,0.15
+18796,OXY,Top 10 of 84,true,false,pct_consistency,Consistency of ADR (steadier = higher),18.1,0.1
+18796,OXY,Top 10 of 84,true,false,pct_dpr,Deaths per round (fewer = higher),20.5,0.1
+18796,OXY,Top 10 of 84,true,false,pct_apr,Assists per round,12.0,
+21328,Wo0t,Top 10 of 84,true,false,pct_adr,Damage per round (ADR),61.4,0.25
+21328,Wo0t,Top 10 of 84,true,false,pct_fkpr,Opening kills per round,49.4,0.2
+21328,Wo0t,Top 10 of 84,true,false,pct_opening_win,Opening duel win %,83.1,0.2
+21328,Wo0t,Top 10 of 84,true,false,pct_kast,KAST %,88.0,0.15
+21328,Wo0t,Top 10 of 84,true,false,pct_consistency,Consistency of ADR (steadier = higher),41.0,0.1
+21328,Wo0t,Top 10 of 84,true,false,pct_dpr,Deaths per round (fewer = higher),79.5,0.1
+21328,Wo0t,Top 10 of 84,true,false,pct_apr,Assists per round,56.6,
+29893,Timotino,Top 10 of 84,true,false,pct_adr,Damage per round (ADR),72.3,0.25
+29893,Timotino,Top 10 of 84,true,false,pct_fkpr,Opening kills per round,96.4,0.2
+29893,Timotino,Top 10 of 84,true,false,pct_opening_win,Opening duel win %,56.6,0.2
+29893,Timotino,Top 10 of 84,true,false,pct_kast,KAST %,34.9,0.15
+29893,Timotino,Top 10 of 84,true,false,pct_consistency,Consistency of ADR (steadier = higher),96.4,0.1
+29893,Timotino,Top 10 of 84,true,false,pct_dpr,Deaths per round (fewer = higher),44.6,0.1
+29893,Timotino,Top 10 of 84,true,false,pct_apr,Assists per round,72.3,
+8480,aspas,Top 25 of 84,false,false,pct_adr,Damage per round (ADR),69.9,0.25
+8480,aspas,Top 25 of 84,false,false,pct_fkpr,Opening kills per round,45.8,0.2
+8480,aspas,Top 25 of 84,false,false,pct_opening_win,Opening duel win %,85.5,0.2
+8480,aspas,Top 25 of 84,false,false,pct_kast,KAST %,86.7,0.15
+8480,aspas,Top 25 of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),65.1,0.1
+8480,aspas,Top 25 of 84,false,false,pct_dpr,Deaths per round (fewer = higher),96.4,0.1
+8480,aspas,Top 25 of 84,false,false,pct_apr,Assists per round,10.8,
+4885,whzy,Top 25 of 84,false,false,pct_adr,Damage per round (ADR),86.7,0.25
+4885,whzy,Top 25 of 84,false,false,pct_fkpr,Opening kills per round,67.5,0.2
+4885,whzy,Top 25 of 84,false,false,pct_opening_win,Opening duel win %,72.3,0.2
+4885,whzy,Top 25 of 84,false,false,pct_kast,KAST %,72.3,0.15
+4885,whzy,Top 25 of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),67.5,0.1
+4885,whzy,Top 25 of 84,false,false,pct_dpr,Deaths per round (fewer = higher),53.0,0.1
+4885,whzy,Top 25 of 84,false,false,pct_apr,Assists per round,55.4,
+4428,UdoTan,Top 25 of 84,false,false,pct_adr,Damage per round (ADR),66.3,0.25
+4428,UdoTan,Top 25 of 84,false,false,pct_fkpr,Opening kills per round,41.0,0.2
+4428,UdoTan,Top 25 of 84,false,false,pct_opening_win,Opening duel win %,57.8,0.2
+4428,UdoTan,Top 25 of 84,false,false,pct_kast,KAST %,79.5,0.15
+4428,UdoTan,Top 25 of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),95.2,0.1
+4428,UdoTan,Top 25 of 84,false,false,pct_dpr,Deaths per round (fewer = higher),66.3,0.1
+4428,UdoTan,Top 25 of 84,false,false,pct_apr,Assists per round,36.1,
+21216,f4ngeer,Top 25 of 84,false,false,pct_adr,Damage per round (ADR),78.3,0.25
+21216,f4ngeer,Top 25 of 84,false,false,pct_fkpr,Opening kills per round,89.2,0.2
+21216,f4ngeer,Top 25 of 84,false,false,pct_opening_win,Opening duel win %,91.6,0.2
+21216,f4ngeer,Top 25 of 84,false,false,pct_kast,KAST %,44.6,0.15
+21216,f4ngeer,Top 25 of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),36.1,0.1
+21216,f4ngeer,Top 25 of 84,false,false,pct_dpr,Deaths per round (fewer = higher),88.0,0.1
+21216,f4ngeer,Top 25 of 84,false,false,pct_apr,Assists per round,16.9,
+18350,MiniBoo,Top 25 of 84,false,false,pct_adr,Damage per round (ADR),67.5,0.25
+18350,MiniBoo,Top 25 of 84,false,false,pct_fkpr,Opening kills per round,84.3,0.2
+18350,MiniBoo,Top 25 of 84,false,false,pct_opening_win,Opening duel win %,61.4,0.2
+18350,MiniBoo,Top 25 of 84,false,false,pct_kast,KAST %,63.9,0.15
+18350,MiniBoo,Top 25 of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),80.7,0.1
+18350,MiniBoo,Top 25 of 84,false,false,pct_dpr,Deaths per round (fewer = higher),69.9,0.1
+18350,MiniBoo,Top 25 of 84,false,false,pct_apr,Assists per round,31.3,
+9196,t3xture,Top 25 of 84,false,false,pct_adr,Damage per round (ADR),80.7,0.25
+9196,t3xture,Top 25 of 84,false,false,pct_fkpr,Opening kills per round,88.0,0.2
+9196,t3xture,Top 25 of 84,false,false,pct_opening_win,Opening duel win %,88.0,0.2
+9196,t3xture,Top 25 of 84,false,false,pct_kast,KAST %,57.8,0.15
+9196,t3xture,Top 25 of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),100.0,0.1
+9196,t3xture,Top 25 of 84,false,false,pct_dpr,Deaths per round (fewer = higher),63.9,0.1
+9196,t3xture,Top 25 of 84,false,false,pct_apr,Assists per round,15.7,
+36685,splash,Top 25 of 84,false,false,pct_adr,Damage per round (ADR),95.2,0.25
+36685,splash,Top 25 of 84,false,false,pct_fkpr,Opening kills per round,78.3,0.2
+36685,splash,Top 25 of 84,false,false,pct_opening_win,Opening duel win %,66.3,0.2
+36685,splash,Top 25 of 84,false,false,pct_kast,KAST %,83.1,0.15
+36685,splash,Top 25 of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),54.2,0.1
+36685,splash,Top 25 of 84,false,false,pct_dpr,Deaths per round (fewer = higher),39.8,0.1
+36685,splash,Top 25 of 84,false,false,pct_apr,Assists per round,78.3,
+24895,Jemkin,Top 25 of 84,false,false,pct_adr,Damage per round (ADR),55.4,0.25
+24895,Jemkin,Top 25 of 84,false,false,pct_fkpr,Opening kills per round,72.3,0.2
+24895,Jemkin,Top 25 of 84,false,false,pct_opening_win,Opening duel win %,90.4,0.2
+24895,Jemkin,Top 25 of 84,false,false,pct_kast,KAST %,75.9,0.15
+24895,Jemkin,Top 25 of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),77.1,0.1
+24895,Jemkin,Top 25 of 84,false,false,pct_dpr,Deaths per round (fewer = higher),97.6,0.1
+24895,Jemkin,Top 25 of 84,false,false,pct_apr,Assists per round,1.2,
+21661,spike,Top 25 of 84,false,false,pct_adr,Damage per round (ADR),65.1,0.25
+21661,spike,Top 25 of 84,false,false,pct_fkpr,Opening kills per round,71.1,0.2
+21661,spike,Top 25 of 84,false,false,pct_opening_win,Opening duel win %,74.7,0.2
+21661,spike,Top 25 of 84,false,false,pct_kast,KAST %,84.3,0.15
+21661,spike,Top 25 of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),33.7,0.1
+21661,spike,Top 25 of 84,false,false,pct_dpr,Deaths per round (fewer = higher),45.8,0.1
+21661,spike,Top 25 of 84,false,false,pct_apr,Assists per round,92.8,
+37494,Kai,Top 25 of 84,false,false,pct_adr,Damage per round (ADR),54.2,0.25
+37494,Kai,Top 25 of 84,false,false,pct_fkpr,Opening kills per round,65.1,0.2
+37494,Kai,Top 25 of 84,false,false,pct_opening_win,Opening duel win %,67.5,0.2
+37494,Kai,Top 25 of 84,false,false,pct_kast,KAST %,39.8,0.15
+37494,Kai,Top 25 of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),34.9,0.1
+37494,Kai,Top 25 of 84,false,false,pct_dpr,Deaths per round (fewer = higher),32.5,0.1
+37494,Kai,Top 25 of 84,false,false,pct_apr,Assists per round,20.5,
+5132,mada,Top 25 of 84,false,false,pct_adr,Damage per round (ADR),33.7,0.25
+5132,mada,Top 25 of 84,false,false,pct_fkpr,Opening kills per round,85.5,0.2
+5132,mada,Top 25 of 84,false,false,pct_opening_win,Opening duel win %,50.6,0.2
+5132,mada,Top 25 of 84,false,false,pct_kast,KAST %,59.0,0.15
+5132,mada,Top 25 of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),85.5,0.1
+5132,mada,Top 25 of 84,false,false,pct_dpr,Deaths per round (fewer = higher),77.1,0.1
+5132,mada,Top 25 of 84,false,false,pct_apr,Assists per round,66.3,
+20144,LewN,Top 25 of 84,false,false,pct_adr,Damage per round (ADR),73.5,0.25
+20144,LewN,Top 25 of 84,false,false,pct_fkpr,Opening kills per round,68.7,0.2
+20144,LewN,Top 25 of 84,false,false,pct_opening_win,Opening duel win %,73.5,0.2
+20144,LewN,Top 25 of 84,false,false,pct_kast,KAST %,61.4,0.15
+20144,LewN,Top 25 of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),13.3,0.1
+20144,LewN,Top 25 of 84,false,false,pct_dpr,Deaths per round (fewer = higher),68.7,0.1
+20144,LewN,Top 25 of 84,false,false,pct_apr,Assists per round,24.1,
+54487,Xlele,Top 25 of 84,false,false,pct_adr,Damage per round (ADR),31.3,0.25
+54487,Xlele,Top 25 of 84,false,false,pct_fkpr,Opening kills per round,22.9,0.2
+54487,Xlele,Top 25 of 84,false,false,pct_opening_win,Opening duel win %,51.8,0.2
+54487,Xlele,Top 25 of 84,false,false,pct_kast,KAST %,68.7,0.15
+54487,Xlele,Top 25 of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),72.3,0.1
+54487,Xlele,Top 25 of 84,false,false,pct_dpr,Deaths per round (fewer = higher),49.4,0.1
+54487,Xlele,Top 25 of 84,false,false,pct_apr,Assists per round,32.5,
+17086,something,Top 25 of 84,false,false,pct_adr,Damage per round (ADR),51.8,0.25
+17086,something,Top 25 of 84,false,false,pct_fkpr,Opening kills per round,36.1,0.2
+17086,something,Top 25 of 84,false,false,pct_opening_win,Opening duel win %,79.5,0.2
+17086,something,Top 25 of 84,false,false,pct_kast,KAST %,71.1,0.15
+17086,something,Top 25 of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),45.8,0.1
+17086,something,Top 25 of 84,false,false,pct_dpr,Deaths per round (fewer = higher),98.8,0.1
+17086,something,Top 25 of 84,false,false,pct_apr,Assists per round,30.1,
+10307,marteen,Top 25 of 84,false,false,pct_adr,Damage per round (ADR),96.4,0.25
+10307,marteen,Top 25 of 84,false,false,pct_fkpr,Opening kills per round,42.2,0.2
+10307,marteen,Top 25 of 84,false,false,pct_opening_win,Opening duel win %,89.2,0.2
+10307,marteen,Top 25 of 84,false,false,pct_kast,KAST %,98.8,0.15
+10307,marteen,Top 25 of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),56.6,0.1
+10307,marteen,Top 25 of 84,false,false,pct_dpr,Deaths per round (fewer = higher),94.0,0.1
+10307,marteen,Top 25 of 84,false,false,pct_apr,Assists per round,95.2,
+4004,zekken,Top half of 84,false,false,pct_adr,Damage per round (ADR),49.4,0.25
+4004,zekken,Top half of 84,false,false,pct_fkpr,Opening kills per round,30.1,0.2
+4004,zekken,Top half of 84,false,false,pct_opening_win,Opening duel win %,48.2,0.2
+4004,zekken,Top half of 84,false,false,pct_kast,KAST %,85.5,0.15
+4004,zekken,Top half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),66.3,0.1
+4004,zekken,Top half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),75.9,0.1
+4004,zekken,Top half of 84,false,false,pct_apr,Assists per round,96.4,
+40591,ComeBack,Top half of 84,false,false,pct_adr,Damage per round (ADR),38.6,0.25
+40591,ComeBack,Top half of 84,false,false,pct_fkpr,Opening kills per round,83.1,0.2
+40591,ComeBack,Top half of 84,false,false,pct_opening_win,Opening duel win %,92.8,0.2
+40591,ComeBack,Top half of 84,false,false,pct_kast,KAST %,13.3,0.15
+40591,ComeBack,Top half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),16.9,0.1
+40591,ComeBack,Top half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),36.1,0.1
+40591,ComeBack,Top half of 84,false,false,pct_apr,Assists per round,3.6,
+7378,Jinggg,Top half of 84,false,false,pct_adr,Damage per round (ADR),75.9,0.25
+7378,Jinggg,Top half of 84,false,false,pct_fkpr,Opening kills per round,20.5,0.2
+7378,Jinggg,Top half of 84,false,false,pct_opening_win,Opening duel win %,81.9,0.2
+7378,Jinggg,Top half of 84,false,false,pct_kast,KAST %,97.6,0.15
+7378,Jinggg,Top half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),48.2,0.1
+7378,Jinggg,Top half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),90.4,0.1
+7378,Jinggg,Top half of 84,false,false,pct_apr,Assists per round,90.4,
+28400,HYUNMIN,Top half of 84,false,false,pct_adr,Damage per round (ADR),88.0,0.25
+28400,HYUNMIN,Top half of 84,false,false,pct_fkpr,Opening kills per round,8.4,0.2
+28400,HYUNMIN,Top half of 84,false,false,pct_opening_win,Opening duel win %,37.3,0.2
+28400,HYUNMIN,Top half of 84,false,false,pct_kast,KAST %,80.7,0.15
+28400,HYUNMIN,Top half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),22.9,0.1
+28400,HYUNMIN,Top half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),56.6,0.1
+28400,HYUNMIN,Top half of 84,false,false,pct_apr,Assists per round,53.0,
+39357,s0pp,Top half of 84,false,false,pct_adr,Damage per round (ADR),77.1,0.25
+39357,s0pp,Top half of 84,false,false,pct_fkpr,Opening kills per round,97.6,0.2
+39357,s0pp,Top half of 84,false,false,pct_opening_win,Opening duel win %,95.2,0.2
+39357,s0pp,Top half of 84,false,false,pct_kast,KAST %,74.7,0.15
+39357,s0pp,Top half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),57.8,0.1
+39357,s0pp,Top half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),31.3,0.1
+39357,s0pp,Top half of 84,false,false,pct_apr,Assists per round,57.8,
+49476,zhe,Top half of 84,false,false,pct_adr,Damage per round (ADR),56.6,0.25
+49476,zhe,Top half of 84,false,false,pct_fkpr,Opening kills per round,48.2,0.2
+49476,zhe,Top half of 84,false,false,pct_opening_win,Opening duel win %,44.6,0.2
+49476,zhe,Top half of 84,false,false,pct_kast,KAST %,89.2,0.15
+49476,zhe,Top half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),49.4,0.1
+49476,zhe,Top half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),83.1,0.1
+49476,zhe,Top half of 84,false,false,pct_apr,Assists per round,60.2,
+31305,Lar0k,Top half of 84,false,false,pct_adr,Damage per round (ADR),44.6,0.25
+31305,Lar0k,Top half of 84,false,false,pct_fkpr,Opening kills per round,24.1,0.2
+31305,Lar0k,Top half of 84,false,false,pct_opening_win,Opening duel win %,49.4,0.2
+31305,Lar0k,Top half of 84,false,false,pct_kast,KAST %,51.8,0.15
+31305,Lar0k,Top half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),1.2,0.1
+31305,Lar0k,Top half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),72.3,0.1
+31305,Lar0k,Top half of 84,false,false,pct_apr,Assists per round,77.1,
+14681,kamo,Top half of 84,false,false,pct_adr,Damage per round (ADR),85.5,0.25
+14681,kamo,Top half of 84,false,false,pct_fkpr,Opening kills per round,21.7,0.2
+14681,kamo,Top half of 84,false,false,pct_opening_win,Opening duel win %,65.1,0.2
+14681,kamo,Top half of 84,false,false,pct_kast,KAST %,94.0,0.15
+14681,kamo,Top half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),10.8,0.1
+14681,kamo,Top half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),81.9,0.1
+14681,kamo,Top half of 84,false,false,pct_apr,Assists per round,81.9,
+58496,Kachoww,Top half of 84,false,false,pct_adr,Damage per round (ADR),100.0,0.25
+58496,Kachoww,Top half of 84,false,false,pct_fkpr,Opening kills per round,86.7,0.2
+58496,Kachoww,Top half of 84,false,false,pct_opening_win,Opening duel win %,98.8,0.2
+58496,Kachoww,Top half of 84,false,false,pct_kast,KAST %,100.0,0.15
+58496,Kachoww,Top half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),27.7,0.1
+58496,Kachoww,Top half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),57.8,0.1
+58496,Kachoww,Top half of 84,false,false,pct_apr,Assists per round,54.2,
+2462,keznit,Top half of 84,false,false,pct_adr,Damage per round (ADR),37.3,0.25
+2462,keznit,Top half of 84,false,false,pct_fkpr,Opening kills per round,61.4,0.2
+2462,keznit,Top half of 84,false,false,pct_opening_win,Opening duel win %,53.0,0.2
+2462,keznit,Top half of 84,false,false,pct_kast,KAST %,37.3,0.15
+2462,keznit,Top half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),15.7,0.1
+2462,keznit,Top half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),16.9,0.1
+2462,keznit,Top half of 84,false,false,pct_apr,Assists per round,45.8,
+34057,Jerrwin,Top half of 84,false,true,pct_adr,Damage per round (ADR),16.9,0.25
+34057,Jerrwin,Top half of 84,false,true,pct_fkpr,Opening kills per round,92.8,0.2
+34057,Jerrwin,Top half of 84,false,true,pct_opening_win,Opening duel win %,55.4,0.2
+34057,Jerrwin,Top half of 84,false,true,pct_kast,KAST %,4.8,0.15
+34057,Jerrwin,Top half of 84,false,true,pct_consistency,Consistency of ADR (steadier = higher),74.7,0.1
+34057,Jerrwin,Top half of 84,false,true,pct_dpr,Deaths per round (fewer = higher),15.7,0.1
+34057,Jerrwin,Top half of 84,false,true,pct_apr,Assists per round,47.0,
+3993,jawgemo,Top half of 84,false,false,pct_adr,Damage per round (ADR),39.8,0.25
+3993,jawgemo,Top half of 84,false,false,pct_fkpr,Opening kills per round,47.0,0.2
+3993,jawgemo,Top half of 84,false,false,pct_opening_win,Opening duel win %,22.9,0.2
+3993,jawgemo,Top half of 84,false,false,pct_kast,KAST %,48.2,0.15
+3993,jawgemo,Top half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),43.4,0.1
+3993,jawgemo,Top half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),28.9,0.1
+3993,jawgemo,Top half of 84,false,false,pct_apr,Assists per round,74.7,
+46135,Zeus,Top half of 84,false,false,pct_adr,Damage per round (ADR),83.1,0.25
+46135,Zeus,Top half of 84,false,false,pct_fkpr,Opening kills per round,91.6,0.2
+46135,Zeus,Top half of 84,false,false,pct_opening_win,Opening duel win %,31.3,0.2
+46135,Zeus,Top half of 84,false,false,pct_kast,KAST %,96.4,0.15
+46135,Zeus,Top half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),21.7,0.1
+46135,Zeus,Top half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),14.5,0.1
+46135,Zeus,Top half of 84,false,false,pct_apr,Assists per round,62.7,
+23365,koshmaras,Top half of 84,false,false,pct_adr,Damage per round (ADR),42.2,0.25
+23365,koshmaras,Top half of 84,false,false,pct_fkpr,Opening kills per round,55.4,0.2
+23365,koshmaras,Top half of 84,false,false,pct_opening_win,Opening duel win %,42.2,0.2
+23365,koshmaras,Top half of 84,false,false,pct_kast,KAST %,77.1,0.15
+23365,koshmaras,Top half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),39.8,0.1
+23365,koshmaras,Top half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),38.6,0.1
+23365,koshmaras,Top half of 84,false,false,pct_apr,Assists per round,91.6,
+9554,kaajak,Top half of 84,false,false,pct_adr,Damage per round (ADR),53.0,0.25
+9554,kaajak,Top half of 84,false,false,pct_fkpr,Opening kills per round,66.3,0.2
+9554,kaajak,Top half of 84,false,false,pct_opening_win,Opening duel win %,41.0,0.2
+9554,kaajak,Top half of 84,false,false,pct_kast,KAST %,12.0,0.15
+9554,kaajak,Top half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),63.9,0.1
+9554,kaajak,Top half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),61.4,0.1
+9554,kaajak,Top half of 84,false,false,pct_apr,Assists per round,6.0,
+40935,lovers rock,Top half of 84,false,false,pct_adr,Damage per round (ADR),62.7,0.25
+40935,lovers rock,Top half of 84,false,false,pct_fkpr,Opening kills per round,81.9,0.2
+40935,lovers rock,Top half of 84,false,false,pct_opening_win,Opening duel win %,97.6,0.2
+40935,lovers rock,Top half of 84,false,false,pct_kast,KAST %,65.1,0.15
+40935,lovers rock,Top half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),26.5,0.1
+40935,lovers rock,Top half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),84.3,0.1
+40935,lovers rock,Top half of 84,false,false,pct_apr,Assists per round,21.7,
+55681,kozzy,Top half of 84,false,false,pct_adr,Damage per round (ADR),98.8,0.25
+55681,kozzy,Top half of 84,false,false,pct_fkpr,Opening kills per round,56.6,0.2
+55681,kozzy,Top half of 84,false,false,pct_opening_win,Opening duel win %,60.2,0.2
+55681,kozzy,Top half of 84,false,false,pct_kast,KAST %,47.0,0.15
+55681,kozzy,Top half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),89.2,0.1
+55681,kozzy,Top half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),43.4,0.1
+55681,kozzy,Top half of 84,false,false,pct_apr,Assists per round,9.6,
+16924,stew,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),34.9,0.25
+16924,stew,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,6.0,0.2
+16924,stew,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,68.7,0.2
+16924,stew,Bottom half of 84,false,false,pct_kast,KAST %,90.4,0.15
+16924,stew,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),75.9,0.1
+16924,stew,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),50.6,0.1
+16924,stew,Bottom half of 84,false,false,pct_apr,Assists per round,97.6,
+49973,glacier,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),48.2,0.25
+49973,glacier,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,90.4,0.2
+49973,glacier,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,20.5,0.2
+49973,glacier,Bottom half of 84,false,false,pct_kast,KAST %,20.5,0.15
+49973,glacier,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),94.0,0.1
+49973,glacier,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),2.4,0.1
+49973,glacier,Bottom half of 84,false,false,pct_apr,Assists per round,41.0,
+22047,Rarga,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),50.6,0.25
+22047,Rarga,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,73.5,0.2
+22047,Rarga,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,71.1,0.2
+22047,Rarga,Bottom half of 84,false,false,pct_kast,KAST %,66.3,0.15
+22047,Rarga,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),28.9,0.1
+22047,Rarga,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),55.4,0.1
+22047,Rarga,Bottom half of 84,false,false,pct_apr,Assists per round,33.7,
+41720,Favian,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),71.1,0.25
+41720,Favian,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,10.8,0.2
+41720,Favian,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,39.8,0.2
+41720,Favian,Bottom half of 84,false,false,pct_kast,KAST %,31.3,0.15
+41720,Favian,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),78.3,0.1
+41720,Favian,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),33.7,0.1
+41720,Favian,Bottom half of 84,false,false,pct_apr,Assists per round,71.1,
+31827,Dambi,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),63.9,0.25
+31827,Dambi,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,44.6,0.2
+31827,Dambi,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,36.1,0.2
+31827,Dambi,Bottom half of 84,false,false,pct_kast,KAST %,53.0,0.15
+31827,Dambi,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),83.1,0.1
+31827,Dambi,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),59.0,0.1
+31827,Dambi,Bottom half of 84,false,false,pct_apr,Assists per round,86.7,
+4544,Filu,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),28.9,0.25
+4544,Filu,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,18.1,0.2
+4544,Filu,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,25.3,0.2
+4544,Filu,Bottom half of 84,false,false,pct_kast,KAST %,25.3,0.15
+4544,Filu,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),69.9,0.1
+4544,Filu,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),80.7,0.1
+4544,Filu,Bottom half of 84,false,false,pct_apr,Assists per round,28.9,
+31753,SpiritZ1,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),68.7,0.25
+31753,SpiritZ1,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,57.8,0.2
+31753,SpiritZ1,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,62.7,0.2
+31753,SpiritZ1,Bottom half of 84,false,false,pct_kast,KAST %,30.1,0.15
+31753,SpiritZ1,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),97.6,0.1
+31753,SpiritZ1,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),10.8,0.1
+31753,SpiritZ1,Bottom half of 84,false,false,pct_apr,Assists per round,42.2,
+3028,Life,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),26.5,0.25
+3028,Life,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,60.2,0.2
+3028,Life,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,32.5,0.2
+3028,Life,Bottom half of 84,false,false,pct_kast,KAST %,22.9,0.15
+3028,Life,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),6.0,0.1
+3028,Life,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),18.1,0.1
+3028,Life,Bottom half of 84,false,false,pct_apr,Assists per round,26.5,
+31828,Francis,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),60.2,0.25
+31828,Francis,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,33.7,0.2
+31828,Francis,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,43.4,0.2
+31828,Francis,Bottom half of 84,false,false,pct_kast,KAST %,73.5,0.15
+31828,Francis,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),31.3,0.1
+31828,Francis,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),51.8,0.1
+31828,Francis,Bottom half of 84,false,false,pct_apr,Assists per round,88.0,
+11332,ara,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),32.5,0.25
+11332,ara,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,59.0,0.2
+11332,ara,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,45.8,0.2
+11332,ara,Bottom half of 84,false,false,pct_kast,KAST %,16.9,0.15
+11332,ara,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),53.0,0.1
+11332,ara,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),65.1,0.1
+11332,ara,Bottom half of 84,false,false,pct_apr,Assists per round,4.8,
+21659,Sato,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),79.5,0.25
+21659,Sato,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,24.1,0.2
+21659,Sato,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,54.2,0.2
+21659,Sato,Bottom half of 84,false,false,pct_kast,KAST %,92.8,0.15
+21659,Sato,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),42.2,0.1
+21659,Sato,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),89.2,0.1
+21659,Sato,Bottom half of 84,false,false,pct_apr,Assists per round,98.8,
+13788,JitBoyS,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),27.7,0.25
+13788,JitBoyS,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,34.9,0.2
+13788,JitBoyS,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,34.9,0.2
+13788,JitBoyS,Bottom half of 84,false,false,pct_kast,KAST %,45.8,0.15
+13788,JitBoyS,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),8.4,0.1
+13788,JitBoyS,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),67.5,0.1
+13788,JitBoyS,Bottom half of 84,false,false,pct_apr,Assists per round,65.1,
+52904,Akeman,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),14.5,0.25
+52904,Akeman,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,79.5,0.2
+52904,Akeman,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,21.7,0.2
+52904,Akeman,Bottom half of 84,false,false,pct_kast,KAST %,8.4,0.15
+52904,Akeman,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),37.3,0.1
+52904,Akeman,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),3.6,0.1
+52904,Akeman,Bottom half of 84,false,false,pct_apr,Assists per round,43.4,
+4881,Spitfires,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),22.9,0.25
+4881,Spitfires,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,28.9,0.2
+4881,Spitfires,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,15.7,0.2
+4881,Spitfires,Bottom half of 84,false,false,pct_kast,KAST %,14.5,0.15
+4881,Spitfires,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),7.2,0.1
+4881,Spitfires,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),26.5,0.1
+4881,Spitfires,Bottom half of 84,false,false,pct_apr,Assists per round,51.8,
+5564,DeadInk,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),8.4,0.25
+5564,DeadInk,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,50.6,0.2
+5564,DeadInk,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,100.0,0.2
+5564,DeadInk,Bottom half of 84,false,false,pct_kast,KAST %,62.7,0.15
+5564,DeadInk,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),68.7,0.1
+5564,DeadInk,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),100.0,0.1
+5564,DeadInk,Bottom half of 84,false,false,pct_apr,Assists per round,0.0,
+42235,Dynamite,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),45.8,0.25
+42235,Dynamite,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,27.7,0.2
+42235,Dynamite,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,13.3,0.2
+42235,Dynamite,Bottom half of 84,false,false,pct_kast,KAST %,49.4,0.15
+42235,Dynamite,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),79.5,0.1
+42235,Dynamite,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),37.3,0.1
+42235,Dynamite,Bottom half of 84,false,false,pct_apr,Assists per round,84.3,
+48025,alym,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),18.1,0.25
+48025,alym,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,75.9,0.2
+48025,alym,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,28.9,0.2
+48025,alym,Bottom half of 84,false,false,pct_kast,KAST %,26.5,0.15
+48025,alym,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),51.8,0.1
+48025,alym,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),41.0,0.1
+48025,alym,Bottom half of 84,false,false,pct_apr,Assists per round,67.5,
+10338,Lime,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),10.8,0.25
+10338,Lime,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,37.3,0.2
+10338,Lime,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,75.9,0.2
+10338,Lime,Bottom half of 84,false,false,pct_kast,KAST %,69.9,0.15
+10338,Lime,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),88.0,0.1
+10338,Lime,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),54.2,0.1
+10338,Lime,Bottom half of 84,false,false,pct_apr,Assists per round,89.2,
+11917,ExiT,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),41.0,0.25
+11917,ExiT,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,39.8,0.2
+11917,ExiT,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,2.4,0.2
+11917,ExiT,Bottom half of 84,false,false,pct_kast,KAST %,21.7,0.15
+11917,ExiT,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),92.8,0.1
+11917,ExiT,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),1.2,0.1
+11917,ExiT,Bottom half of 84,false,false,pct_apr,Assists per round,63.9,
+41224,tkzin,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),57.8,0.25
+41224,tkzin,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,42.2,0.2
+41224,tkzin,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,10.8,0.2
+41224,tkzin,Bottom half of 84,false,false,pct_kast,KAST %,43.4,0.15
+41224,tkzin,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),44.6,0.1
+41224,tkzin,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),13.3,0.1
+41224,tkzin,Bottom half of 84,false,false,pct_apr,Assists per round,34.9,
+11737,Xan,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),25.3,0.25
+11737,Xan,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,32.5,0.2
+11737,Xan,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,33.7,0.2
+11737,Xan,Bottom half of 84,false,false,pct_kast,KAST %,19.3,0.15
+11737,Xan,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),24.1,0.1
+11737,Xan,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),4.8,0.1
+11737,Xan,Bottom half of 84,false,false,pct_apr,Assists per round,25.3,
+7716,penny,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),15.7,0.25
+7716,penny,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,3.6,0.2
+7716,penny,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,7.2,0.2
+7716,penny,Bottom half of 84,false,false,pct_kast,KAST %,41.0,0.15
+7716,penny,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),38.6,0.1
+7716,penny,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),95.2,0.1
+7716,penny,Bottom half of 84,false,false,pct_apr,Assists per round,75.9,
+3722,koalanoob,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),20.5,0.25
+3722,koalanoob,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,53.0,0.2
+3722,koalanoob,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,27.7,0.2
+3722,koalanoob,Bottom half of 84,false,false,pct_kast,KAST %,15.7,0.15
+3722,koalanoob,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),86.7,0.1
+3722,koalanoob,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),27.7,0.1
+3722,koalanoob,Bottom half of 84,false,false,pct_apr,Assists per round,49.4,
+63107,ra1ny,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),89.2,0.25
+63107,ra1ny,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,74.7,0.2
+63107,ra1ny,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,8.4,0.2
+63107,ra1ny,Bottom half of 84,false,false,pct_kast,KAST %,3.6,0.15
+63107,ra1ny,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),19.3,0.1
+63107,ra1ny,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),0.0,0.1
+63107,ra1ny,Bottom half of 84,false,false,pct_apr,Assists per round,27.7,
+8376,seven,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),36.1,0.25
+8376,seven,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,16.9,0.2
+8376,seven,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,1.2,0.2
+8376,seven,Bottom half of 84,false,false,pct_kast,KAST %,36.1,0.15
+8376,seven,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),12.0,0.1
+8376,seven,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),25.3,0.1
+8376,seven,Bottom half of 84,false,false,pct_apr,Assists per round,85.5,
+12793,xeus,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),43.4,0.25
+12793,xeus,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,19.3,0.2
+12793,xeus,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,47.0,0.2
+12793,xeus,Bottom half of 84,false,false,pct_kast,KAST %,24.1,0.15
+12793,xeus,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),60.2,0.1
+12793,xeus,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),30.1,0.1
+12793,xeus,Bottom half of 84,false,false,pct_apr,Assists per round,19.3,
+50025,Setrod,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),30.1,0.25
+50025,Setrod,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,54.2,0.2
+50025,Setrod,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,63.9,0.2
+50025,Setrod,Bottom half of 84,false,false,pct_kast,KAST %,56.6,0.15
+50025,Setrod,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),3.6,0.1
+50025,Setrod,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),74.7,0.1
+50025,Setrod,Bottom half of 84,false,false,pct_apr,Assists per round,44.6,
+573,cNed,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),3.6,0.25
+573,cNed,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,15.7,0.2
+573,cNed,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,6.0,0.2
+573,cNed,Bottom half of 84,false,false,pct_kast,KAST %,1.2,0.15
+573,cNed,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),84.3,0.1
+573,cNed,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),34.9,0.1
+573,cNed,Bottom half of 84,false,false,pct_apr,Assists per round,8.4,
+18400,bipo,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),6.0,0.25
+18400,bipo,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,4.8,0.2
+18400,bipo,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,9.6,0.2
+18400,bipo,Bottom half of 84,false,false,pct_kast,KAST %,18.1,0.15
+18400,bipo,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),73.5,0.1
+18400,bipo,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),62.7,0.1
+18400,bipo,Bottom half of 84,false,false,pct_apr,Assists per round,38.6,
+37532,Zexy,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),19.3,0.25
+37532,Zexy,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,62.7,0.2
+37532,Zexy,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,38.6,0.2
+37532,Zexy,Bottom half of 84,false,false,pct_kast,KAST %,6.0,0.15
+37532,Zexy,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),20.5,0.1
+37532,Zexy,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),21.7,0.1
+37532,Zexy,Bottom half of 84,false,false,pct_apr,Assists per round,14.5,
+11527,NoMan,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),9.6,0.25
+11527,NoMan,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,14.5,0.2
+11527,NoMan,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,18.1,0.2
+11527,NoMan,Bottom half of 84,false,false,pct_kast,KAST %,28.9,0.15
+11527,NoMan,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),14.5,0.1
+11527,NoMan,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),85.5,0.1
+11527,NoMan,Bottom half of 84,false,false,pct_apr,Assists per round,50.6,
+10160,Izzy,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),13.3,0.25
+10160,Izzy,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,63.9,0.2
+10160,Izzy,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,30.1,0.2
+10160,Izzy,Bottom half of 84,false,false,pct_kast,KAST %,42.2,0.15
+10160,Izzy,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),61.4,0.1
+10160,Izzy,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),86.7,0.1
+10160,Izzy,Bottom half of 84,false,false,pct_apr,Assists per round,18.1,
+41135,Dantedeu5,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),7.2,0.25
+41135,Dantedeu5,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,31.3,0.2
+41135,Dantedeu5,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,3.6,0.2
+41135,Dantedeu5,Bottom half of 84,false,false,pct_kast,KAST %,32.5,0.15
+41135,Dantedeu5,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),81.9,0.1
+41135,Dantedeu5,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),12.0,0.1
+41135,Dantedeu5,Bottom half of 84,false,false,pct_apr,Assists per round,73.5,
+51099,ZynX,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),21.7,0.25
+51099,ZynX,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,7.2,0.2
+51099,ZynX,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,19.3,0.2
+51099,ZynX,Bottom half of 84,false,false,pct_kast,KAST %,7.2,0.15
+51099,ZynX,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),0.0,0.1
+51099,ZynX,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),6.0,0.1
+51099,ZynX,Bottom half of 84,false,false,pct_apr,Assists per round,59.0,
+25017,Ash,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),12.0,0.25
+25017,Ash,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,13.3,0.2
+25017,Ash,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,24.1,0.2
+25017,Ash,Bottom half of 84,false,false,pct_kast,KAST %,60.2,0.15
+25017,Ash,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),47.0,0.1
+25017,Ash,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),71.1,0.1
+25017,Ash,Bottom half of 84,false,false,pct_apr,Assists per round,94.0,
+3983,Virtyy,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),4.8,0.25
+3983,Virtyy,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,26.5,0.2
+3983,Virtyy,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,4.8,0.2
+3983,Virtyy,Bottom half of 84,false,false,pct_kast,KAST %,9.6,0.15
+3983,Virtyy,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),90.4,0.1
+3983,Virtyy,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),8.4,0.1
+3983,Virtyy,Bottom half of 84,false,false,pct_apr,Assists per round,13.3,
+39697,cb,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),24.1,0.25
+39697,cb,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,1.2,0.2
+39697,cb,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,14.5,0.2
+39697,cb,Bottom half of 84,false,false,pct_kast,KAST %,38.6,0.15
+39697,cb,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),98.8,0.1
+39697,cb,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),92.8,0.1
+39697,cb,Bottom half of 84,false,false,pct_apr,Assists per round,83.1,
+34776,Absol,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),47.0,0.25
+34776,Absol,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,38.6,0.2
+34776,Absol,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,16.9,0.2
+34776,Absol,Bottom half of 84,false,false,pct_kast,KAST %,10.8,0.15
+34776,Absol,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),9.6,0.1
+34776,Absol,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),24.1,0.1
+34776,Absol,Bottom half of 84,false,false,pct_apr,Assists per round,48.2,
+64029,FT,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),2.4,0.25
+64029,FT,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,0.0,0.2
+64029,FT,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,12.0,0.2
+64029,FT,Bottom half of 84,false,false,pct_kast,KAST %,2.4,0.15
+64029,FT,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),2.4,0.1
+64029,FT,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),60.2,0.1
+64029,FT,Bottom half of 84,false,false,pct_apr,Assists per round,69.9,
+41798,nightz,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),59.0,0.25
+41798,nightz,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,2.4,0.2
+41798,nightz,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,84.3,0.2
+41798,nightz,Bottom half of 84,false,false,pct_kast,KAST %,54.2,0.15
+41798,nightz,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),71.1,0.1
+41798,nightz,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),22.9,0.1
+41798,nightz,Bottom half of 84,false,false,pct_apr,Assists per round,100.0,
+46040,Youze,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),0.0,0.25
+46040,Youze,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,12.0,0.2
+46040,Youze,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,0.0,0.2
+46040,Youze,Bottom half of 84,false,false,pct_kast,KAST %,0.0,0.15
+46040,Youze,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),91.6,0.1
+46040,Youze,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),7.2,0.1
+46040,Youze,Bottom half of 84,false,false,pct_apr,Assists per round,61.4,
+35302,Eggsterr,Bottom half of 84,false,false,pct_adr,Damage per round (ADR),1.2,0.25
+35302,Eggsterr,Bottom half of 84,false,false,pct_fkpr,Opening kills per round,9.6,0.2
+35302,Eggsterr,Bottom half of 84,false,false,pct_opening_win,Opening duel win %,26.5,0.2
+35302,Eggsterr,Bottom half of 84,false,false,pct_kast,KAST %,27.7,0.15
+35302,Eggsterr,Bottom half of 84,false,false,pct_consistency,Consistency of ADR (steadier = higher),25.3,0.1
+35302,Eggsterr,Bottom half of 84,false,false,pct_dpr,Deaths per round (fewer = higher),19.3,0.1
+35302,Eggsterr,Bottom half of 84,false,false,pct_apr,Assists per round,80.7,

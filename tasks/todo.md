@@ -181,7 +181,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 **Verification:**
 - [x] `pytest tests/test_fit.py` passes — 8 tests; 27 across the suite. The known-overlap case: Jerrwin against himself scores 100% overlap and every delta 0; primmie's 30% recomputed by hand
 - [x] Manual check: SEN's map records match vlr.gg — **19/19 event × map cells** (Kickoff, Stage 1, Stage 2). vlr.gg's unfiltered page shows 61 maps because it includes non-VCT events
-- [ ] **Open:** the shortlist's import status that rests on nationality (`import_source` = proxy) is confirmed by hand in T11
+- [x] **Carried to T11:** the shortlist's import status that rests on nationality (`import_source` = proxy) is confirmed by hand there (S-19). Not done yet; it is no longer a T6 item
 
 **Dependencies:** T3, T4
 **Files:** `sql/mart_fit.sql`, `sql/model.sql`, `src/marts.py`, `src/clean.py`, `data/seeds/fit_weights.csv`, `tests/test_fit.py`
@@ -210,7 +210,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 ---
 
-### Task 8: Budget model spec and reference calculation
+### Task 8: Budget model spec and reference calculation — ✅ **done 2026-10-01**
 
 **Description:** Define the financial logic before building it in Power BI.
 
@@ -239,7 +239,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 **Verification:**
 - [x] `pytest tests/test_budget.py` passes (22 tests; full suite 49, 2026-09-29; after the review 23 and 50, 2026-10-01)
 - [x] **Review applied 2026-10-01** (`docs/t8_review.md`): contract aliases for dgzin, spike and Dantedeu5; F-13 defined as a net cost; F-14 reworded as the added top-3 chance; new limits in `budget_model.md` §10. F-14 Base kept at 20 points (decided 2026-10-01)
-- [ ] Manual check: one case is also worked by hand in a spreadsheet and matches
+- [x] Manual check — **closed by the owner 2026-10-02 without the spreadsheet.** Case 1 (Derke, Base) is verified three other ways: pytest, an independent recomputation of all 504 reference rows (`docs/t8_review.md` §1), and Power BI to the dollar (`powerbi/dax_measures.md` §8)
 
 **Dependencies:** T4 (shortlist)
 **Files:** `docs/budget_model.md`, `src/budget.py`, `tests/test_budget.py`, `data/seeds/prize_reference.csv`
@@ -262,7 +262,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 **Verification:**
 - [x] Parity, Base, partner: NPV matches `mart_budget_reference.csv` to the dollar for all 10 shortlisted players at F-14 = 20 (cases 1–2 of `budget_model.md` §8), and the hand-computed values at 24. Cases 6–8 change r or Y, which the slim page doesn't expose; pytest covers them
-- [ ] Parity, cases 3–5 (non-partner; Downside at 10; Upside at 35): not yet recorded in `dax_measures.md` § 8
+- [x] Parity, cases 3–5 (non-partner; Downside at 10; Upside at 35) — **closed by the owner 2026-10-02; not checked in Power BI.** They use the same measures as cases 1–2 and are covered by pytest
 - [x] Meiy, Base, partner: Stay at F-14 = 32, Sign at 33 (his bar is 32.2); Derke: Stay at 23, Sign at 24 (bar 23.8)
 
 #### T9.1 — Cost and value components in the reference mart · XS — ✅ **done 2026-10-01**
@@ -284,12 +284,12 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 #### T9.5 — Shortlist table, assumptions panel, labels · S — ✅ **done 2026-10-02**
 - [x] Top-10 fit band table (fit band, years left, import, upfront, break-even, live NPV, decision; totals off) on **Budget Overview**; assumptions panel and disclaimer on **Budget**
-- [ ] **Open:** add "Unofficial fan analysis, not affiliated with Sentinels or Riot Games" to both pages' notes (CLAUDE.md: every page says so)
+- [x] "Unofficial fan analysis, not affiliated with Sentinels or Riot Games" on both pages' notes — **closed by the owner 2026-10-02**; confirm it is in the saved `.pbix` before T13's screenshots
 - [x] Verify: 10 rows; dgzin shows 1 year left, 23.8 and "Resident · contract database" (after Refresh)
 
 #### Checkpoint — parity
 - [x] Cases 1–2 (Base, partner) match pytest exactly; all 10 shortlisted players checked
-- [ ] Cases 3–5 still to record (see Verification above)
+- [x] Cases 3–5: closed by the owner, covered by pytest (see Verification above)
 
 #### T9.6 — Docs · XS — ✅ **done 2026-10-02**
 - [x] `powerbi/dax_measures.md` §8 (model, measures, pages, lessons, verification, open items); T9 ticked here
@@ -309,18 +309,51 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 ### Task 10: Tableau Public story
 
-**Description:** Connect Tableau to the same mart files and build a 4–6 point story. It should cover the role landscape, the top candidates, a deep dive on the shortlist and the map/agent fit for the target team, with parameter-driven filters.
+**Description:** A public story of five points, built in Tableau Public on Tableau-ready files from the same marts Power BI reads. It tells the scouting and fit findings to a general audience; Power BI stays the analyst tool. Story points (agreed 2026-10-03):
+
+1. **The pool:** 84 eligible duelists — damage against opening duels, sized by maps played
+2. **Who rises to the top:** the top composite band, with maps played
+3. **Who fits this slot:** the fit score split into performance, agent overlap and map fit
+4. **SEN's maps:** shortlisted players by SEN map, with SEN's games on each
+5. **What a signing must deliver:** break-even bars for the shortlist, grouped by contract and import status
 
 **Acceptance criteria:**
 - [ ] The story is published to Tableau Public, and the `.twbx` is saved in the repo
 - [ ] Each story point has a one-sentence takeaway and shows sample sizes
+- [ ] Every dashboard carries "Unofficial fan analysis, not affiliated with Sentinels or Riot Games"
 
 **Verification:**
 - [ ] Parity check: 5 headline numbers match between Tableau and Power BI
 - [ ] Manual check: the story is readable at 1366×768 and in mobile layout
 
-**Dependencies:** T5, T7
-**Files:** `tableau/valorant_recruitment.twbx`
+#### T10.1 — Tableau-ready data files · S — ✅ **done 2026-10-03**
+- [x] `sql/mart_tableau.sql`, run by `python -m src.marts`, writes `tableau_candidates.csv` (84 duelists: bands, fit points, Base break-even, cost group, shortlist flag), `tableau_maps.csv` (84 × 12 SEN maps) and `tableau_percentiles.csv` (84 × 7 metrics, long form). Columns in `tableau/README.md`
+- [x] Bands use the same rule as the DAX measures; nothing is computed in Tableau that Power BI reads from a mart
+- [x] Verify: `pytest tests/test_tableau.py` — 10 tests, 61 across the suite. Band boundaries (splash / swagzor, Wo0t, Timotino / aspas), the shortlist of 10, dgzin's 23.8, and Meiy's Breeze and Split rows all equal the values verified in Power BI
+
+#### T10.2 — Connect and build the pool scatter (story point 1) · S
+- [ ] Tableau Public reads the three files; types checked; scatter of ADR against FK−FD per round, sized by maps, shortlist highlighted
+- [ ] Verify: 84 marks; Meiy's tooltip reads ADR 153.0 on 55 maps
+
+#### T10.3 — Top band and fit (story points 2 and 3) · S
+- [ ] Top composite band as a bar list with maps played; fit score as a stacked bar of the three `fit_pts_` columns
+- [ ] Verify: 10 bars in each; Meiy's fit stack sums to 94.9
+
+#### T10.4 — SEN's maps and the break-even (story points 4 and 5) · S
+- [ ] Heatmap of shortlist × SEN map (ADR vs pool, low samples greyed, SEN games shown); break-even bars coloured by `cost_group`
+- [ ] Verify: Meiy on Breeze reads 147.9 against a pool 138.9; seven bars at 23.8 and three at 32.2
+
+#### T10.5 — Story, layouts, publish · S
+- [ ] Five story points with a one-sentence takeaway each; dashboards fixed at 1366×768 with a phone layout; published to Tableau Public; `.twbx` in `tableau/`
+
+#### Checkpoint — parity
+- [ ] Five headline numbers equal Power BI's
+
+#### T10.6 — Docs · XS
+- [ ] `tableau/README.md` completed with the link, screenshots and the parity table; T10 ticked here
+
+**Dependencies:** T5, T7, T9
+**Files:** `tableau/valorant_recruitment.twbx`, `tableau/README.md`, `sql/mart_tableau.sql`, `src/marts.py`, `tests/test_tableau.py`, `data/marts/tableau_*.csv`
 **Scope:** M
 
 ---
