@@ -358,19 +358,21 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 ---
 
-### Task 11: Shortlist and recommendation memo
+### Task 11: Shortlist and recommendation memo — 📝 **drafted 2026-10-03, owner review open**
 
 **Description:** Write a 1–2 page memo for the GM. It gives the top 3 candidates, the evidence for each, the fit, the cost range in each scenario, a recommendation, risks and limitations.
 
 **Acceptance criteria:**
-- [ ] Every claim references a dashboard view or a mart figure
-- [ ] It includes a limitations section covering sample size, data gaps, no teammate-effect evidence and assumption-driven finances
+- [x] Every claim references a dashboard view or a mart figure — a source line under each table; external facts are numbered in the memo's Sources
+- [x] It includes a limitations section covering sample size, data gaps, no teammate-effect evidence and assumption-driven finances — plus league strength and the unconfirmed vacancy
+- [x] Carried from T6: import status confirmed by hand for the seven shortlisted players flagged by nationality (S-19). All seven are imports for SEN
+- [x] Carried from T8: the memo says how the recommendation moves if the 2027 rules change. The reported 2027 home-region rule is logged as S-22 and is not applied to the model
 
 **Verification:**
-- [ ] Manual check: every number in the memo is cross-checked against the dashboards
+- [ ] Manual check: every number in the memo is cross-checked against the dashboards — 89 figures checked against the marts by script on 2026-10-03, all equal. The check on the dashboards themselves is the owner's
 
 **Dependencies:** T9, T10
-**Files:** `docs/recommendation_memo.md` (or `.pdf`)
+**Files:** `docs/recommendation_memo.md`, `docs/assumptions_log.md` (v0.6)
 **Scope:** S
 
 ---
