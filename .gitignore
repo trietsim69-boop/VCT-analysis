@@ -1,9 +1,6 @@
-data/raw/*
-!data/raw/README.md
 data/processed/
 __pycache__/
 .venv/
 .ipynb_checkpoints/
 image_gen/
 ~*.twbr
-CLAUDE.md

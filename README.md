@@ -103,7 +103,7 @@ To open the dashboards, point their data sources at your copy of the repo: see [
 | [VCT Global Contract Database](https://docs.google.com/spreadsheets/d/e/2PACX-1vRmmWiBmMMD43m5VtZq54nKlmj0ZtythsA1qCpegwx-iRptx2HEsG0T3cQlG1r2AIiKxBWnaurJZQ9Q/pubhtml) (Riot Games) | Contract end year and resident or import status. No salaries | Published by Riot as a public sheet |
 | [vlr.gg](https://www.vlr.gg) match pages | Spot-check of the snapshot: 600 of 600 stat cells matched across two matches | Public pages, read by hand and by `src/spotcheck_vlr.py` |
 | [Esports Earnings](https://www.esportsearnings.com/games/646-valorant) | Career prize money of the shortlist, as a reference only. **Prize money is never used as salary** | Public site, free API key |
-| Public reporting on VCT finances and rules | Ranges for the budget assumptions | About 60 sources, listed in [`docs/budget_cost_research.md`](docs/budget_cost_research.md) |
+| Public reporting on VCT finances and rules | Ranges for the budget assumptions | The basis for each input is noted in [`docs/assumptions_log.md`](docs/assumptions_log.md) |
 
 Data credit: [vct-reference.com](https://vct-reference.com), Esports Earnings and Riot Games. VALORANT is a trademark of Riot Games.
 
@@ -115,10 +115,8 @@ Data credit: [vct-reference.com](https://vct-reference.com), Esports Earnings an
 | [`docs/kpi_dictionary.md`](docs/kpi_dictionary.md) | Every metric: definition, source column, weighting |
 | [`docs/assumptions_log.md`](docs/assumptions_log.md) | Every number that is not measured data, with its source and status |
 | [`docs/budget_model.md`](docs/budget_model.md) | The budget model's inputs, formulas and worked cases |
-| [`docs/budget_cost_research.md`](docs/budget_cost_research.md) | The research behind the budget inputs |
 | [`docs/recommendation_memo.md`](docs/recommendation_memo.md) | The recommendation and what would change it |
 | [`powerbi/dax_measures.md`](powerbi/dax_measures.md) | The Power BI model, measures and verification |
-| [`tasks/todo.md`](tasks/todo.md) | The project log: each task, its acceptance criteria and how it was checked |
 
 ## Repo layout
 
@@ -133,26 +131,6 @@ Data credit: [vct-reference.com](https://vct-reference.com), Esports Earnings an
 ├── tests/             pytest data tests
 ├── powerbi/           report guide, measures, screenshots
 ├── tableau/           story workbook, guide, screenshots
-├── docs/              business-analysis documents
-└── tasks/             project log
+├── docs/              brief, KPI dictionary, assumptions log, budget model, memo
+└── valorant_recruitment.pbix   the Power BI report
 ```
-
-## Limitations
-
-- **Small samples.** Scores rest on 15 to 101 maps and are not shrunk toward the average, so they are shown as bands.
-- **No adjustment for league strength.** Percentiles pool all four leagues.
-- **No teammate effect.** Nothing here measures how a player would perform with a new team, or his communication.
-- **The finances are assumptions.** No salary or buyout is public, so every candidate gets the same salary and revenue effect, and the model cannot rank players.
-- **The snapshot is before Champions 2026,** and the 2027 league rules are not published.
-
-## Next steps
-
-1. **Rerun on post-Champions data.** Take a second snapshot after Champions 2026 ends on 2026-10-18 and rerun the pipeline. The shortlist may change.
-2. **Apply the 2027 import rule** once Riot publishes it. The reported rule (three of five players from the home region) would change the import-slot cost.
-3. **Shrink small samples** toward the pool average, so a 16-map player cannot rank second.
-4. **A win model with uncertainty:** estimate the change in map win probability from swapping the outgoing player for a candidate, with bootstrap ranges. It was planned as a stretch task and not built.
-5. **Widen the pool** to Challengers players.
-
-## Author
-
-Triet Le
