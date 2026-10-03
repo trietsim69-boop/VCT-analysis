@@ -1,10 +1,10 @@
 # Business Brief — SEN 2027 Roster Signing
 
-> **Unofficial fan/portfolio analysis.** Not affiliated with, endorsed by, or produced for Sentinels or Riot Games. Team facts are drawn from public reporting (see Sources) and are re-verified in Task 2.
+> **Unofficial fan/portfolio analysis.** Not affiliated with, endorsed by, or produced for Sentinels or Riot Games. Team facts are drawn from public reporting (see Sources) and were re-checked in the data audit.
 
 | | |
 |---|---|
-| **Status** | Draft v0.1 — 2026-09-17 |
+| **Status** | Final v1.0 — 2026-10-03 (drafted 2026-09-17). The outcome is in §10 |
 | **Author** | triet |
 | **Purpose** | Portfolio project and personal learning (data analysis + business analysis, Power BI + Tableau) |
 | **Stakeholder (hypothetical)** | General Manager, Sentinels VALORANT (VCT Americas) |
@@ -30,14 +30,14 @@ Heading into 2027, the team needs a **permanent player for the slot the stand-in
 | # | Decision | Answered by | Output |
 |---|---|---|---|
 | D1 | **Who is on the shortlist?** (3–5 players) | Scouting page + Roster Fit page | A ranked candidate table with sample sizes and fit notes |
-| D2 | **What is the maximum upfront spend** (buyout + import-slot cost) SEN can justify for a candidate? | Budget Scenarios page | The highest upfront spend with NPV ≥ 0 in the Downside, Base and Upside scenarios, shown next to the total acquisition cost (salary + buyout + fees). Redefined from "maximum total spend" in T8 (2026-09-29): salary is the same for every candidate, so the upfront amount is what the GM negotiates. See `budget_model.md` §6.4. |
-| D3 | **Sign or stay?** Is a proven signing worth more than keeping a minimum-salary stand-in? | Budget Scenarios page + memo | A recommendation with its break-even condition stated |
+| D2 | **What is the maximum upfront spend** (buyout + import-slot cost) SEN can justify for a candidate? | Budget pages | The highest upfront spend with NPV ≥ 0 in the Downside, Base and Upside scenarios, shown next to the total acquisition cost (salary + buyout + fees). Redefined from "maximum total spend" in T8 (2026-09-29): salary is the same for every candidate, so the upfront amount is what the GM negotiates. See `budget_model.md` §6.4. |
+| D3 | **Sign or stay?** Is a proven signing worth more than keeping a minimum-salary stand-in? | Budget pages + memo | A recommendation with its break-even condition stated |
 
 Map and agent coverage is **not** a separate decision. It feeds D1 through the Roster Fit page.
 
 ## 3. Key questions
 
-1. Which role does the vacant slot play? Task 2 infers it from the agents played in 2026.
+1. Which role does the vacant slot play? The data audit inferred it from the agents played in 2026: **duelist**.
 2. Among eligible top-tier players in that role, who performs best in the 2026 window on transparent metrics, and who is consistent across 2025–26?
 3. Which candidates match SEN's map pool and agent needs, and which would take up SEN's single import slot?
 4. For a given candidate, what is the incremental cost compared with the stand-in baseline, and what yearly revenue uplift is needed to break even?
@@ -48,8 +48,8 @@ Map and agent coverage is **not** a separate decision. It feeds D1 through the R
 **In scope (v1)**
 - **Data window:** the 2026 VCT season is the main scouting window. The 2025 season is used only for the consistency check.
 - **Candidate pool:** players in top-tier VCT (partner-league and international events), across all regions.
-- **Roles:** one vacant slot, whose role is confirmed in Task 2.
-- **Deliverables:** a three-page Power BI report, a Tableau Public story and a recommendation memo.
+- **Roles:** one vacant slot, the duelist slot (confirmed in the data audit).
+- **Deliverables:** a Power BI report (Scouting, Roster Fit, Candidate Fit, Budget Overview and Budget pages), a Tableau Public story and a recommendation memo.
 - **Finance:** all amounts in USD, with every input an editable, labelled assumption.
 
 **Out of scope / non-goals**
@@ -90,15 +90,16 @@ Map and agent coverage is **not** a separate decision. It feeds D1 through the R
 |---|---|
 | This brief, the KPI dictionary and the assumptions log | T1 |
 | Data audit and final role confirmation | T2 |
-| Power BI: Scouting / Roster Fit / Budget Scenarios | T5 / T7 / T9 |
+| Power BI: Scouting / Roster Fit and Candidate Fit / Budget Overview and Budget | T5 / T7 / T9 |
 | Tableau Public story | T10 |
 | Recommendation memo | T11 |
+| README and packaging | T13 |
 
 ## 8. Data (summary)
 
-The full source list is in `tasks/plan.md` → Data Sources.
+The source list, with licences, is in the main [`README.md`](../README.md).
 
-- **Performance data:** the VCT Reference DuckDB (2025–2026 filtered), with Kaggle VCT 2025 as a cross-check.
+- **Performance data:** the VCT Reference DuckDB (2025–2026 filtered), spot-checked against vlr.gg match pages.
 - **Contracts and residency:** the VCT Global Contract Database, which has contract end year and resident/import status but no salaries.
 - **Finance context:**
   - Esports Earnings prize history
@@ -111,10 +112,20 @@ The full source list is in `tasks/plan.md` → Data Sources.
 
 | Risk | Mitigation |
 |---|---|
-| The roster situation changes before the project ends | Freeze the facts as of the Task 2 snapshot date and note that date on every page |
-| The role of the vacant slot is ambiguous (flex player) | Task 2 infers it from agent share. If it's still unclear, the brief is updated to the role the stand-ins actually played |
+| The roster situation changes before the project ends | Freeze the facts as of the snapshot date (2026-09-18) and note that date on every page |
+| The role of the vacant slot is ambiguous (flex player) | The data audit infers it from agent share. It was clear: duelist |
 | The budget page is mistaken for real financials | An "Assumption" label on every input, a disclaimer on the page, and Downside / Base / Upside scenarios |
-| The 2026 data is incomplete in the source | Task 2 go/no-go. The fallback is Kaggle, or widening the window to include 2025 |
+| The 2026 data is incomplete in the source | A go/no-go in the data audit. The verdict was go; the snapshot stops before Champions 2026 |
+
+## 10. Outcome (2026-10-03)
+
+| Decision | Answer | Where |
+|---|---|---|
+| D1 | Ten players in the top fit band; the three highest fit scores are Meiy, swagzor and Derke | Roster Fit page; Tableau story point 3 |
+| D2 | At the Base assumptions SEN can justify $81,285 upfront, against $150,000 to $300,000 needed. $0 at Downside, $1,939,463 at Upside | Budget page |
+| D3 | Stay with a stand-in, unless the GM believes the signing adds at least 23.8 points to SEN's top-3 chance (Derke) or 32.2 (Meiy, swagzor) | Budget Overview page; [`recommendation_memo.md`](recommendation_memo.md) |
+
+Not done: the rerun on post-Champions data (after 2026-10-18) and the optional win model. Both are listed as next steps in the README.
 
 ## Sources
 

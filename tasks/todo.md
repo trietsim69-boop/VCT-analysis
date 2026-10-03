@@ -1,6 +1,6 @@
 # Task List: Valorant Player Recruitment & Roster Budget Dashboard
 
-The plan is in `tasks/plan.md`. Work through the tasks in order and stop at each checkpoint for review.
+**Status: closed 2026-10-03.** Twelve tasks are done and one, the stretch win model (T12), was dropped. Two things are left as next steps in the [README](../README.md): the rerun on post-Champions data and the win model. This file is the project log: what each task had to deliver and how it was checked.
 
 ---
 
@@ -25,25 +25,25 @@ The plan is in `tasks/plan.md`. Work through the tasks in order and stop at each
 
 ---
 
-### Task 2: Acquire and audit the data; confirm the role — ⚠️ **audit revised 2026-09-18 (v0.3); one decision open (S-14)**
+### Task 2: Acquire and audit the data; confirm the role — ✅ **done; audit revised 2026-09-18 (v0.3)**
 
-> Findings in `docs/data_audit.md`, schema profile in `docs/data_profile.md`. Verdict: **GO**. The vacant slot is the **duelist** slot, and 84 duelists are eligible.
+> Findings in `docs/data_audit.md`. Verdict: **GO**. The vacant slot is the **duelist** slot, and 84 duelists are eligible.
 >
 > **v0.2 correction:** the first pass counted scheduled Champions 2026 fixtures as data. 2026 has **588 completed matches**, not 622, and Champions 2026 (2026-09-24 → 2026-10-18) is outside the window. `maps.performance_available` is TRUE on unplayed fixtures, so `matches.status = 'final'` is a mandatory filter in T3 onward.
 
-**Description:** Download `https://vct-reference.com/dataset/vct.duckdb` (source A1 in the plan) into `data/raw/vct_YYYY-MM-DD.duckdb` (now `vct_2026-09-18.duckdb`) and don't modify it. Filter to 2026 completed matches (`matches.status = 'final'`). Download the Kaggle 2025 all-events dataset (A2) as a cross-check. Download the VCT Global Contract Database sheet (B2) as `gcd_YYYY-MM-DD.xlsx` via its `pub?output=xlsx` export URL. Profile every file: grain, keys, row counts, null rates, event and region coverage, and the agent list. Confirm that the KPI dictionary's metrics exist at the player-map grain. Count eligible players per region × role and choose the scope.
+**Description:** Download `https://vct-reference.com/dataset/vct.duckdb` (the main source) into `data/raw/vct_YYYY-MM-DD.duckdb` (now `vct_2026-09-18.duckdb`) and don't modify it. Filter to 2026 completed matches (`matches.status = 'final'`). Download the Kaggle 2025 all-events dataset as a cross-check. Download the VCT Global Contract Database sheet as `gcd_YYYY-MM-DD.xlsx` via its `pub?output=xlsx` export URL. Profile every file: grain, keys, row counts, null rates, event and region coverage, and the agent list. Confirm that the KPI dictionary's metrics exist at the player-map grain. Count eligible players per region × role and choose the scope.
 
 **Acceptance criteria:**
-- [x] `docs/data_profile.md` lists each table with row counts, types, null % and distinct counts; `docs/data_audit.md` adds the grain, keys and KPI mapping
+- [x] A schema profile lists each table with row counts, types, null % and distinct counts (rebuilt on demand by `python src/audit.py`; not kept in the repo); `docs/data_audit.md` adds the grain, keys and KPI mapping
 - [x] Known gaps documented: China has 0% performance and economy data (S-12), and clutch attempts don't exist
 - [x] 2026 coverage confirmed (S-05) — **revised**: 588 *completed* matches; Champions 2026 is unplayed and excluded. Every query must filter `matches.status = 'final'`.
 - [x] The vacant slot's role inferred as **duelist** (S-03)
 - [x] Eligibility counted: 84 duelists with ≥ 15 maps in 2026 (S-13)
 - [x] Coverage flags profiled by region (`performance_available`, `economy_available`)
 - [x] Go/no-go decided: **GO** on VCT Reference
-- [x] ~~Reconcile 10 rows against Kaggle A2~~ → replaced by a vlr.gg spot-check (the actual upstream source)
+- [x] ~~Reconcile 10 rows against the Kaggle dataset~~ → replaced by a vlr.gg spot-check (the actual upstream source)
 - [x] SEN's import status checked in the Global Contract Database workbook (S-10) — **the import slot is already taken by johnqt**; signing an import is a two-slot decision
-- [ ] **Champions 2026 re-snapshot (S-14)** — open until 2026-10-18. Decided approach: build everything on the pre-Champions snapshot now, then take a second dated snapshot after Champions ends and rerun the pipeline. Does **not** block Checkpoint A.
+- [x] **Champions 2026 re-snapshot (S-14): decision closed, rerun not done.** The project ships on the pre-Champions snapshot (2026-09-18). The second snapshot and rerun, due after Champions ends on 2026-10-18, is a next step in the README
 
 **Verification:**
 - [x] Every audit query ran without errors, and the top of the duelist pool returns plausible 2026 names
@@ -126,7 +126,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 #### T4.6 — `tests/test_marts.py` · S — ✅ **done 2026-09-21**
 - [x] 11 tests covering the weights seed and both marts; 19 tests pass across the suite
 - [x] Manual check: the top of the duelist board is primmie, Kachoww, t3xture, marteen, Meiy — plausible 2026 names, and the same set the T2 audit spot-check surfaced
-- [ ] **Open:** Kachoww ranks 2nd on 16 maps, the minimum. The composite does not shrink small samples towards the mean; T5 must show `maps_played` beside every rate (CLAUDE.md) so this is visible rather than hidden
+- [x] **Closed as a known limit:** Kachoww ranks 2nd on 16 maps, one above the minimum. The composite does not shrink small samples towards the mean. Maps played is shown beside every rate in both dashboards, so it is visible; a shrinkage estimator is a next step in the README
 
 **Not in T4:** the import and contract flag. `dim_player` has no link to the Global Contract Database, which is keyed by tournament handle and needs a fuzzy name match. It belongs to T6, where S-10 bites.
 
@@ -233,13 +233,13 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 **Acceptance criteria:**
 - [x] `docs/budget_model.md` lists the formulas, input definitions and default values, with a source or "illustrative" label for each (v1.0, 2026-09-29)
 - [x] `src/budget.py` implements the formulas, and `tests/test_budget.py` covers ≥ 5 cases (including zero buyout, and revenue below cost): the 8 worked cases in `budget_model.md` §8, plus property, seed and mart checks
-- [x] The Esports Earnings prize history for the shortlisted players (B1, game ID 646) is included as a reference only, and is labelled "not salary" (`data/seeds/prize_reference.csv`; swagzor blank, no page)
-- [x] Scenario ranges are anchored to sources: the minimum-salary floor (B3), the revenue-share total (B4), the partnership payment range (B5) and viewership (B6). The contract end year (B2) informs the buyout assumption (`mart_budget_inputs.csv` years_left, from all four contract-database tabs).
+- [x] The Esports Earnings prize history for the shortlisted players (game ID 646) is included as a reference only, and is labelled "not salary" (`data/seeds/prize_reference.csv`; swagzor blank, no page)
+- [x] Scenario ranges are anchored to sources: the minimum-salary floor, the revenue-share total, the partnership payment range and viewership. The contract end year informs the buyout assumption (`mart_budget_inputs.csv` years_left, from all four contract-database tabs).
 
 **Verification:**
 - [x] `pytest tests/test_budget.py` passes (22 tests; full suite 49, 2026-09-29; after the review 23 and 50, 2026-10-01)
-- [x] **Review applied 2026-10-01** (`docs/t8_review.md`): contract aliases for dgzin, spike and Dantedeu5; F-13 defined as a net cost; F-14 reworded as the added top-3 chance; new limits in `budget_model.md` §10. F-14 Base kept at 20 points (decided 2026-10-01)
-- [x] Manual check — **closed by the owner 2026-10-02 without the spreadsheet.** Case 1 (Derke, Base) is verified three other ways: pytest, an independent recomputation of all 504 reference rows (`docs/t8_review.md` §1), and Power BI to the dollar (`powerbi/dax_measures.md` §8)
+- [x] **Review applied 2026-10-01:** contract aliases for dgzin, spike and Dantedeu5; F-13 defined as a net cost; F-14 reworded as the added top-3 chance; new limits in `budget_model.md` §10. F-14 Base kept at 20 points (decided 2026-10-01)
+- [x] Manual check — **closed by the owner 2026-10-02 without the spreadsheet.** Case 1 (Derke, Base) is verified three other ways: pytest, an independent recomputation of all 504 reference rows in the T8 review, and Power BI to the dollar (`powerbi/dax_measures.md` §8)
 
 **Dependencies:** T4 (shortlist)
 **Files:** `docs/budget_model.md`, `src/budget.py`, `tests/test_budget.py`, `data/seeds/prize_reference.csv`
@@ -358,7 +358,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 ---
 
-### Task 11: Shortlist and recommendation memo — 📝 **drafted 2026-10-03, owner review open**
+### Task 11: Shortlist and recommendation memo — ✅ **done 2026-10-03**
 
 **Description:** Write a 1–2 page memo for the GM. It gives the top 3 candidates, the evidence for each, the fit, the cost range in each scenario, a recommendation, risks and limitations.
 
@@ -369,7 +369,7 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 - [x] Carried from T8: the memo says how the recommendation moves if the 2027 rules change. The reported 2027 home-region rule is logged as S-22 and is not applied to the model
 
 **Verification:**
-- [ ] Manual check: every number in the memo is cross-checked against the dashboards — 89 figures checked against the marts by script on 2026-10-03, all equal. The check on the dashboards themselves is the owner's
+- [x] Manual check: every number in the memo is cross-checked against the dashboards — **closed by the owner 2026-10-03.** 89 figures were checked against the marts by script and all match; the marts are the files both dashboards read
 
 **Dependencies:** T9, T10
 **Files:** `docs/recommendation_memo.md`, `docs/assumptions_log.md` (v0.6)
@@ -377,40 +377,40 @@ Player × `map_name`, same weighting and map counts. Feeds the T6 map-pool compa
 
 ---
 
-### Task 12 (stretch): Map-win probability with uncertainty
+### Task 12 (stretch): Map-win probability with uncertainty — ⏹ **dropped 2026-10-03 (owner's decision)**
 
-**Description:** Fit a simple, interpretable model (for example logistic regression on team-level round-weighted KPIs per map) and estimate the change in win probability when the outgoing player's stats are swapped for a candidate's. Report bootstrap confidence intervals and state the causal limits clearly.
+**Not built.** The stretch model was dropped to close the project. It stays as a next step in the README.
 
-**Acceptance criteria:**
-- [ ] Holdout performance (log loss and AUC) is reported and compared with a baseline (the team's historical map win rate)
-- [ ] Every scenario output is a range, never a single number
-- [ ] The results are added to the Roster Fit page as an optional visual, labelled "exploratory"
+**What it would have been:** a simple, interpretable model (for example logistic regression on team-level round-weighted KPIs per map) estimating the change in win probability when the outgoing player's stats are swapped for a candidate's, with bootstrap confidence intervals and the causal limits stated.
 
-**Verification:**
-- [ ] `notebooks/05_win_model.ipynb` runs end to end, and calibration is checked with a reliability plot
+**It would have had to:**
+- report holdout performance (log loss and AUC) against a baseline, the team's historical map win rate
+- give every scenario output as a range, never a single number
+- check calibration with a reliability plot
+- appear on the Roster Fit page as an optional visual labelled "exploratory"
 
 **Dependencies:** T6, T7
-**Files:** `notebooks/05_win_model.ipynb`, `data/marts/mart_win_scenarios.csv`
 **Scope:** M
 
 ---
 
-### Task 13: README and portfolio packaging
+### Task 13: README and portfolio packaging — ✅ **done 2026-10-03**
 
 **Description:** Write a README covering the question, the data sources (with licences and links), a pipeline diagram, how to reproduce the work, screenshots, key findings, limitations and next steps.
 
 **Acceptance criteria:**
-- [ ] Following the README from a fresh clone reproduces the marts (`pip install -r requirements.txt`, then `python -m src.pipeline`)
-- [ ] Screenshots of all 3 Power BI pages and the Tableau Public link are included
+- [x] Following the README from a fresh clone reproduces the marts: `pip install -r requirements.txt`, download the two raw files (`data/raw/README.md`), then `python -m src.clean` and `python -m src.marts`. Two commands were kept instead of a new `src.pipeline` module
+- [x] Screenshots of the Power BI pages and the Tableau Public link are included — the README shows Scouting, Roster Fit and Budget Overview and links to all five pages in `powerbi/README.md`; it also shows one story point and links to the live Tableau story
+- [x] Repo trimmed for release: `docs/t8_review.md`, `docs/data_profile.md`, the `docs/dax_measures.md` stub, `tasks/plan.md`, `tasks/t8_handoff.md` and a Tableau temp file removed; every reference to them replaced
 
 **Verification:**
-- [ ] Manual check: a fresh run in a new environment rebuilds the marts and the tests pass
+- [x] Manual check: a fresh run in a new environment rebuilds the marts and the tests pass — 2026-10-03, new virtual environment (Python 3.11, duckdb 1.5.6, pandas 3.0.6): `python -m src.marts` rebuilt all nine mart files with content identical to the committed ones, and 61 tests passed. `python -m src.clean` needs the raw snapshot, which is not in the repo; it was last run on the owner's machine
 
 **Dependencies:** T11
-**Files:** `README.md`, `requirements.txt`, `powerbi/images/*` (Power BI screenshots, already in `powerbi/README.md`), `docs/images/*`
+**Files:** `README.md`, `data/raw/README.md`, `.gitignore`, `src/audit.py`; documents in `docs/`, `powerbi/` and `tasks/` updated to their final state
 **Scope:** S
 
-## ✅ Checkpoint D — Complete
-- [ ] All acceptance criteria are met
-- [ ] Power BI and Tableau match on headline numbers
-- [ ] **Final human review**
+## ✅ Checkpoint D — Complete — **closed 2026-10-03**
+- [x] All acceptance criteria are met — with T12 dropped and the post-Champions rerun (S-14) left as a next step
+- [x] Power BI and Tableau match on headline numbers — parity table in `tableau/README.md`
+- [x] **Final human review** — closed by the owner 2026-10-03

@@ -116,7 +116,7 @@ Top-10 overlap: 8/10 and 7/10 respectively, with the same player first under all
 
 **Why no team win rate feeds the score.** A candidate's map win rate was earned with four other players. It is shown on the Roster Fit page, never scored.
 
-**What the fit score does not do.** It says who has played well, on the right agents and on SEN's maps. It does not predict SEN's results with that player; that would need T12's model, stated as a range.
+**What the fit score does not do.** It says who has played well, on the right agents and on SEN's maps. It does not predict SEN's results with that player; that would need a win model with stated uncertainty, which this project did not build.
 
 ## E. Budget scenarios (all inputs are assumptions)
 
@@ -126,7 +126,7 @@ Top-10 overlap: 8/10 and 7/10 respectively, with the same player first under all
 - **Break-even** ignored discounting. It is now ΔS + C₀ ÷ AF, which equals the old formula when *r* = 0.
 - **Max justifiable spend (D2)** was a *total*. It is now the maximum *upfront* spend (buyout + import-slot cost) with NPV ≥ 0.
 - **Scenarios** are one axis, Downside / Base / Upside (worst to best case for signing), with 2027 partner status as a separate toggle.
-- **Added:** import-slot net cost (F-13), added top-3 chance (F-14), non-partner payments (F-15), the break-even top-3 chance and a "not within contract" payback flag. F-13 and F-14 were reworded in the T8 review (`t8_review.md`).
+- **Added:** import-slot net cost (F-13), added top-3 chance (F-14), non-partner payments (F-15), the break-even top-3 chance and a "not within contract" payback flag. F-13 and F-14 were reworded in the T8 review (2026-10-01).
 - **Headline:** the break-even top-3 chance, not the NPV sign. It is each player's bar; the GM's judgement (F-14) is compared against it.
 
 Outputs, in short: total acquisition cost, baseline cost, incremental cost, NPV of signing vs staying, break-even uplift per year, break-even top-3 chance, payback, maximum justifiable upfront spend (D2) and the sign-or-stay decision (D3).

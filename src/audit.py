@@ -1,7 +1,7 @@
 """Profile a DuckDB file: tables, row counts, column types, null rates, distinct counts.
 
 Usage:
-    python src/audit.py data/raw/vct_2026-09-18.duckdb [out.md]   # default: docs/data_profile.md
+    python src/audit.py data/raw/vct_2026-09-18.duckdb [out.md]   # default: data/audit/data_profile.md
     python src/audit.py --selftest
 """
 
@@ -56,7 +56,7 @@ if __name__ == "__main__":
         selftest()
     else:
         db = sys.argv[1]
-        out_file = sys.argv[2] if len(sys.argv) > 2 else "docs/data_profile.md"
+        out_file = sys.argv[2] if len(sys.argv) > 2 else "data/audit/data_profile.md"
         Path(out_file).parent.mkdir(parents=True, exist_ok=True)
         Path(out_file).write_text(profile(db), encoding="utf-8")
         print(f"wrote {out_file}")

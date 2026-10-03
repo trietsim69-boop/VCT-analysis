@@ -4,9 +4,9 @@
 
 | | |
 |---|---|
-| **Status** | v1.1, 2026-10-01. v1.0 (2026-09-29) settled the decisions in the T8 grilling session (Q1–Q22); v1.1 applies the T8 review (`docs/t8_review.md`): contract aliases, F-13 as a net cost, F-14 reworded, more limits. |
+| **Status** | v1.2, 2026-10-03 (final). v1.0 (2026-09-29) settled the design decisions; v1.1 (2026-10-01) applied the review: contract aliases, F-13 as a net cost, F-14 reworded, more limits; v1.2 records what the Power BI page kept, the import check and the reported 2027 rule. |
 | **Answers** | D2 (how much can SEN justify paying?) and D3 (sign, or stay with a minimum-salary stand-in?) from `business_brief.md` |
-| **Implemented in** | `src/budget.py` (reference calculation), `tests/test_budget.py`; T9 rebuilds it in DAX and must match to the rounding rules in §7 |
+| **Implemented in** | `src/budget.py` (reference calculation), `tests/test_budget.py`; the Power BI Budget pages read its output and recompute only the F-14 slider in DAX, to the rounding rules in §7 |
 | **Research** | `docs/budget_cost_research.md`. Source numbers `[n]` below refer to that file's source list |
 | **Supersedes** | `kpi_dictionary.md` § E, whose formulas this replaces (see §6.4 for what changed) |
 
@@ -32,13 +32,13 @@ There is **one axis, from worst case to best case for signing**:
 | **Base** | Central values. The recommendation (D3) is read here. |
 | **Upside** | Costs low, uplift high, discount rate low. |
 
-The T9 page selector shows Downside / Base / Upside. It maps to the "low / base / high" wording in `todo.md`.
+The Power BI Budget pages show a Downside / Base / Upside selector.
 
 Two things are **not** scenario variables:
 - **Contract length (F-04)** is the GM's choice: 2 years by default, editable from 1 to 3.
 - **2027 partner status (F-06)** is a separate toggle. Whether Riot keeps SEN as a partner has nothing to do with who SEN signs. 2027 cuts Americas partners from 11 to 8 [Sheep Esports], and SEN finished 10th in 2026, so the toggle matters.
 
-The T9 sensitivity table (salary × uplift) covers the combinations a single axis leaves out.
+A salary × uplift sensitivity table was planned for the combinations a single axis leaves out. It was dropped when the Budget page was cut to a slim scope (2026-10-01), so only F-14 can be changed live.
 
 ## 3. Timing convention
 
@@ -66,7 +66,7 @@ All values are USD and listed as **Downside / Base / Upside**. Each input is lab
 | F-10 | Extra sponsorship + content revenue per year, **excluding capsules and prize money** (already in F-08 and F-09) | V_spon | 0 | 250,000 | 750,000 | **illustrative** | SEN revenue: $2.92M (2023) [55] → $5.79M (2024, Masters title year) → $6.44M (2025) [16]. That jump also contains digital goods and prizes, so it is context for the size of the effect, not a measure of F-10. |
 | F-11 | Discount rate | r | 25% | 15% | 10% | **illustrative** (anchored) | Listed entertainment cost of capital 7.1% as the floor [60]; SEN is loss-making, held $209k cash and owed $12M to its backer at end-2025 [16]; late-stage startup returns of 25–35% [61] as the ceiling reference |
 | F-13 | Import-slot **net** cost (one-off, **imports only**) | I | 400,000 | 150,000 | 0 | **illustrative** | Net = payout to johnqt − his salary saved + the salary of the resident who replaces him. SEN's single import slot is held by johnqt (Non-Resident, contract to 2028: S-10), its IGL. The uplift assumes the rest of the roster plays as now, so the replacement is **like-for-like**: his salary ≈ johnqt's, the two salary terms cancel, and net ≈ the payout. Downside = pay out 2 years at ≈ $200k; Base = settle about half; Upside = sell or loan him for a fee that covers the difference. A cheaper replacement would lower the net cost but break the like-for-like assumption, so it is not used. No public payout figures exist. |
-| F-14 | **Added chance of a top-3 season** from the signing (percentage points; expected share of the 10th → top-3 value he creates) | k | 10% | 20% | 35% | **illustrative — the weakest assumption in the model** | Comparing *sign* with *stay* already isolates his contribution, so no separate credit share is needed. Base 20 points is on the generous side for one duelist joining a 10th-place team; kept at 20 (decided 2026-10-01, `t8_review.md` §3). In T9 it is the page's one slider. The GM's per-player judgement goes here. |
+| F-14 | **Added chance of a top-3 season** from the signing (percentage points; expected share of the 10th → top-3 value he creates) | k | 10% | 20% | 35% | **illustrative — the weakest assumption in the model** | Comparing *sign* with *stay* already isolates his contribution, so no separate credit share is needed. Base 20 points is on the generous side for one duelist joining a 10th-place team; kept at 20 (decided 2026-10-01). On the Budget pages it is the one slider. The GM's per-player judgement goes here. |
 | F-12 | Currency | — | USD | USD | USD | decided | — |
 
 **Rules carried over from 2026, all "to verify (2027 rules)":**
@@ -74,7 +74,7 @@ All values are USD and listed as **Downside / Base / Upside**. Each input is lab
 - the one-import limit (behind F-13)
 - the $600K–$5M partner range (F-07/F-08)
 
-If any of these changes, the memo (T11) must say how the recommendation moves.
+If any of these changes, the recommendation moves. A change to the import limit is already reported for 2027 (assumptions log S-22); [`recommendation_memo.md`](recommendation_memo.md) says how the answer moves under it. The model itself still uses the 2026 rule.
 
 ## 5. Inputs that differ by candidate
 
@@ -107,7 +107,7 @@ B          = B_full × years_left ÷ 2                -- no cap: a 2029 contract
 
 Caveats:
 - The database tabs were last updated on different dates: CN 2026-07-02, EMEA 2026-08-11, Americas 2026-09-14 and Pacific 2026-09-17. A player listed as ending in 2026 may have re-signed since.
-- The import flag for non-Americas players rests on nationality (S-19) and is confirmed by hand in T11.
+- The import flag for non-Americas players rests on nationality (S-19). It was confirmed by hand for the seven flagged shortlist players on 2026-10-03: all are imports for SEN.
 - Contracts are matched on the lower-cased handle. Where Riot's handle differs from the vlr.gg name, `data/seeds/gcd_handle_aliases.csv` maps it by player_id: dgzin = dgz (EG), spike = spikeziN (Leviatán), Dantedeu5 = Dante (KRÜ). A test fails if an alias stops matching. 14 pool players are still not found and fall back to years_left = 2 (2 more are ambiguous names).
 - Dantedeu5 was reported in Sep 2026 as leaving KRÜ despite a contract to 2028, so his buyout may already be lower than modelled.
 
@@ -216,13 +216,13 @@ For context: SEN's lifetime VALORANT prize money is $1,058,000, and SEN won noth
 ## 10. Limits
 
 - **The uplift is an assumption, not a prediction.** No link from a player to results is modelled (assumptions log § D). F-14 is the weakest input, which is why break-even is the headline output.
-- **Moving johnqt costs performance as well as money.** Only the money (F-13) is modelled; T11 discusses the rest.
+- **Moving johnqt costs performance as well as money.** Only the money (F-13) is modelled; the memo discusses the rest.
 - **Jerrwin is the performance baseline (S-16) but not the cost baseline.** His contract runs to 2028 and his salary is unknown, so the "stay" option is a minimum-salary stand-in, as the business brief frames D3.
 - **2027 rules are unpublished.** The minimum salary, import limit and partner payments are all carried over from 2026 and marked "to verify".
 - **Contract data can be stale** (see the tab update dates in §5). The CN tab dates from 2026-07-02.
-- **Every candidate costs the same per year, whatever his quality.** Real salaries and buyouts rise with quality, and free agents save SEN the buyout but will likely ask for more salary. No data exists to model this; the T9 salary × uplift sensitivity table shows how much it matters.
+- **Every candidate costs the same per year, whatever his quality.** Real salaries and buyouts rise with quality, and free agents save SEN the buyout but will likely ask for more salary. No data exists to model this.
 - **Revenue counts in full from year 1.** Partner bonuses and sponsorship usually follow a season of results, so on a 2-year deal this flatters signing.
-- **The partner slot after 2028 is outside the window.** The 2027–28 partner cycle is followed by re-selection, and a stronger roster helps SEN keep its place. That value is not counted, which understates the case for signing. It is less than the whole partner payment ($600K is the reported *minimum total*, and non-partners still earn F-15), and the signing cannot affect SEN's 2027 status, which is decided first. An argument for T11, not a model input.
+- **The partner slot after 2028 is outside the window.** The 2027–28 partner cycle is followed by re-selection, and a stronger roster helps SEN keep its place. That value is not counted, which understates the case for signing. It is less than the whole partner payment ($600K is the reported *minimum total*, and non-partners still earn F-15), and the signing cannot affect SEN's 2027 status, which is decided first. An argument for the GM, not a model input.
 - **SEN keeps only part of the prize money.** F-09 is the team's gross prize; players usually take a share. F-09 is about 14% of the Base swing value, so the effect is modest.
 - **Overlap between F-10 and F-08.** The sponsorship anchor (SEN's revenue growth) also contains digital goods. F-10 is defined to exclude capsules and prizes, but its anchor can't be split.
 - **Net balance:** the equal cost per player and revenue from year 1 make Base slightly generous; the 2-year window makes it slightly strict. Base "stay, narrowly" with break-even as the headline still holds.

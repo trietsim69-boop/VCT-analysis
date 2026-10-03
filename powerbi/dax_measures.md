@@ -130,7 +130,7 @@ FK-FD per Round = [FKPR] - [FDPR]
 exclude maps with a missing stat, matching SQL's `sum(adr_all * rounds)`.
 
 `DIVIDE` returns **blank** on a zero or blank denominator. Never add a third argument — a `0`
-there would turn "no data" into "zero performance", which `CLAUDE.md` prohibits.
+there would turn "no data" into "zero performance", which the project rules prohibit.
 
 ### Display-only metrics (S-09)
 
@@ -289,8 +289,8 @@ silently disagree with the mart.
 - **Kachoww ranks 2nd on 16 maps**, the eligibility minimum (T4.6). The composite does not
   shrink small samples toward the mean. The page exposes this through `Maps Played`,
   `ADR Maps` and the scatter's bubble size, but it does not correct for it. A shrinkage
-  estimator is the honest fix if the shortlist survives to T11.
-- **`opponent_id` is unmodelled.** T6's team-fit work needs it.
+  estimator is the honest fix; it is listed under next steps in the main README.
+- **`opponent_id` is unmodelled.** Nothing in the report needed it.
 - **`clutches_per_100r`** not implemented in DAX.
 - **S-14**: everything here is built on the pre-Champions snapshot. Re-run after 2026-10-18
   and re-verify the QA page — it is the fastest end-to-end check that a re-snapshot
@@ -467,11 +467,11 @@ All match `mart_fit.csv`. Also checked:
 
 ### Open items (T7)
 
-- **Import status by nationality** (`import_source` = proxy) is still unconfirmed for the
-  shortlist — T11 (S-19).
+- **Import status by nationality** (`import_source` = proxy) was confirmed by hand for the
+  shortlist on 2026-10-03 (S-19): all seven flagged players are imports for SEN.
 - **Meiy leads on fit, not on every duel metric.** His opening win % is far above Jerrwin's
   (96th vs 55th percentile) but he takes slightly fewer opening duels (FKPR 81st vs 93rd) and
-  his ADR swings more map to map (consistency 33rd vs 75th). Worth a line in the T11 memo.
+  his ADR swings more map to map (consistency 33rd vs 75th). The memo says so.
 - **S-14:** re-verify this table after the post-Champions re-snapshot, alongside the QA page.
 
 ---
@@ -684,7 +684,7 @@ Also checked:
   even"); primmie, Upside, F-14 = 35 ($1,939,463, Sign, payback 0.0). Pytest covers all three; the
   page check is a formality but belongs in this table.
 - **The two Budget pages do not carry the "unofficial fan analysis, not affiliated with Sentinels
-  or Riot Games" line** that CLAUDE.md asks for on every page. Their notes say "every number is an
+  or Riot Games" line** that the project rules ask for on every page. Their notes say "every number is an
   assumption" only.
 - **Payback Note overlaps the Payback card.**
 - **S-14:** after the post-Champions re-snapshot, rerun the pipeline, Refresh, and re-check the

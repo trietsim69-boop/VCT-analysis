@@ -116,8 +116,8 @@ def test_one_row_per_fit_candidate(mart):
 
 
 def test_shortlist_contracts_match_workbook(mart):
-    """Checked by hand in gcd_2026-09-14.xlsx (t8_handoff.md 4.1); CN writes '2027 Season End'.
-    dgzin is listed as 'dgz' (docs/t8_review.md), so he is matched through the alias seed."""
+    """Checked by hand in gcd_2026-09-14.xlsx; CN writes '2027 Season End'.
+    dgzin is listed as 'dgz', so he is matched through the alias seed."""
     by_hand = {"Meiy": 2027, "swagzor": 2027, "Derke": 2026, "ZmjjKK": 2026, "primmie": 2026,
                "BuZz": 2026, "Wo0t": 2026, "OXY": 2028, "Timotino": 2027, "dgzin": 2027}
     assert {p: mart[p][0] for p in by_hand} == by_hand
